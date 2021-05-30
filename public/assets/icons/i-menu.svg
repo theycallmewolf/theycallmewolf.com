@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+  <defs>
+    <style>
+      .cls-2{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:.97px}
+    </style>
+  </defs>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="assets">
+      <path id="viewbox" fill="none" d="M0 0h22v22H0z"/>
+      <g id="icon-menu">
+        <path class="cls-2" d="M0 11.5h22M0 .5h10.6M10.6 21.5H22"/>
+      </g>
+    </g>
+  </g>
+</svg>

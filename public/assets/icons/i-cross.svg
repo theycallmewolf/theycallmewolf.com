@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+  <defs>
+    <style>
+      .cls-2{fill:none;stroke:#000;stroke-miterlimit:10;stroke-width:.97px}
+    </style>
+  </defs>
+  <g id="Layer_2" data-name="Layer 2">
+    <g id="assets">
+      <path id="viewbox" fill="none" d="M0 0h22v22H0z"/>
+      <g id="icon-cross">
+        <path class="cls-2" d="M10 12L.3 21.7M21.7.3L11.3 10.7M21.7 21.7L.3.3"/>
+      </g>
+    </g>
+  </g>
+</svg>
