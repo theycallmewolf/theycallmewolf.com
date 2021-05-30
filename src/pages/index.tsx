@@ -1,6 +1,7 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
+import { Button } from '../components/Button';
 import { Header } from '../components/Header';
 import { Intro } from '../components/Intro';
 import styles from './Home.module.scss';
@@ -18,6 +19,11 @@ export default function Home(): JSX.Element {
       <Header />
       <main className={styles.main}>
         <Intro />
+        <section className={styles.action}>
+          <Button type="button" genre="outline" onClick={() => console.log('bananas')}>
+            say “hello, wolf!”
+          </Button>
+        </section>
       </main>
     </>
   );
