@@ -3,3 +3,25 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+:root {
+  --c-polar-white: #F5F5F5;
+  --c-iridium-white: #F0F0F0;
+  --c-cosmos-black: #1B2A2F;
+  --c-night-black: #111517;
+  --c-candy-red: #D20120;
+}
+
+@media (prefers-color-scheme: dark) {
+ :root {
+   --c-dark-color: var(--c-cosmos-black);
+   --c-darker-color: var(--c-night-black);
+ }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --c-dark-color: var(--c-iridium-white);
+    --c-darker-color: var(--c-polar-white);
+  }
+}
