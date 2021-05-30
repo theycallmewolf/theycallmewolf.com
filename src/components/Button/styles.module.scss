@@ -1,0 +1,51 @@
+.button {
+  color: var(--c-element-100);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  
+  background: transparent;
+  border: 0;
+  padding: 8px 24px;
+  overflow: hidden;
+
+  position: relative;
+
+  transition: 
+    background 300ms ease-in-out, 
+    filter 300ms ease-in-out;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    height: 300%;
+    background: var(--c-candy-red);
+    z-index: -1;
+
+    transition:
+      top 300ms ease-in-out,
+      transform 300ms ease-in-out;
+  }
+
+  &.outline {
+    border: 4px solid var(--c-candy-red);
+
+    &:hover,
+    &:focus { 
+      &::after {
+        top: 0;
+        transform: rotate(90deg) scale(3);
+      }
+    }
+  }
+  
+  &.fill {
+    border: 4px solid var(--c-candy-red);
+    background: var(--c-candy-red);
+    
+    &:hover,
+    &:focus { filter: brightness(1.1); }
+  }
+}
