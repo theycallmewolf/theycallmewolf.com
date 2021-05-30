@@ -18,9 +18,6 @@ export default function Home(): JSX.Element {
       <Header />
       <main className={styles.main}>
         <Intro />
-        <h1>
-          <a href=".">Hello, Wolf!</a>
-        </h1>
       </main>
     </>
   );
