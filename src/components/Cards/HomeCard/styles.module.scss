@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .content {
+    width: 100%;
+    max-width: 906px;
+    position: relative;
+    background: var(--c-background-100);
+  
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  
+    &>div {
+      &:first-of-type {
+        padding: 24px;
+
+        &> div {
+          margin-top: 8px;
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 8px;
+        }
+      }
+  
+      &:last-of-type {
+        background: var(--c-element-200);
+        padding: 48px;
+  
+        margin-top: -24px;
+        
+        display: flex;
+        align-items: center;
+        justify-content: center;
+  
+        svg {
+          width: 200px;
+          height: 190px;
+        }
+      }
+    }
+  
+    button {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+}
