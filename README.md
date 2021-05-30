@@ -18,8 +18,11 @@ portfolio website
 
 - [x] mood board
 - [x] wires
-- [ ] initial project setup
-- [ ] GitHub repo setup
+- [x] initial project setup
+- [x] typescript config
+- [x] eslint config
+- [x] prettier config
+- [x] GitHub repo setup
 - [ ] header component
 - [ ] footer component
 - [ ] slider component using [swiper.js](https://swiperjs.com/)
@@ -32,7 +35,7 @@ portfolio website
 - [ ] manage content using [faunaDB](https://fauna.com/)
 - [ ] sent thank you email using [Amazon Simple Email Service (SES)](https://aws.amazon.com/ses/)
 - [ ] SEO
-- [ ] favicon
+- [x] favicon
 - [ ] social media image
 - [ ] responsive tests
 - [ ] lighthouse performance test
