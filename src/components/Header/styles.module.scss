@@ -3,7 +3,6 @@
   height: 94vh;
   
   position: fixed;
-  top: 0;
   top: calc(90px - 94vh);
   left: 0;
   right: 0;
@@ -15,6 +14,8 @@
     top: calc(90px - 80vh);
   }
   
+  &.open { top: 0; }
+
   .content {
     position: absolute;
     top: 0;
@@ -123,6 +124,8 @@
         height: 50px;
         overflow: hidden;
 
+        transition: margin 300ms ease-in-out, height 300ms ease-in-out;
+
         svg {
           fill: var(--c-element-200);
           width: 100%;
@@ -130,6 +133,11 @@
 
         @media (prefers-color-scheme: dark) {
           svg { fill: var(--c-candy-red)};
+        }
+
+        &.open {
+          height: 80px;
+          margin-top: -24px;
         }
       }
 
