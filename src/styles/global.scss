@@ -1,8 +1,4 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import './reset';
 
 :root {
   --c-polar-white: #F5F5F5;
@@ -45,8 +41,6 @@ body {
 body, input, textarea, select, button {
   font: var(--f-regular) 1.6rem var(--f-body);
 }
-
-button { cursor: pointer; }
 
 a {
   color: inherit;
