@@ -2,10 +2,9 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import { Header } from '../components/Header';
+import styles from './Home.module.scss';
 
-// import styles from "../styles/Home.module.scss";
-
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
     <>
       <Head>
@@ -16,7 +15,7 @@ export default function Home() {
         />
       </Head>
       <Header />
-      <main>
+      <main className={styles.main}>
         <h1>
           <a href=".">Hello, Wolf!</a>
         </h1>
