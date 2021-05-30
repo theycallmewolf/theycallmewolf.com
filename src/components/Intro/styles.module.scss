@@ -1,8 +1,16 @@
+@keyframes blink {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
 .container {
   width: 100vw;
   height: 80vh;
   margin-top: -80px;
   position: relative;
+  overflow: hidden;
+  
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,35 +18,73 @@
   
   background-image: url('../../../public/assets/img/intro.jpg');
   background-color: var(--c-candy-red);
-  background-position: top left;
+  background-position: bottom left;
   background-blend-mode: multiply;
   background-size: cover;
-  
-  overflow: hidden;
+  background-repeat: round;
 
-  svg {
+  .wire {
     fill: var(--c-candy-red);
     opacity: 0.6;
 
     position: absolute;
-    top: 50%;
+    bottom: 0;
     left: 50%;
-    transform: translate(-50%, -50%) scale(8);
+    transform: translateX(-50%) scale(8);
+
+    @media (min-width: 768px) { transform: translate(-50%, -50%) scale(4);}
+    @media (min-width: 1024px) { transform: translate(-50%, -50%) scale(2);}
   }
 
+  .clip {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    width: 200%;
+    height: 20px;
+    fill: var(--c-background-200)
+  }
+  
+  .content {
+    z-index: 1;
+    width: calc(100% - 24px);
+    max-width: 906px;
+  }
+  
   h1 {
     font-size: 4.2rem;
     line-height: 1;
     margin-bottom: 24px;
   }
-
+  
   p {
     font-size: 1.8rem;
-    letter-spacing: .5px;
+    line-height: 1.2;
+    display: inline-block;
+    position: relative;
+
+    &::after {
+      content: '';
+      width: 2px;
+      height: 36px;
+      background: var(--c-candy-red);
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      animation: blink 1000ms infinite;
+    }
   }
   
-  h1, p {
-    z-index: 1;
-    width: calc(100% - 24px);
+  @media (min-width: 420px) { 
+    h1 { font-size: 5.6rem;}
+  }
+
+  @media (min-width: 620px) { 
+    h1 { font-size: 6.4rem;}
+  }
+
+  @media (min-width: 1024px) { 
+    h1 { font-size: 8rem;}
   }
 }
