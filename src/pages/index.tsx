@@ -1,9 +1,11 @@
-import Head from "next/head";
-import styles from "../styles/Home.module.scss";
+import { GetStaticProps } from 'next';
+import Head from 'next/head';
+
+// import styles from "../styles/Home.module.scss";
 
 export default function Home() {
   return (
-    <div>
+    <>
       <Head>
         <title>they call me wolf | home</title>
         <meta
@@ -16,6 +18,13 @@ export default function Home() {
           <a href=".">Hello, Wolf!</a>
         </h1>
       </main>
-    </div>
+    </>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  return {
+    props: {},
+    revalidate: 60 * 60 * 24 // 24 hours
+  };
+};
