@@ -25,6 +25,16 @@
   }
 }
 
+::selection {
+  background: var(--c-candy-red);
+  color: var(--c-iridium-white);
+}
+
+::-moz-selection {
+	background: var(--c-candy-red);
+	color: var(--c-iridium-white);
+}
+
 body {
   background: var(--c-background-200);
   color: var(--c-element-100);
