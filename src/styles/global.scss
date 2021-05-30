@@ -34,3 +34,22 @@
     --c-background-200: var(--c-polar-white);
   }
 }
+
+html { font-size: 10px; }
+
+body {
+  background: var(--c-background-200);
+  color: var(--c-element-100);
+}
+
+body, input, textarea, select, button {
+  font: var(--f-regular) 1.6rem var(--f-body);
+}
+
+button { cursor: pointer; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
