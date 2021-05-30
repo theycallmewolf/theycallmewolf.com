@@ -1,34 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# they call me <wolf \/>
 
-## Getting Started
+portfolio website
 
-First, run the development server:
+<br />
+<br />
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+**use technologies**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- react
+- next
+- sass
+- svg
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+<br />
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+**tasks**
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- [x] mood board
+- [x] wires
+- [ ] initial project setup
+- [ ] GitHub repo setup
+- [ ] header component
+- [ ] footer component
+- [ ] slider component using [swiper.js](https://swiperjs.com/)
+- [ ] cover component
+- [ ] cards components
+- [ ] home page
+- [ ] about page
+- [ ] work page
+- [ ] contact form
+- [ ] manage content using [faunaDB](https://fauna.com/)
+- [ ] sent thank you email using [Amazon Simple Email Service (SES)](https://aws.amazon.com/ses/)
+- [ ] SEO
+- [ ] favicon
+- [ ] social media image
+- [ ] responsive tests
+- [ ] lighthouse performance test
+- [ ] deploy on [netlify](https://www.netlify.com/)
+- [ ] go out and have some "beer fun". you deserve it!
 
-## Learn More
+<br />
 
-To learn more about Next.js, take a look at the following resources:
+**use cases**
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [ ] send a message to the site owner
+- [ ] check the owner curated projects
+- [ ] read about each project
+- [ ] visit available projects
+- [ ] check the source code on GitHub
+- [ ] check the site owner biography
+- [ ] read the site owner posts
+- [ ] check the most recent musics listen on spotify
+- [ ] visit owner GitHub, LinkedIN and Twitter pages
+- [ ] contact owner for work related proposals
+- [ ] download a printable version of the owner CV in pdf
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<br />
+<br />
+---
+contact: bruno@theycallmewolf.com
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+@2021, theycallmewolf.
