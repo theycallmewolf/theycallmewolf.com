@@ -1,0 +1,22 @@
+.container {
+  padding: 12px;
+
+  small {
+    text-transform: uppercase;
+  }
+
+  .graph {
+    background: var(--c-background-200);
+    width: 140px;
+    height: 2px;
+    position: relative;
+
+    .active {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      background: var(--c-candy-red);
+    }
+  }
+}
