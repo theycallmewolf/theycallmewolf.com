@@ -1,0 +1,44 @@
+.container {
+  width: 100vw;
+  height: 80vh;
+  margin-top: -80px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  
+  background-image: url('../../../public/assets/img/intro.jpg');
+  background-color: var(--c-candy-red);
+  background-position: top left;
+  background-blend-mode: multiply;
+  background-size: cover;
+  
+  overflow: hidden;
+
+  svg {
+    fill: var(--c-candy-red);
+    opacity: 0.6;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(8);
+  }
+
+  h1 {
+    font-size: 4.2rem;
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  p {
+    font-size: 1.8rem;
+    letter-spacing: .5px;
+  }
+  
+  h1, p {
+    z-index: 1;
+    width: calc(100% - 24px);
+  }
+}

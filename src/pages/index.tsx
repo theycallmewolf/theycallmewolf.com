@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import { Header } from '../components/Header';
+import { Intro } from '../components/Intro';
 import styles from './Home.module.scss';
 
 export default function Home(): JSX.Element {
@@ -16,6 +17,7 @@ export default function Home(): JSX.Element {
       </Head>
       <Header />
       <main className={styles.main}>
+        <Intro />
         <h1>
           <a href=".">Hello, Wolf!</a>
         </h1>
