@@ -87,4 +87,8 @@
   @media (min-width: 1024px) { 
     h1 { font-size: 8rem;}
   }
+
+  @media (prefers-color-scheme: light) { 
+    h1, p {color: var(--c-background-100);}
+  }
 }
