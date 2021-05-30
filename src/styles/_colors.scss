@@ -1,0 +1,30 @@
+:root {
+  --c-polar-white: #F5F5F5;
+  --c-iridium-white: #F0F0F0;
+  --c-cosmos-black: #1B2A2F;
+  --c-night-black: #111517;
+  --c-candy-red: #D20120;
+}
+
+@media (prefers-color-scheme: dark) {
+ :root {
+   --c-element-100: var(--c-polar-white);
+   --c-element-200: var(--c-iridium-white);
+   --c-background-100: var(--c-cosmos-black);
+   --c-background-200: var(--c-night-black);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --c-element-100: var(--c-cosmos-black);
+    --c-element-200: var(--c-night-black);
+    --c-background-100: var(--c-iridium-white);
+    --c-background-200: var(--c-polar-white);
+  }
+}
+
+body {
+  background: var(--c-background-200);
+  color: var(--c-element-100);
+}
