@@ -1,12 +1,5 @@
 @import './reset';
 @import './colors';
-
-html { font-size: 10px; }
-
-
-
-body, input, textarea, select, button {
-  font: var(--f-regular) 1.6rem var(--f-body);
-}
+@import './type';
 
 
