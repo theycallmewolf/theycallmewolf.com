@@ -177,11 +177,19 @@
     }
 
     svg {
+      width: 360%;
+      height: 100%;
+
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      
       fill: var(--c-background-200);
+    }
+    
+    @media (min-width: 768px) {
+      svg { width: 400%;}
     }
   }
 }
