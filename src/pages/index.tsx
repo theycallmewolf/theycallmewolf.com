@@ -25,12 +25,20 @@ type Client = {
   logoSVG: string;
 };
 
+type Post = {
+  id: number;
+  title: string;
+  lead: string;
+  slug: string;
+};
+
 interface HomeProps {
   projects: Project[];
   clients: Client[];
+  posts: Post[];
 }
 
-export default function Home({ projects, clients }: HomeProps): JSX.Element {
+export default function Home({ projects, clients, posts }: HomeProps): JSX.Element {
   return (
     <>
       <Head>
@@ -59,14 +67,9 @@ export default function Home({ projects, clients }: HomeProps): JSX.Element {
           ))}
         </section>
         <section className={styles.blog}>
-          <BlogCard
-            title="FIRST SVG ANIMATIONS"
-            lead="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. "
-          />
-          <BlogCard
-            title="FIRST SVG ANIMATIONS"
-            lead="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. "
-          />
+          {posts.map((post) => (
+            <BlogCard key={post.id} title={post.title} lead={post.lead} />
+          ))}
         </section>
       </main>
     </>
@@ -80,10 +83,21 @@ export const getStaticProps: GetStaticProps = async () => {
   const clientsResponse = await api.get('clients');
   const clients = clientsResponse.data;
 
+  const blogResponse = await api.get('blog');
+  const blogPosts: Post[] = blogResponse.data.splice(0, 2);
+
+  const posts = blogPosts.map((post) => ({
+    id: post.id,
+    title: post.title,
+    lead: post.lead,
+    slug: post.slug
+  }));
+
   return {
     props: {
       projects,
-      clients
+      clients,
+      posts
     },
     revalidate: 60 * 60 * 24 // 24 hours
   };
