@@ -1,0 +1,22 @@
+.container {
+  background: var(--c-background-100);
+  padding: 48px 24px 96px 24px;
+  position: relative;
+  transition: filter 1000ms ease-in-out;
+
+  h3 {
+    font-size: 2rem;
+    line-height: 2.8rem;
+    font-weight: var(--f-regular);
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+
+  button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+
+  &:hover { filter: brightness(1.2) }
+}
