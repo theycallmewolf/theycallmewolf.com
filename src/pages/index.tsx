@@ -2,6 +2,7 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import { Button } from '../components/Button';
+import { BlogCard } from '../components/Cards/BlogCard';
 import { HomeCard } from '../components/Cards/HomeCard';
 import { Header } from '../components/Header';
 import { Intro } from '../components/Intro';
@@ -56,6 +57,16 @@ export default function Home({ projects, clients }: HomeProps): JSX.Element {
           {clients.map((client) => (
             <LogoButton key={client.id} svgLogo={client.logoSVG} url={client.URL} />
           ))}
+        </section>
+        <section className={styles.blog}>
+          <BlogCard
+            title="FIRST SVG ANIMATIONS"
+            lead="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. "
+          />
+          <BlogCard
+            title="FIRST SVG ANIMATIONS"
+            lead="Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Sed posuere consectetur est at lobortis. Nulla vitae elit libero, a pharetra augue. "
+          />
         </section>
       </main>
     </>

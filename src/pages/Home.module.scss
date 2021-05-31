@@ -23,7 +23,8 @@
       margin: 96px -12px 96px auto;
     }
   }
-  .clients { max-width: 960px; }
+  .clients, 
+  .blog { max-width: 960px; }
 
   .clients {
     display: grid;
@@ -32,6 +33,15 @@
     
     @media (min-width: 768px) {
       grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+  }
+  
+  
+  .blog {
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
   }
