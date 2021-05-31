@@ -9,8 +9,11 @@
     position: relative;
     background: var(--c-background-100);
   
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
   
     &>div {
       &:first-of-type {
@@ -28,8 +31,6 @@
         background: var(--c-element-200);
         padding: 48px;
   
-        margin-top: -24px;
-        
         display: flex;
         align-items: center;
         justify-content: center;
@@ -38,6 +39,8 @@
           width: 200px;
           height: 190px;
         }
+
+        @media (min-width: 768px) { margin-top: -24px; }
       }
     }
   
