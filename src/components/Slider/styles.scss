@@ -13,7 +13,7 @@
         opacity: 0.1;
         
         transform: scale(0.6);
-        transition: transform 1000ms;
+        transition: transform 1000ms ease-in-out, border 1000ms ease-in-out;
 
         @media (max-width: 1024px) { 
           &:last-of-type { display: none; }
