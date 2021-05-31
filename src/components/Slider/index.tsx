@@ -47,7 +47,7 @@ export const Slider: React.FC<SliderProps> = ({ slides, testimonials, contentTyp
         grabCursor={true}
         loop={false}
         speed={600}
-        className="testimonial"
+        className={contentType === 'testimonial' && 'testimonial'}
         breakpoints={{
           320: {
             slidesPerView: 1
