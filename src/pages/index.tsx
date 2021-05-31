@@ -8,8 +8,47 @@ import { Intro } from '../components/Intro';
 import { Slider } from '../components/Slider';
 import styles from './Home.module.scss';
 
-export default function Home(): JSX.Element {
-  const slides = [
+type Projects = {
+  id: number;
+  imageURL: string;
+  caption: string;
+  title: string;
+};
+
+interface HomeProps {
+  projects: Projects[];
+}
+
+export default function Home({ projects }: HomeProps): JSX.Element {
+  return (
+    <>
+      <Head>
+        <title>they call me wolf | home</title>
+        <meta
+          name="description"
+          content="They call me wolf is the web portfolio of Bruno Lobato, a designer since 2001 that felt in love with coding around 2016."
+        />
+      </Head>
+      <Header />
+      <main className={styles.main}>
+        <Intro />
+        <section className={styles.action}>
+          <Button type="button" genre="outline" onClick={() => console.log('bananas')}>
+            say “hello, wolf!”
+          </Button>
+        </section>
+        <HomeCard />
+        <section className={styles.projects}>
+          <h2>Projects</h2>
+          <Slider slides={projects} />
+        </section>
+      </main>
+    </>
+  );
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const projects = [
     {
       id: 1,
       title: 'BAÚ',
@@ -36,36 +75,10 @@ export default function Home(): JSX.Element {
     }
   ];
 
-  return (
-    <>
-      <Head>
-        <title>they call me wolf | home</title>
-        <meta
-          name="description"
-          content="They call me wolf is the web portfolio of Bruno Lobato, a designer since 2001 that felt in love with coding around 2016."
-        />
-      </Head>
-      <Header />
-      <main className={styles.main}>
-        <Intro />
-        <section className={styles.action}>
-          <Button type="button" genre="outline" onClick={() => console.log('bananas')}>
-            say “hello, wolf!”
-          </Button>
-        </section>
-        <HomeCard />
-        <section className={styles.projects}>
-          <h2>Projects</h2>
-          <Slider slides={slides} />
-        </section>
-      </main>
-    </>
-  );
-}
-
-export const getStaticProps: GetStaticProps = async () => {
   return {
-    props: {},
+    props: {
+      projects
+    },
     revalidate: 60 * 60 * 24 // 24 hours
   };
 };
