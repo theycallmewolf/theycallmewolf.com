@@ -32,13 +32,22 @@ type Post = {
   slug: string;
 };
 
+type Testimonial = {
+  id: number;
+  quote: string;
+  name: string;
+  jobDescription: string;
+  date: string;
+};
+
 interface HomeProps {
   projects: Project[];
   clients: Client[];
   posts: Post[];
+  testimonials: Testimonial[];
 }
 
-export default function Home({ projects, clients, posts }: HomeProps): JSX.Element {
+export default function Home({ projects, clients, posts, testimonials }: HomeProps): JSX.Element {
   return (
     <>
       <Head>
@@ -59,12 +68,20 @@ export default function Home({ projects, clients, posts }: HomeProps): JSX.Eleme
         <HomeCard />
         <section className={styles.projects}>
           <h2>Projects</h2>
-          <Slider slides={projects} />
+          <Slider slides={projects} contentType="image" />
         </section>
         <section className={styles.clients}>
           {clients.map((client) => (
             <LogoButton key={client.id} svgLogo={client.logoSVG} url={client.URL} />
           ))}
+        </section>
+        <section className={styles.testimonials}>
+          <div className={styles.cover}>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 684.2 284.3">
+              <path d="M624 284.3l60-60V213l-21.5 21.5-234-234h-11.3L504 87.2 381.1 210l.3-.7-142-65V.4h-8v140L61 62.6 40.5.5h-8.4l21 63.9L0 117.5v11.3l56-56 69.9 211.5h8.4L64.4 72.9l311.3 142.6-68.9 68.8h11.3L509.6 93 656.9 240l-44.2 44.2z" />
+            </svg>
+          </div>
+          <Slider testimonials={testimonials} contentType="testimonial" />
         </section>
         <section className={styles.blog}>
           {posts.map((post) => (
@@ -93,11 +110,15 @@ export const getStaticProps: GetStaticProps = async () => {
     slug: post.slug
   }));
 
+  const testimonialsResponse = await api.get('testimonials');
+  const testimonials = testimonialsResponse.data;
+
   return {
     props: {
       projects,
       clients,
-      posts
+      posts,
+      testimonials
     },
     revalidate: 60 * 60 * 24 // 24 hours
   };
