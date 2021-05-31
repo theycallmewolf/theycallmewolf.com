@@ -119,6 +119,32 @@
         right: unset;
       }
     }
+
+    &.testimonial {
+      .swiper-wrapper {
+        .swiper-slide {
+          padding: 24px;
+          height: 280px;
+
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: center;
+          
+          small {
+            display: inline-block;
+            margin-top: 24px; 
+          }
+          
+          @media (min-width: 768px) {
+            p {
+              font-size: 18px;
+              letter-spacing: 1px;
+            }
+          }
+        }
+      }
+    }
   }
   
   .current-slide {
