@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-export default (request: NextApiRequest, response: NextApiResponse) => {
+export default (request: NextApiRequest, response: NextApiResponse): void => {
   const projects = [
     {
       id: 1,
