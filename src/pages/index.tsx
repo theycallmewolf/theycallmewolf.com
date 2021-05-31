@@ -7,6 +7,7 @@ import { Header } from '../components/Header';
 import { Intro } from '../components/Intro';
 import { Slider } from '../components/Slider';
 import styles from './Home.module.scss';
+import { api } from './services/api';
 
 type Projects = {
   id: number;
@@ -48,32 +49,8 @@ export default function Home({ projects }: HomeProps): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const projects = [
-    {
-      id: 1,
-      title: 'BAÚ',
-      imageURL: '/assets/img/cover-about.jpg',
-      caption: '2019, BAÚ, academic project at etic_'
-    },
-    {
-      id: 2,
-      title: 'Onlive',
-      imageURL: '/assets/img/footer.jpg',
-      caption: '2019, Onlive, Cenas academic project at etic_'
-    },
-    {
-      id: 3,
-      title: 'Watch',
-      imageURL: '/assets/img/cover-bytes.jpg',
-      caption: '2020, Watch, testing webpack'
-    },
-    {
-      id: 4,
-      title: 'Wheel Of Fortune',
-      imageURL: '/assets/img/cover-work.jpg',
-      caption: '2020, Wheel Of Fortune, testing JS'
-    }
-  ];
+  const response = await api.get('projects');
+  const projects = response.data;
 
   return {
     props: {
