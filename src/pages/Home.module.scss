@@ -37,12 +37,19 @@
     }
   }
   
-  
   .blog {
+    & > div {
+      & + div { margin-top: 20px; }
+    }
+    
     @media (min-width: 768px) {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
+      
+      & > div {
+        & + div { margin: 0; }
+      }
     }
   }
 }
