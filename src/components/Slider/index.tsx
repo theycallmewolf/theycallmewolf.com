@@ -1,11 +1,27 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SwiperCore, { A11y, Navigation, Pagination, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
 
-export const Slider: React.FC = () => {
+type Slide = {
+  id: number;
+  imageURL: string;
+  caption: string;
+  title: string;
+};
+
+interface SliderProps {
+  slides: Slide[];
+}
+
+export const Slider: React.FC<SliderProps> = ({ slides }) => {
   const [slideNumber, setSlideNumber] = useState('01');
+  const [slideList, setSlideList] = useState([]);
+
+  useEffect(() => {
+    setSlideList(slides);
+  }, [slides]);
 
   function handleSlideNumber(sliderIndex: number) {
     setSlideNumber(String(sliderIndex + 1).padStart(2, '0'));
@@ -30,30 +46,15 @@ export const Slider: React.FC = () => {
         }}
         onSlideChange={(swiper) => handleSlideNumber(swiper.activeIndex)}
         onSwiper={(swiper) => console.log(swiper)}>
-        <SwiperSlide>
-          <figure>
-            <img src="/assets/img/cover-about.jpg" alt="..." />
-            <figcaption>2019, BAÚ, academic project at etic_</figcaption>
-          </figure>
-        </SwiperSlide>
-        <SwiperSlide>
-          <figure>
-            <img src="/assets/img/footer.jpg" alt="..." />
-            <figcaption>2019, Onlive, Cenas academic project at etic_</figcaption>
-          </figure>
-        </SwiperSlide>
-        <SwiperSlide>
-          <figure>
-            <img src="/assets/img/cover-bytes.jpg" alt="..." />
-            <figcaption>2019, BAÚ, academic project at etic_</figcaption>
-          </figure>
-        </SwiperSlide>
-        <SwiperSlide>
-          <figure>
-            <img src="/assets/img/cover-work.jpg" alt="..." />
-            <figcaption>2019, BAÚ, academic project at etic_</figcaption>
-          </figure>
-        </SwiperSlide>
+        {slideList.map((slide) => (
+          <SwiperSlide key={slide.id}>
+            <figure>
+              <img src={slide.imageURL} alt={slide.title} />
+              <figcaption>{slide.caption}</figcaption>
+            </figure>
+          </SwiperSlide>
+        ))}
+        <SwiperSlide></SwiperSlide>
       </Swiper>
       <div className="current-slide">{slideNumber}</div>
     </div>
