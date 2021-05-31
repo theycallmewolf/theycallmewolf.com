@@ -5,6 +5,7 @@ import { Button } from '../components/Button';
 import { HomeCard } from '../components/Cards/HomeCard';
 import { Header } from '../components/Header';
 import { Intro } from '../components/Intro';
+import { Slider } from '../components/Slider';
 import styles from './Home.module.scss';
 
 export default function Home(): JSX.Element {
@@ -25,8 +26,11 @@ export default function Home(): JSX.Element {
             say “hello, wolf!”
           </Button>
         </section>
-
         <HomeCard />
+        <section className={styles.projects}>
+          <h2>Projects</h2>
+          <Slider />
+        </section>
       </main>
     </>
   );

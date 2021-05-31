@@ -1,10 +1,25 @@
 .main {
-  .action {
-    width: calc(100% - 24px);
-    margin: 96px auto;
+  padding-bottom: 100px;
 
+  section {
+    &+ section {
+      width: calc(100% - 24px);
+      margin: 120px auto;
+    }
+  }
+
+  .action {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+  
+  .projects {
+    h2 { margin-bottom: 24px; }
+
+    @media (min-width: 768px) and (orientation: landscape) { 
+      width: calc(100vw - ((100vw - 906px) / 2));
+      margin: 96px 0 96px auto;
+    }
   }
 }
