@@ -6,9 +6,7 @@
   section {
     h2 { margin-bottom: 24px; }
 
-    &+ section {
-      margin: 120px auto;
-    }
+    &+ section { margin: 120px auto; }
   }
 
   .action,
@@ -21,14 +19,13 @@
   .projects {
     margin: 96px -12px;
     @media (min-width: 768px) and (orientation: landscape) { 
-      width: calc(100vw - ((100vw - 906px) / 2));
+      width: calc(100vw - ((100vw - 960px) / 2));
       margin: 96px -12px 96px auto;
     }
   }
-  
-  .clients {
-    max-width: 906px;
+  .clients { max-width: 960px; }
 
+  .clients {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 6px;
