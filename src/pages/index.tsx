@@ -5,22 +5,31 @@ import { Button } from '../components/Button';
 import { HomeCard } from '../components/Cards/HomeCard';
 import { Header } from '../components/Header';
 import { Intro } from '../components/Intro';
+import { LogoButton } from '../components/LogoButton';
 import { Slider } from '../components/Slider';
 import styles from './Home.module.scss';
 import { api } from './services/api';
 
-type Projects = {
+type Project = {
   id: number;
   imageURL: string;
   caption: string;
   title: string;
 };
 
+type Client = {
+  id: number;
+  name: string;
+  URL: string;
+  logoSVG: string;
+};
+
 interface HomeProps {
-  projects: Projects[];
+  projects: Project[];
+  clients: Client[];
 }
 
-export default function Home({ projects }: HomeProps): JSX.Element {
+export default function Home({ projects, clients }: HomeProps): JSX.Element {
   return (
     <>
       <Head>
@@ -43,18 +52,27 @@ export default function Home({ projects }: HomeProps): JSX.Element {
           <h2>Projects</h2>
           <Slider slides={projects} />
         </section>
+        <section className={styles.clients}>
+          {clients.map((client) => (
+            <LogoButton key={client.id} svgLogo={client.logoSVG} url={client.URL} />
+          ))}
+        </section>
       </main>
     </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const response = await api.get('projects');
-  const projects = response.data;
+  const projectsResponse = await api.get('projects');
+  const projects = projectsResponse.data;
+
+  const clientsResponse = await api.get('clients');
+  const clients = clientsResponse.data;
 
   return {
     props: {
-      projects
+      projects,
+      clients
     },
     revalidate: 60 * 60 * 24 // 24 hours
   };
