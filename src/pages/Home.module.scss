@@ -1,9 +1,12 @@
 .main {
   padding-bottom: 100px;
+  width: calc(100% - 24px);
+  margin: 0 auto;
 
   section {
+    h2 { margin-bottom: 24px; }
+
     &+ section {
-      width: calc(100% - 24px);
       margin: 120px auto;
     }
   }
@@ -16,16 +19,15 @@
   }
   
   .projects {
-    h2 { margin-bottom: 24px; }
-
+    margin: 96px -12px;
     @media (min-width: 768px) and (orientation: landscape) { 
       width: calc(100vw - ((100vw - 906px) / 2));
-      margin: 96px 0 96px auto;
+      margin: 96px -12px 96px auto;
     }
   }
   
   .clients {
-    max-width: 960px;
+    max-width: 906px;
 
     display: grid;
     grid-template-columns: repeat(2, 1fr);
