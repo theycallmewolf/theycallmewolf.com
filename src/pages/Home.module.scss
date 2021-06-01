@@ -57,23 +57,13 @@
       position: relative;
       overflow: hidden;
       
-      background-image: url('../../public/assets/img/testimonials.jpg');
+      background-image: url('../../public/assets/wires/w-testimonials-cover-red.svg'), url('../../public/assets/img/testimonials.jpg');
       background-color: var(--c-candy-red);
       background-position: center;
-      background-blend-mode: multiply;
+      background-blend-mode: lighten, multiply;
       background-size: cover;
       background-repeat: no-repeat;
-      background-attachment: fixed;
-      
-      svg {
-        fill: var(--c-candy-red);
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: calc(684px * 1.5);
-        height: calc(284px * 1.5);
-        transform: translate(-50%, -50%);
-      }
+      background-attachment: scroll, fixed; 
     }
 
     &>div:nth-child(2) {
