@@ -3,10 +3,10 @@ import { ButtonHTMLAttributes } from 'react';
 import styles from './styles.module.scss';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  genre: 'outline' | 'fill';
+  genre?: 'outline' | 'fill';
 }
 
-export const Button: React.FC<ButtonProps> = ({ children, type, genre, ...rest }) => {
+export const Button: React.FC<ButtonProps> = ({ children, type, genre = 'fill', ...rest }) => {
   return (
     <button
       type={type}
