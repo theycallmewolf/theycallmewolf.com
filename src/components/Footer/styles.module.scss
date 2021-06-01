@@ -1,0 +1,28 @@
+.footer {
+  background-image: url('../../../public/assets/wires/w-footer-red.svg'), url('../../../public/assets/img/footer.jpg');
+  background-color: var(--c-candy-red);
+  background-size: 400%, 400%;
+  background-repeat: no-repeat, no-repeat;
+  background-position: left center, 70% center;
+  background-blend-mode: lighten, multiply;
+  background-attachment: scroll;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  
+  .container {
+    width: calc(100% - 24px);
+    margin: 0 auto;
+    max-width: 960px;
+    height: 244px;
+    
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  @media (min-width: 420px) {background-size: cover, cover; }
+}

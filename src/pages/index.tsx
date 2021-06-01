@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { Button } from '../components/Button';
 import { BlogCard } from '../components/Cards/BlogCard';
 import { HomeCard } from '../components/Cards/HomeCard';
+import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { Intro } from '../components/Intro';
 import { LogoButton } from '../components/LogoButton';
@@ -97,6 +98,7 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
           ))}
         </section>
       </main>
+      <Footer />
     </>
   );
 }
