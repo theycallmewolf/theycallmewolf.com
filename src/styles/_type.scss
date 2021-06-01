@@ -1,7 +1,8 @@
 :root {
   --f-title: 'Orbitron', sans-serif;
   --f-body: 'Roboto', sans-serif;
-  --f-regular: 300;
+  --f-regular: 400;
+  --f-light: 300;
   --f-bold: 700;
 }
 
@@ -38,6 +39,11 @@ h3 {
 .lead {
   font-size: 2rem; 
   line-height: 2.8rem;
+}
+
+p { 
+  font-weight: var(--f-light);
+  letter-spacing: 1px;
 }
 
 small {

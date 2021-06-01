@@ -15,7 +15,7 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#111517"></meta>
           <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/ico" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;700&family=Roboto:wght@300;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;700&display=swap"
             rel="stylesheet"
           />
         </Head>
