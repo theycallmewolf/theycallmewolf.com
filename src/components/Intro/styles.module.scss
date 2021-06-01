@@ -16,25 +16,12 @@
   align-items: center;
   justify-content: center;
   
-  background-image: url('../../../public/assets/img/intro.jpg');
+  background-image: url('../../../public/assets/wires/w-intro-red.svg'), url('../../../public/assets/img/intro.jpg');
   background-color: var(--c-candy-red);
   background-position: bottom left;
-  background-blend-mode: multiply;
-  background-size: cover;
-  background-repeat: round;
-
-  .wire {
-    fill: var(--c-candy-red);
-    opacity: 0.6;
-
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%) scale(8);
-
-    @media (min-width: 768px) { transform: translate(-50%, -50%) scale(4);}
-    @media (min-width: 1024px) { transform: translate(-50%, -50%) scale(2);}
-  }
+  background-blend-mode: lighten, multiply;
+  background-size: cover, cover;
+  background-attachment: scroll, fixed;
 
   .clip {
     position: absolute;
