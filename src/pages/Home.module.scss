@@ -123,6 +123,11 @@
         padding-right: 260px;
 
         h2 { margin-bottom: 0;}
+
+        button {
+          bottom: 50%;
+          transform: translateY(50%);
+        }
       }
     }
   }
