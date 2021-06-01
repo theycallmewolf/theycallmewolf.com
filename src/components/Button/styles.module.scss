@@ -35,7 +35,9 @@
     background: var(--c-background-200);
 
     &:hover,
-    &:focus { 
+    &:focus {
+      @media (prefers-color-scheme: light) {color: var(--c-polar-white)}
+
       &::after {
         top: 0;
         transform: rotate(90deg) scale(3);
