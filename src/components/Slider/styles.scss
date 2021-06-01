@@ -127,7 +127,8 @@
           padding: 24px;
           height: 280px;
 
-          background-image: url('../../../public/assets/wires/w-testimonials-dark-100.svg');
+          @media (prefers-color-scheme: dark) { background-image: url('../../../public/assets/wires/w-testimonials-dark-100.svg'); }
+          @media (prefers-color-scheme: light) { background-image: url('../../../public/assets/wires/w-testimonials-light-100.svg'); }
           background-size: cover;
           background-position: center;
           background-color: var(--c-background-200);
