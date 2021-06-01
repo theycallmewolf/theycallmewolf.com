@@ -127,6 +127,12 @@
           padding: 24px;
           height: 280px;
 
+          background-image: url('../../../public/assets/wires/w-testimonials-dark-100.svg');
+          background-size: cover;
+          background-position: center;
+          background-color: var(--c-background-200);
+          border-color: var(--c-background-100);
+
           display: flex;
           flex-direction: column;
           align-items: flex-start;
