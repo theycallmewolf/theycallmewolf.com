@@ -38,6 +38,7 @@
         svg {
           width: 200px;
           height: 190px;
+          fill: var(--c-background-100);
         }
 
         @media (min-width: 768px) { margin-top: -24px; }
