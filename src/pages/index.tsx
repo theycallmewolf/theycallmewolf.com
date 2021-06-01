@@ -84,6 +84,14 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
           <Slider testimonials={testimonials} contentType="testimonial" />
         </section>
         <section className={styles.blog}>
+          <div className={styles.intro}>
+            <h2>Wolf Bytes</h2>
+            <p>
+              Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem
+              nec elit.
+            </p>
+            <Button genre="outline">More Bytes</Button>
+          </div>
           {posts.map((post) => (
             <BlogCard key={post.id} title={post.title} lead={post.lead} />
           ))}

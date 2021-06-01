@@ -38,17 +38,45 @@
   }
   
   .blog {
+    position: relative;
+    padding-bottom: 100px;
+
     & > div {
       & + div { margin-top: 20px; }
     }
     
+    .intro {
+      margin-bottom: 48px;
+
+      button {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+    }
+
     @media (min-width: 768px) {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: 1fr;
+      grid-template-areas:
+        'intro intro'
+        'card-1 card-2';
       gap: 16px;
       
       & > div {
         & + div { margin: 0; }
+      }
+
+      & > div:nth-child(1) { grid-area: intro; }
+      & > div:nth-child(2) { grid-area: card-1; }
+      & > div:nth-child(3) { grid-area: card-2; }
+
+      .intro {
+        position: relative;
+        padding-right: 260px;
+
+        h2 { margin-bottom: 0;}
       }
     }
   }
