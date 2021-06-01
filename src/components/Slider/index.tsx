@@ -79,7 +79,7 @@ export const Slider: React.FC<SliderProps> = ({ slides, testimonials, contentTyp
             </SwiperSlide>
           ))}
 
-        <SwiperSlide></SwiperSlide>
+        {contentType === 'image' && <SwiperSlide></SwiperSlide>}
       </Swiper>
       <div className="current-slide">{slideNumber}</div>
     </div>
