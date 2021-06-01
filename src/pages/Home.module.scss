@@ -17,6 +17,16 @@
     align-items: center;
     justify-content: center;
   }
+
+  .action {
+    @media(min-width: 768px) {
+      position: fixed;
+      bottom: 48px;
+      right: 48px;
+      margin: 0;
+      z-index: 2;
+    }
+  }
   
   .projects {
     margin: 96px -12px;
