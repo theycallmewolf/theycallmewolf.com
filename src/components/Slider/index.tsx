@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import SwiperCore, { A11y, Navigation, Pagination, Scrollbar } from 'swiper';
+import SwiperCore, { A11y, EffectFade, Navigation, Pagination, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y]);
+SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
 
 type Slide = {
   id: number;
@@ -47,6 +47,7 @@ export const Slider: React.FC<SliderProps> = ({ slides, testimonials, contentTyp
         grabCursor={true}
         loop={false}
         speed={600}
+        effect={contentType === 'testimonial' ? 'fade' : 'slide'}
         className={contentType === 'testimonial' && 'testimonial'}
         breakpoints={{
           320: {
