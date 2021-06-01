@@ -87,10 +87,10 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
         <section className={styles.blog}>
           <div className={styles.intro}>
             <h2>Wolf Bytes</h2>
-            <p>
+            <small>
               Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem
               nec elit.
-            </p>
+            </small>
             <Button genre="outline">More Bytes</Button>
           </div>
           {posts.map((post) => (
