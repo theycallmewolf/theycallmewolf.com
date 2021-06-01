@@ -46,6 +46,7 @@
   &.fill {
     border: 4px solid var(--c-candy-red);
     background: var(--c-candy-red);
+    color: var(--c-polar-white);
     
     &:hover,
     &:focus { filter: brightness(1.1); }
