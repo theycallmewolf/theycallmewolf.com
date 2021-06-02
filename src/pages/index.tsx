@@ -8,10 +8,10 @@ import { Header } from '../components/Header';
 import { LogoButton } from '../components/LogoButton';
 import { About } from '../components/sections/About';
 import { Intro } from '../components/sections/Intro';
+import { Projects } from '../components/sections/Projects';
 import { Slider } from '../components/Slider';
 import styles from './Home.module.scss';
 import { api } from './services/api';
-
 type Project = {
   id: number;
   imageURL: string;
@@ -69,10 +69,7 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
           say “hello, wolf!”
         </Button>
         <About />
-        <section className={styles.projects}>
-          <h2>Projects</h2>
-          <Slider slides={projects} contentType="image" />
-        </section>
+        <Projects projects={projects} />
         <section className={styles.clients}>
           {clients.map((client) => (
             <LogoButton key={client.id} svgLogo={client.logoSVG} url={client.URL} />
