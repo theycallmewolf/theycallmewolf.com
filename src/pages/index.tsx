@@ -3,10 +3,10 @@ import Head from 'next/head';
 
 import { Button } from '../components/Button';
 import { BlogCard } from '../components/Cards/BlogCard';
-import { HomeCard } from '../components/Cards/HomeCard';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { LogoButton } from '../components/LogoButton';
+import { About } from '../components/sections/About';
 import { Intro } from '../components/sections/Intro';
 import { Slider } from '../components/Slider';
 import styles from './Home.module.scss';
@@ -66,7 +66,7 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
             say “hello, wolf!”
           </Button>
         </section>
-        <HomeCard />
+        <About />
         <section className={styles.projects}>
           <h2>Projects</h2>
           <Slider slides={projects} contentType="image" />

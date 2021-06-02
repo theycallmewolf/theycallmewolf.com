@@ -1,54 +1,46 @@
 .container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  position: relative;
+  background: var(--c-background-100);
 
-  .content {
-    width: 100%;
-    max-width: 960px;
-    position: relative;
-    background: var(--c-background-100);
-  
-    
-    @media (min-width: 768px) {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-    }
-  
-    &>div {
-      &:first-of-type {
-        padding: 24px;
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-        &> div {
-          margin-top: 8px;
-          display: grid;
-          grid-template-columns: repeat(2, 1fr);
-          gap: 8px;
-        }
-      }
-  
-      &:last-of-type {
-        background: var(--c-element-200);
-        padding: 48px;
-  
-        display: flex;
-        align-items: center;
-        justify-content: center;
-  
-        svg {
-          width: 200px;
-          height: 190px;
-          fill: var(--c-background-100);
-        }
+  &>div {
+    &:first-of-type {
+      padding: 24px;
 
-        @media (min-width: 768px) { margin-top: -24px; }
+      &> div {
+        margin-top: 8px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
       }
     }
-  
-    button {
-      position: absolute;
-      bottom: 0;
-      right: 0;
+
+    &:last-of-type {
+      background: var(--c-element-200);
+      padding: 48px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 200px;
+        height: 190px;
+        fill: var(--c-background-100);
+      }
+
+      @media (min-width: 768px) { margin-top: -24px; }
     }
+  }
+
+  button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
   }
 }
