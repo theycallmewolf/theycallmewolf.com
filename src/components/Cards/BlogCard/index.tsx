@@ -6,7 +6,7 @@ type BlogCardProps = {
   lead: string;
 };
 
-export const BlogCard: React.FC<BlogCardProps> = ({ title, lead }) => {
+export function BlogCard({ title, lead }: BlogCardProps): JSX.Element {
   return (
     <div className={styles.container}>
       <h3>{title}</h3>
@@ -14,4 +14,4 @@ export const BlogCard: React.FC<BlogCardProps> = ({ title, lead }) => {
       <Button genre="fill">Read</Button>
     </div>
   );
-};
+}

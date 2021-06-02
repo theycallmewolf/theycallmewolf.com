@@ -4,7 +4,7 @@ import Typed from 'react-typed';
 
 import styles from './styles.module.scss';
 
-export const Intro: React.FC = () => {
+export function Intro(): JSX.Element {
   const introCopy = [
     '"Mr. Wolf", actually.',
     'Cames from the movie.',
@@ -47,4 +47,4 @@ export const Intro: React.FC = () => {
       </svg>
     </section>
   );
-};
+}

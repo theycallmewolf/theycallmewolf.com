@@ -7,12 +7,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   customClass?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export function Button({
   children,
   customClass,
   genre = 'fill',
   ...rest
-}) => {
+}: ButtonProps): JSX.Element {
   return (
     <button
       className={`${styles.button} ${
@@ -22,4 +22,4 @@ export const Button: React.FC<ButtonProps> = ({
       {children}
     </button>
   );
-};
+}

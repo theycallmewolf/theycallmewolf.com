@@ -13,7 +13,7 @@ interface BlogProps {
   posts: Post[];
 }
 
-export const Blog: React.FC<BlogProps> = ({ posts }) => {
+export function Blog({ posts }: BlogProps): JSX.Element {
   return (
     <section className={styles.section}>
       <div className={styles.intro}>
@@ -29,4 +29,4 @@ export const Blog: React.FC<BlogProps> = ({ posts }) => {
       ))}
     </section>
   );
-};
+}

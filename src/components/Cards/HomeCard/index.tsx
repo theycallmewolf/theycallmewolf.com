@@ -2,7 +2,7 @@ import { Button } from '../../Button';
 import { Graph } from '../../Graph';
 import styles from './styles.module.scss';
 
-export const HomeCard: React.FC = () => {
+export function HomeCard(): JSX.Element {
   return (
     <div className={styles.container}>
       <div>
@@ -27,4 +27,4 @@ export const HomeCard: React.FC = () => {
       <Button genre="fill">about</Button>
     </div>
   );
-};
+}

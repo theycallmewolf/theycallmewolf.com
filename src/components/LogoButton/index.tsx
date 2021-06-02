@@ -5,7 +5,7 @@ type LogoButton = {
   url: string;
 };
 
-export const LogoButton: React.FC<LogoButton> = ({ svgLogo, url }) => {
+export function LogoButton({ svgLogo, url }: LogoButton): JSX.Element {
   return (
     <a
       href={url}
@@ -15,4 +15,4 @@ export const LogoButton: React.FC<LogoButton> = ({ svgLogo, url }) => {
       className={styles.button}
     />
   );
-};
+}

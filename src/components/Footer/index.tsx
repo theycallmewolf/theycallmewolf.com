@@ -1,6 +1,6 @@
 import styles from './styles.module.scss';
 
-export const Footer: React.FC = () => {
+export function Footer(): JSX.Element {
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -8,4 +8,4 @@ export const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
+}

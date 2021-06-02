@@ -5,7 +5,7 @@ import { Nav } from './Nav';
 import styles from './styles.module.scss';
 import { SVGSprite } from './svg.sprite';
 
-export const Header: React.FC = () => {
+export function Header(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -43,4 +43,4 @@ export const Header: React.FC = () => {
       </div>
     </header>
   );
-};
+}

@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import styles from './styles.module.scss';
 
-export const Nav: React.FC = () => {
+export function Nav(): JSX.Element {
   return (
     <nav className={styles.nav}>
       <Link href="/">
@@ -22,4 +22,4 @@ export const Nav: React.FC = () => {
       </Link>
     </nav>
   );
-};
+}

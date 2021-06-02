@@ -5,7 +5,7 @@ interface GraphProps {
   percentage: number;
 }
 
-export const Graph: React.FC<GraphProps> = ({ title, percentage }) => {
+export function Graph({ title, percentage }: GraphProps): JSX.Element {
   return (
     <div className={styles.container}>
       <small>{title}</small>
@@ -14,4 +14,4 @@ export const Graph: React.FC<GraphProps> = ({ title, percentage }) => {
       </div>
     </div>
   );
-};
+}

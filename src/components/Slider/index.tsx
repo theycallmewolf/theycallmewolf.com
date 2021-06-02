@@ -25,7 +25,7 @@ interface SliderProps {
   contentType: 'image' | 'testimonial';
 }
 
-export const Slider: React.FC<SliderProps> = ({ slides, testimonials, contentType }) => {
+export function Slider({ slides, testimonials, contentType }: SliderProps): JSX.Element {
   const [slideNumber, setSlideNumber] = useState('01');
   const [slideList, setSlideList] = useState([]);
   const [testimonialList, setTestimonialList] = useState([]);
@@ -84,4 +84,4 @@ export const Slider: React.FC<SliderProps> = ({ slides, testimonials, contentTyp
       <div className="current-slide">{slideNumber}</div>
     </div>
   );
-};
+}
