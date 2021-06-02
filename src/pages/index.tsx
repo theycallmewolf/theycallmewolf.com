@@ -5,8 +5,8 @@ import { Button } from '../components/Button';
 import { BlogCard } from '../components/Cards/BlogCard';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
-import { LogoButton } from '../components/LogoButton';
 import { About } from '../components/sections/About';
+import { Clients } from '../components/sections/Clients';
 import { Intro } from '../components/sections/Intro';
 import { Projects } from '../components/sections/Projects';
 import { Slider } from '../components/Slider';
@@ -70,11 +70,7 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
         </Button>
         <About />
         <Projects projects={projects} />
-        <section className={styles.clients}>
-          {clients.map((client) => (
-            <LogoButton key={client.id} svgLogo={client.logoSVG} url={client.URL} />
-          ))}
-        </section>
+        <Clients clients={clients} />
         <section className={styles.testimonials}>
           <div className={styles.cover}></div>
           <Slider testimonials={testimonials} contentType="testimonial" />
