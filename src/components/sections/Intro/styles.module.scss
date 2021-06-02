@@ -38,19 +38,29 @@
     max-width: 906px;
   }
   
+  h1,
+  .typed { 
+    position: absolute;
+    transform: translateY(50%)
+  }
+
   h1 {
     font-size: 4.2rem;
     line-height: 1;
     margin-bottom: 24px;
+
+    bottom: 50%;
   }
   
  .typed {
     font-size: 2rem;
     line-height: 1.2;
     letter-spacing: 1px;
+    color: var(--c-iridium-white);
 
-    position: absolute;
-    top: 300px;
+    bottom: 30%;
+
+    @media (min-width: 1024px) { bottom: 24%; }
   }
   
   @media (min-width: 420px) { 
