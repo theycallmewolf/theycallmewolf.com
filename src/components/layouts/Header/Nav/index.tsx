@@ -8,7 +8,7 @@ export function Nav(): JSX.Element {
       <Link href="/">
         <a>start</a>
       </Link>
-      <Link href="/">
+      <Link href="/about">
         <a>about</a>
       </Link>
       <Link href="/">
