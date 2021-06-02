@@ -16,7 +16,9 @@
   align-items: center;
   justify-content: center;
   
-  background-image: url('../../../../public/assets/wires/w-intro-red.svg'), url('../../../../public/assets/img/intro.jpg');
+  background-image: 
+    url('../../../../public/assets/wires/w-intro-red.svg'),
+    url('../../../../public/assets/img/intro.jpg');
   background-color: var(--c-candy-red);
   background-position: bottom left;
   background-blend-mode: lighten, multiply;
@@ -47,35 +49,24 @@
   h1 {
     font-size: 4.2rem;
     line-height: 1;
+    color: var(--c-iridium-white);
+    
     margin-bottom: 24px;
-
     bottom: 50%;
+
+    @media (min-width: 420px) { font-size: 5.6rem; }
+    @media (min-width: 620px) { font-size: 6.4rem; }
+    @media (min-width: 1024px) { font-size: 8rem; }
   }
   
  .typed {
     font-size: 2rem;
     line-height: 1.2;
     letter-spacing: 1px;
-    color: var(--c-iridium-white);
+    color: var(--c-polar-white);
 
     bottom: 30%;
 
     @media (min-width: 1024px) { bottom: 24%; }
-  }
-  
-  @media (min-width: 420px) { 
-    h1 { font-size: 5.6rem;}
-  }
-
-  @media (min-width: 620px) { 
-    h1 { font-size: 6.4rem;}
-  }
-
-  @media (min-width: 1024px) { 
-    h1 { font-size: 8rem;}
-  }
-
-  @media (prefers-color-scheme: light) { 
-    h1, p {color: var(--c-background-100);}
   }
 }
