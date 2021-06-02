@@ -1,5 +1,5 @@
 import { Button } from '../../elements/Button';
-import { BlogCard } from '../../Cards/BlogCard';
+import { BlogCard } from '../../elements/Cards/BlogCard';
 import styles from './styles.module.scss';
 
 type Post = {

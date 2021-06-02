@@ -1,4 +1,4 @@
-import { Button } from '../../elements/Button';
+import { Button } from '../../Button';
 import styles from './styles.module.scss';
 
 type BlogCardProps = {

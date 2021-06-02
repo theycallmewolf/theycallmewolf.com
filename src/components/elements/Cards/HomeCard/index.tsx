@@ -1,4 +1,4 @@
-import { Button } from '../../elements/Button';
+import { Button } from '../../Button';
 import { Graph } from '../../Graph';
 import styles from './styles.module.scss';
 
