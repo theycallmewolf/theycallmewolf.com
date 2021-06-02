@@ -61,11 +61,13 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
       <Header />
       <main className={styles.main}>
         <Intro />
-        <section className={styles.action}>
-          <Button type="button" genre="outline" onClick={() => console.log('bananas')}>
-            say “hello, wolf!”
-          </Button>
-        </section>
+        <Button
+          type="button"
+          genre="outline"
+          customClass={styles.callToAction}
+          onClick={() => console.log('bananas')}>
+          say “hello, wolf!”
+        </Button>
         <About />
         <section className={styles.projects}>
           <h2>Projects</h2>

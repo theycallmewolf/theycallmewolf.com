@@ -11,14 +11,16 @@
     &+ section { margin: 120px auto; }
   }
 
-  .action,
+  .callToAction,
   .clients {
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  .action {
+  .callToAction {
+    margin: 100px auto;
+
     @media(min-width: 768px) {
       position: fixed;
       bottom: 48px;
