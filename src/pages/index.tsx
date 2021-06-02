@@ -10,7 +10,6 @@ import { Clients } from '../components/sections/Clients';
 import { Intro } from '../components/sections/Intro';
 import { Projects } from '../components/sections/Projects';
 import { Testimonials } from '../components/sections/Testimonials';
-import styles from './Home.module.scss';
 import { api } from './services/api';
 
 type Project = {
@@ -60,12 +59,12 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
         />
       </Head>
       <Header />
-      <main className={styles.main}>
+      <main>
         <Intro />
         <Button
           type="button"
           genre="outline"
-          customClass={styles.callToAction}
+          customClass="call-to-action"
           onClick={() => console.log('bananas')}>
           say “hello, wolf!”
         </Button>
