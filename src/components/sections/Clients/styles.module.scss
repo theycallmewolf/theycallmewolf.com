@@ -1,5 +1,6 @@
 .section {
   max-width: 960px;
+  margin: 220px auto;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 6px;
