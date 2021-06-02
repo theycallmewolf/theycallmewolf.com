@@ -44,23 +44,13 @@
     margin-bottom: 24px;
   }
   
-  p {
-    font-size: 1.8rem;
+ .typed {
+    font-size: 2rem;
     line-height: 1.2;
-    display: inline-block;
-    position: relative;
+    letter-spacing: 1px;
 
-    &::after {
-      content: '';
-      width: 2px;
-      height: 36px;
-      background: var(--c-candy-red);
-      position: absolute;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-      animation: blink 1000ms infinite;
-    }
+    position: absolute;
+    top: 300px;
   }
   
   @media (min-width: 420px) { 
