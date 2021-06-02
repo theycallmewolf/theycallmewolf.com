@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Slider } from '../../Slider';
+import { Slider } from '../../elements/Slider';
 
 type Project = {
   id: number;

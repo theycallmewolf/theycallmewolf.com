@@ -88,7 +88,7 @@
       height: 50px;
       z-index: 11;
   
-      background-image: url('../../../public/assets/icons/i-arrow-white.svg');
+      background-image: url('../../../../public/assets/icons/i-arrow-white.svg');
       background-repeat: no-repeat;
       background-size: 64% auto;
       background-position: center;
@@ -99,7 +99,7 @@
       
       &.swiper-button-disabled {
         opacity: 0.6;
-        background-image: url('../../../public/assets/icons/i-arrow-red.svg');
+        background-image: url('../../../../public/assets/icons/i-arrow-red.svg');
       }
     }
     
@@ -127,8 +127,12 @@
           padding: 24px;
           height: 280px;
 
-          @media (prefers-color-scheme: dark) { background-image: url('../../../public/assets/wires/w-testimonials-dark-100.svg'); }
-          @media (prefers-color-scheme: light) { background-image: url('../../../public/assets/wires/w-testimonials-light-100.svg'); }
+          @media (prefers-color-scheme: dark) { 
+            background-image: url('../../../../public/assets/wires/w-testimonials-dark-100.svg'); 
+          }
+          @media (prefers-color-scheme: light) { 
+            background-image: url('../../../../public/assets/wires/w-testimonials-light-100.svg'); 
+          }
           background-size: cover;
           background-position: center;
           background-color: var(--c-background-200);
