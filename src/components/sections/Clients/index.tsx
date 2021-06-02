@@ -1,4 +1,4 @@
-import { LogoButton } from '../../LogoButton';
+import { LogoButton } from '../../elements/LogoButton';
 import styles from './styles.module.scss';
 
 type Client = {
