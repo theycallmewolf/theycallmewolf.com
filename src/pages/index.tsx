@@ -9,6 +9,7 @@ import { About } from '../components/sections/About';
 import { Clients } from '../components/sections/Clients';
 import { Intro } from '../components/sections/Intro';
 import { Projects } from '../components/sections/Projects';
+import { Testimonials } from '../components/sections/Testimonials';
 import { Slider } from '../components/Slider';
 import styles from './Home.module.scss';
 import { api } from './services/api';
@@ -71,10 +72,7 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
         <About />
         <Projects projects={projects} />
         <Clients clients={clients} />
-        <section className={styles.testimonials}>
-          <div className={styles.cover}></div>
-          <Slider testimonials={testimonials} contentType="testimonial" />
-        </section>
+        <Testimonials testimonials={testimonials} />
         <section className={styles.blog}>
           <div className={styles.intro}>
             <h2>Wolf Bytes</h2>

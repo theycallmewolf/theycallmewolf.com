@@ -37,34 +37,9 @@
       margin: 96px -12px 96px auto;
     }
   }
-  
-  .blog { max-width: 960px; }
-
-  .testimonials {
-    .cover {
-      width: calc(100% + 24px);
-      height: 360px;
-      margin-left: -12px;
-      position: relative;
-      overflow: hidden;
-      
-      background-image: url('../../public/assets/wires/w-testimonials-cover-red.svg'), url('../../public/assets/img/testimonials.jpg');
-      background-color: var(--c-candy-red);
-      background-position: center;
-      background-blend-mode: lighten, multiply;
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-attachment: scroll, fixed; 
-    }
-
-    &>div:nth-child(2) {
-      max-width: 684px;
-      background: var(--c-background-200);
-      margin: -142px auto 0;
-    }
-  }
 
   .blog {
+    max-width: 960px;
     position: relative;
     padding-bottom: 240px;
 
