@@ -6,10 +6,9 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   genre?: 'outline' | 'fill';
 }
 
-export const Button: React.FC<ButtonProps> = ({ children, type, genre = 'fill', ...rest }) => {
+export const Button: React.FC<ButtonProps> = ({ children, genre = 'fill', ...rest }) => {
   return (
     <button
-      type={type}
       className={`${styles.button} ${genre === 'outline' ? styles.outline : styles.fill}`}
       {...rest}>
       {children}
