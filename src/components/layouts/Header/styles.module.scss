@@ -4,9 +4,9 @@
 
   @media (prefers-color-scheme: dark) { background-image: url('../../../../public/assets/wires/w-nav-dark-200.svg'); }
   @media (prefers-color-scheme: light) { background-image: url('../../../../public/assets/wires/w-nav-light-200.svg'); }
-  background-size: cover;
-  background-position: center;
   background-color: var(--c-background-100);
+  background-size: cover, cover;
+  background-position: center, center;
   
   position: fixed;
   top: calc(80px - 100vh);
