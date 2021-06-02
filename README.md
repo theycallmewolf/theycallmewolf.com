@@ -32,6 +32,7 @@ portfolio website
 - [ ] about page
 - [ ] work page
 - [ ] contact form
+- [ ] add noscript tag
 - [ ] manage content using [faunaDB](https://fauna.com/)
 - [ ] sent thank you email using [Amazon Simple Email Service (SES)](https://aws.amazon.com/ses/)
 - [ ] SEO
