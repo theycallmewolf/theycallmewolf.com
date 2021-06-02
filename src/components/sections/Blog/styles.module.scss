@@ -9,12 +9,34 @@
   }
   
   .intro {
-    margin-bottom: 48px;
+    margin-bottom: 24px;
+
+    p { line-height: 1.8rem; }
 
     button {
       position: absolute;
       bottom: 140px;
       right: 0;
+    }
+
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      h2 { margin-bottom: 0;}
+
+      &> div:last-of-type {
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+
+        button {
+          position: relative;
+          bottom: unset;
+          right: unset;
+        }
+      }
+
     }
   }
 
@@ -34,17 +56,5 @@
     & > div:nth-child(1) { grid-area: intro; }
     & > div:nth-child(2) { grid-area: card-1; }
     & > div:nth-child(3) { grid-area: card-2; }
-
-    .intro {
-      position: relative;
-      padding-right: 260px;
-
-      h2 { margin-bottom: 0;}
-
-      button {
-        bottom: 50%;
-        transform: translateY(50%);
-      }
-    }
   }
 }
