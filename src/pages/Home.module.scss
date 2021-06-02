@@ -5,19 +5,6 @@
   padding: 0 12px;
   background: var(--c-background-200);
 
-  section {
-    h2 { margin-bottom: 24px; }
-
-    &+ section { margin: 120px auto; }
-  }
-
-  .callToAction,
-  .clients {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
   .callToAction {
     margin: 100px auto;
 
@@ -27,14 +14,6 @@
       right: 48px;
       margin: 0;
       z-index: 2;
-    }
-  }
-  
-  .projects {
-    margin: 96px -12px;
-    @media (min-width: 768px) and (orientation: landscape) { 
-      width: calc(100vw - ((100vw - 960px) / 2));
-      margin: 96px -12px 96px auto;
     }
   }
 }
