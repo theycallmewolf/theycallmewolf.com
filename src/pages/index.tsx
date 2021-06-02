@@ -2,7 +2,7 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import { Button } from '../components/Button';
-import { Footer } from '../components/Footer';
+import { Footer } from '../components/layouts/Footer';
 import { Header } from '../components/layouts/Header';
 import { About } from '../components/sections/About';
 import { Blog } from '../components/sections/Blog';
