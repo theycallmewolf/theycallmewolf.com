@@ -1,4 +1,4 @@
-import { Button } from '../../Button';
+import { Button } from '../../elements/Button';
 import { BlogCard } from '../../Cards/BlogCard';
 import styles from './styles.module.scss';
 
