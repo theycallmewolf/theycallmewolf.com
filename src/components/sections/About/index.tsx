@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { HomeCard } from '../../Cards/HomeCard';
 import styles from './styles.module.scss';
 
