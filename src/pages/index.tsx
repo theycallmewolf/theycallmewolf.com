@@ -2,17 +2,17 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
 import { Button } from '../components/Button';
-import { BlogCard } from '../components/Cards/BlogCard';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { About } from '../components/sections/About';
+import { Blog } from '../components/sections/Blog';
 import { Clients } from '../components/sections/Clients';
 import { Intro } from '../components/sections/Intro';
 import { Projects } from '../components/sections/Projects';
 import { Testimonials } from '../components/sections/Testimonials';
-import { Slider } from '../components/Slider';
 import styles from './Home.module.scss';
 import { api } from './services/api';
+
 type Project = {
   id: number;
   imageURL: string;
@@ -73,19 +73,7 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
         <Projects projects={projects} />
         <Clients clients={clients} />
         <Testimonials testimonials={testimonials} />
-        <section className={styles.blog}>
-          <div className={styles.intro}>
-            <h2>Wolf Bytes</h2>
-            <small>
-              Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem
-              nec elit.
-            </small>
-            <Button genre="outline">More Bytes</Button>
-          </div>
-          {posts.map((post) => (
-            <BlogCard key={post.id} title={post.title} lead={post.lead} />
-          ))}
-        </section>
+        <Blog posts={posts} />
       </main>
       <Footer />
     </>
