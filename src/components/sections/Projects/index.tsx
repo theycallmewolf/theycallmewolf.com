@@ -1,6 +1,5 @@
-import React from 'react';
-
 import { Slider } from '../../elements/Slider';
+import styles from './styles.module.scss';
 
 type Project = {
   id: number;
@@ -15,7 +14,7 @@ interface ProjectsProps {
 
 export function Projects({ projects }: ProjectsProps): JSX.Element {
   return (
-    <section>
+    <section className={styles.section}>
       <h2>Projects</h2>
       <Slider slides={projects} contentType="image" />
     </section>
