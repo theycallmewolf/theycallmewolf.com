@@ -1,3 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1366 711">
-  <path class="path" fill="#f5f5f5" d="M1366 408.3h-330.8l-217-217L1009.4 0h-11.3L631.9 366.2V0h-8v371.9H284.8L124.7 0H116l232.3 539.7H0v8h351.8L422 711h8.7L288.2 379.9h341.3l183-183 172.2 172.2-342 341.9H654l336.3-336.3L1093 477.3v216.3h8V473.9l-57.7-57.6H1366v-8z"/>
+	<style>
+		.st0 {
+			fill: rgb(245 245 245/30%);
+			stroke: #f5f5f5;
+			stroke-width: 2;
+			stroke-miterlimit: 10
+		}
+	</style>
+	<path class="st0" d="M125 0l234 544H0M817 192l283 283v236M1037 412h329M643 711l346-347M630 0v379L1009-1M359 544l72 167M288 379h342" />
 </svg>
