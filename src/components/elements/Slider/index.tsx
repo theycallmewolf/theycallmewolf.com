@@ -73,9 +73,11 @@ export function Slider({ slides, testimonials, contentType }: SliderProps): JSX.
           testimonialList.map((testimonial) => (
             <SwiperSlide key={testimonial.id}>
               <p>{testimonial.quote}</p>
-              <small>
-                <strong>{testimonial.name}</strong>, {testimonial.jobTitle} - {testimonial.date}
-              </small>
+              <p>
+                <small>
+                  <strong>{testimonial.name}</strong>, {testimonial.jobTitle} - {testimonial.date}
+                </small>
+              </p>
             </SwiperSlide>
           ))}
 
