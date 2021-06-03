@@ -1,5 +1,5 @@
 import Prismic from '@prismicio/client';
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { RichText } from 'prismic-dom';
 
@@ -83,7 +83,7 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
   );
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const prismic = getPrismicClient();
 
   const responsePosts = await prismic.query(Prismic.predicates.at('document.type', 'posts'), {
