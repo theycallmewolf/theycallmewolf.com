@@ -32,7 +32,13 @@ export function Blog({ posts }: BlogProps): JSX.Element {
         </div>
       </div>
       {posts.map((post) => (
-        <BlogCard key={post.id} title={post.title} lead={post.lead} date={post.updatedAt} />
+        <BlogCard
+          key={post.id}
+          title={post.title}
+          lead={post.lead}
+          date={post.updatedAt}
+          slug={post.slug}
+        />
       ))}
     </section>
   );
