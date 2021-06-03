@@ -5,9 +5,9 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
 
 type Slide = {
-  id: number;
-  image: string;
   caption: string;
+  image: string;
+  slug: string;
   title: string;
 };
 
@@ -61,7 +61,7 @@ export function Slider({ slides, testimonials, contentType }: SliderProps): JSX.
         onSlideChange={(swiper) => handleSlideNumber(swiper.activeIndex)}>
         {contentType === 'image' &&
           slideList.map((slide) => (
-            <SwiperSlide key={slide.id}>
+            <SwiperSlide key={slide.slug}>
               <figure>
                 <img src={slide.image} alt={slide.title} />
                 <figcaption>{slide.caption}</figcaption>
