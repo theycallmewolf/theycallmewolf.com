@@ -2,13 +2,13 @@ import styles from './styles.module.scss';
 
 type LogoButton = {
   svgLogo: string;
-  url: string;
+  link: string;
 };
 
-export function LogoButton({ svgLogo, url }: LogoButton): JSX.Element {
+export function LogoButton({ svgLogo, link }: LogoButton): JSX.Element {
   return (
     <a
-      href={url}
+      href={link}
       target="_blank"
       rel="noreferrer noopener"
       dangerouslySetInnerHTML={{ __html: svgLogo }}

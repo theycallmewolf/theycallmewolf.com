@@ -4,7 +4,7 @@ import styles from './styles.module.scss';
 type Client = {
   id: number;
   name: string;
-  URL: string;
+  link: string;
   logoSVG: string;
 };
 
@@ -16,7 +16,7 @@ export function Clients({ clients }: ClientsProps): JSX.Element {
   return (
     <section className={styles.section}>
       {clients.map((client) => (
-        <LogoButton key={client.id} svgLogo={client.logoSVG} url={client.URL} />
+        <LogoButton key={client.id} svgLogo={client.logoSVG} link={client.link} />
       ))}
     </section>
   );
