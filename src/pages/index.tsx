@@ -158,7 +158,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
       clients,
       posts,
       testimonials
-    },
-    revalidate: 60 * 60 * 24 // 24 hours
+    }
   };
 };
