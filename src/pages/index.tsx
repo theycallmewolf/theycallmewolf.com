@@ -10,7 +10,7 @@ import { Clients } from '../components/sections/Clients';
 import { Intro } from '../components/sections/Intro';
 import { Projects } from '../components/sections/Projects';
 import { Testimonials } from '../components/sections/Testimonials';
-import { api } from './services/api';
+import { api } from '../services/api';
 
 type Project = {
   id: number;
