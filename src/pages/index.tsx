@@ -25,7 +25,7 @@ type Project = {
 type Client = {
   id: number;
   name: string;
-  URL: string;
+  link: string;
   logoSVG: string;
 };
 
