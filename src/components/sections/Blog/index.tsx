@@ -14,7 +14,6 @@ interface BlogProps {
 }
 
 export function Blog({ posts }: BlogProps): JSX.Element {
-  console.log({ posts });
   return (
     <section className={styles.section}>
       <div className={styles.intro}>
