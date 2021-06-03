@@ -6,6 +6,7 @@ type Project = {
   image: string;
   caption: string;
   title: string;
+  slug: string;
 };
 
 interface ProjectsProps {
