@@ -3,6 +3,7 @@
   padding: 48px 24px 96px 24px;
   position: relative;
   transition: filter 1000ms ease-in-out;
+  overflow: hidden;
 
   h3 {
     font-size: 2rem;
@@ -36,10 +37,26 @@
     letter-spacing: 3px;
     line-height: 1;
 
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
     padding: 8px 24px;
 
+    transition: 
+      transform 300ms ease-in-out,
+      bottom 300ms ease-in-out,
+      right 300ms ease-in-out,
+      font-size 300ms ease-in-out;
+
+
     &:hover,
-    &:focus { filter: brightness(1.1); }
+    &:focus { 
+      transform: rotate(-7deg) scale(2);
+      bottom: 8px;
+      right: 40px;
+      font-size: 10px;
+     }
   }
 
   &:hover { filter: brightness(1.2) }
