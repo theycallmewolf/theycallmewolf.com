@@ -85,12 +85,12 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
 
 export const getStaticProps: GetStaticProps = async () => {
   const prismic = getPrismicClient();
-  const response = await prismic.query(Prismic.predicates.at('document.type', 'posts'), {
+  const responsePosts = await prismic.query(Prismic.predicates.at('document.type', 'posts'), {
     fetch: ['title', 'lead', 'content'],
     pageSize: 2
   });
 
-  const posts = response.results.map((post) => {
+  const posts = responsePosts.results.map((post) => {
     return {
       slug: post.uid,
       title: RichText.asText(post.data.title),
