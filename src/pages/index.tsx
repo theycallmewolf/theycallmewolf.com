@@ -131,8 +131,26 @@ export const getStaticProps: GetStaticProps = async () => {
     };
   });
 
-  const testimonialsResponse = await api.get('testimonials');
-  const testimonials = testimonialsResponse.data.testimonials;
+  const testimonialsResponse = await prismic.query(
+    Prismic.predicates.at('document.type', 'testimonials'),
+    {
+      fetch: ['quote', 'name', 'job_title']
+    }
+  );
+
+  const testimonials = testimonialsResponse.results.map((post) => {
+    return {
+      id: post.id,
+      name: RichText.asText(post.data.name),
+      quote: RichText.asText(post.data.quote),
+      jobTitle: RichText.asText(post.data.job_title),
+      date: new Date(post.last_publication_date).toLocaleDateString('pt-PT', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric'
+      })
+    };
+  });
 
   return {
     props: {
