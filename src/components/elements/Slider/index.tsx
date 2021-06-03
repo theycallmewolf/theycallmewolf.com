@@ -15,7 +15,7 @@ type Testimonial = {
   id: number;
   quote: string;
   name: string;
-  jobDescription: string;
+  jobTitle: string;
   date: string;
 };
 
@@ -74,7 +74,7 @@ export function Slider({ slides, testimonials, contentType }: SliderProps): JSX.
             <SwiperSlide key={testimonial.id}>
               <p>{testimonial.quote}</p>
               <small>
-                {testimonial.name} - {testimonial.jobDescription}
+                <strong>{testimonial.name}</strong>, {testimonial.jobTitle}
               </small>
             </SwiperSlide>
           ))}

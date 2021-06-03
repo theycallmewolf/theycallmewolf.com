@@ -7,7 +7,7 @@ type Testimonial = {
   id: number;
   quote: string;
   name: string;
-  jobDescription: string;
+  jobTitle: string;
   date: string;
 };
 
