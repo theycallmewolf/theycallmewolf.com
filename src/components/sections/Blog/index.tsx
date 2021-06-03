@@ -7,6 +7,7 @@ type Post = {
   title: string;
   lead: string;
   slug: string;
+  updatedAt: string;
 };
 
 interface BlogProps {
@@ -31,7 +32,7 @@ export function Blog({ posts }: BlogProps): JSX.Element {
         </div>
       </div>
       {posts.map((post) => (
-        <BlogCard key={post.id} title={post.title} lead={post.lead} />
+        <BlogCard key={post.id} title={post.title} lead={post.lead} date={post.updatedAt} />
       ))}
     </section>
   );

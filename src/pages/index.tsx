@@ -1,5 +1,7 @@
+import Prismic from '@prismicio/client';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import { RichText } from 'prismic-dom';
 
 import { Button } from '../components/elements/Button';
 import { Footer } from '../components/layouts/Footer';
@@ -11,6 +13,7 @@ import { Intro } from '../components/sections/Intro';
 import { Projects } from '../components/sections/Projects';
 import { Testimonials } from '../components/sections/Testimonials';
 import { api } from '../services/api';
+import { getPrismicClient } from '../services/prismic';
 
 type Project = {
   id: number;
@@ -31,6 +34,7 @@ type Post = {
   title: string;
   lead: string;
   slug: string;
+  updatedAt: string;
 };
 
 type Testimonial = {
@@ -80,24 +84,34 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
 }
 
 export const getStaticProps: GetStaticProps = async () => {
+  const prismic = getPrismicClient();
+  const response = await prismic.query(Prismic.predicates.at('document.type', 'posts'), {
+    fetch: ['title', 'lead', 'content'],
+    pageSize: 2
+  });
+
+  const posts = response.results.map((post) => {
+    return {
+      slug: post.uid,
+      title: RichText.asText(post.data.title),
+      lead: RichText.asText(post.data.lead),
+      updatedAt: new Date(post.last_publication_date).toLocaleDateString('pt-PT', {
+        weekday: 'short',
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric'
+      })
+    };
+  });
+
   const projectsResponse = await api.get('projects');
-  const projects = projectsResponse.data;
+  const projects = projectsResponse.data.projects;
 
   const clientsResponse = await api.get('clients');
-  const clients = clientsResponse.data;
-
-  const blogResponse = await api.get('blog');
-  const blogPosts: Post[] = blogResponse.data.splice(0, 2);
-
-  const posts = blogPosts.map((post) => ({
-    id: post.id,
-    title: post.title,
-    lead: post.lead,
-    slug: post.slug
-  }));
+  const clients = clientsResponse.data.clients;
 
   const testimonialsResponse = await api.get('testimonials');
-  const testimonials = testimonialsResponse.data;
+  const testimonials = testimonialsResponse.data.testimonials;
 
   return {
     props: {
