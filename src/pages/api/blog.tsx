@@ -31,7 +31,9 @@ export default (request: NextApiRequest, response: NextApiResponse): void => {
     }
   ];
 
-  return response.json(blog);
+  response.setHeader('Content-Type', 'application/json');
+  response.statusCode = 200;
+  response.end(JSON.stringify({ message: 'success', blog }));
 };
 
 // http://localhost:3000/api/blog

@@ -28,7 +28,9 @@ export default (request: NextApiRequest, response: NextApiResponse): void => {
     }
   ];
 
-  return response.json(projects);
+  response.setHeader('Content-Type', 'application/json');
+  response.statusCode = 200;
+  response.end(JSON.stringify({ message: 'success', projects }));
 };
 
 // http://localhost:3000/api/projects

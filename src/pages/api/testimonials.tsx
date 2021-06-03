@@ -20,7 +20,9 @@ export default (request: NextApiRequest, response: NextApiResponse): void => {
     }
   ];
 
-  return response.json(testimonials);
+  response.setHeader('Content-Type', 'application/json');
+  response.statusCode = 200;
+  response.end(JSON.stringify({ message: 'success', testimonials }));
 };
 
 // http://localhost:3000/api/testimonials

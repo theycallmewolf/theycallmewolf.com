@@ -32,7 +32,9 @@ export default (request: NextApiRequest, response: NextApiResponse): void => {
     }
   ];
 
-  return response.json(clients);
+  response.setHeader('Content-Type', 'application/json');
+  response.statusCode = 200;
+  response.end(JSON.stringify({ message: 'success', clients }));
 };
 
 // http://localhost:3000/api/clients
