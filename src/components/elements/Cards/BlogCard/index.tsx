@@ -1,4 +1,5 @@
-import { Button } from '../../Button';
+import Link from 'next/link';
+
 import styles from './styles.module.scss';
 
 type BlogCardProps = {
@@ -13,7 +14,9 @@ export function BlogCard({ title, lead, date }: BlogCardProps): JSX.Element {
       <span className={styles.date}>{date}</span>
       <h3>{title}</h3>
       <p>{lead}</p>
-      <Button genre="fill">Read</Button>
+      <Link href="/">
+        <a>Read</a>
+      </Link>
     </div>
   );
 }
