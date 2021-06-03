@@ -3,7 +3,6 @@ import { BlogCard } from '../../elements/Cards/BlogCard';
 import styles from './styles.module.scss';
 
 type Post = {
-  id: number;
   title: string;
   lead: string;
   slug: string;
@@ -15,6 +14,7 @@ interface BlogProps {
 }
 
 export function Blog({ posts }: BlogProps): JSX.Element {
+  console.log({ posts });
   return (
     <section className={styles.section}>
       <div className={styles.intro}>
@@ -33,7 +33,7 @@ export function Blog({ posts }: BlogProps): JSX.Element {
       </div>
       {posts.map((post) => (
         <BlogCard
-          key={post.id}
+          key={post.slug}
           title={post.title}
           lead={post.lead}
           date={post.updatedAt}
