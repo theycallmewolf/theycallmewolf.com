@@ -85,6 +85,7 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
 
 export const getStaticProps: GetStaticProps = async () => {
   const prismic = getPrismicClient();
+
   const responsePosts = await prismic.query(Prismic.predicates.at('document.type', 'posts'), {
     fetch: ['title', 'lead', 'content'],
     pageSize: 2
@@ -117,8 +118,18 @@ export const getStaticProps: GetStaticProps = async () => {
     };
   });
 
-  const clientsResponse = await api.get('clients');
-  const clients = clientsResponse.data.clients;
+  const clientsResponse = await prismic.query(Prismic.predicates.at('document.type', 'clients'), {
+    fetch: ['uid', 'name', 'logo_svg', 'link']
+  });
+
+  const clients = clientsResponse.results.map((post) => {
+    return {
+      id: post.id,
+      logoSVG: RichText.asText(post.data.logo_svg),
+      name: RichText.asText(post.data.name),
+      link: post.data.link.url || ''
+    };
+  });
 
   const testimonialsResponse = await api.get('testimonials');
   const testimonials = testimonialsResponse.data.testimonials;
