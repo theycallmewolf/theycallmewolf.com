@@ -2,6 +2,7 @@
   width: 100%;
   position: relative;
   background: var(--c-background-100);
+  overflow: hidden;
 
   @media (min-width: 768px) {
     display: grid;
