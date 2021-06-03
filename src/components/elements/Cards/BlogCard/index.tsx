@@ -15,7 +15,7 @@ export function BlogCard({ title, lead, date, slug }: BlogCardProps): JSX.Elemen
       <span className={styles.date}>{date}</span>
       <h3>{title}</h3>
       <p>{lead}</p>
-      <Link href={slug}>
+      <Link href={`/${slug}`}>
         <a>Read</a>
       </Link>
     </div>
