@@ -12,7 +12,6 @@ import { Clients } from '../components/sections/Clients';
 import { Intro } from '../components/sections/Intro';
 import { Projects } from '../components/sections/Projects';
 import { Testimonials } from '../components/sections/Testimonials';
-import { api } from '../services/api';
 import { getPrismicClient } from '../services/prismic';
 
 type Project = {
