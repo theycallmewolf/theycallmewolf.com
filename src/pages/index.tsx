@@ -17,7 +17,7 @@ import { getPrismicClient } from '../services/prismic';
 
 type Project = {
   id: number;
-  imageURL: string;
+  image: string;
   caption: string;
   title: string;
 };
@@ -104,8 +104,18 @@ export const getStaticProps: GetStaticProps = async () => {
     };
   });
 
-  const projectsResponse = await api.get('projects');
-  const projects = projectsResponse.data.projects;
+  const projectsResponse = await prismic.query(Prismic.predicates.at('document.type', 'projects'), {
+    fetch: ['title', 'imageurl', 'caption']
+  });
+
+  const projects = projectsResponse.results.map((post) => {
+    return {
+      slug: post.uid,
+      image: post.data.imageurl.url,
+      title: RichText.asText(post.data.title),
+      caption: RichText.asText(post.data.caption)
+    };
+  });
 
   const clientsResponse = await api.get('clients');
   const clients = clientsResponse.data.clients;

@@ -3,7 +3,7 @@ import styles from './styles.module.scss';
 
 type Project = {
   id: number;
-  imageURL: string;
+  image: string;
   caption: string;
   title: string;
 };

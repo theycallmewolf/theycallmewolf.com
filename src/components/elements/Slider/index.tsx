@@ -6,7 +6,7 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
 
 type Slide = {
   id: number;
-  imageURL: string;
+  image: string;
   caption: string;
   title: string;
 };
@@ -63,7 +63,7 @@ export function Slider({ slides, testimonials, contentType }: SliderProps): JSX.
           slideList.map((slide) => (
             <SwiperSlide key={slide.id}>
               <figure>
-                <img src={slide.imageURL} alt={slide.title} />
+                <img src={slide.image} alt={slide.title} />
                 <figcaption>{slide.caption}</figcaption>
               </figure>
             </SwiperSlide>
