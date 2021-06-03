@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --fix .",
-    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc"
+    "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
+    "svg": "svgr -d src/components/icons src/components/icons/svg"
   },
   "dependencies": {
     "@prismicio/client": "^5.0.0",
@@ -21,6 +22,7 @@
     "swiper": "^6.7.0"
   },
   "devDependencies": {
+    "@svgr/cli": "^5.5.0",
     "@types/node": "^15.6.1",
     "@types/prismic-dom": "^2.1.1",
     "@types/react": "^17.0.8",

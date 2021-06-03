@@ -82,10 +82,10 @@
     .swiper-button-prev,
     .swiper-button-next {
       @media (prefers-color-scheme: dark) { 
-        background-image: url('../../../../public/assets/icons/i-arrow-white.svg');
+        background-image: url('../../icons/svg/i-arrow-white.svg');
       }
       @media (prefers-color-scheme: light) { 
-        background-image: url('../../../../public/assets/icons/i-arrow-black.svg');
+        background-image: url('../../icons/svg/i-arrow-black.svg');
       }
       background: var(--c-background-100);
       background-repeat: no-repeat;
@@ -105,10 +105,10 @@
       &.swiper-button-disabled {
         opacity: 0.6;
         @media (prefers-color-scheme: dark) { 
-          background-image: url('../../../../public/assets/icons/i-arrow-red.svg');
+          background-image: url('../../icons/svg/i-arrow-red.svg');
         }
         @media (prefers-color-scheme: light) { 
-          background-image: url('../../../../public/assets/icons/i-arrow-white.svg');
+          background-image: url('../../icons/svg/i-arrow-white.svg');
         }
       }
     }

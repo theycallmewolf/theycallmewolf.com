@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22">
+  <defs>
+    <style>
+      .cls-2 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: .97px
+      }
+    </style>
+  </defs>
+  <path class="cls-2" d="M10 12L.3 21.7M21.7.3L11.3 10.7M21.7 21.7L.3.3" />
+</svg>
