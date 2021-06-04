@@ -14,7 +14,7 @@ export default function About(): JSX.Element {
       </Head>
       <Header />
       <main>
-        <Cover />
+        <Cover imageURL="/assets/img/cover-about.jpg" />
         <Intro />
       </main>
     </main>
