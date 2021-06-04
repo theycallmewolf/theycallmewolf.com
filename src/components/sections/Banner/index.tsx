@@ -4,7 +4,7 @@ import Typed from 'react-typed';
 
 import styles from './styles.module.scss';
 
-export function Intro(): JSX.Element {
+export function Banner(): JSX.Element {
   const introCopy = [
     '"Mr. Wolf", actually.',
     'Cames from the movie.',

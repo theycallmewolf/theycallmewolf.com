@@ -7,9 +7,9 @@ import { Button } from '../components/elements/Button';
 import { Footer } from '../components/layouts/Footer';
 import { Header } from '../components/layouts/Header';
 import { About } from '../components/sections/About';
+import { Banner } from '../components/sections/Banner';
 import { Blog } from '../components/sections/Blog';
 import { Clients } from '../components/sections/Clients';
-import { Intro } from '../components/sections/Intro';
 import { Projects } from '../components/sections/Projects';
 import { Testimonials } from '../components/sections/Testimonials';
 import { getPrismicClient } from '../services/prismic';
@@ -64,7 +64,7 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
       </Head>
       <Header />
       <main>
-        <Intro />
+        <Banner />
         <Button
           type="button"
           genre="outline"
