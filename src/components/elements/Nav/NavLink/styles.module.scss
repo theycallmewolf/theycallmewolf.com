@@ -1,14 +1,14 @@
 .link {
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   line-height: 1.4rem;
   letter-spacing: 1px;
+  padding: 8px;
+  opacity: 0.6;
+
   display: inline-block;
   position: relative;
-  padding: 8px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: opacity 1000ms ease-in-out;
   
   & + .link { margin-left: 8px; }
 
@@ -20,8 +20,9 @@
     width: 40px;
     height: 1px;
     transform: translateX(-50%);
-    opacity: 0;
+    
     background: var(--c-candy-red);
+    opacity: 0;
 
     transition: 
       bottom 200ms ease-in-out,
@@ -34,10 +35,32 @@
 
 
   &:hover {
+    opacity: 1;
+
     &::before,
     &::after { opacity: 1; }
 
     &::after { top: 0; }
     &::before { bottom: 0; }
   }
-}
+
+  &.selected { 
+    opacity: 1;
+
+    &::before,
+    &::after {
+      content: '';
+      background: var(--c-candy-red);
+
+      position: absolute;
+      left: 50%;
+      width: 40px;
+      height: 1px;
+      opacity: 1;
+      transform: translateX(-50%);
+    }
+
+    &::before { bottom: 0 }
+    &::after { top: 0 }
+  }
+} 
