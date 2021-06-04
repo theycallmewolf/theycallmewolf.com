@@ -9,6 +9,21 @@
   
   a { display: inline-block; }
 
+  &::-webkit-scrollbar { height: 4px; }
+  
+  &::-webkit-scrollbar-track { 
+    background: var(--c-background-200);
+    border-radius: 2px;
+  }
+  
+  &::-webkit-scrollbar-thumb { 
+    border-radius: 2px;
+    background-color: var(--c-background-100);
+    
+    &:hover { background-color: var(--c-candy-red); }
+  }
+
+
   // &::after {
   //   content: ' → ';
   //   line-height: 0;
