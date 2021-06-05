@@ -1,0 +1,18 @@
+.container {
+  z-index: 1;
+  position: absolute;
+  bottom: 50%;
+  right: 50%;
+  transform: translate(50%, 50%);
+  width: 800px;
+  height: 420px;
+  
+  .styles {
+    fill:rgb(210 1 32/20%);
+    stroke:#d20120;
+    stroke-width:2;
+    stroke-miterlimit:10;
+  }
+  
+  .hide { display: none; }
+} 
