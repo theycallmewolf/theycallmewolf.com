@@ -6,7 +6,7 @@ type Post = {
   title: string;
   lead: string;
   slug: string;
-  updatedAt: string;
+  updateDate: string;
 };
 
 interface BlogProps {
@@ -35,7 +35,7 @@ export function Blog({ posts }: BlogProps): JSX.Element {
           key={post.slug}
           title={post.title}
           lead={post.lead}
-          date={post.updatedAt}
+          date={post.updateDate}
           slug={post.slug}
         />
       ))}

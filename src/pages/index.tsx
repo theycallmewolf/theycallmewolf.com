@@ -1,7 +1,5 @@
-import Prismic from '@prismicio/client';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
-import { RichText } from 'prismic-dom';
 
 import { Button } from '../components/elements/Button';
 import { Footer } from '../components/layouts/Footer';
@@ -12,7 +10,7 @@ import { Blog } from '../components/sections/Blog';
 import { Clients } from '../components/sections/Clients';
 import { Projects } from '../components/sections/Projects';
 import { Testimonials } from '../components/sections/Testimonials';
-import { getPrismicClient } from '../services/prismic';
+import { getContent } from '../services/prismic';
 
 type Project = {
   id: number;
@@ -34,7 +32,7 @@ type Post = {
   title: string;
   lead: string;
   slug: string;
-  updatedAt: string;
+  updateDate: string;
 };
 
 type Testimonial = {
@@ -84,72 +82,25 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const prismic = getPrismicClient();
-
-  const responsePosts = await prismic.query(Prismic.predicates.at('document.type', 'posts'), {
-    fetch: ['title', 'lead', 'content'],
-    pageSize: 2
+  const posts = await getContent({
+    type: 'posts',
+    fields: ['title', 'lead', 'content'],
+    quantity: 2
   });
 
-  const posts = responsePosts.results.map((post) => {
-    return {
-      slug: post.uid,
-      title: RichText.asText(post.data.title),
-      lead: RichText.asText(post.data.lead),
-      updatedAt: new Date(post.last_publication_date).toLocaleDateString('pt-PT', {
-        weekday: 'short',
-        day: '2-digit',
-        month: 'long',
-        year: 'numeric'
-      })
-    };
+  const projects = await getContent({
+    type: 'projects',
+    fields: ['title', 'imageurl', 'caption']
   });
 
-  const projectsResponse = await prismic.query(Prismic.predicates.at('document.type', 'projects'), {
-    fetch: ['title', 'imageurl', 'caption']
+  const clients = await getContent({
+    type: 'clients',
+    fields: ['uid', 'name', 'logo_svg', 'link']
   });
 
-  const projects = projectsResponse.results.map((post) => {
-    return {
-      slug: post.uid,
-      image: post.data.imageurl.url,
-      title: RichText.asText(post.data.title),
-      caption: RichText.asText(post.data.caption)
-    };
-  });
-
-  const clientsResponse = await prismic.query(Prismic.predicates.at('document.type', 'clients'), {
-    fetch: ['uid', 'name', 'logo_svg', 'link']
-  });
-
-  const clients = clientsResponse.results.map((post) => {
-    return {
-      id: post.id,
-      logoSVG: RichText.asText(post.data.logo_svg),
-      name: RichText.asText(post.data.name),
-      link: post.data.link.url || ''
-    };
-  });
-
-  const testimonialsResponse = await prismic.query(
-    Prismic.predicates.at('document.type', 'testimonials'),
-    {
-      fetch: ['quote', 'name', 'job_title']
-    }
-  );
-
-  const testimonials = testimonialsResponse.results.map((post) => {
-    return {
-      id: post.id,
-      name: RichText.asText(post.data.name),
-      quote: RichText.asText(post.data.quote),
-      jobTitle: RichText.asText(post.data.job_title),
-      date: new Date(post.last_publication_date).toLocaleDateString('pt-PT', {
-        day: '2-digit',
-        month: 'long',
-        year: 'numeric'
-      })
-    };
+  const testimonials = await getContent({
+    type: 'testimonials',
+    fields: ['quote', 'name', 'job_title']
   });
 
   return {
