@@ -38,13 +38,6 @@ export function Banner(): JSX.Element {
           className={styles.typed}
         />
       </div>
-      <svg
-        className={styles.clip}
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1366 17.4"
-        preserveAspectRatio="none">
-        <path d="M0 17h575V0H0zM911 6v11h455V6z" />
-      </svg>
     </section>
   );
 }

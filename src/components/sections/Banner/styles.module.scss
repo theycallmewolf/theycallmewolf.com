@@ -33,6 +33,29 @@
     height: 20px;
     fill: var(--c-background-200)
   }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    background-color: var(--c-background-200);
+    z-index: 2;
+  }
+  
+  &::before {
+    left: 10%;
+    width: 34%;
+    height: 40px;
+  }
+  
+  &::after {
+    left: 0;
+    width: 80%;
+    height: 20px;
+  }
+
+  
   
   .content {
     z-index: 1;
