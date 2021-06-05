@@ -1,4 +1,4 @@
-import { Wolf } from '../../../icons';
+import { Wolf } from '../../../../assets/icons';
 import { Graph } from '../../Graph';
 import { CustomLink } from '../../Link';
 import styles from './styles.module.scss';

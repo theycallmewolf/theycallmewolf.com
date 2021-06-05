@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-import { ICross, IMenu, Wolf } from '../../icons';
+import { ICross, IMenu, Wolf } from '../../../assets/icons';
 import { Nav } from './Nav';
 import styles from './styles.module.scss';
 

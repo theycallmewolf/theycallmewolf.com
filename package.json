@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint --fix .",
     "format": "prettier --write './**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc",
-    "svg": "svgr -d src/components/icons src/components/icons/svg"
+    "svg": "svgr -d src/assets/icons src/assets/icons/svg"
   },
   "dependencies": {
     "@prismicio/client": "^5.0.0",
