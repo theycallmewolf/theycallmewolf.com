@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import React from 'react';
 
 import { useNav } from '../../../../../hooks/useNav';
+import styles from './styles.module.scss';
 
 interface NavLinkProps {
   href: string;
@@ -18,7 +19,7 @@ export function NavLink({ href, label }: NavLinkProps): JSX.Element {
   };
 
   return (
-    <a href={href} onClick={handleClick}>
+    <a href={href} className={styles.link} onClick={handleClick}>
       {label}
     </a>
   );
