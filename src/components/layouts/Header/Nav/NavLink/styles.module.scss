@@ -39,6 +39,7 @@
     transition: right 200ms ease-in-out;
   }
   
+  &.active,
   &:hover {
     color: var(--c-element-100);
     

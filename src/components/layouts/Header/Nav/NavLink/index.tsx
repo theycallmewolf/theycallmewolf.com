@@ -1,5 +1,4 @@
 import { useRouter } from 'next/router';
-import React from 'react';
 
 import { useNav } from '../../../../../hooks/useNav';
 import styles from './styles.module.scss';
@@ -19,7 +18,10 @@ export function NavLink({ href, label }: NavLinkProps): JSX.Element {
   };
 
   return (
-    <a href={href} className={styles.link} onClick={handleClick}>
+    <a
+      href={href}
+      className={`${styles.link} ${router.pathname === href && styles.active}`}
+      onClick={handleClick}>
       {label}
     </a>
   );
