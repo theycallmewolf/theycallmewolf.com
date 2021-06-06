@@ -27,16 +27,16 @@ type ServiceData = {
   description: string;
 };
 
-interface ServicesProps {
+interface ActivityProps {
   intro: IntroData;
   services: ServiceData[];
 }
 
-export default function Services({ intro, services }: ServicesProps): JSX.Element {
+export default function Activity({ intro, services }: ActivityProps): JSX.Element {
   return (
     <>
       <Head>
-        <title>they call me wolf | services</title>
+        <title>they call me wolf | activity</title>
         <meta name="description" content="..." />
       </Head>
       <main className={styles.main}>
@@ -73,8 +73,8 @@ export const getStaticProps: GetStaticProps = async () => {
       },
       {
         id: 2,
-        link: '/about/services',
-        label: 'services'
+        link: '/about/activity',
+        label: 'activity'
       },
       {
         id: 3,
