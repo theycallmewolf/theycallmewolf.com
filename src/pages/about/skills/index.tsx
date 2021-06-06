@@ -68,7 +68,7 @@ export default function Skills({ intro, cards }: SkillsProps): JSX.Element {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const intro = {
+  const intro: IntroData = {
     title: 'about',
     lead: 'Maecenas faucibus mollis interdum. Nullam id dolor id nibh ultricies vehicula ut id elit.',
     linkList: [
