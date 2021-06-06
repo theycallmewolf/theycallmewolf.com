@@ -28,12 +28,12 @@ type CareerData = {
   description: string;
 };
 
-interface ProProps {
+interface CareerProps {
   intro: IntroData;
   career: CareerData[];
 }
 
-export default function Pro({ intro, career }: ProProps): JSX.Element {
+export default function Career({ intro, career }: CareerProps): JSX.Element {
   return (
     <>
       <Head>
@@ -81,8 +81,8 @@ export const getStaticProps: GetStaticProps = async () => {
       },
       {
         id: 3,
-        link: '/about/pro',
-        label: 'pro'
+        link: '/about/career',
+        label: 'career'
       },
       {
         id: 4,
