@@ -1,13 +1,15 @@
+import { useRouter } from 'next/router';
+
 import styles from './styles.module.scss';
 
 interface NavLinkProps {
   link: string;
   label: string;
-  isSelected?: boolean;
 }
-export function NavLink({ link, label, isSelected }: NavLinkProps): JSX.Element {
+export function NavLink({ link, label }: NavLinkProps): JSX.Element {
+  const router = useRouter();
   return (
-    <a href={link} className={`${styles.link} ${isSelected && styles.selected}`}>
+    <a href={link} className={`${styles.link} ${router.pathname === link && styles.selected}`}>
       {label}
     </a>
   );
