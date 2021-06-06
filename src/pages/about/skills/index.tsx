@@ -89,8 +89,8 @@ export const getStaticProps: GetStaticProps = async () => {
       },
       {
         id: 4,
-        link: '/about/academic',
-        label: 'academic'
+        link: '/about/education',
+        label: 'education'
       }
     ]
   };
