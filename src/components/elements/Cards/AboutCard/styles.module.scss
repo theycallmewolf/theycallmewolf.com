@@ -1,0 +1,13 @@
+.container {
+  background-color: var(--c-background-100);
+  position: relative;
+  padding: 34px 16px 220px 16px;
+  
+  @media(min-width: 600px) {
+    display: grid;
+    grid-template-columns: auto 225px;
+    padding: 0;
+    
+    .content { padding: 16px; }
+  }
+}
