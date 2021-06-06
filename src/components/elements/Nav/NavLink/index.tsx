@@ -8,8 +8,9 @@ interface NavLinkProps {
 }
 export function NavLink({ link, label }: NavLinkProps): JSX.Element {
   const router = useRouter();
+  const { slug } = router.query;
   return (
-    <a href={link} className={`${styles.link} ${router.pathname === link && styles.selected}`}>
+    <a href={link} className={`${styles.link} ${slug === link.split('/')[2] && styles.selected}`}>
       {label}
     </a>
   );
