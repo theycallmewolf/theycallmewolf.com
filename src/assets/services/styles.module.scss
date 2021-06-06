@@ -1,0 +1,38 @@
+.container {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  
+  .svgContainer {
+    width: 575px;
+    height: 200px;
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    transform: translate(76%, 50%);
+
+    svg {
+      width: 100%;
+      height: 100%;
+      
+      .bg,
+      .fg {
+        fill: none;
+        stroke: var(--c-candy-red);
+        stroke-miterlimit: 10;
+      }
+      
+      .fg { stroke-width: 2px; }
+      
+      .bg {
+        stroke-width: 8px;
+        opacity: 0.2;
+      }
+    
+      .hide { display: none}
+    }
+
+    @media (min-width: 460px) { transform: translate(100%, 50%); }
+    @media (min-width: 600px) { transform: translate(76%, 50%); }
+  }
+}
