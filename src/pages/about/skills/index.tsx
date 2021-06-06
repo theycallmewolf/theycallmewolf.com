@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
-import { AboutCard } from '../../../components/elements/Cards/AboutCard';
+import { GraphicCard } from '../../../components/elements/Cards/GraphicCard';
 import { Cover } from '../../../components/elements/Cover';
 import { Graph } from '../../../components/elements/Graph';
 import { Intro } from '../../../components/elements/Intro';
@@ -51,7 +51,7 @@ export default function Skills({ intro, cards }: SkillsProps): JSX.Element {
         <Intro {...intro} />
         <div className={styles.cardList}>
           {cards.map((card) => (
-            <AboutCard key={card.id} adicionalClass={styles.card}>
+            <GraphicCard key={card.id} adicionalClass={styles.card}>
               <h2>{card.title}</h2>
               <p>{card.description}</p>
               <div className={styles.graphList}>
@@ -59,7 +59,7 @@ export default function Skills({ intro, cards }: SkillsProps): JSX.Element {
                   <Graph title={graph.title} percentage={graph.percentage} key={graph.id} />
                 ))}
               </div>
-            </AboutCard>
+            </GraphicCard>
           ))}
         </div>
       </main>
