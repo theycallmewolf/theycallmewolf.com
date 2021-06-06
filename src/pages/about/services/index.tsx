@@ -1,6 +1,8 @@
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 
+import { ServicesSVG } from '../../../assets/services';
+import { CardBody, CardHeader, DefaultCard } from '../../../components/elements/Cards/DefaultCard';
 import { Cover } from '../../../components/elements/Cover';
 import { Intro } from '../../../components/elements/Intro';
 import { Header } from '../../../components/layouts/Header';
@@ -18,11 +20,19 @@ type IntroData = {
   linkList: Link[];
 };
 
+type ServiceData = {
+  id: number;
+  icon: 'ui' | 'dev' | 'design' | 'illustration';
+  title: string;
+  description: string;
+};
+
 interface ServicesProps {
   intro: IntroData;
+  services: ServiceData[];
 }
 
-export default function Services({ intro }: ServicesProps): JSX.Element {
+export default function Services({ intro, services }: ServicesProps): JSX.Element {
   return (
     <>
       <Head>
@@ -33,14 +43,26 @@ export default function Services({ intro }: ServicesProps): JSX.Element {
         <Header />
         <Cover imageURL="/assets/img/cover-about.jpg" />
         <Intro {...intro} />
-        <div className={styles.cardList}>...</div>
+        <div className={`${styles.cardList} ${styles.col2}`}>
+          {services.map((service) => (
+            <DefaultCard key={service.id}>
+              <CardHeader>
+                <ServicesSVG icon={service.icon} />
+              </CardHeader>
+              <CardBody adicionalClass={styles.card}>
+                <h2>{service.title}</h2>
+                <p>{service.description}</p>
+              </CardBody>
+            </DefaultCard>
+          ))}
+        </div>
       </main>
     </>
   );
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const intro = {
+  const intro: IntroData = {
     title: 'about',
     lead: 'Maecenas faucibus mollis interdum. Nullam id dolor id nibh ultricies vehicula ut id elit.',
     linkList: [
@@ -67,9 +89,41 @@ export const getStaticProps: GetStaticProps = async () => {
     ]
   };
 
+  const services: ServiceData[] = [
+    {
+      id: 1,
+      icon: 'ui',
+      title: 'UI Design',
+      description:
+        'Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.'
+    },
+    {
+      id: 2,
+      icon: 'dev',
+      title: 'Front-end Development',
+      description:
+        'Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.'
+    },
+    {
+      id: 3,
+      icon: 'design',
+      title: 'Graphic Design',
+      description:
+        'Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.'
+    },
+    {
+      id: 4,
+      icon: 'illustration',
+      title: 'Illustration',
+      description:
+        'Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.'
+    }
+  ];
+
   return {
     props: {
-      intro
+      intro,
+      services
     },
     revalidate: 60 * 60 * 24 // 24 hours
   };
