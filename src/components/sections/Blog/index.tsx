@@ -1,5 +1,6 @@
 import { Button } from '../../elements/Button';
-import { BlogCard } from '../../elements/Cards/BlogCard';
+import { CardBody, CardFooter, DefaultCard } from '../../elements/Cards/DefaultCard';
+import { CustomLink } from '../../elements/Link';
 import styles from './styles.module.scss';
 
 type Post = {
@@ -31,13 +32,16 @@ export function Blog({ posts }: BlogProps): JSX.Element {
         </div>
       </div>
       {posts.map((post) => (
-        <BlogCard
-          key={post.slug}
-          title={post.title}
-          lead={post.lead}
-          date={post.updateDate}
-          slug={post.slug}
-        />
+        <DefaultCard key={post.slug} adicionalClass={styles.cardContainer}>
+          <CardBody>
+            <span className={styles.date}>{post.updateDate}</span>
+            <h3>{post.title}</h3>
+            <p>{post.lead}</p>
+          </CardBody>
+          <CardFooter adicionalClass={styles.cardFooter}>
+            <CustomLink href={`/${post.slug}`} label="Read" />
+          </CardFooter>
+        </DefaultCard>
       ))}
     </section>
   );
