@@ -20,7 +20,7 @@ type IntroData = {
   linkList: Link[];
 };
 
-type ServiceData = {
+type CardData = {
   id: number;
   icon: 'ui' | 'dev' | 'design' | 'illustration';
   title: string;
@@ -29,10 +29,10 @@ type ServiceData = {
 
 interface ActivityProps {
   intro: IntroData;
-  services: ServiceData[];
+  cards: CardData[];
 }
 
-export default function Activity({ intro, services }: ActivityProps): JSX.Element {
+export default function Activity({ intro, cards }: ActivityProps): JSX.Element {
   return (
     <>
       <Head>
@@ -44,14 +44,14 @@ export default function Activity({ intro, services }: ActivityProps): JSX.Elemen
         <Cover imageURL="/assets/img/cover-about.jpg" />
         <Intro {...intro} />
         <div className={`${styles.cardList} ${styles.col2}`}>
-          {services.map((service) => (
-            <DefaultCard key={service.id}>
+          {cards.map((card) => (
+            <DefaultCard key={card.id}>
               <CardHeader>
-                <ServicesSVG icon={service.icon} />
+                <ServicesSVG icon={card.icon} />
               </CardHeader>
               <CardBody adicionalClass={styles.card}>
-                <h2>{service.title}</h2>
-                <p>{service.description}</p>
+                <h2>{card.title}</h2>
+                <p>{card.description}</p>
               </CardBody>
             </DefaultCard>
           ))}
@@ -89,7 +89,7 @@ export const getStaticProps: GetStaticProps = async () => {
     ]
   };
 
-  const services: ServiceData[] = [
+  const cards: CardData[] = [
     {
       id: 1,
       icon: 'ui',
@@ -123,7 +123,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       intro,
-      services
+      cards
     },
     revalidate: 60 * 60 * 24 // 24 hours
   };

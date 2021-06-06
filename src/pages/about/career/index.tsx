@@ -19,7 +19,7 @@ type IntroData = {
   linkList: Link[];
 };
 
-type CareerData = {
+type CardData = {
   id: number;
   logoSVG: string;
   name: string;
@@ -30,10 +30,10 @@ type CareerData = {
 
 interface CareerProps {
   intro: IntroData;
-  career: CareerData[];
+  cards: CardData[];
 }
 
-export default function Career({ intro, career }: CareerProps): JSX.Element {
+export default function Career({ intro, cards }: CareerProps): JSX.Element {
   return (
     <>
       <Head>
@@ -45,16 +45,16 @@ export default function Career({ intro, career }: CareerProps): JSX.Element {
         <Cover imageURL="/assets/img/cover-about.jpg" />
         <Intro {...intro} />
         <div className={styles.cardList}>
-          {career.map((job) => (
-            <GraphicCard adicionalClass={styles.card} key={job.id}>
+          {cards.map((card) => (
+            <GraphicCard adicionalClass={styles.card} key={card.id}>
               <div
                 className={styles.svgContainer}
-                dangerouslySetInnerHTML={{ __html: job.logoSVG }}
+                dangerouslySetInnerHTML={{ __html: card.logoSVG }}
               />
               <span className={styles.center}>
-                <p className={styles.date}>{job.dateInterval}</p>
-                <h2>{job.title}</h2>
-                <p>{job.description}</p>
+                <p className={styles.date}>{card.dateInterval}</p>
+                <h2>{card.title}</h2>
+                <p>{card.description}</p>
               </span>
             </GraphicCard>
           ))}
@@ -92,7 +92,7 @@ export const getStaticProps: GetStaticProps = async () => {
     ]
   };
 
-  const career: CareerData[] = [
+  const cards: CardData[] = [
     {
       id: 1,
       logoSVG:
@@ -137,7 +137,7 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       intro,
-      career
+      cards
     },
     revalidate: 60 * 60 * 24 // 24 hours
   };
