@@ -6,7 +6,7 @@ import { Cover } from '../../../components/elements/Cover';
 import { Graph } from '../../../components/elements/Graph';
 import { Intro } from '../../../components/elements/Intro';
 import { Header } from '../../../components/layouts/Header';
-import styles from './styles.module.scss';
+import styles from '../styles.module.scss';
 
 type Link = {
   id: number;
