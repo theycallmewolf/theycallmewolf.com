@@ -1,16 +1,23 @@
 import { NavLink } from './NavLink';
 import styles from './styles.module.scss';
 
+type Link = {
+  id: number;
+  link: string;
+  label: string;
+};
+
 interface NavProps {
   adicionalClassName?: string;
+  linkList: Link[];
 }
-export function Nav({ adicionalClassName }: NavProps): JSX.Element {
+
+export function Nav({ adicionalClassName, linkList }: NavProps): JSX.Element {
   return (
     <nav className={`${styles.nav} ${adicionalClassName && adicionalClassName}`}>
-      <NavLink link="/" label="skill set" />
-      <NavLink link="/" label="services" isSelected />
-      <NavLink link="/" label="professional" />
-      <NavLink link="/" label="academic" />
+      {linkList.map((link) => (
+        <NavLink link={link.link} label={link.label} key={link.id} />
+      ))}
     </nav>
   );
 }
