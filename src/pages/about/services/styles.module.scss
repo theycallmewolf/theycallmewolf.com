@@ -1,0 +1,27 @@
+.main {
+  max-width: 1136px;
+
+  .cardList {
+    max-width: 600px;
+    margin: 48px 0 0 auto;
+
+    .card {
+      h2 { font-size: 2rem; }
+  
+      p { 
+        font-size: 1.4rem;
+        line-height: 2rem;
+      }
+  
+      .graphList {
+        margin-left: -12px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      & + .card { margin-top: 42px; }
+    }
+
+    @media (min-width: 1024px) { margin-top: 480px; }
+  }
+}
