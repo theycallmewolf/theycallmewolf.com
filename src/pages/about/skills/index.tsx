@@ -33,12 +33,12 @@ type CardsData = {
   graphs: Graph[];
 };
 
-interface AboutProps {
+interface SkillsProps {
   intro: IntroData;
   cards: CardsData[];
 }
 
-export default function About({ intro, cards }: AboutProps): JSX.Element {
+export default function Skills({ intro, cards }: SkillsProps): JSX.Element {
   return (
     <>
       <Head>
