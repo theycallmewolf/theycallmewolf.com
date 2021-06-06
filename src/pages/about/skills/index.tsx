@@ -40,13 +40,13 @@ interface AboutProps {
 
 export default function About({ intro, cards }: AboutProps): JSX.Element {
   return (
-    <main className={styles.main}>
+    <>
       <Head>
-        <title>they call me wolf | about</title>
+        <title>they call me wolf | skills</title>
         <meta name="description" content="..." />
       </Head>
-      <Header />
-      <main>
+      <main className={styles.main}>
+        <Header />
         <Cover imageURL="/assets/img/cover-about.jpg" />
         <Intro {...intro} />
         <div className={styles.cardList}>
@@ -63,7 +63,7 @@ export default function About({ intro, cards }: AboutProps): JSX.Element {
           ))}
         </div>
       </main>
-    </main>
+    </>
   );
 }
 
