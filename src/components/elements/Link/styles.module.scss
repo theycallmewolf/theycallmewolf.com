@@ -1,8 +1,4 @@
 .link {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-
   border: 4px solid var(--c-candy-red);
   background: var(--c-candy-red);
 
@@ -10,10 +6,6 @@
   text-transform: uppercase;
   letter-spacing: 3px;
   line-height: 1;
-
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
 
   padding: 8px 24px;
 
