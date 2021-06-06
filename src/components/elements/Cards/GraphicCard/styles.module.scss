@@ -2,6 +2,11 @@
   background-color: var(--c-background-100);
   position: relative;
   padding: 34px 16px 220px 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   
   @media(min-width: 600px) {
     display: grid;
