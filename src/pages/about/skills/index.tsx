@@ -1,10 +1,10 @@
 import Head from 'next/head';
 
-import { AboutCard } from '../../components/elements/Cards/AboutCard';
-import { Cover } from '../../components/elements/Cover';
-import { Graph } from '../../components/elements/Graph';
-import { Intro } from '../../components/elements/Intro';
-import { Header } from '../../components/layouts/Header';
+import { AboutCard } from '../../../components/elements/Cards/AboutCard';
+import { Cover } from '../../../components/elements/Cover';
+import { Graph } from '../../../components/elements/Graph';
+import { Intro } from '../../../components/elements/Intro';
+import { Header } from '../../../components/layouts/Header';
 import styles from './styles.module.scss';
 
 export default function About(): JSX.Element {
