@@ -1,10 +1,32 @@
-import { HomeCard } from '../../elements/Cards/HomeCard';
+import { Wolf } from '../../../assets/icons';
+import { AlternativeCard, CardBody, CardImage } from '../../elements/Cards/AlternativeCard';
+import { Graph } from '../../elements/Graph';
+import { CustomLink } from '../../elements/Link';
 import styles from './styles.module.scss';
 
 export function About(): JSX.Element {
   return (
     <section className={styles.section}>
-      <HomeCard />
+      <AlternativeCard adicionalClass={styles.card}>
+        <CardBody adicionalClass={styles.cardBody}>
+          <h3>
+            coder
+            <br /> + designer
+          </h3>
+          <div>
+            <Graph title="html" percentage={80} />
+            <Graph title="JavaScript" percentage={60} />
+            <Graph title="ReactJS" percentage={60} />
+            <Graph title="React Native" percentage={50} />
+            <Graph title="Photoshop" percentage={90} />
+            <Graph title="Illustrator" percentage={90} />
+          </div>
+        </CardBody>
+        <CardImage adicionalClass={styles.cardImage}>
+          <Wolf />
+        </CardImage>
+        <CustomLink label="about" href="/about" adicionalClass={styles.button} />
+      </AlternativeCard>
     </section>
   );
 }

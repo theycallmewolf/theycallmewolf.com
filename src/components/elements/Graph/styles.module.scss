@@ -1,9 +1,12 @@
 .container {
   padding: 12px;
 
-  small {
+  .title {
     text-transform: uppercase;
     letter-spacing: 1px;
+    font-size: 1.3rem;
+    line-height: 1;
+    display: inline-block;
   }
 
   .graph {

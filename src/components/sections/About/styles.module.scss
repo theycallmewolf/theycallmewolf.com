@@ -6,4 +6,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  .card {
+    .cardBody {
+      &> div {
+        margin-top: 8px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+
+    }
+    
+    .cardImage {
+      background: var(--c-element-200);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      svg {
+        width: 200px;
+        height: 190px;
+        fill: var(--c-background-100);
+      }
+    }
+    
+    .button {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
 }

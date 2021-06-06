@@ -8,7 +8,7 @@ interface GraphProps {
 export function Graph({ title, percentage }: GraphProps): JSX.Element {
   return (
     <div className={styles.container}>
-      <small>{title}</small>
+      <span className={styles.title}>{title}</span>
       <div className={styles.graph}>
         <div className={styles.active} style={{ width: `${percentage}%` }}></div>
       </div>
