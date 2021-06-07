@@ -3,14 +3,15 @@ import { CardContainer } from './CardContainer';
 import { CardFooter } from './CardFooter';
 import { CardHeader } from './CardHeader';
 
-type DefaultCardProps = {
-  children: React.ReactNode;
+interface DefaultCardProps extends React.HTMLAttributes<HTMLElement> {
   adicionalClass?: string;
-};
+}
 
-function DefaultCard({ children, adicionalClass }: DefaultCardProps): JSX.Element {
+function DefaultCard({ adicionalClass = '', children, ...rest }: DefaultCardProps): JSX.Element {
   return (
-    <CardContainer adicionalClass={adicionalClass && adicionalClass}>{children}</CardContainer>
+    <CardContainer adicionalClass={adicionalClass} {...rest}>
+      {children}
+    </CardContainer>
   );
 }
 

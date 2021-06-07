@@ -1,11 +1,16 @@
 import styles from './styles.module.scss';
 
-interface CardContainerProps {
-  children: React.ReactNode;
+interface CardContainerProps extends React.HTMLAttributes<HTMLElement> {
   adicionalClass?: string;
 }
-export function CardContainer({ children, adicionalClass }: CardContainerProps): JSX.Element {
+export function CardContainer({
+  adicionalClass = '',
+  children,
+  ...rest
+}: CardContainerProps): JSX.Element {
   return (
-    <div className={`${styles.cardContainer} ${adicionalClass && adicionalClass}`}>{children}</div>
+    <div className={`${styles.cardContainer} ${adicionalClass}`} {...rest}>
+      {children}
+    </div>
   );
 }
