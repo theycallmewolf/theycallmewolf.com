@@ -19,7 +19,7 @@ export function Header(): JSX.Element {
       <div className={styles.header}>
         <Link href="/">
           <a className={`${styles.logo} ${isOpen && styles.open}`}>
-            <Wolf adicionalClass={styles.logo} />
+            <Wolf className={styles.logo} />
           </a>
         </Link>
         <div className={styles.buttonContainer}>
