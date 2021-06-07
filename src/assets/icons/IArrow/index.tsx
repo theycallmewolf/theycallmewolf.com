@@ -1,6 +1,6 @@
 import styles from './styles.module.scss';
 
-interface IArrowProps {
+interface IArrowProps extends React.HTMLAttributes<HTMLOrSVGElement> {
   color?: 'white' | 'red' | 'black';
 }
 function IArrow({ color }: IArrowProps): JSX.Element {
