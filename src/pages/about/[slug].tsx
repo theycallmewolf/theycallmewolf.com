@@ -10,6 +10,7 @@ import { Cover } from '../../components/elements/Cover';
 import { Graph } from '../../components/elements/Graph';
 import { Intro } from '../../components/elements/Intro';
 import { Header } from '../../components/layouts/Header';
+import { useTheme } from '../../hooks/useTheme';
 import styles from './styles.module.scss';
 
 type Link = { id: number; link: string; label: string };
@@ -57,6 +58,11 @@ interface AboutProps {
 export default function About({ intro, cards }: AboutProps): JSX.Element {
   const router = useRouter();
   const { slug } = router.query;
+  const { getTheme } = useTheme();
+
+  useEffect(() => {
+    getTheme();
+  }, [getTheme]);
 
   useEffect(() => {
     const activeArea = ['activity', 'skills', 'career', 'education'].filter(
