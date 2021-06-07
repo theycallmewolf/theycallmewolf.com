@@ -57,7 +57,7 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
 
   useEffect(() => {
     getTheme();
-  }, []);
+  }, [getTheme]);
 
   return (
     <>
