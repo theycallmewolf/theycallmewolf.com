@@ -1,0 +1,9 @@
+.container {
+  .element {
+    stroke: var(--c-element-100);
+
+    &.red { stroke: var(--c-candy-red); }
+    &.white { stroke: var(--c-iridium-white); }
+    &.black { stroke: var(--c-night-black); }
+  }
+}
