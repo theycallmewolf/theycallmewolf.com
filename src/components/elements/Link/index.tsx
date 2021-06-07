@@ -1,18 +1,24 @@
 import Link from 'next/link';
-import { LinkHTMLAttributes } from 'react';
 
 import styles from './styles.module.scss';
 
-interface CustomLinkProps extends LinkHTMLAttributes<HTMLLinkElement> {
+interface CustomLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
   label: string;
   adicionalClass?: string;
 }
 
-export function CustomLink({ href, label, adicionalClass }: CustomLinkProps): JSX.Element {
+export function CustomLink({
+  adicionalClass = '',
+  href,
+  label,
+  ...rest
+}: CustomLinkProps): JSX.Element {
   return (
     <Link href={href}>
-      <a className={`${styles.link} ${adicionalClass && adicionalClass}`}>{label}</a>
+      <a className={`${styles.link} ${adicionalClass}`} {...rest}>
+        {label}
+      </a>
     </Link>
   );
 }

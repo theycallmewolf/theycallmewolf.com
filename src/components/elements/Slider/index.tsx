@@ -19,13 +19,13 @@ type Testimonial = {
   date: string;
 };
 
-interface SliderProps {
+interface SliderProps extends React.HTMLAttributes<HTMLElement> {
   slides?: Slide[];
   testimonials?: Testimonial[];
   contentType: 'image' | 'testimonial';
 }
 
-export function Slider({ slides, testimonials, contentType }: SliderProps): JSX.Element {
+export function Slider({ slides, testimonials, contentType, ...rest }: SliderProps): JSX.Element {
   const [slideNumber, setSlideNumber] = useState('01');
   const [slideList, setSlideList] = useState([]);
   const [testimonialList, setTestimonialList] = useState([]);
@@ -40,7 +40,7 @@ export function Slider({ slides, testimonials, contentType }: SliderProps): JSX.
   }
 
   return (
-    <div className="slider-container">
+    <div className="slider-container" {...rest}>
       <Swiper
         spaceBetween={48}
         navigation

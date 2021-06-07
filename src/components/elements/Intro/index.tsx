@@ -7,15 +7,15 @@ type Links = {
   label: string;
 };
 
-interface IntroProps {
+interface IntroProps extends React.HTMLAttributes<HTMLElement> {
   linkList: Links[];
   title: string;
   lead: string;
 }
 
-export function Intro({ linkList, title, lead }: IntroProps): JSX.Element {
+export function Intro({ linkList, title, lead, ...rest }: IntroProps): JSX.Element {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} {...rest}>
       <h1>{title}</h1>
       <p className="lead">{lead}</p>
       <Nav adicionalClassName={styles.nav} linkList={linkList} />

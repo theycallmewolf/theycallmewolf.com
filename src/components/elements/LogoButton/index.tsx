@@ -1,11 +1,11 @@
 import styles from './styles.module.scss';
 
-type LogoButton = {
+interface LogoButton extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   svgLogo: string;
   link: string;
-};
+}
 
-export function LogoButton({ svgLogo, link }: LogoButton): JSX.Element {
+export function LogoButton({ svgLogo, link, ...rest }: LogoButton): JSX.Element {
   return (
     <a
       href={link}
@@ -13,6 +13,7 @@ export function LogoButton({ svgLogo, link }: LogoButton): JSX.Element {
       rel="noreferrer noopener"
       dangerouslySetInnerHTML={{ __html: svgLogo }}
       className={styles.button}
+      {...rest}
     />
   );
 }
