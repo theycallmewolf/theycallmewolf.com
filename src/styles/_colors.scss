@@ -25,6 +25,22 @@
   }
 }
 
+html, #root {
+  &.dark {
+    --c-element-100: var(--c-polar-white);
+    --c-element-200: var(--c-iridium-white);
+    --c-background-100: var(--c-cosmos-black);
+    --c-background-200: var(--c-night-black);
+   }
+  
+   &.light {
+    --c-element-100: var(--c-cosmos-black);
+    --c-element-200: var(--c-night-black);
+    --c-background-100: var(--c-iridium-white);
+    --c-background-200: var(--c-polar-white);
+  }
+}
+
 ::selection {
   background: var(--c-candy-red);
   color: var(--c-iridium-white);

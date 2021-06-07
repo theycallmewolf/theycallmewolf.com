@@ -4,6 +4,8 @@ import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/effect-fade/effect-fade.min.css';
 import '../components/elements/Slider/styles.scss';
 
+import type { AppProps } from 'next/app';
+
 import { AppProvider } from '../hooks';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {

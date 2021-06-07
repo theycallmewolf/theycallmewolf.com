@@ -1,5 +1,6 @@
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import { useEffect } from 'react';
 
 import { Button } from '../components/elements/Button';
 import { Footer } from '../components/layouts/Footer';
@@ -10,6 +11,7 @@ import { Blog } from '../components/sections/Blog';
 import { Clients } from '../components/sections/Clients';
 import { Projects } from '../components/sections/Projects';
 import { Testimonials } from '../components/sections/Testimonials';
+import { useTheme } from '../hooks/useTheme';
 import { getContent } from '../services/prismic';
 
 type Project = {
@@ -51,6 +53,12 @@ interface HomeProps {
 }
 
 export default function Home({ projects, clients, posts, testimonials }: HomeProps): JSX.Element {
+  const { getTheme } = useTheme();
+
+  useEffect(() => {
+    getTheme();
+  }, []);
+
   return (
     <>
       <Head>
