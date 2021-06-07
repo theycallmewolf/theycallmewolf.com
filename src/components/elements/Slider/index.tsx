@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import SwiperCore, { A11y, EffectFade, Navigation, Pagination, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import { useTheme } from '../../../hooks/useTheme';
+
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
 
 type Slide = {
@@ -30,6 +32,8 @@ export function Slider({ slides, testimonials, contentType, ...rest }: SliderPro
   const [slideList, setSlideList] = useState([]);
   const [testimonialList, setTestimonialList] = useState([]);
 
+  const { hasDarkMode } = useTheme();
+
   useEffect(() => {
     setSlideList(slides);
     setTestimonialList(testimonials);
@@ -40,7 +44,7 @@ export function Slider({ slides, testimonials, contentType, ...rest }: SliderPro
   }
 
   return (
-    <div className="slider-container" {...rest}>
+    <div className={`slider-container ${hasDarkMode ? 'dark' : ''}`} {...rest}>
       <Swiper
         spaceBetween={48}
         navigation

@@ -81,13 +81,8 @@
   
     .swiper-button-prev,
     .swiper-button-next {
-      @media (prefers-color-scheme: dark) { 
-        background-image: url('../../../assets/icons/svg/i-arrow-white.svg');
-      }
-      @media (prefers-color-scheme: light) { 
-        background-image: url('../../../assets/icons/svg/i-arrow-black.svg');
-      }
-      background: var(--c-background-100);
+      background-image: url('../../../assets/icons/svg/i-arrow-black.svg');
+      background-color: var(--c-background-100);
       background-repeat: no-repeat;
       background-size: 64% auto;
       background-position: center;
@@ -138,15 +133,10 @@
           overflow: hidden;
           padding-top: 16px;
 
-          @media (prefers-color-scheme: dark) { 
-            background-image: url('../../../../public/assets/wires/w-testimonials-dark-100.svg'); 
-          }
-          @media (prefers-color-scheme: light) { 
-            background-image: url('../../../../public/assets/wires/w-testimonials-light-100.svg'); 
-          }
+          background-image: url('/assets/wires/w-testimonials-light-100.svg'); 
+          background-color: var(--c-background-200);
           background-size: cover;
           background-position: center;
-          background-color: var(--c-background-200);
           border-color: var(--c-background-100);
 
           display: grid;
@@ -176,20 +166,23 @@
               display: flex;
               justify-content: flex-start;
               align-items: center;
-              
+
+              background-color: var(--c-background-200);
+
               small {
                 display: inline-block;
                 margin-top: 8px;
               }
 
-              &::before {
+              &::after {
                 content: '';
-                position: fixed;
-                width: 100%;
-                height: 120px;
-                bottom: 18%;
+                position: absolute;
+                bottom: 16%;
                 left: 0;
-                background: linear-gradient(rgba(255, 255, 255, 0%), var(--c-background-200));
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(rgba(245, 245, 245, 0%) 20%, rgba(245, 245, 245, 100%) 100%);
+                pointer-events: none;
               }
             }
           }
@@ -218,5 +211,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+
+  &.dark {
+    .swiper-container {
+      &.testimonial {
+        .swiper-wrapper {
+          .swiper-slide {
+            background-image: url('/assets/wires/w-testimonials-dark-100.svg'); 
+
+            p:last-of-type {
+              &::after { background: linear-gradient(rgba(17, 21, 23, 0%) 20%, rgba(17, 21, 23, 100%) 100%); }
+            }
+          };
+        }
+      }
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+      background-image: url('../../../assets/icons/svg/i-arrow-white.svg');
+    }
   }
 }
