@@ -6,7 +6,7 @@ import '../components/elements/Slider/styles.scss';
 
 import { AppProvider } from '../hooks';
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <AppProvider>
       <Component {...pageProps} />
