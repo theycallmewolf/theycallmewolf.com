@@ -2,11 +2,14 @@
   width: 100vw;
   height: 100vh;
 
-  @media (prefers-color-scheme: dark) { background-image: url('../../../../public/assets/wires/w-nav-dark-200.svg'); }
-  @media (prefers-color-scheme: light) { background-image: url('../../../../public/assets/wires/w-nav-light-200.svg'); }
+  background-image: url('/assets/wires/w-nav-light-200.svg');
   background-color: var(--c-background-100);
   background-size: cover, cover;
   background-position: center, center;
+  &.dark { 
+    background-image: url('/assets/wires/w-nav-dark-200.svg');
+    background-color: var(--c-background-100);
+  }
   
   position: fixed;
   top: calc(80px - 100vh);

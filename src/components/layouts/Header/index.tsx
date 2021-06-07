@@ -11,7 +11,8 @@ export function Header(): JSX.Element {
   const { hasDarkMode, toggleTheme } = useTheme();
 
   return (
-    <header className={`${styles.container} ${isOpen && styles.open}`}>
+    <header
+      className={`${styles.container} ${isOpen && styles.open} ${hasDarkMode && styles.dark}`}>
       <div className={styles.navigation}>
         <Nav />
       </div>
