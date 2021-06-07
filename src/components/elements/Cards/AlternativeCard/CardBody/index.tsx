@@ -1,10 +1,13 @@
 import styles from './styles.module.scss';
 
-interface CardBodyProps {
-  children: React.ReactNode;
+interface CardBodyProps extends React.HTMLAttributes<HTMLElement> {
   adicionalClass?: string;
 }
 
-export function CardBody({ children, adicionalClass }: CardBodyProps): JSX.Element {
-  return <div className={`${styles.cardBody} ${adicionalClass && adicionalClass}`}>{children}</div>;
+export function CardBody({ adicionalClass = '', children, ...rest }: CardBodyProps): JSX.Element {
+  return (
+    <div className={`${styles.cardBody} ${adicionalClass}`} {...rest}>
+      {children}
+    </div>
+  );
 }

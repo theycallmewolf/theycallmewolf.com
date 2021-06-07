@@ -1,15 +1,21 @@
-import React from 'react';
-
 import { CardBody } from './CardBody';
 import { CardImage } from './CardImage';
 import styles from './styles.module.scss';
 
-interface AlternativeCardProps {
-  children: React.ReactNode;
+interface AlternativeCardProps extends React.HTMLAttributes<HTMLElement> {
   adicionalClass?: string;
 }
-function AlternativeCard({ children, adicionalClass }: AlternativeCardProps): JSX.Element {
-  return <div className={`${styles.container} ${adicionalClass}`}>{children}</div>;
+
+function AlternativeCard({
+  adicionalClass = '',
+  children,
+  ...rest
+}: AlternativeCardProps): JSX.Element {
+  return (
+    <div className={`${styles.container} ${adicionalClass}`} {...rest}>
+      {children}
+    </div>
+  );
 }
 
 export { AlternativeCard, CardBody, CardImage };
