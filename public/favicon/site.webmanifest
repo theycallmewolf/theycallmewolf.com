@@ -1,6 +1,6 @@
 {
     "name": "they call me <wolf />",
-    "short_name": "they call me <wolf />",
+    "short_name": "<wolf />",
     "icons": [{
             "src": "/favicon/android-chrome-192x192.png",
             "sizes": "192x192",
