@@ -37,11 +37,9 @@
   &:hover {
     svg {
       transform: scale(1.2);
-      @media (prefers-color-scheme: light) { fill: var(--c-polar-white)}
+      fill: var(--c-polar-white)
     }
 
-    &::after {
-      transform: rotate(0) scale(2.2)
-    }
+    &::after { transform: rotate(0) scale(2.2) }
   }
 }
