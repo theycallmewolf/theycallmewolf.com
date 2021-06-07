@@ -132,13 +132,13 @@
 
             position: absolute;
             top: 50%;
-            left: 50%;
+            left: 0;
             transform: translateY(-50%);
 
             transition: left 300ms ease-in-out;
           }
 
-          &.dark::after { left: 0;}
+          &.dark::after { left: 50%; }
         }
       }
     }
