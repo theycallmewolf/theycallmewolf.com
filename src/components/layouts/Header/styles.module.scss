@@ -21,12 +21,16 @@
     left: 0;
     right: 0;
     
+    max-width: 260px;
     height: calc(100% - 90px);
+    margin: 0 auto;
     z-index: 1;
 
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (min-width: 768px ) { max-width: unset; }
   }
   
   .header {
