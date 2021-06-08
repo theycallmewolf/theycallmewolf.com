@@ -1,75 +1,56 @@
-.main {
-  max-width: 1136px;
+.card {
+  h2 { 
+    font-size: 1.8rem;
+    line-height: 2rem;
+    margin-bottom: 48px;
 
-  .cardList {
-    max-width: 600px;
-    margin: 48px 0 0 auto;
-
-    .card {
-      h2 { 
-        font-size: 1.8rem;
-        line-height: 2rem;
-        margin-bottom: 48px;
-
-        @media (min-width: 600px) { margin-bottom: 8px;}
-      }
-  
-      p { 
-        font-size: 1.4rem;
-        line-height: 2.4rem;
-        color: var(--c-element-200);
-      }
-  
-      .graphList {
-        margin-left: -12px;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .center { text-align: center;}
-
-      .date { 
-        font-size: 1.3rem;
-        text-transform: uppercase;
-        opacity: 0.8;
-      }
-
-      .svgContainer {
-        width: 100%;
-        padding: 12px;
-        margin-bottom: 24px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-
-        svg {
-          fill: var(--c-element-100);
-          width: 160px;
-          height: 50px;
-
-          & + svg { margin-top: 24px;}
-
-          @media (min-width: 400px) {
-            & + svg { margin: 0;}
-          }
-        }
-
-        @media (min-width: 400px) { flex-direction: row;}
-      }
-
-      & + .card { margin-top: 42px; }
-    }
-
-    &.col2{
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-gap: 24px;
-      
-      @media (min-width: 600px) { grid-template-columns: repeat(2, 1fr); }
-    }
-    
-    @media (min-width: 1024px) { margin-top: 480px; }
+    @media (min-width: 600px) { margin-bottom: 8px;}
   }
+
+  p { 
+    font-size: 1.4rem;
+    line-height: 2.4rem;
+    color: var(--c-element-200);
+  }
+
+  .graphList {
+    margin-left: -12px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .center { text-align: center;}
+
+  .date { 
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  .svgContainer {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    svg {
+      fill: var(--c-element-100);
+      width: 160px;
+      height: 50px;
+
+      & + svg { margin-top: 24px;}
+
+      @media (min-width: 400px) {
+        & + svg { margin: 0;}
+      }
+    }
+
+    @media (min-width: 400px) { flex-direction: row;}
+  }
+
+  & + .card { margin-top: 42px; }
 }

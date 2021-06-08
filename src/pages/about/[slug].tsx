@@ -1,15 +1,12 @@
 import { GetServerSideProps } from 'next';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
 import { ServicesSVG } from '../../assets/services';
 import { CardBody, CardHeader, DefaultCard } from '../../components/elements/Cards/DefaultCard';
 import { GraphicCard } from '../../components/elements/Cards/GraphicCard';
-import { Cover } from '../../components/elements/Cover';
 import { Graph } from '../../components/elements/Graph';
-import { Intro } from '../../components/elements/Intro';
-import { Header } from '../../components/layouts/Header';
+import ListPage from '../../components/layouts/ListPage';
 import { useTheme } from '../../hooks/useTheme';
 import styles from './styles.module.scss';
 
@@ -72,59 +69,53 @@ export default function About({ intro, cards }: AboutProps): JSX.Element {
   }, [router, slug]);
 
   return (
-    <>
-      <Head>
-        <title>they call me wolf | activity</title>
-        <meta name="description" content="..." />
-      </Head>
-      <main className={styles.main}>
-        <Header />
-        <Cover imageURL="/assets/img/cover-about.jpg" />
-        <Intro {...intro} />
-        <div className={`${styles.cardList} ${slug === 'activity' && styles.col2}`}>
-          {slug === 'skills' &&
-            cards.map((card) => (
-              <GraphicCard key={card.id} adicionalClass={styles.card}>
-                <h2>{card.title}</h2>
-                <p>{card.description}</p>
-                <div className={styles.graphList}>
-                  {card.graphs.map((graph) => (
-                    <Graph title={graph.title} percentage={graph.percentage} key={graph.id} />
-                  ))}
-                </div>
-              </GraphicCard>
-            ))}
+    <ListPage
+      intro={intro}
+      pageTitle="about"
+      slug={slug}
+      imageURL="/assets/img/cover-about.jpg"
+      pageDescription="...">
+      {slug === 'skills' &&
+        cards.map((card) => (
+          <GraphicCard key={card.id} adicionalClass={styles.card}>
+            <h2>{card.title}</h2>
+            <p>{card.description}</p>
+            <div className={styles.graphList}>
+              {card.graphs.map((graph) => (
+                <Graph title={graph.title} percentage={graph.percentage} key={graph.id} />
+              ))}
+            </div>
+          </GraphicCard>
+        ))}
 
-          {slug === 'activity' &&
-            cards.map((card) => (
-              <DefaultCard key={card.id}>
-                <CardHeader>
-                  <ServicesSVG icon={card.icon} />
-                </CardHeader>
-                <CardBody adicionalClass={styles.card}>
-                  <h2>{card.title}</h2>
-                  <p>{card.description}</p>
-                </CardBody>
-              </DefaultCard>
-            ))}
+      {slug === 'activity' &&
+        cards.map((card) => (
+          <DefaultCard key={card.id}>
+            <CardHeader>
+              <ServicesSVG icon={card.icon} />
+            </CardHeader>
+            <CardBody adicionalClass={styles.card}>
+              <h2>{card.title}</h2>
+              <p>{card.description}</p>
+            </CardBody>
+          </DefaultCard>
+        ))}
 
-          {(slug === 'career' || slug === 'education') &&
-            cards.map((card) => (
-              <GraphicCard adicionalClass={styles.card} key={card.id}>
-                <div
-                  className={styles.svgContainer}
-                  dangerouslySetInnerHTML={{ __html: card.logoSVG }}
-                />
-                <span className={styles.center}>
-                  <p className={styles.date}>{card.dateInterval}</p>
-                  <h2>{card.title}</h2>
-                  <p>{card.description}</p>
-                </span>
-              </GraphicCard>
-            ))}
-        </div>
-      </main>
-    </>
+      {(slug === 'career' || slug === 'education') &&
+        cards.map((card) => (
+          <GraphicCard adicionalClass={styles.card} key={card.id}>
+            <div
+              className={styles.svgContainer}
+              dangerouslySetInnerHTML={{ __html: card.logoSVG }}
+            />
+            <span className={styles.center}>
+              <p className={styles.date}>{card.dateInterval}</p>
+              <h2>{card.title}</h2>
+              <p>{card.description}</p>
+            </span>
+          </GraphicCard>
+        ))}
+    </ListPage>
   );
 }
 
