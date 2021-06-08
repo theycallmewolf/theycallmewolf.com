@@ -121,6 +121,7 @@ export default function About({ intro, cards }: AboutProps): JSX.Element {
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const { slug } = params;
+  let cards: unknown;
 
   const intro: IntroData = {
     title: 'about',
@@ -149,7 +150,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     ]
   };
 
-  function getActivityData(): ActivityData[] {
+  function getActivityContent(): ActivityData[] {
     return [
       {
         id: 1,
@@ -182,7 +183,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     ];
   }
 
-  function getCareerData(): CareerData[] {
+  function getCareerContent(): CareerData[] {
     return [
       {
         id: 1,
@@ -226,7 +227,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     ];
   }
 
-  function getEducationData(): EducationData[] {
+  function getEducationContent(): EducationData[] {
     return [
       {
         id: 1,
@@ -240,7 +241,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     ];
   }
 
-  function getSkillsData(): SkillData[] {
+  function getSkillsContent(): SkillData[] {
     return [
       {
         id: 1,
@@ -362,27 +363,25 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     ];
   }
 
-  let cards: unknown;
-
   switch (slug) {
     case 'activity':
-      cards = getActivityData();
+      cards = getActivityContent();
       break;
 
     case 'career':
-      cards = getCareerData();
+      cards = getCareerContent();
       break;
 
     case 'education':
-      cards = getEducationData();
+      cards = getEducationContent();
       break;
 
     case 'skills':
-      cards = getSkillsData();
+      cards = getSkillsContent();
       break;
 
     default:
-      cards = getSkillsData();
+      cards = getSkillsContent();
       break;
   }
 
