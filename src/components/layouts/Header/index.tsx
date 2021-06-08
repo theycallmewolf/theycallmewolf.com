@@ -12,7 +12,9 @@ export function Header(): JSX.Element {
 
   return (
     <header
-      className={`${styles.container} ${isOpen && styles.open} ${hasDarkMode && styles.dark}`}>
+      className={`${styles.container} ${isOpen ? styles.open : ''} ${
+        hasDarkMode ? styles.dark : ''
+      }`}>
       <div className={styles.navigation}>
         <Nav />
       </div>
