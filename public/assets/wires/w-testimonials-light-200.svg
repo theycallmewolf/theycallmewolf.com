@@ -2,7 +2,7 @@
   <style>
     .st0 {
       fill: rgb(240 240 240 / 55%);
-      stroke: #F5F5F5;
+      stroke: #F0F0F0;
       stroke-width: 2;
       stroke-miterlimit: 10
     }
