@@ -24,7 +24,7 @@ type Post = {
   title: string;
   lead: string;
   slug: string;
-  updateDate: string;
+  publishDate: string;
 };
 
 interface CodeProps {
@@ -144,16 +144,32 @@ export default function Code({ projects, posts }: CodeProps): JSX.Element {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const projects = await getContent({
+  const projectsResponse = await getContent({
     type: 'projects',
     fields: ['title', 'imageurl', 'caption']
   });
 
-  const posts = await getContent({
+  const postsResponse = await getContent({
     type: 'posts',
     fields: ['title', 'lead', 'content'],
     quantity: 2
   });
+
+  const projects = projectsResponse.map((project) => ({
+    id: project.id,
+    slug: project.slug,
+    title: project.title,
+    image: project.image,
+    caption: project.caption,
+    publishDate: project.publishDate
+  }));
+
+  const posts = postsResponse.map((post) => ({
+    id: post.id,
+    slug: post.slug,
+    title: post.title,
+    lead: post.lead.slice(0, 130) + '...'
+  }));
 
   return {
     props: {
