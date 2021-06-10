@@ -25,9 +25,16 @@ interface SliderProps extends React.HTMLAttributes<HTMLElement> {
   slides?: Slide[];
   testimonials?: Testimonial[];
   contentType: 'image' | 'testimonial';
+  additionalClass?: string;
 }
 
-export function Slider({ slides, testimonials, contentType, ...rest }: SliderProps): JSX.Element {
+export function Slider({
+  slides,
+  testimonials,
+  contentType,
+  additionalClass = '',
+  ...rest
+}: SliderProps): JSX.Element {
   const [slideNumber, setSlideNumber] = useState('01');
   const [slideList, setSlideList] = useState([]);
   const [testimonialList, setTestimonialList] = useState([]);
@@ -52,7 +59,7 @@ export function Slider({ slides, testimonials, contentType, ...rest }: SliderPro
         loop={false}
         speed={600}
         effect={contentType === 'testimonial' ? 'fade' : 'slide'}
-        className={contentType === 'testimonial' && 'testimonial'}
+        className={`${contentType === 'testimonial' ? 'testimonial' : ''} ${additionalClass}`}
         breakpoints={{
           320: {
             slidesPerView: 1
