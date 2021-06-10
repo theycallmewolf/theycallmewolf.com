@@ -51,7 +51,7 @@ export function Slider({
   }
 
   return (
-    <div className={`slider-container ${hasDarkMode ? 'dark' : ''}`} {...rest}>
+    <div className={`slider-container ${hasDarkMode ? 'dark' : ''} ${additionalClass}`} {...rest}>
       <Swiper
         spaceBetween={48}
         navigation
@@ -59,7 +59,7 @@ export function Slider({
         loop={false}
         speed={600}
         effect={contentType === 'testimonial' ? 'fade' : 'slide'}
-        className={`${contentType === 'testimonial' ? 'testimonial' : ''} ${additionalClass}`}
+        className={contentType === 'testimonial' && 'testimonial'}
         breakpoints={{
           320: {
             slidesPerView: 1
