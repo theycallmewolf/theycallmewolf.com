@@ -4,10 +4,16 @@ import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
 
 import { IMinus, IPlus } from '../../../assets/icons';
+import {
+  CardBody,
+  CardFooter,
+  CardHeader,
+  DefaultCard
+} from '../../../components/elements/Cards/DefaultCard';
+import { CustomLink } from '../../../components/elements/Link';
 import { Slider } from '../../../components/elements/Slider';
 import { Footer } from '../../../components/layouts/Footer';
 import { Header } from '../../../components/layouts/Header';
-import { Blog } from '../../../components/sections/Blog';
 import { useTheme } from '../../../hooks/useTheme';
 import { getContent } from '../../../services/prismic';
 import styles from './styles.module.scss';
@@ -136,7 +142,30 @@ export default function Code({ projects, posts }: CodeProps): JSX.Element {
             </p>
           </div>
         </section>
-        <Blog posts={posts} />
+
+        <section className={styles.recomended}>
+          <h2>You may also like</h2>
+          <div className={styles.cardContainer}>
+            {posts.map((post) => (
+              <DefaultCard key={post.slug}>
+                <CardHeader>
+                  <img
+                    src="https://images.unsplash.com/photo-1550165702-5d96d4dc8f76?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
+                    alt="..."
+                  />
+                </CardHeader>
+                <CardBody>
+                  <span className={styles.date}>{post.publishDate}</span>
+                  <h3>{post.title}</h3>
+                  <p>{post.lead}</p>
+                </CardBody>
+                <CardFooter adicionalClass={styles.cardFooter}>
+                  <CustomLink href={`/${post.slug}`} label="Read" />
+                </CardFooter>
+              </DefaultCard>
+            ))}
+          </div>
+        </section>
       </main>
       <Footer />
     </>
