@@ -15,10 +15,10 @@ interface IntroProps extends React.HTMLAttributes<HTMLElement> {
 
 export function Intro({ linkList, title, lead, ...rest }: IntroProps): JSX.Element {
   return (
-    <div className={styles.container} {...rest}>
+    <aside className={styles.container} {...rest}>
       <h1>{title}</h1>
       <p className="lead">{lead}</p>
       <Nav adicionalClassName={styles.nav} linkList={linkList} />
-    </div>
+    </aside>
   );
 }
