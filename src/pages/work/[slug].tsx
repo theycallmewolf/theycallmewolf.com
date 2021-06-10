@@ -2,10 +2,10 @@ import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
+import { TangramCard } from '../../assets/tangrams/';
 import { CardBody, CardHeader, DefaultCard } from '../../components/elements/Cards/DefaultCard';
 import { CustomLink } from '../../components/elements/Link';
 import ListPage from '../../components/layouts/ListPage';
-import { Projects } from '../../components/sections/Projects';
 import { useTheme } from '../../hooks/useTheme';
 import styles from './styles.module.scss';
 
@@ -57,7 +57,11 @@ export default function Work({ intro, cards }: WorkProps): JSX.Element {
       {cards.map((project) => (
         <DefaultCard key={project.id} adicionalClass={styles.card}>
           <CardHeader>
-            <img src={project.image || imagePlaceholder} alt={project.title} />
+            {project.image === '' ? (
+              <TangramCard adicionalClass={styles.placeholder} />
+            ) : (
+              <img src={project.image} alt={project.title} />
+            )}
           </CardHeader>
           <CardBody>
             <h2>{project.title}</h2>
@@ -69,8 +73,8 @@ export default function Work({ intro, cards }: WorkProps): JSX.Element {
               })}
             </ul>
             <CustomLink
-              label="take a look"
-              href={`work/code/${project.slug}`}
+              label="more"
+              href={`/work/code/${project.slug}`}
               adicionalClass={styles.button}
             />
           </CardBody>
@@ -119,7 +123,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         description:
           '"Excuse me! Do you have the time?!" A simple project to practice my CSS and JS skills, and also learn a bit about webpack...',
         slug: 'wolf-watch',
-        image: '',
+        image:
+          'https://images.unsplash.com/photo-1512853378841-2c404110a4f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80',
         publishDate: '2021-02-13T01:38:03Z',
         updateDate: '2021-06-01T08:38:14Z',
         repository: 'https://github.com/theycallmewolf/wolf-watch',
@@ -134,7 +139,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         description:
           'a record time project to keep delivering fitness content during quarentine, delivering live and on-demand workouts',
         slug: 'huthome',
-        image: '',
+        image:
+          'https://images.unsplash.com/photo-1465505486239-73576daab293?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1951&q=80',
         publishDate: '2020-04-28T01:38:03Z',
         updateDate: '',
         repository: null,
@@ -154,7 +160,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         description:
           'onlive, a website for booking and assist online live music concerts ( final project for react.js course module at etic_ )',
         slug: 'onlive',
-        image: '',
+        image:
+          'https://images.unsplash.com/photo-1496888057897-8a25eef593f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80',
         publishDate: '2020-06-13T11:34:34Z',
         updateDate: '2020-10-23T10:28:34Z',
         repository: 'https://github.com/theycallmewolf/onlive',
@@ -168,7 +175,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         title: 'Hut reception',
         description: 'web app for Fitness Hut club reception area tablest',
         slug: 'hut-reception',
-        image: '',
+        image:
+          'https://images.unsplash.com/photo-1540908300676-b00e9a003736?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1001&q=80',
         publishDate: '2020-12-23T14:18:00Z',
         updateDate: '2021-05-11T13:12:00Z',
         repository: 'https://github.com/theycallmewolf/hut-reception',
@@ -206,7 +214,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         id: 6,
         title: 'Go Barber',
         description: '',
-        image: '',
+        image:
+          'https://images.unsplash.com/photo-1548053279-649e31d44b03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80',
         publishDate: '2020-11-21T13:42:00Z',
         updateDate: '2021-02-09T14:51:56Z',
         url: 'https://gobarber.theycallmewolf.pt/',
