@@ -1,0 +1,136 @@
+.main {
+  .intro {
+    width: calc(100% + 24px);
+    max-width: 900px;
+    margin: 0 -12px;
+    overflow: hidden;
+    
+    &>div {
+      position: relative;
+
+      &:first-of-type {
+        position: relative;
+  
+        &::before,
+        &::after {
+          content: '';
+          background: var(--c-background-200);
+          position: absolute;
+          bottom: -1px;
+          right: -1px;
+        }
+    
+        &::before { width: 72px; height: 56px; }
+        &::after { width: 240px; height: 16px; }
+
+        img {
+          width: 100%;
+          height: 360px;
+          object-fit: cover;
+        }
+      }
+
+      &:last-of-type { 
+        max-width: 420px;
+        padding: 48px 24px; 
+        margin: 48px 64px 0 0;
+        background: var(--c-candy-red);
+        
+        &> * { color: var(--c-polar-white); }
+        
+        h1 { 
+          font-size: 2.4rem;
+          line-height: 2.6rem;
+          margin-bottom: 24px;
+        }
+
+        p { font-size: 20px; }
+        
+        @media (min-width: 768px) {
+          margin: -36px auto 0 0;
+          
+        }
+      }
+    }
+  }
+
+  .slider { 
+    margin: 120px 0;
+
+    @media(min-width: 1024px) {
+      width: calc(100% - ((100% - 960px) / 2));
+      margin: 96px -12px 96px auto;
+    }
+  }
+
+  .specs {
+    margin: 120px auto;
+
+    & > div {
+      button {
+        border: none;
+        border-top: 1px solid var(--c-candy-red);
+        border-bottom: 1px solid var(--c-candy-red);
+        padding: 24px 0;
+        display: block;
+        width: 100%;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        
+        h2 { 
+          font-size: 20px;
+          margin: 0;
+        }
+
+        .icon { 
+          stroke: var(--c-candy-red);
+          width: 22px;
+          height: 22px;
+        }
+      }
+  
+      p {
+        padding: 24px 24px 84px 24px;
+
+        a {
+          text-decoration: underline var(--c-element-200) 1px; 
+    
+          &:hover { text-decoration-color: var(--c-candy-red);}
+        }
+  
+        &.hide { display: none; }
+      }
+
+      &:not(:first-of-type) button { border-top: none; }
+    }
+
+    @media (min-width: 768px) {
+      max-width: 960px;
+      padding-left: 216px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 48px;
+  
+      &> div { 
+        border-top: 1px solid var(--c-candy-red);
+        border-bottom: 1px solid var(--c-candy-red);
+        padding: 48px 0;
+
+
+        button { 
+          cursor: default;
+          padding: 0;
+          border: none;
+
+          h2 { margin-bottom: 24px; }
+          
+          .icon { display: none; }
+        }
+        
+        p { padding: 0; }
+      }
+    }
+  }
+}
