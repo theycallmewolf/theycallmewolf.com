@@ -11,6 +11,7 @@ export function CardHeader({
   return (
     <div className={`${styles.cardHeader} ${adicionalClass}`} {...rest}>
       {children}
+      <div className={styles.clip}></div>
     </div>
   );
 }
