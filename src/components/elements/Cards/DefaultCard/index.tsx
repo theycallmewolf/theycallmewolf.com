@@ -5,11 +5,17 @@ import { CardHeader } from './CardHeader';
 
 interface DefaultCardProps extends React.HTMLAttributes<HTMLElement> {
   adicionalClass?: string;
+  imageFilter?: boolean;
 }
 
-function DefaultCard({ adicionalClass = '', children, ...rest }: DefaultCardProps): JSX.Element {
+function DefaultCard({
+  adicionalClass = '',
+  children,
+  imageFilter = false,
+  ...rest
+}: DefaultCardProps): JSX.Element {
   return (
-    <CardContainer adicionalClass={adicionalClass} {...rest}>
+    <CardContainer adicionalClass={adicionalClass} imageFilter={imageFilter} {...rest}>
       {children}
     </CardContainer>
   );

@@ -55,12 +55,15 @@ export default function Work({ intro, cards }: WorkProps): JSX.Element {
       slug={slug}
       pageDescription="...">
       {cards.map((project) => (
-        <DefaultCard key={project.id} adicionalClass={styles.card}>
+        <DefaultCard
+          key={project.id}
+          adicionalClass={styles.card}
+          imageFilter={project.image !== ''}>
           <CardHeader>
-            {project.image === '' ? (
-              <TangramCard adicionalClass={styles.placeholder} />
-            ) : (
+            {project.image !== '' ? (
               <img src={project.image} alt={project.title} />
+            ) : (
+              <TangramCard adicionalClass={styles.placeholder} />
             )}
           </CardHeader>
           <CardBody>
