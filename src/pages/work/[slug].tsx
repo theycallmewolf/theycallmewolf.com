@@ -39,7 +39,6 @@ interface WorkProps {
 
 export default function Work({ intro, cards }: WorkProps): JSX.Element {
   const router = useRouter();
-  const imagePlaceholder = '';
   const { slug } = router.query;
   const { getTheme } = useTheme();
 
