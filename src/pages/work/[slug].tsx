@@ -67,9 +67,9 @@ export default function Work({ intro, cards }: WorkProps): JSX.Element {
             )}
           </CardHeader>
           <CardBody>
+            <span className={styles.date}>{project.publishDate}</span>
             <h2>{project.title}</h2>
             <p>{project.description}</p>
-            <p className={styles.date}>{project.publishDate}</p>
             <ul>
               {project.specs.map((spec) => {
                 <li>{spec}</li>;
