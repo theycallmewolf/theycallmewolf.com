@@ -2,6 +2,8 @@ import Prismic from '@prismicio/client';
 import { DefaultClient } from '@prismicio/client/types/client';
 import { RichText } from 'prismic-dom';
 
+import { formatDate } from '../utils';
+
 interface ContentProps {
   type: string;
   fields: string[];
@@ -45,15 +47,6 @@ export async function getContent({
   quantity = 20
 }: ContentProps): Promise<Content[]> {
   const prismic = getPrismicClient();
-
-  function formatDate(data: string): string {
-    return new Date(data).toLocaleDateString('pt-PT', {
-      weekday: 'short',
-      day: '2-digit',
-      month: 'long',
-      year: 'numeric'
-    });
-  }
 
   const { results } = await prismic.query(Prismic.predicates.at('document.type', type), {
     fetch: fields,
