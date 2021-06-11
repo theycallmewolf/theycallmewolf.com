@@ -9,13 +9,13 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
 type SliderData = {
   image_large: string | null;
   image_small: string | null;
-  caption: string;
+  caption?: string;
 };
 
 type Slide = {
   slider: SliderData;
   slug: string;
-  title: string;
+  title?: string;
 };
 
 type Testimonial = {
@@ -86,7 +86,7 @@ export function Slider({
                   <source srcSet={slide.slider.image_large} media="(min-width: 600px)" />
                   <img src={slide.slider.image_small} alt={slide.title} />
                 </picture>
-                <figcaption>{slide.slider.caption}</figcaption>
+                {slide.slider.caption && <figcaption>{slide.slider.caption}</figcaption>}
               </figure>
             </SwiperSlide>
           ))}
