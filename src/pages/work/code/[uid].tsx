@@ -224,23 +224,26 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       body1
     } = data;
 
-    const specs = body[0].items.map(({ tech }) => ({
-      id: tech.id,
-      uid: tech.uid
-    }));
+    const specs =
+      body[0]?.items.map(({ tech }) => ({
+        id: tech.id,
+        uid: tech.uid
+      })) || [];
 
-    const team = body[1].items.map(({ team_member }) => ({
-      id: team_member.id,
-      uid: team_member.uid
-    }));
+    const team =
+      body[1]?.items.map(({ team_member }) => ({
+        id: team_member.id,
+        uid: team_member.uid
+      })) || [];
 
-    const projectImages = body1[0].items.map(({ screen_small, screen_large }, i: number) => {
-      return {
-        image_small: screen_small.url,
-        image_large: screen_large.url,
-        slug: String(i)
-      };
-    });
+    const projectImages =
+      body1[0]?.items.map(({ screen_small, screen_large }, i: number) => {
+        return {
+          image_small: screen_small.url,
+          image_large: screen_large.url,
+          slug: String(i)
+        };
+      }) || [];
 
     return {
       id,
