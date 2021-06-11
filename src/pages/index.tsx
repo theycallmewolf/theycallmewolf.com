@@ -95,26 +95,68 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const posts = await getContent({
+  const postsResponse = await getContent({
     type: 'posts',
     fields: ['title', 'lead', 'content'],
     quantity: 2
   });
 
-  const projects = await getContent({
+  const posts: Post[] = postsResponse.map((post) => ({
+    id: post.id,
+    slug: post.slug,
+    title: post.title,
+    lead: post.lead,
+    publishDate: post.publishDate,
+    updateDate: post.updateDate
+  }));
+
+  const projectsResponse = await getContent({
     type: 'projects',
     fields: ['title', 'imageurl', 'caption']
   });
 
-  const clients = await getContent({
+  const projects: Project[] = projectsResponse.map((project) => ({
+    id: project.id,
+    slug: project.slug,
+    title: project.title,
+    slider: {
+      image_large: project.slider.image_large,
+      image_small: project.slider.image_small,
+      caption: project.slider.caption
+    },
+    publishDate: project.publishDate,
+    updateDate: project.updateDate
+  }));
+
+  const clientsResponse = await getContent({
     type: 'clients',
     fields: ['uid', 'name', 'logo_svg', 'link']
   });
 
-  const testimonials = await getContent({
+  const clients: Client[] = clientsResponse.map((client) => ({
+    id: client.id,
+    slug: client.slug,
+    name: client.name,
+    logoSVG: client.logoSVG,
+    link: client.link,
+    publishDate: client.publishDate,
+    updateDate: client.updateDate
+  }));
+
+  const testimonialsResponse = await getContent({
     type: 'testimonials',
     fields: ['quote', 'name', 'job_title']
   });
+
+  const testimonials: Testimonial[] = testimonialsResponse.map((testimonial) => ({
+    id: testimonial.id,
+    slug: testimonial.slug,
+    name: testimonial.name,
+    quote: testimonial.quote,
+    jobTitle: testimonial.jobTitle,
+    publishDate: testimonial.publishDate,
+    updateDate: testimonial.updateDate
+  }));
 
   return {
     props: {
