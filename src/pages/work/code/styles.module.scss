@@ -165,9 +165,10 @@
           };
         }
   
-        &.hide { display: none; }
       }
-
+      
+      .hide { display: none; }
+      
       &:not(:first-of-type) button { border-top: none; }
     }
 
