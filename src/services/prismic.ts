@@ -10,26 +10,34 @@ interface ContentProps {
   quantity?: number;
 }
 
-type SliderData = {
-  image_large: string;
-  image_small: string;
-  caption: string;
-};
-
-interface Content {
+interface ContentData {
   id: string;
   slug: string;
   title: string | null;
   lead: string | null;
-  image: string | null;
-  slider: SliderData | null;
+  description: string | null;
+  images: {
+    image: string | null;
+    slider: {
+      image_large: string | null;
+      image_small: string | null;
+      caption: string | null;
+    };
+  };
   name: string | null;
   logoSVG: string | null;
-  link: string | null;
+  links: {
+    link: string | null;
+    repository: string | null;
+    repository_api: string | null;
+  };
   quote: string | null;
   jobTitle: string | null;
-  publishDate: string;
-  updateDate: string;
+  dates: {
+    publishDate: string;
+    updateDate: string;
+    projectDate: string;
+  };
 }
 
 export function getPrismicClient(req?: unknown): DefaultClient {
@@ -45,9 +53,10 @@ export async function getContent({
   type,
   fields,
   quantity = 20
-}: ContentProps): Promise<Content[]> {
+}: ContentProps): Promise<ContentData[]> {
   const prismic = getPrismicClient();
 
+  // const response = await prismic.query(Prismic.predicates.at('document.type', type), {
   const { results } = await prismic.query(Prismic.predicates.at('document.type', type), {
     fetch: fields,
     pageSize: quantity
@@ -60,6 +69,7 @@ export async function getContent({
     const {
       title,
       lead,
+      description,
       image,
       image_large,
       image_small,
@@ -67,6 +77,9 @@ export async function getContent({
       name,
       logo_svg,
       link,
+      repository,
+      repository_api,
+      project_date,
       quote,
       job_title
     } = data;
@@ -76,19 +89,29 @@ export async function getContent({
       slug: uid,
       title: title ? RichText.asText(title) : null,
       lead: lead ? RichText.asText(lead) : null,
-      image: image?.url ? image.url : null,
-      slider: {
-        image_large: image_large?.url ? image_large.url : null,
-        image_small: image_small?.url ? image_small.url : null,
-        caption: caption ? RichText.asText(caption) : null
+      description: description ? RichText.asText(description) : null,
+      images: {
+        image: image ? image.url : null,
+        slider: {
+          image_large: image_large ? image_large.url : null,
+          image_small: image_small ? image_small.url : null,
+          caption: caption ? RichText.asText(caption) : null
+        }
       },
       name: name ? RichText.asText(name) : null,
       logoSVG: logo_svg ? RichText.asText(logo_svg) : null,
-      link: link?.url ? link.url : null,
+      links: {
+        link: link ? link.url : null,
+        repository: repository ? repository.url : null,
+        repository_api: repository_api ? repository_api.url : null
+      },
       quote: quote ? RichText.asText(quote) : null,
       jobTitle: job_title ? RichText.asText(job_title) : null,
-      publishDate: formatDate(first_publication_date),
-      updateDate: formatDate(last_publication_date)
+      dates: {
+        publishDate: formatDate(first_publication_date),
+        updateDate: formatDate(last_publication_date),
+        projectDate: formatDate(project_date)
+      }
     };
   });
 }
