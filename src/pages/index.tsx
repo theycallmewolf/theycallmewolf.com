@@ -21,21 +21,21 @@ type SliderData = {
 };
 
 type Project = {
-  id: number;
+  id: string;
   slider: SliderData;
   title: string;
   slug: string;
 };
 
 type Client = {
-  id: number;
+  id: string;
   name: string;
   link: string;
   logoSVG: string;
 };
 
 type Post = {
-  id: number;
+  id: string;
   title: string;
   lead: string;
   slug: string;
@@ -43,11 +43,12 @@ type Post = {
 };
 
 type Testimonial = {
-  id: number;
+  id: string;
   quote: string;
   name: string;
   jobTitle: string;
-  date: string;
+  publishDate: string;
+  updateDate: string;
 };
 
 interface HomeProps {

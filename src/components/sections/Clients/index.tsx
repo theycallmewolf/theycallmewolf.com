@@ -2,7 +2,7 @@ import { LogoButton } from '../../elements/LogoButton';
 import styles from './styles.module.scss';
 
 type Client = {
-  id: number;
+  id: string;
   name: string;
   link: string;
   logoSVG: string;

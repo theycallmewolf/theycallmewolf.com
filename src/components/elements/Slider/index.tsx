@@ -19,11 +19,12 @@ type Slide = {
 };
 
 type Testimonial = {
-  id: number;
+  id: string;
   quote: string;
   name: string;
   jobTitle: string;
-  date: string;
+  publishDate: string;
+  updateDate: string;
 };
 
 interface SliderProps extends React.HTMLAttributes<HTMLElement> {
@@ -47,7 +48,6 @@ export function Slider({
   const { hasDarkMode } = useTheme();
 
   useEffect(() => {
-    console.log(slides);
     setSlideList(slides);
     setTestimonialList(testimonials);
   }, [slides, testimonials]);
@@ -97,7 +97,8 @@ export function Slider({
               <p>{testimonial.quote}</p>
               <p>
                 <small>
-                  <strong>{testimonial.name}</strong>, {testimonial.jobTitle} - {testimonial.date}
+                  <strong>{testimonial.name}</strong>, {testimonial.jobTitle},{' '}
+                  {testimonial.publishDate}
                 </small>
               </p>
             </SwiperSlide>

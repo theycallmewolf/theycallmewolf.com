@@ -4,11 +4,12 @@ import { Slider } from '../../elements/Slider';
 import styles from './styles.module.scss';
 
 type Testimonial = {
-  id: number;
+  id: string;
   quote: string;
   name: string;
   jobTitle: string;
-  date: string;
+  publishDate: string;
+  updateDate: string;
 };
 
 interface TestimonialsProps {

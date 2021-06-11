@@ -8,7 +8,7 @@ type SliderData = {
 };
 
 type Project = {
-  id: number;
+  id: string;
   slider: SliderData;
   title: string;
   slug: string;
