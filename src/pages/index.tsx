@@ -102,62 +102,86 @@ export const getServerSideProps: GetServerSideProps = async () => {
     quantity: 2
   });
 
-  const posts: Post[] = postsResponse.map((post) => ({
-    id: post.id,
-    slug: post.slug,
-    title: post.title,
-    lead: post.lead,
-    publishDate: post.publishDate,
-    updateDate: post.updateDate
-  }));
+  const posts: Post[] = postsResponse.map((post) => {
+    const { id, slug, title, lead, dates } = post;
+    const { publishDate, updateDate } = dates;
+
+    return {
+      id,
+      slug,
+      title,
+      lead,
+      publishDate,
+      updateDate
+    };
+  });
 
   const projectsResponse = await getContent({
     type: 'projects',
-    fields: ['title', 'imageurl', 'caption']
+    fields: ['title', 'imageurl', 'caption'],
+    quantity: 1
   });
 
-  const projects: Project[] = projectsResponse.map((project) => ({
-    id: project.id,
-    slug: project.slug,
-    title: project.title,
-    slider: {
-      image_large: project.slider.image_large,
-      image_small: project.slider.image_small,
-      caption: project.slider.caption
-    },
-    publishDate: project.publishDate,
-    updateDate: project.updateDate
-  }));
+  const projects: Project[] = projectsResponse.map((project) => {
+    const { id, slug, title, images, dates } = project;
+    const { slider } = images;
+    const { publishDate, updateDate } = dates;
+    const { caption, image_large, image_small } = slider;
+
+    return {
+      id,
+      slug,
+      title,
+      slider: {
+        image_large,
+        image_small,
+        caption
+      },
+      publishDate,
+      updateDate
+    };
+  });
 
   const clientsResponse = await getContent({
     type: 'clients',
     fields: ['uid', 'name', 'logo_svg', 'link']
   });
 
-  const clients: Client[] = clientsResponse.map((client) => ({
-    id: client.id,
-    slug: client.slug,
-    name: client.name,
-    logoSVG: client.logoSVG,
-    link: client.link,
-    publishDate: client.publishDate,
-    updateDate: client.updateDate
-  }));
+  const clients: Client[] = clientsResponse.map((client) => {
+    const { id, slug, name, logoSVG, links, dates } = client;
+    const { link } = links;
+    const { updateDate, publishDate } = dates;
+
+    return {
+      id,
+      slug,
+      name,
+      logoSVG,
+      link: link ?? null,
+      publishDate,
+      updateDate
+    };
+  });
 
   const testimonialsResponse = await getContent({
     type: 'testimonials',
     fields: ['quote', 'name', 'job_title']
   });
 
-  const testimonials: Testimonial[] = testimonialsResponse.map((testimonial) => ({
-    id: testimonial.id,
-    slug: testimonial.slug,
-    name: testimonial.name,
-    quote: testimonial.quote,
-    jobTitle: testimonial.jobTitle,
-    publishDate: testimonial.publishDate,
-    updateDate: testimonial.updateDate
-  }));
+  const testimonials: Testimonial[] = testimonialsResponse.map((testimonial) => {
+    const { id, slug, name, quote, jobTitle, dates } = testimonial;
+    const { publishDate, updateDate } = dates;
+
+    return {
+      id,
+      slug,
+      name,
+      quote,
+      jobTitle,
+      publishDate,
+      updateDate
+    };
+  });
 
   return {
     props: {
