@@ -55,32 +55,47 @@ export async function getContent({
     });
   }
 
-  const response = await prismic.query(Prismic.predicates.at('document.type', type), {
+  const { results } = await prismic.query(Prismic.predicates.at('document.type', type), {
     fetch: fields,
     pageSize: quantity
   });
 
   // console.log(JSON.stringify(response, null, 2));
 
-  return response.results.map((result) => {
+  return results.map((result) => {
+    const { id, uid, data, first_publication_date, last_publication_date } = result;
+    const {
+      title,
+      lead,
+      image,
+      image_large,
+      image_small,
+      caption,
+      name,
+      logo_svg,
+      link,
+      quote,
+      job_title
+    } = data;
+
     return {
-      id: result.id,
-      slug: result.uid,
-      title: result.data.title ? RichText.asText(result.data.title) : null,
-      lead: result.data.lead ? RichText.asText(result.data.lead) : null,
-      image: result.data.image?.url ? result.data.image.url : null,
+      id,
+      slug: uid,
+      title: title ? RichText.asText(title) : null,
+      lead: lead ? RichText.asText(lead) : null,
+      image: image?.url ? image.url : null,
       slider: {
-        image_large: result.data.image_large?.url ? result.data.image_large.url : null,
-        image_small: result.data.image_small?.url ? result.data.image_small.url : null,
-        caption: result.data.caption ? RichText.asText(result.data.caption) : null
+        image_large: image_large?.url ? image_large.url : null,
+        image_small: image_small?.url ? image_small.url : null,
+        caption: caption ? RichText.asText(caption) : null
       },
-      name: result.data.name ? RichText.asText(result.data.name) : null,
-      logoSVG: result.data.logo_svg ? RichText.asText(result.data.logo_svg) : null,
-      link: result.data.link?.url ? result.data.link.url : null,
-      quote: result.data.quote ? RichText.asText(result.data.quote) : null,
-      jobTitle: result.data.job_title ? RichText.asText(result.data.job_title) : null,
-      publishDate: formatDate(result.first_publication_date),
-      updateDate: formatDate(result.last_publication_date)
+      name: name ? RichText.asText(name) : null,
+      logoSVG: logo_svg ? RichText.asText(logo_svg) : null,
+      link: link?.url ? link.url : null,
+      quote: quote ? RichText.asText(quote) : null,
+      jobTitle: job_title ? RichText.asText(job_title) : null,
+      publishDate: formatDate(first_publication_date),
+      updateDate: formatDate(last_publication_date)
     };
   });
 }
