@@ -6,9 +6,14 @@ import { useTheme } from '../../../hooks/useTheme';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
 
-type Slide = {
+type SliderData = {
+  image_large: string | null;
+  image_small: string | null;
   caption: string;
-  image: string;
+};
+
+type Slide = {
+  slider: SliderData;
   slug: string;
   title: string;
 };
@@ -42,6 +47,7 @@ export function Slider({
   const { hasDarkMode } = useTheme();
 
   useEffect(() => {
+    console.log(slides);
     setSlideList(slides);
     setTestimonialList(testimonials);
   }, [slides, testimonials]);
@@ -74,8 +80,13 @@ export function Slider({
           slideList.map((slide) => (
             <SwiperSlide key={slide.slug}>
               <figure>
-                <img src={slide.image} alt={slide.title} />
-                <figcaption>{slide.caption}</figcaption>
+                <picture>
+                  <source srcSet={slide.slider.image_large} media="(min-width: 1440px)" />
+                  <source srcSet={slide.slider.image_small} media="(min-width: 1024px)" />
+                  <source srcSet={slide.slider.image_large} media="(min-width: 600px)" />
+                  <img src={slide.slider.image_small} alt={slide.title} />
+                </picture>
+                <figcaption>{slide.slider.caption}</figcaption>
               </figure>
             </SwiperSlide>
           ))}

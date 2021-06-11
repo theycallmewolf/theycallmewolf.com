@@ -8,13 +8,19 @@ interface ContentProps {
   quantity?: number;
 }
 
+type SliderData = {
+  image_large: string;
+  image_small: string;
+  caption: string;
+};
+
 interface Content {
   id: string;
   slug: string;
   title: string | null;
   lead: string | null;
   image: string | null;
-  caption: string | null;
+  slider: SliderData | null;
   name: string | null;
   logoSVG: string | null;
   link: string | null;
@@ -54,14 +60,20 @@ export async function getContent({
     pageSize: quantity
   });
 
+  // console.log(JSON.stringify(response, null, 2));
+
   return response.results.map((result) => {
     return {
       id: result.id,
-      slug: result.slugs[0],
+      slug: result.uid,
       title: result.data.title ? RichText.asText(result.data.title) : null,
       lead: result.data.lead ? RichText.asText(result.data.lead) : null,
       image: result.data.image?.url ? result.data.image.url : null,
-      caption: result.data.caption ? RichText.asText(result.data.caption) : null,
+      slider: {
+        image_large: result.data.image_large?.url ? result.data.image_large.url : null,
+        image_small: result.data.image_small?.url ? result.data.image_small.url : null,
+        caption: result.data.caption ? RichText.asText(result.data.caption) : null
+      },
       name: result.data.name ? RichText.asText(result.data.name) : null,
       logoSVG: result.data.logo_svg ? RichText.asText(result.data.logo_svg) : null,
       link: result.data.link?.url ? result.data.link.url : null,

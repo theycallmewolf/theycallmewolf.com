@@ -14,10 +14,15 @@ import { Testimonials } from '../components/sections/Testimonials';
 import { useTheme } from '../hooks/useTheme';
 import { getContent } from '../services/prismic';
 
+type SliderData = {
+  image_small: string;
+  image_large: string;
+  caption: string;
+};
+
 type Project = {
   id: number;
-  image: string;
-  caption: string;
+  slider: SliderData;
   title: string;
   slug: string;
 };
