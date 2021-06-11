@@ -119,10 +119,10 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     return [
       {
         id: 1,
-        title: 'wolf watch',
+        title: 'watch',
         description:
-          '"Excuse me! Do you have the time?!" A simple project to practice my CSS and JS skills, and also learn a bit about webpack...',
-        slug: 'wolf-watch',
+          '"Excuse me! Do you have the time?!" A simple project to practice my CSS and JS skills, and also learn a bit about webpack.',
+        slug: 'watch',
         image:
           'https://images.unsplash.com/photo-1512853378841-2c404110a4f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80',
         publishDate: '2021-02-13T01:38:03Z',
