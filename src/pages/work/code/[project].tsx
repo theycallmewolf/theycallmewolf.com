@@ -159,7 +159,7 @@ export default function Code({ projects, posts }: CodeProps): JSX.Element {
                   <h3>{post.title}</h3>
                   <p>{post.lead}</p>
                 </CardBody>
-                <CardFooter adicionalClass={styles.cardFooter}>
+                <CardFooter customClass={styles.cardFooter}>
                   <CustomLink href={`/${post.slug}`} label="Read" />
                 </CardFooter>
               </DefaultCard>

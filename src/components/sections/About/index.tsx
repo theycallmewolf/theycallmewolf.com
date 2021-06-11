@@ -7,8 +7,8 @@ import styles from './styles.module.scss';
 export function About(): JSX.Element {
   return (
     <section className={styles.section}>
-      <AlternativeCard adicionalClass={styles.card}>
-        <CardBody adicionalClass={styles.cardBody}>
+      <AlternativeCard customClass={styles.card}>
+        <CardBody customClass={styles.cardBody}>
           <h3>
             coder
             <br /> + designer
@@ -22,10 +22,10 @@ export function About(): JSX.Element {
             <Graph title="Illustrator" percentage={90} />
           </div>
         </CardBody>
-        <CardImage adicionalClass={styles.cardImage}>
+        <CardImage customClass={styles.cardImage}>
           <Wolf />
         </CardImage>
-        <CustomLink label="about" href="/about" adicionalClass={styles.button} />
+        <CustomLink label="about" href="/about" customClass={styles.button} />
       </AlternativeCard>
     </section>
   );

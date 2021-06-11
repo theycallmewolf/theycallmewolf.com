@@ -18,7 +18,7 @@ export function Intro({ linkList, title, lead, ...rest }: IntroProps): JSX.Eleme
     <aside className={styles.container} {...rest}>
       <h1>{title}</h1>
       <p className="lead">{lead}</p>
-      <Nav adicionalClassName={styles.nav} linkList={linkList} />
+      <Nav customClass={styles.nav} linkList={linkList} />
     </aside>
   );
 }

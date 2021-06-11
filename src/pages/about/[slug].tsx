@@ -77,7 +77,7 @@ export default function About({ intro, cards }: AboutProps): JSX.Element {
       pageDescription="...">
       {slug === 'skills' &&
         cards.map((card) => (
-          <GraphicCard key={card.id} adicionalClass={styles.card}>
+          <GraphicCard key={card.id} customClass={styles.card}>
             <h2>{card.title}</h2>
             <p>{card.description}</p>
             <div className={styles.graphList}>
@@ -94,7 +94,7 @@ export default function About({ intro, cards }: AboutProps): JSX.Element {
             <CardHeader>
               <ServicesSVG icon={card.icon} />
             </CardHeader>
-            <CardBody adicionalClass={styles.card}>
+            <CardBody customClass={styles.card}>
               <h2>{card.title}</h2>
               <p>{card.description}</p>
             </CardBody>
@@ -103,7 +103,7 @@ export default function About({ intro, cards }: AboutProps): JSX.Element {
 
       {(slug === 'career' || slug === 'education') &&
         cards.map((card) => (
-          <GraphicCard adicionalClass={styles.card} key={card.id}>
+          <GraphicCard customClass={styles.card} key={card.id}>
             <div
               className={styles.svgContainer}
               dangerouslySetInnerHTML={{ __html: card.logoSVG }}

@@ -1,18 +1,20 @@
 import styles from './styles.module.scss';
 
 interface CardContainerProps extends React.HTMLAttributes<HTMLElement> {
-  adicionalClass?: string;
+  customClass?: string;
   imageFilter?: boolean;
 }
 export function CardContainer({
-  adicionalClass = '',
+  customClass,
   imageFilter = false,
   children,
   ...rest
 }: CardContainerProps): JSX.Element {
   return (
     <div
-      className={`${styles.cardContainer} ${adicionalClass} ${imageFilter && styles.imageFilter}`}
+      className={`${styles.cardContainer} ${customClass ?? ''} ${
+        imageFilter && styles.imageFilter
+      }`}
       {...rest}>
       {children}
     </div>

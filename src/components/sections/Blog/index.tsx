@@ -32,13 +32,13 @@ export function Blog({ posts }: BlogProps): JSX.Element {
         </div>
       </div>
       {posts.map((post) => (
-        <DefaultCard key={post.slug} adicionalClass={styles.cardContainer}>
+        <DefaultCard key={post.slug} customClass={styles.cardContainer}>
           <CardBody>
             <span className={styles.date}>{post.updateDate}</span>
             <h3>{post.title}</h3>
             <p>{post.lead}</p>
           </CardBody>
-          <CardFooter adicionalClass={styles.cardFooter}>
+          <CardFooter customClass={styles.cardFooter}>
             <CustomLink href={`/${post.slug}`} label="Read" />
           </CardFooter>
         </DefaultCard>

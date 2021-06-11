@@ -1,12 +1,12 @@
 import styles from './styles.module.scss';
 
 interface CardImageProps extends React.HTMLAttributes<HTMLElement> {
-  adicionalClass?: string;
+  customClass?: string;
 }
 
-export function CardImage({ adicionalClass = '', children, ...rest }: CardImageProps): JSX.Element {
+export function CardImage({ customClass, children, ...rest }: CardImageProps): JSX.Element {
   return (
-    <div className={`${styles.cardImageContainer} ${adicionalClass}`} {...rest}>
+    <div className={`${styles.cardImageContainer} ${customClass ?? ''}`} {...rest}>
       {children}
     </div>
   );

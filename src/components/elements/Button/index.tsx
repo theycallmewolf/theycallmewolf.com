@@ -15,9 +15,9 @@ export function Button({
 }: ButtonProps): JSX.Element {
   return (
     <button
-      className={`${styles.button} ${
-        genre === 'outline' ? styles.outline : styles.fill
-      } ${customClass}`}
+      className={`${styles.button} ${genre === 'outline' ? styles.outline : styles.fill} ${
+        customClass ?? ''
+      }`}
       {...rest}>
       {children}
     </button>

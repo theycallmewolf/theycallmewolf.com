@@ -1,15 +1,11 @@
 import styles from './styles.module.scss';
 
 interface CardHeaderProps extends React.HTMLAttributes<HTMLElement> {
-  adicionalClass?: string;
+  customClass?: string;
 }
-export function CardHeader({
-  adicionalClass = '',
-  children,
-  ...rest
-}: CardHeaderProps): JSX.Element {
+export function CardHeader({ customClass, children, ...rest }: CardHeaderProps): JSX.Element {
   return (
-    <div className={`${styles.cardHeader} ${adicionalClass}`} {...rest}>
+    <div className={`${styles.cardHeader} ${customClass ?? ''}`} {...rest}>
       {children}
       <div className={styles.clip}></div>
     </div>

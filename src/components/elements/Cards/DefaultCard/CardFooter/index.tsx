@@ -1,16 +1,12 @@
 import styles from './styles.module.scss';
 
 interface CardFooterProps extends React.HTMLAttributes<HTMLElement> {
-  adicionalClass?: string;
+  customClass?: string;
 }
 
-export function CardFooter({
-  adicionalClass = '',
-  children,
-  ...rest
-}: CardFooterProps): JSX.Element {
+export function CardFooter({ customClass, children, ...rest }: CardFooterProps): JSX.Element {
   return (
-    <div className={`${styles.cardFooter} ${adicionalClass}`} {...rest}>
+    <div className={`${styles.cardFooter} ${customClass ?? ''}`} {...rest}>
       {children}
     </div>
   );

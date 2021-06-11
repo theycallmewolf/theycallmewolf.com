@@ -11,15 +11,15 @@ type Link = {
 };
 
 interface NavProps extends React.HTMLAttributes<HTMLElement> {
-  adicionalClassName?: string;
+  customClass?: string;
   linkList: Link[];
 }
 
-export function Nav({ adicionalClassName = '', linkList, ...rest }: NavProps): JSX.Element {
+export function Nav({ customClass, linkList, ...rest }: NavProps): JSX.Element {
   const { hasDarkMode } = useTheme();
   return (
     <nav
-      className={`${styles.nav} ${adicionalClassName} ${hasDarkMode ? styles.dark : ''}`}
+      className={`${styles.nav} ${customClass ?? ''} ${hasDarkMode ? styles.dark : ''}`}
       {...rest}>
       {linkList.map((link) => (
         <NavLink link={link.link} label={link.label} key={link.id} />

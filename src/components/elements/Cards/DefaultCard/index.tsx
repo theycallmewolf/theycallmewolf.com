@@ -4,18 +4,18 @@ import { CardFooter } from './CardFooter';
 import { CardHeader } from './CardHeader';
 
 interface DefaultCardProps extends React.HTMLAttributes<HTMLElement> {
-  adicionalClass?: string;
+  customClass?: string;
   imageFilter?: boolean;
 }
 
 function DefaultCard({
-  adicionalClass = '',
+  customClass,
   children,
   imageFilter = false,
   ...rest
 }: DefaultCardProps): JSX.Element {
   return (
-    <CardContainer adicionalClass={adicionalClass} imageFilter={imageFilter} {...rest}>
+    <CardContainer customClass={customClass ?? ''} imageFilter={imageFilter} {...rest}>
       {children}
     </CardContainer>
   );
