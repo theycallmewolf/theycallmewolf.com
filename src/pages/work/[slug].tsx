@@ -7,12 +7,13 @@ import { CardBody, CardHeader, DefaultCard } from '../../components/elements/Car
 import { CustomLink } from '../../components/elements/Link';
 import ListPage from '../../components/layouts/ListPage';
 import { useTheme } from '../../hooks/useTheme';
+import { formatDate } from '../../utils';
 import styles from './styles.module.scss';
 
 type Link = { id: number; link: string; label: string };
 type IntroData = { title: string; lead: string; linkList: Link[] };
 
-type coOwnerData = {
+type TeamData = {
   name: string;
   url: string;
 };
@@ -29,7 +30,7 @@ type CodeProjectsData = {
   repositoryApi: string | null;
   url: string | null;
   specs: string[];
-  coOwners: coOwnerData[] | null;
+  team: TeamData[] | null;
 };
 
 interface WorkProps {
@@ -130,7 +131,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         repositoryApi: 'https://api.github.com/repos/theycallmewolf/wolf-watch',
         url: 'https://watch.theycallmewolf.pt/',
         specs: ['scss', 'javascript', 'webpack', 'html'],
-        coOwners: null
+        team: null
       },
       {
         id: 2,
@@ -146,7 +147,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         repositoryApi: null,
         url: 'https://www.fitnesshut.pt/hut-home/',
         specs: ['html', 'css', 'javascript', 'php'],
-        coOwners: [
+        team: [
           {
             name: 'Nuno Bengalito',
             url: 'https://github.com/nbengalito'
@@ -167,7 +168,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         repositoryApi: 'https://api.github.com/repos/theycallmewolf/onlive',
         url: null,
         specs: ['reactjs', 'php', 'javascript', 'html5', 'cssmodules-react'],
-        coOwners: null
+        team: null
       },
       {
         id: 4,
@@ -193,7 +194,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
           'qrcode.react',
           'uuid'
         ],
-        coOwners: null
+        team: null
       },
       {
         id: 5,
@@ -207,7 +208,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         specs: ['javascript', 'html', 'css'],
         publishDate: '2020-07-23T18:16:12Z',
         updateDate: '2021-02-13T18:54:25Z',
-        coOwners: null
+        team: null
       },
       {
         id: 6,
@@ -220,7 +221,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         url: 'https://gobarber.theycallmewolf.pt/',
         repository: 'https://github.com/theycallmewolf/gostack-gobarber-web',
         repositoryApi: 'https://api.github.com/repos/theycallmewolf/gostack-gobarber-web',
-        coOwners: null,
+        team: null,
         slug: 'go-barber',
         specs: ['react', 'javascript', 'nodejs', 'react native']
       }
@@ -229,19 +230,19 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
   const projects = getCodeProjects();
   cards = '';
-  cards = projects.map((project) => ({
-    id: project.id,
-    title: project.title,
-    description: project.description,
-    image: project.image,
-    slug: project.slug,
-    specs: project.specs,
-    publishDate: new Date(project.publishDate).toLocaleDateString('pt-PT', {
-      day: '2-digit',
-      month: 'long',
-      year: 'numeric'
-    })
-  }));
+  cards = projects.map((project) => {
+    const { id, title, description, image, slug, specs, publishDate } = project;
+
+    return {
+      id,
+      title,
+      description,
+      image,
+      slug,
+      specs,
+      publishDate: formatDate(publishDate)
+    };
+  });
 
   return {
     props: {
