@@ -13,6 +13,7 @@ interface ContentProps {
 interface ContentData {
   id: string;
   slug: string;
+  type: string;
   title: string | null;
   lead: string | null;
   description: string | null;
@@ -56,15 +57,14 @@ export async function getContent({
 }: ContentProps): Promise<ContentData[]> {
   const prismic = getPrismicClient();
 
-  // const response = await prismic.query(Prismic.predicates.at('document.type', type), {
-  const { results } = await prismic.query(Prismic.predicates.at('document.type', type), {
+  const response = await prismic.query(Prismic.predicates.at('document.type', type), {
     fetch: fields,
     pageSize: quantity
   });
 
   // console.log(JSON.stringify(response, null, 2));
 
-  return results.map((result) => {
+  return response.results.map((result) => {
     const { id, uid, data, first_publication_date, last_publication_date } = result;
     const {
       title,
@@ -81,12 +81,14 @@ export async function getContent({
       repository_api,
       project_date,
       quote,
-      job_title
+      job_title,
+      type
     } = data;
 
     return {
       id,
       slug: uid,
+      type: type ? type : null,
       title: title ? RichText.asText(title) : null,
       lead: lead ? RichText.asText(lead) : null,
       description: description ? RichText.asText(description) : null,
