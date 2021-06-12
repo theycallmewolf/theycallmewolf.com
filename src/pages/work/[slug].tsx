@@ -3,15 +3,21 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
 import { TangramCard } from '../../assets/tangrams/';
-import { CardBody, CardHeader, DefaultCard } from '../../components/elements/Cards/DefaultCard';
+import {
+  CardBody,
+  CardFooter,
+  CardHeader,
+  DefaultCard
+} from '../../components/elements/Cards/DefaultCard';
 import { CustomLink } from '../../components/elements/Link';
 import ListPage from '../../components/layouts/ListPage';
 import { useTheme } from '../../hooks/useTheme';
 import { getContent } from '../../services/prismic';
 import styles from './styles.module.scss';
 
-type Link = { id: number; link: string; label: string };
-type IntroData = { title: string; lead: string; linkList: Link[] };
+type LinkData = { id: number; link: string; label: string };
+type SpecsData = { id: string; slug: string };
+type IntroData = { title: string; lead: string; linkList: LinkData[] };
 
 type ProjectData = {
   id: string;
@@ -22,22 +28,8 @@ type ProjectData = {
   image_large: string;
   image_small: string;
   projectDate: string;
+  specs: SpecsData[];
 };
-
-// type CodeProjectsData = {
-//   id: number;
-//   title: string;
-//   description: string;
-//   image: string | null;
-//   slug: string;
-//   updateDate: string;
-//   publishDate: string;
-//   repository: string | null;
-//   repositoryApi: string | null;
-//   url: string | null;
-//   specs: string[];
-//   team: TeamData[] | null;
-// };
 
 interface WorkProps {
   intro: IntroData;
@@ -76,17 +68,19 @@ export default function Work({ intro, cards }: WorkProps): JSX.Element {
             <span className={styles.date}>{project.projectDate}</span>
             <h2>{project.title}</h2>
             <p>{project.description}</p>
-            {/* <ul>
-              {project.specs.map((spec) => {
-                <li>{spec}</li>;
-              })}
-            </ul> */}
+            <ul className={styles.specs}>
+              {project.specs.map(({ slug, id }) => (
+                <li key={id}>{slug}</li>
+              ))}
+            </ul>
+          </CardBody>
+          <CardFooter>
             <CustomLink
               label="more"
               href={`/work/code/${project.slug}`}
               customClass={styles.button}
             />
-          </CardBody>
+          </CardFooter>
         </DefaultCard>
       ))}
     </ListPage>
@@ -131,7 +125,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     });
 
     return projectsResponse.map((project) => {
-      const { slug, title, description, images, dates, type, id } = project;
+      const { slug, title, description, images, dates, type, id, specs } = project;
       const { slider } = images;
       const { image_large, image_small } = slider;
       const { projectDate } = dates;
@@ -143,7 +137,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         description,
         image_large,
         image_small,
-        projectDate
+        projectDate,
+        specs
       };
     });
   }
