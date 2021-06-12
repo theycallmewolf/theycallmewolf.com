@@ -224,26 +224,29 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       body1
     } = data;
 
-    const specs =
-      body[0]?.items.map(({ tech }) => ({
-        id: tech.id,
-        uid: tech.uid
-      })) || [];
+    const specs = body
+      ? body[0]?.items.map(({ tech }) => ({
+          id: tech.id,
+          uid: tech.uid
+        }))
+      : null;
 
-    const team =
-      body[1]?.items.map(({ team_member }) => ({
-        id: team_member.id,
-        uid: team_member.uid
-      })) || [];
+    const team = body
+      ? body[1]?.items.map(({ team_member }) => ({
+          id: team_member.id,
+          uid: team_member.uid
+        }))
+      : null;
 
-    const projectImages =
-      body1[0]?.items.map(({ screen_small, screen_large }, i: number) => {
-        return {
-          image_small: screen_small.url,
-          image_large: screen_large.url,
-          slug: String(i)
-        };
-      }) || [];
+    const projectImages = body1
+      ? body1[0]?.items.map(({ screen_small, screen_large }, i: number) => {
+          return {
+            image_small: screen_small.url,
+            image_large: screen_large.url,
+            slug: String(i)
+          };
+        })
+      : null;
 
     return {
       id,
@@ -252,10 +255,10 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       publishDate: project_date,
       description: RichText.asText(description),
       link: link.url,
-      repository: repository.url,
-      repository_api: repository_api.url,
+      repository: repository.url ? repository.url : null,
+      repository_api: repository_api.url ? repository_api.url : null,
       specs,
-      team,
+      team: team ? team : null,
       images: {
         cover_small: cover_small.url,
         cover_large: cover_large.url,
