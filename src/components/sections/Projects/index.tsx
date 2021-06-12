@@ -22,7 +22,7 @@ export function Projects({ projects }: ProjectsProps): JSX.Element {
   return (
     <section className={styles.section}>
       <h2>Projects</h2>
-      <Slider slides={projects} contentType="image" />
+      <Slider slides={projects} contentType="image" hasLink hasIcon />
     </section>
   );
 }
