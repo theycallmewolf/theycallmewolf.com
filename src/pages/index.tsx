@@ -20,7 +20,7 @@ type SliderData = {
   caption: string;
 };
 
-type Project = {
+type ProjectData = {
   id: string;
   slider: SliderData;
   title: string;
@@ -28,14 +28,14 @@ type Project = {
   type: string;
 };
 
-type Client = {
+type ClientData = {
   id: string;
   name: string;
   link: string;
   logoSVG: string;
 };
 
-type Post = {
+type PostData = {
   id: string;
   title: string;
   lead: string;
@@ -43,7 +43,7 @@ type Post = {
   updateDate: string;
 };
 
-type Testimonial = {
+type TestimonialData = {
   id: string;
   quote: string;
   name: string;
@@ -53,10 +53,10 @@ type Testimonial = {
 };
 
 interface HomeProps {
-  projects: Project[];
-  clients: Client[];
-  posts: Post[];
-  testimonials: Testimonial[];
+  projects: ProjectData[];
+  clients: ClientData[];
+  posts: PostData[];
+  testimonials: TestimonialData[];
 }
 
 export default function Home({ projects, clients, posts, testimonials }: HomeProps): JSX.Element {
@@ -103,7 +103,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     quantity: 2
   });
 
-  const posts: Post[] = postsResponse.map((post) => {
+  const posts: PostData[] = postsResponse.map((post) => {
     const { id, slug, title, lead, dates } = post;
     const { publishDate, updateDate } = dates;
 
@@ -122,7 +122,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     fields: ['title', 'imageurl', 'caption']
   });
 
-  const projects: Project[] = projectsResponse.map((project) => {
+  const projects: ProjectData[] = projectsResponse.map((project) => {
     const { id, slug, title, images, dates, type } = project;
     const { slider } = images;
     const { publishDate, updateDate } = dates;
@@ -148,7 +148,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     fields: ['uid', 'name', 'logo_svg', 'link']
   });
 
-  const clients: Client[] = clientsResponse.map((client) => {
+  const clients: ClientData[] = clientsResponse.map((client) => {
     const { id, slug, name, logoSVG, links, dates } = client;
     const { link } = links;
     const { updateDate, publishDate } = dates;
@@ -169,7 +169,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     fields: ['quote', 'name', 'job_title']
   });
 
-  const testimonials: Testimonial[] = testimonialsResponse.map((testimonial) => {
+  const testimonials: TestimonialData[] = testimonialsResponse.map((testimonial) => {
     const { id, slug, name, quote, jobTitle, dates } = testimonial;
     const { publishDate, updateDate } = dates;
 
