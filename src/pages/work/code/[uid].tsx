@@ -19,7 +19,6 @@ import { getContent, getPrismicClient } from '../../../services/prismic';
 import styles from './styles.module.scss';
 
 type SpecData = { id: string; uid: string };
-type TeamData = { id: string; uid: string };
 type ProjectImagesData = { image_small: string; image_large: string; slug: string };
 
 type ProjectData = {
@@ -32,7 +31,6 @@ type ProjectData = {
   repository: string;
   repository_api: string;
   specs: SpecData[];
-  team: TeamData[];
   images: {
     cover_small: string;
     cover_large: string;
@@ -225,28 +223,16 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     } = data;
 
     const specs = body
-      ? body[0]?.items.map(({ tech }) => ({
-          id: tech.id,
-          uid: tech.uid
-        }))
-      : null;
-
-    const team = body
-      ? body[1]?.items.map(({ team_member }) => ({
-          id: team_member.id,
-          uid: team_member.uid
-        }))
-      : null;
+      .filter(({ slice_type }) => slice_type === 'technologies')[0]
+      .items.map(({ tech }) => tech);
 
     const projectImages = body1
-      ? body1[0]?.items.map(({ screen_small, screen_large }, i: number) => {
-          return {
-            image_small: screen_small.url,
-            image_large: screen_large.url,
-            slug: String(i)
-          };
-        })
-      : null;
+      .filter(({ slice_type }) => slice_type === 'slider')[0]
+      .items.map(({ screen_small, screen_large }, i: number) => ({
+        image_small: screen_small.url,
+        image_large: screen_large.url,
+        slug: String(i)
+      }));
 
     return {
       id,
@@ -254,11 +240,10 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       caption: RichText.asText(caption),
       publishDate: project_date,
       description: RichText.asText(description),
-      link: link.url ? link.url : null,
+      link: link?.url ? link.url : null,
       repository: repository.url ? repository.url : null,
       repository_api: repository_api.url ? repository_api.url : null,
       specs,
-      team: team ? team : null,
       images: {
         cover_small: cover_small.url,
         cover_large: cover_large.url,
