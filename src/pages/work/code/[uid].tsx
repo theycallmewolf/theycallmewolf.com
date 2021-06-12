@@ -254,7 +254,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       caption: RichText.asText(caption),
       publishDate: project_date,
       description: RichText.asText(description),
-      link: link.url,
+      link: link.url ? link.url : null,
       repository: repository.url ? repository.url : null,
       repository_api: repository_api.url ? repository_api.url : null,
       specs,
