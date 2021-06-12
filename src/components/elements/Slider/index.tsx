@@ -93,9 +93,7 @@ export function Slider({
                 </picture>
                 {slide.slider.caption && <figcaption>{slide.slider.caption}</figcaption>}
               </figure>
-              {hasLink && (
-                <CustomLink href={`work/${slide.type}/${slide.slug}`} hasIcon={hasIcon} />
-              )}
+              {hasLink && <CustomLink href={`work/project/${slide.slug}`} hasIcon={hasIcon} />}
             </SwiperSlide>
           ))}
 

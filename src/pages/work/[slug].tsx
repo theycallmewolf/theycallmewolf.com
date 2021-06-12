@@ -75,7 +75,7 @@ export default function Work({ intro, cards }: WorkProps): JSX.Element {
           <CardFooter>
             <CustomLink
               label="more"
-              href={`/work/code/${project.slug}`}
+              href={`/work/project/${project.slug}`}
               customClass={styles.button}
             />
           </CardFooter>
