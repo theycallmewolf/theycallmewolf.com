@@ -25,6 +25,8 @@ interface ContentData {
       caption: string | null;
     };
   };
+  teamMembers: string[];
+  specs: string[];
   name: string | null;
   logoSVG: string | null;
   links: {
@@ -82,8 +84,12 @@ export async function getContent({
       project_date,
       quote,
       job_title,
-      type
+      type,
+      body
     } = data;
+
+    const specs = body[0].items.map((item) => item.tech.slug);
+    const teamMembers = body[1]?.items.map((item) => item.team_member.slug);
 
     return {
       id,
@@ -100,6 +106,8 @@ export async function getContent({
           caption: caption ? RichText.asText(caption) : null
         }
       },
+      specs: specs ? specs : null,
+      teamMembers: teamMembers ? teamMembers : null,
       name: name ? RichText.asText(name) : null,
       logoSVG: logo_svg ? RichText.asText(logo_svg) : null,
       links: {
