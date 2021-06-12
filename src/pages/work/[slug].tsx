@@ -13,13 +13,10 @@ import styles from './styles.module.scss';
 type Link = { id: number; link: string; label: string };
 type IntroData = { title: string; lead: string; linkList: Link[] };
 
-type TeamData = {
-  name: string;
-  url: string;
-};
-
-type CodeProjectsData = {
-  id: number;
+type ProjectData = {
+  id: string;
+  type: 'code' | 'illustration' | 'design' | 'other';
+  slug: string;
   title: string;
   description: string;
   image: string | null;

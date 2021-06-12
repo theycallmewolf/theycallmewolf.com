@@ -13,7 +13,7 @@ interface ContentProps {
 interface ContentData {
   id: string;
   slug: string;
-  type: string;
+  type: 'code' | 'illustration' | 'design' | 'other';
   title: string | null;
   lead: string | null;
   description: string | null;
