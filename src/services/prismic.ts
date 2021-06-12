@@ -10,6 +10,10 @@ interface ContentProps {
   quantity?: number;
 }
 
+type SpecsData = { id: string; slug: string };
+type TeamMembersData = { id: string; slug: string };
+type ProjectImagesData = { id: string; image_small: string; image_large: string };
+
 interface ContentData {
   id: string;
   slug: string;
@@ -24,9 +28,10 @@ interface ContentData {
       image_small: string | null;
       caption: string | null;
     };
+    projectImages: ProjectImagesData[];
   };
-  teamMembers: string[];
-  specs: string[];
+  teamMembers: TeamMembersData[];
+  specs: SpecsData[];
   name: string | null;
   logoSVG: string | null;
   links: {
@@ -85,11 +90,32 @@ export async function getContent({
       quote,
       job_title,
       type,
-      body
+      body,
+      body1,
+      cover_small,
+      cover_large
     } = data;
 
-    const specs = body[0].items.map((item) => item.tech.slug);
-    const teamMembers = body[1]?.items.map((item) => item.team_member.slug);
+    const specs =
+      body[0].items.map(({ tech }, i: number) => ({
+        id: String(i),
+        slug: tech.slug
+      })) || null;
+
+    const teamMembers =
+      body[1]?.items.map(({ team_member }, i: number) => ({
+        id: String(i),
+        slug: team_member.slug
+      })) || null;
+
+    const projectImages =
+      body1[0]?.items.map(({ screen_small, screen_large }, i: number) => {
+        return {
+          image_small: screen_small.url,
+          image_large: screen_large.url,
+          slug: String(i)
+        };
+      }) || null;
 
     return {
       id,
@@ -100,11 +126,14 @@ export async function getContent({
       description: description ? RichText.asText(description) : null,
       images: {
         image: image ? image.url : null,
+        cover_small: cover_small ? cover_small.url : null,
+        cover_large: cover_large ? cover_large.url : null,
         slider: {
           image_large: image_large ? image_large.url : null,
           image_small: image_small ? image_small.url : null,
           caption: caption ? RichText.asText(caption) : null
-        }
+        },
+        projectImages: projectImages ? projectImages : null
       },
       specs: specs ? specs : null,
       teamMembers: teamMembers ? teamMembers : null,
