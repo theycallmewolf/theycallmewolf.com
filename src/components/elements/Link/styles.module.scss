@@ -22,4 +22,26 @@
     right: 40px;
     font-size: 10px;
    }
+
+   svg {
+     stroke: var(--c-polar-white);
+     width: 22px;
+     height: 22px;
+     transition: transform 200ms ease-in-out;
+   }
+
+   &.icon { 
+     padding: 8px;
+
+     display: flex;
+     align-items: center;
+     justify-content: center;
+
+     &:hover,
+     &:focus { 
+       transform: rotate(-7deg) scale(1.5);
+
+       svg { transform: scale(1.5) }
+      }
+    }
 }
