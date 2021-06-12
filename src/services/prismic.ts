@@ -96,26 +96,29 @@ export async function getContent({
       cover_large
     } = data;
 
-    const specs =
-      body[0].items.map(({ tech }, i: number) => ({
-        id: String(i),
-        slug: tech.slug
-      })) || null;
+    const specs = body
+      ? body[0].items.map(({ tech }, i: number) => ({
+          id: String(i),
+          slug: tech.slug
+        }))
+      : null;
 
-    const teamMembers =
-      body[1]?.items.map(({ team_member }, i: number) => ({
-        id: String(i),
-        slug: team_member.slug
-      })) || null;
+    const teamMembers = body
+      ? body[1]?.items.map(({ team_member }, i: number) => ({
+          id: String(i),
+          slug: team_member.slug
+        }))
+      : null;
 
-    const projectImages =
-      body1[0]?.items.map(({ screen_small, screen_large }, i: number) => {
-        return {
-          image_small: screen_small.url,
-          image_large: screen_large.url,
-          slug: String(i)
-        };
-      }) || null;
+    const projectImages = body1
+      ? body1[0]?.items.map(({ screen_small, screen_large }, i: number) => {
+          return {
+            image_small: screen_small.url,
+            image_large: screen_large.url,
+            slug: String(i)
+          };
+        })
+      : null;
 
     return {
       id,
