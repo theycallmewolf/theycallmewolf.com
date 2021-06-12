@@ -118,8 +118,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
   const projectsResponse = await getContent({
     type: 'projects',
-    fields: ['title', 'imageurl', 'caption'],
-    quantity: 1
+    fields: ['title', 'imageurl', 'caption']
   });
 
   const projects: Project[] = projectsResponse.map((project) => {
