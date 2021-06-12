@@ -11,7 +11,6 @@ interface ContentProps {
 }
 
 type SpecsData = { id: string; slug: string };
-type TeamMembersData = { id: string; slug: string };
 type ProjectImagesData = { id: string; image_small: string; image_large: string };
 
 interface ContentData {
@@ -30,7 +29,6 @@ interface ContentData {
     };
     projectImages: ProjectImagesData[];
   };
-  teamMembers: TeamMembersData[];
   specs: SpecsData[];
   name: string | null;
   logoSVG: string | null;
@@ -96,29 +94,23 @@ export async function getContent({
       cover_large
     } = data;
 
-    const specs = body
-      ? body[0].items.map(({ tech }, i: number) => ({
-          id: String(i),
-          slug: tech.slug
-        }))
-      : null;
+    const specs =
+      type === 'code'
+        ? body
+            .filter(({ slice_type }) => slice_type === 'technologies')[0]
+            .items.map(({ tech }) => tech)
+        : null;
 
-    const teamMembers = body
-      ? body[1]?.items.map(({ team_member }, i: number) => ({
-          id: String(i),
-          slug: team_member.slug
-        }))
-      : null;
-
-    const projectImages = body1
-      ? body1[0]?.items.map(({ screen_small, screen_large }, i: number) => {
-          return {
-            image_small: screen_small.url,
-            image_large: screen_large.url,
-            slug: String(i)
-          };
-        })
-      : null;
+    const projectImages =
+      type === 'code'
+        ? body1
+            .filter(({ slice_type }) => slice_type === 'slider')[0]
+            .items.map(({ screen_small, screen_large }, i: number) => ({
+              image_small: screen_small.url,
+              image_large: screen_large.url,
+              slug: String(i)
+            }))
+        : null;
 
     return {
       id,
@@ -128,7 +120,7 @@ export async function getContent({
       lead: lead ? RichText.asText(lead) : null,
       description: description ? RichText.asText(description) : null,
       images: {
-        image: image ? image.url : null,
+        image: image?.url ? image.url : null,
         cover_small: cover_small ? cover_small.url : null,
         cover_large: cover_large ? cover_large.url : null,
         slider: {
@@ -139,13 +131,12 @@ export async function getContent({
         projectImages: projectImages ? projectImages : null
       },
       specs: specs ? specs : null,
-      teamMembers: teamMembers ? teamMembers : null,
       name: name ? RichText.asText(name) : null,
       logoSVG: logo_svg ? RichText.asText(logo_svg) : null,
       links: {
-        link: link ? link.url : null,
-        repository: repository ? repository.url : null,
-        repository_api: repository_api ? repository_api.url : null
+        link: link?.url ? link.url : null,
+        repository: repository?.url ? repository.url : null,
+        repository_api: repository_api?.url ? repository_api.url : null
       },
       quote: quote ? RichText.asText(quote) : null,
       jobTitle: job_title ? RichText.asText(job_title) : null,
