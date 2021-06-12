@@ -16,7 +16,7 @@ import { getContent } from '../../services/prismic';
 import styles from './styles.module.scss';
 
 type LinkData = { id: number; link: string; label: string };
-type SpecsData = { id: string; slug: string };
+type SpecsData = { id: string; spec: string };
 type IntroData = { title: string; lead: string; linkList: LinkData[] };
 
 type ProjectData = {
@@ -69,7 +69,7 @@ export default function Work({ intro, cards }: WorkProps): JSX.Element {
             <h2>{project.title}</h2>
             <p>{project.description}</p>
             <ul className={styles.specs}>
-              {project.specs && project.specs.map(({ slug, id }) => <li key={id}>{slug}</li>)}
+              {project.specs && project.specs.map(({ spec, id }) => <li key={id}>{spec}</li>)}
             </ul>
           </CardBody>
           <CardFooter>

@@ -10,7 +10,7 @@ interface ContentProps {
   quantity?: number;
 }
 
-type SpecsData = { id: string; slug: string };
+type SpecsData = { id: string; spec: string };
 type ProjectImagesData = { id: string; image_small: string; image_large: string };
 
 interface ContentData {
@@ -98,7 +98,10 @@ export async function getContent({
       type === 'code'
         ? body
             .filter(({ slice_type }) => slice_type === 'technologies')[0]
-            .items.map(({ tech }) => tech)
+            .items.map(({ tech }, i: number) => ({
+              spec: tech,
+              id: i
+            }))
         : null;
 
     const projectImages =
