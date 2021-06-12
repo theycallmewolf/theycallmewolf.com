@@ -69,9 +69,7 @@ export default function Work({ intro, cards }: WorkProps): JSX.Element {
             <h2>{project.title}</h2>
             <p>{project.description}</p>
             <ul className={styles.specs}>
-              {project.specs.map(({ slug, id }) => (
-                <li key={id}>{slug}</li>
-              ))}
+              {project.specs && project.specs.map(({ slug, id }) => <li key={id}>{slug}</li>)}
             </ul>
           </CardBody>
           <CardFooter>
@@ -174,25 +172,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   // function getCodeProjects(): CodeProjectsData[] {
   //   return [
   //     {
-  //       id: 3,
-  //       title: 'Onlive',
-  //       description:
-  //         'onlive, a website for booking and assist online live music concerts ( final project for react.js course module at etic_ )',
-  //       slug: 'onlive',
-  //       image:
-  //         'https://images.unsplash.com/photo-1496888057897-8a25eef593f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1950&q=80',
-  //       publishDate: '2020-06-13T11:34:34Z',
-  //       updateDate: '2020-10-23T10:28:34Z',
-  //       repository: 'https://github.com/theycallmewolf/onlive',
-  //       repositoryApi: 'https://api.github.com/repos/theycallmewolf/onlive',
-  //       url: null,
-  //       specs: ['reactjs', 'php', 'javascript', 'html5', 'cssmodules-react'],
-  //       team: null
-  //     },
-  //     {
   //       id: 4,
   //       title: 'Hut reception',
-  //       description: 'web app for Fitness Hut club reception area tablest',
+  //       description: 'web app for Fitness Hut club interactive reception area',
   //       slug: 'hut-reception',
   //       image:
   //         'https://images.unsplash.com/photo-1540908300676-b00e9a003736?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1001&q=80',
