@@ -3,6 +3,7 @@ import SwiperCore, { A11y, EffectFade, Navigation, Pagination, Scrollbar } from 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { useTheme } from '../../../hooks/useTheme';
+import { CustomLink } from '../Link';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
 
@@ -32,12 +33,16 @@ interface SliderProps extends React.HTMLAttributes<HTMLElement> {
   testimonials?: Testimonial[];
   contentType: 'image' | 'testimonial';
   additionalClass?: string;
+  hasLink?: boolean;
+  hasIcon?: boolean;
 }
 
 export function Slider({
   slides,
   testimonials,
   contentType,
+  hasLink,
+  hasIcon,
   additionalClass = '',
   ...rest
 }: SliderProps): JSX.Element {
@@ -88,6 +93,7 @@ export function Slider({
                 </picture>
                 {slide.slider.caption && <figcaption>{slide.slider.caption}</figcaption>}
               </figure>
+              {hasLink && <CustomLink href="/" hasIcon={hasIcon} />}
             </SwiperSlide>
           ))}
 
