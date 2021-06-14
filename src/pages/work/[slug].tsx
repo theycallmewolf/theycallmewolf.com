@@ -72,7 +72,7 @@ export default function Work({ intro, cards }: WorkProps): JSX.Element {
             <h2>{project.title}</h2>
             <p>{project.description}</p>
             <ul className={styles.specs}>
-              {!!project.specs ?? project.specs.map(({ spec, id }) => <li key={id}>{spec}</li>)}
+              {!!project.specs && project.specs.map(({ spec, id }) => <li key={id}>{spec}</li>)}
             </ul>
           </CardBody>
           <CardFooter>
