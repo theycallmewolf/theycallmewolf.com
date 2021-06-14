@@ -91,7 +91,9 @@ export function Slider({
                   <source srcSet={slide.slider.image_large} media="(min-width: 600px)" />
                   <img src={slide.slider.image_small} alt={slide.title} />
                 </picture>
-                {slide.slider.caption && <figcaption>{slide.slider.caption}</figcaption>}
+                {slide.slider.caption && (
+                  <figcaption>{`(${slide.project_date}) ${slide.slider.caption}`}</figcaption>
+                )}
               </figure>
               {hasLink && <CustomLink href={`work/project/${slide.slug}`} hasIcon={hasIcon} />}
             </SwiperSlide>
