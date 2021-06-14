@@ -122,7 +122,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
   async function getProjectData(): Promise<ProjectData[]> {
     const response = await prismic.query(Prismic.predicates.at('document.type', 'projects'), {
-      orderings: '[document.last_publication_date]',
+      orderings: '[my.projects.project_date desc]',
       fetch: [
         'projects.title',
         'projects.description',
