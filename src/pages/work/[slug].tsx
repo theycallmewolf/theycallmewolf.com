@@ -1,5 +1,7 @@
+import Prismic from '@prismicio/client';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
+import { RichText } from 'prismic-dom';
 import { useEffect } from 'react';
 
 import { TangramCard } from '../../assets/tangrams/';
@@ -12,7 +14,8 @@ import {
 import { CustomLink } from '../../components/elements/Link';
 import ListPage from '../../components/layouts/ListPage';
 import { useTheme } from '../../hooks/useTheme';
-import { getContent } from '../../services/prismic';
+import { getPrismicClient } from '../../services/prismic';
+import { formatDate } from '../../utils';
 import styles from './styles.module.scss';
 
 type LinkData = { id: number; link: string; label: string };
@@ -86,6 +89,7 @@ export default function Work({ intro, cards }: WorkProps): JSX.Element {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const prismic = getPrismicClient();
   const { slug } = params;
   let cards: unknown;
 
@@ -117,31 +121,45 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   };
 
   async function getProjectData(): Promise<ProjectData[]> {
-    const projectsResponse = await getContent({
-      type: 'projects',
-      fields: ['title', 'imageurl', 'caption']
+    const response = await prismic.query(Prismic.predicates.at('document.type', 'projects'), {
+      orderings: '[document.last_publication_date]',
+      fetch: [
+        'projects.title',
+        'projects.description',
+        'projects.type',
+        'projects.project_date',
+        'projects.body',
+        'projects.image_small',
+        'projects.image_large'
+      ],
+      lang: 'en-us'
     });
 
-    return projectsResponse.map((project) => {
-      const { slug, title, description, images, dates, type, id, specs } = project;
-      const { slider } = images;
-      const { image_large, image_small } = slider;
-      const { projectDate } = dates;
+    return response.results.map(({ id, uid, data }) => {
+      const { title, type, project_date, body, image_large, image_small, description } = data;
+      const specs = body
+        .filter(({ slice_type }) => slice_type === 'technologies')
+        .shift()
+        .items.map(({ tech }, i: number) => ({
+          spec: tech,
+          id: i
+        }));
+
       return {
         id,
+        slug: uid,
         type,
-        slug,
-        title,
-        description,
-        image_large,
-        image_small,
-        projectDate,
+        title: RichText.asText(title),
+        description: RichText.asText(description),
+        image_large: image_large.url,
+        image_small: image_small.url,
+        projectDate: formatDate(project_date),
         specs
       };
     });
   }
 
-  const projects: ProjectData[] = await getProjectData();
+  const projects = await getProjectData();
 
   const codeProjects = projects.filter((project) => project.type === 'code');
   const designProjects = projects.filter((project) => project.type === 'design');

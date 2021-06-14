@@ -1,5 +1,7 @@
+import Prismic from '@prismicio/client';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import { RichText } from 'prismic-dom';
 import { useEffect } from 'react';
 
 import { Button } from '../components/elements/Button';
@@ -12,7 +14,8 @@ import { Clients } from '../components/sections/Clients';
 import { Projects } from '../components/sections/Projects';
 import { Testimonials } from '../components/sections/Testimonials';
 import { useTheme } from '../hooks/useTheme';
-import { getContent } from '../services/prismic';
+import { getPrismicClient } from '../services/prismic';
+import { formatDate } from '../utils/format-date';
 
 type SliderData = {
   image_small: string;
@@ -27,13 +30,14 @@ type ProjectData = {
   slug: string;
   type: string;
   highlight: boolean;
+  project_date: number;
 };
 
 type ClientData = {
   id: string;
   name: string;
+  logo_svg: string;
   link: string;
-  logoSVG: string;
 };
 
 type PostData = {
@@ -41,6 +45,7 @@ type PostData = {
   title: string;
   lead: string;
   slug: string;
+  publishDate: string;
   updateDate: string;
 };
 
@@ -98,95 +103,109 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const postsResponse = await getContent({
-    type: 'posts',
-    fields: ['title', 'lead', 'content'],
-    quantity: 2
-  });
+  const prismic = getPrismicClient();
 
-  const posts: PostData[] = postsResponse.map((post) => {
-    const { id, slug, title, lead, dates } = post;
-    const { publishDate, updateDate } = dates;
+  async function getPosts(): Promise<PostData[]> {
+    const response = await prismic.query(Prismic.predicates.at('document.type', 'posts'), {
+      orderings: '[document.last_publication_date]',
+      fetch: ['posts.title', 'posts.lead', 'posts.content'],
+      pageSize: 2,
+      lang: 'en-us'
+    });
 
-    return {
-      id,
-      slug,
-      title,
-      lead,
-      publishDate,
-      updateDate
-    };
-  });
+    return response.results.map(
+      ({ id, uid, data, first_publication_date, last_publication_date }) => {
+        const { title, lead } = data;
+        return {
+          id,
+          slug: uid,
+          title: RichText.asText(title),
+          lead: RichText.asText(lead),
+          publishDate: formatDate(first_publication_date),
+          updateDate: formatDate(last_publication_date)
+        };
+      }
+    );
+  }
 
-  const projectsResponse = await getContent({
-    type: 'projects',
-    fields: ['title', 'imageurl', 'caption']
-  });
+  async function getProjects(): Promise<ProjectData[]> {
+    const response = await prismic.query(Prismic.predicates.at('document.type', 'projects'), {
+      orderings: '[document.last_publication_date]',
+      fetch: [
+        'projects.title',
+        'projects.image_large',
+        'projects.image_small',
+        'projects.caption',
+        'projects.type',
+        'projects.highlight',
+        'projects.project_date'
+      ],
+      pageSize: 8,
+      lang: 'en-us'
+    });
 
-  let projects: ProjectData[] = projectsResponse.map((project) => {
-    const { id, slug, title, images, dates, type, highlight } = project;
-    const { slider } = images;
-    const { publishDate, updateDate } = dates;
-    const { caption, image_large, image_small } = slider;
+    return response.results
+      .map(({ id, uid, data }) => {
+        const { type, project_date, title, image_small, image_large, caption, highlight } = data;
+        return {
+          id,
+          slug: uid,
+          type,
+          title: RichText.asText(title),
+          slider: {
+            image_large: image_large.url,
+            image_small: image_small.url,
+            caption: RichText.asText(caption)
+          },
+          highlight,
+          project_date: new Date(project_date).getFullYear()
+        };
+      })
+      .filter((project) => project.highlight);
+  }
 
-    return {
-      id,
-      slug,
-      type,
-      title,
-      slider: {
-        image_large,
-        image_small,
-        caption
-      },
-      highlight,
-      publishDate,
-      updateDate
-    };
-  });
+  async function getClients(): Promise<ClientData[]> {
+    const response = await prismic.query(Prismic.predicates.at('document.type', 'clients'), {
+      orderings: '[clients.name]',
+      fetch: ['clients.uid', 'clients.name', 'clients.logo_svg', 'clients.link'],
+      pageSize: 4
+    });
 
-  projects = projects.filter((project) => project.highlight);
+    return response.results.map(({ id, data }) => {
+      const { name, logo_svg, link } = data;
 
-  const clientsResponse = await getContent({
-    type: 'clients',
-    fields: ['uid', 'name', 'logo_svg', 'link']
-  });
+      return {
+        id,
+        name,
+        logo_svg: RichText.asText(logo_svg),
+        link: link.url ?? null
+      };
+    });
+  }
 
-  const clients: ClientData[] = clientsResponse.map((client) => {
-    const { id, slug, name, logoSVG, links, dates } = client;
-    const { link } = links;
-    const { updateDate, publishDate } = dates;
+  async function getTestimonials(): Promise<TestimonialData[]> {
+    const response = await prismic.query(Prismic.predicates.at('document.type', 'testimonials'), {
+      orderings: '[clients.name]',
+      fetch: ['testimonials.quote', 'testimonials.name', 'testimonials.job_title']
+    });
 
-    return {
-      id,
-      slug,
-      name,
-      logoSVG,
-      link: link ?? null,
-      publishDate,
-      updateDate
-    };
-  });
+    return response.results.map(({ id, first_publication_date, last_publication_date, data }) => {
+      const { name, quote, job_title } = data;
+      return {
+        id,
+        name: RichText.asText(name),
+        quote: RichText.asText(quote),
+        jobTitle: RichText.asText(job_title),
+        publishDate: formatDate(first_publication_date),
+        updateDate: formatDate(last_publication_date)
+      };
+    });
+  }
 
-  const testimonialsResponse = await getContent({
-    type: 'testimonials',
-    fields: ['quote', 'name', 'job_title']
-  });
-
-  const testimonials: TestimonialData[] = testimonialsResponse.map((testimonial) => {
-    const { id, slug, name, quote, jobTitle, dates } = testimonial;
-    const { publishDate, updateDate } = dates;
-
-    return {
-      id,
-      slug,
-      name,
-      quote,
-      jobTitle,
-      publishDate,
-      updateDate
-    };
-  });
+  const posts = await getPosts();
+  const projects = await getProjects();
+  const clients = await getClients();
+  const testimonials = await getTestimonials();
 
   return {
     props: {

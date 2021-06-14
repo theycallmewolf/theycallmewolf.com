@@ -1,3 +1,4 @@
+import Prismic from '@prismicio/client';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { RichText } from 'prismic-dom';
@@ -15,7 +16,8 @@ import { Slider } from '../../../components/elements/Slider';
 import { Footer } from '../../../components/layouts/Footer';
 import { Header } from '../../../components/layouts/Header';
 import { useTheme } from '../../../hooks/useTheme';
-import { getContent, getPrismicClient } from '../../../services/prismic';
+import { getPrismicClient } from '../../../services/prismic';
+import { formatDate } from '../../../utils';
 import styles from './styles.module.scss';
 
 type SpecData = { id: string; uid: string };
@@ -38,7 +40,7 @@ type ProjectData = {
   };
 };
 
-type Post = {
+type PostData = {
   title: string;
   lead: string;
   slug: string;
@@ -47,7 +49,7 @@ type Post = {
 
 interface CodeProps {
   project: ProjectData;
-  posts: Post[];
+  posts: PostData[];
 }
 
 export default function Code({ project, posts }: CodeProps): JSX.Element {
@@ -252,20 +254,31 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     };
   }
 
+  async function getPosts(): Promise<PostData[]> {
+    const response = await prismic.query(Prismic.predicates.at('document.type', 'posts'), {
+      orderings: '[document.last_publication_date]',
+      fetch: ['posts.title', 'posts.lead', 'posts.content'],
+      pageSize: 2,
+      lang: 'en-us'
+    });
+
+    return response.results.map(
+      ({ id, uid, data, first_publication_date, last_publication_date }) => {
+        const { title, lead } = data;
+        return {
+          id,
+          slug: uid,
+          title: RichText.asText(title),
+          lead: RichText.asText(lead),
+          publishDate: formatDate(first_publication_date),
+          updateDate: formatDate(last_publication_date)
+        };
+      }
+    );
+  }
+
   const project = await getProject();
-
-  const postsResponse = await getContent({
-    type: 'posts',
-    fields: ['title', 'lead', 'content'],
-    quantity: 2
-  });
-
-  const posts = postsResponse.map((post) => ({
-    id: post.id,
-    slug: post.slug,
-    title: post.title,
-    lead: post.lead.slice(0, 130) + '...'
-  }));
+  const posts = await getPosts();
 
   return {
     props: {
