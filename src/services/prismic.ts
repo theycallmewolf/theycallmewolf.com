@@ -19,6 +19,7 @@ interface ContentData {
   type: 'code' | 'illustration' | 'design' | 'other';
   title: string | null;
   lead: string | null;
+  highlight: boolean;
   description: string | null;
   images: {
     image: string | null;
@@ -91,7 +92,8 @@ export async function getContent({
       body,
       body1,
       cover_small,
-      cover_large
+      cover_large,
+      highlight
     } = data;
 
     const specs =
@@ -121,6 +123,7 @@ export async function getContent({
       type: type ? type : null,
       title: title ? RichText.asText(title) : null,
       lead: lead ? RichText.asText(lead) : null,
+      highlight: highlight ? highlight : false,
       description: description ? RichText.asText(description) : null,
       images: {
         image: image?.url ? image.url : null,

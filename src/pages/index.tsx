@@ -26,6 +26,7 @@ type ProjectData = {
   title: string;
   slug: string;
   type: string;
+  highlight: boolean;
 };
 
 type ClientData = {
@@ -122,8 +123,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
     fields: ['title', 'imageurl', 'caption']
   });
 
-  const projects: ProjectData[] = projectsResponse.map((project) => {
-    const { id, slug, title, images, dates, type } = project;
+  let projects: ProjectData[] = projectsResponse.map((project) => {
+    const { id, slug, title, images, dates, type, highlight } = project;
     const { slider } = images;
     const { publishDate, updateDate } = dates;
     const { caption, image_large, image_small } = slider;
@@ -138,10 +139,13 @@ export const getServerSideProps: GetServerSideProps = async () => {
         image_small,
         caption
       },
+      highlight,
       publishDate,
       updateDate
     };
   });
+
+  projects = projects.filter((project) => project.highlight);
 
   const clientsResponse = await getContent({
     type: 'clients',
