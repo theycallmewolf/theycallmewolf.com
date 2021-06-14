@@ -1,22 +1,22 @@
 import { LogoButton } from '../../elements/LogoButton';
 import styles from './styles.module.scss';
 
-type Client = {
+type ClientData = {
   id: string;
   name: string;
+  logo_svg: string;
   link: string;
-  logoSVG: string;
 };
 
 interface ClientsProps {
-  clients: Client[];
+  clients: ClientData[];
 }
 
 export function Clients({ clients }: ClientsProps): JSX.Element {
   return (
     <section className={styles.section}>
-      {clients.map((client) => (
-        <LogoButton key={client.id} svgLogo={client.logoSVG} link={client.link} />
+      {clients.map(({ id, logo_svg, link }) => (
+        <LogoButton key={id} svgLogo={logo_svg} link={link} />
       ))}
     </section>
   );
