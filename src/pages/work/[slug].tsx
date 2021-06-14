@@ -72,7 +72,7 @@ export default function Work({ intro, cards }: WorkProps): JSX.Element {
             <h2>{project.title}</h2>
             <p>{project.description}</p>
             <ul className={styles.specs}>
-              {project.specs && project.specs.map(({ spec, id }) => <li key={id}>{spec}</li>)}
+              {!!project.specs ?? project.specs.map(({ spec, id }) => <li key={id}>{spec}</li>)}
             </ul>
           </CardBody>
           <CardFooter>
@@ -137,13 +137,14 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
     return response.results.map(({ id, uid, data }) => {
       const { title, type, project_date, body, image_large, image_small, description } = data;
-      const specs = body
-        .filter(({ slice_type }) => slice_type === 'technologies')
-        .shift()
-        .items.map(({ tech }, i: number) => ({
+      let specs = body.filter(({ slice_type }) => slice_type === 'technologies').shift() ?? null;
+
+      if (specs) {
+        specs = specs.items.map(({ tech }, i: number) => ({
           spec: tech,
           id: i
         }));
+      }
 
       return {
         id,

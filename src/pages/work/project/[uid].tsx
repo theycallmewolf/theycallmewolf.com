@@ -224,12 +224,18 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       body1
     } = data;
 
-    const specs = body
-      .filter(({ slice_type }) => slice_type === 'technologies')[0]
-      .items.map(({ tech }) => tech);
+    let specs = body.filter(({ slice_type }) => slice_type === 'technologies').shift() ?? null;
+
+    if (specs) {
+      specs = specs.items.map(({ tech }, i: number) => ({
+        spec: tech,
+        id: i
+      }));
+    }
 
     const projectImages = body1
-      .filter(({ slice_type }) => slice_type === 'slider')[0]
+      .filter(({ slice_type }) => slice_type === 'slider')
+      .shift()
       .items.map(({ screen_small, screen_large }, i: number) => ({
         image_small: screen_small.url,
         image_large: screen_large.url,
