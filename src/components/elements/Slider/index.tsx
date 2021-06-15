@@ -10,6 +10,8 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
 type SliderData = {
   image_large: string | null;
   image_small: string | null;
+  image_large_2x: string | null;
+  image_small_2x: string | null;
   caption?: string;
 };
 
@@ -55,6 +57,7 @@ export function Slider({
   useEffect(() => {
     setSlideList(slides);
     setTestimonialList(testimonials);
+    console.log(slides);
   }, [slides, testimonials]);
 
   function handleSlideNumber(sliderIndex: number) {
@@ -86,9 +89,19 @@ export function Slider({
             <SwiperSlide key={slide.slug}>
               <figure>
                 <picture>
-                  <source srcSet={slide.slider.image_large} media="(min-width: 1440px)" />
-                  <source srcSet={slide.slider.image_small} media="(min-width: 1024px)" />
-                  <source srcSet={slide.slider.image_large} media="(min-width: 600px)" />
+                  <source
+                    srcSet={`${slide.slider.image_large}, ${slide.slider.image_large_2x} 2x`}
+                    media="(min-width: 1440px)"
+                  />
+                  <source
+                    srcSet={`${slide.slider.image_small}, ${slide.slider.image_small_2x} 2x`}
+                    media="(min-width: 1024px)"
+                  />
+                  <source
+                    srcSet={`${slide.slider.image_large}, ${slide.slider.image_large_2x} 2x`}
+                    media="(min-width: 600px)"
+                  />
+                  <source srcSet={`${slide.slider.image_small_2x} 2x`} />
                   <img src={slide.slider.image_small} alt={slide.title} />
                 </picture>
                 {slide.slider.caption && (

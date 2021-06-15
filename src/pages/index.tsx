@@ -18,9 +18,11 @@ import { getPrismicClient } from '../services/prismic';
 import { formatDate } from '../utils/format-date';
 
 type SliderData = {
-  image_small: string;
-  image_large: string;
-  caption: string;
+  image_large: string | null;
+  image_small: string | null;
+  image_large_2x: string | null;
+  image_small_2x: string | null;
+  caption?: string;
 };
 
 type ProjectData = {
@@ -135,6 +137,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
         'projects.title',
         'projects.image_large',
         'projects.image_small',
+        'projects.image_large_2x',
+        'projects.image_small_2x',
         'projects.caption',
         'projects.type',
         'projects.highlight',
@@ -146,16 +150,28 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
     return response.results
       .map(({ id, uid, data }) => {
-        const { type, project_date, title, image_small, image_large, caption, highlight } = data;
+        const {
+          type,
+          project_date,
+          title,
+          image_small,
+          image_small_2x,
+          image_large,
+          image_large_2x,
+          caption,
+          highlight
+        } = data;
         return {
           id,
           slug: uid,
           type,
-          title: RichText.asText(title),
+          title: RichText.asText(title) ?? null,
           slider: {
-            image_large: image_large.url,
-            image_small: image_small.url,
-            caption: RichText.asText(caption)
+            image_large: image_large.url ?? null,
+            image_large_2x: image_large_2x.url ?? (image_large.url || null),
+            image_small: image_small.url ?? null,
+            image_small_2x: image_small_2x.url ?? (image_small.url || null),
+            caption: RichText.asText(caption) ?? null
           },
           highlight,
           project_date: new Date(project_date).getFullYear()

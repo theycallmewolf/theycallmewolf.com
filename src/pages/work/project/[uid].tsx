@@ -21,7 +21,13 @@ import { formatDate } from '../../../utils';
 import styles from './styles.module.scss';
 
 type SpecData = { id: string; uid: string };
-type ProjectImagesData = { image_small: string; image_large: string; slug: string };
+type ProjectImagesData = {
+  image_small: string;
+  image_small_2x: string;
+  image_large: string;
+  image_large_2x: string;
+  slug: string;
+};
 
 type ProjectData = {
   id: string;
@@ -35,7 +41,9 @@ type ProjectData = {
   specs: SpecData[];
   images: {
     cover_small: string;
+    cover_small_2x: string;
     cover_large: string;
+    cover_large_2x: string;
     projectImages: ProjectImagesData[];
   };
 };
@@ -66,11 +74,13 @@ export default function Code({ project, posts }: CodeProps): JSX.Element {
   useEffect(() => {
     setSlides(
       project.images.projectImages.map((slide) => {
-        const { image_large, image_small, slug } = slide;
+        const { image_large, image_large_2x, image_small, image_small_2x, slug } = slide;
         return {
           slider: {
             image_large,
-            image_small
+            image_large_2x,
+            image_small,
+            image_small_2x
           },
           slug
         };
@@ -112,7 +122,11 @@ export default function Code({ project, posts }: CodeProps): JSX.Element {
         <section className={styles.intro}>
           <div>
             <picture>
-              <source srcSet={project.images.cover_large} media="(min-width: 425px)" />
+              <source
+                srcSet={`${project.images.cover_large}, ${project.images.cover_large_2x} 2x`}
+                media="(min-width: 425px)"
+              />
+              <source srcSet={`${project.images.cover_small_2x} 2x`} />
               <img src={project.images.cover_small} alt={project.title} />
             </picture>
           </div>
@@ -218,7 +232,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       repository,
       repository_api,
       cover_small,
+      cover_small_2x,
       cover_large,
+      cover_large_2x,
       caption,
       body,
       body1
@@ -236,9 +252,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
     const projectImages = body1
       .filter(({ slice_type }) => slice_type === 'slider')
       .shift()
-      .items.map(({ screen_small, screen_large }, i: number) => ({
+      .items.map(({ screen_small, screen_small_2x, screen_large, screen_large_2x }, i: number) => ({
         image_small: screen_small.url,
+        image_small_2x: screen_small_2x.url ?? (screen_small.url || null),
         image_large: screen_large.url,
+        image_large_2x: screen_large_2x.url ?? (screen_large.url || null),
         slug: String(i)
       }));
 
@@ -253,8 +271,10 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       repository_api: repository_api.url ? repository_api.url : null,
       specs,
       images: {
-        cover_small: cover_small.url,
-        cover_large: cover_large.url,
+        cover_small: cover_small.url ?? null,
+        cover_small_2x: cover_small_2x.url ?? (cover_small.url || null),
+        cover_large: cover_large.url ?? null,
+        cover_large_2x: cover_large_2x.url ?? (cover_large.url || null),
         projectImages
       }
     };

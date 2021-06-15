@@ -29,7 +29,9 @@ type ProjectData = {
   title: string;
   description: string;
   image_large: string;
+  image_large_2x: string;
   image_small: string;
+  image_small_2x: string;
   projectDate: string;
   specs: SpecsData[];
 };
@@ -60,7 +62,11 @@ export default function Work({ intro, cards }: WorkProps): JSX.Element {
           <CardHeader>
             {project.image_small !== '' ? (
               <picture>
-                <source srcSet={project.image_large} media="(min-width: 425px)" />
+                <source
+                  srcSet={`${project.image_large}, ${project.image_large_2x} 2x`}
+                  media="(min-width: 425px)"
+                />
+                <source srcSet={`${project.image_small_2x} 2x`} />
                 <img src={project.image_small} alt={project.title} />
               </picture>
             ) : (
@@ -130,13 +136,25 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         'projects.project_date',
         'projects.body',
         'projects.image_small',
-        'projects.image_large'
+        'projects.image_small_2x',
+        'projects.image_large',
+        'projects.image_large_2x'
       ],
       lang: 'en-us'
     });
 
     return response.results.map(({ id, uid, data }) => {
-      const { title, type, project_date, body, image_large, image_small, description } = data;
+      const {
+        title,
+        type,
+        project_date,
+        body,
+        image_large,
+        image_large_2x,
+        image_small,
+        image_small_2x,
+        description
+      } = data;
       let specs = body.filter(({ slice_type }) => slice_type === 'technologies').shift() ?? null;
 
       if (specs) {
@@ -153,7 +171,9 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         title: RichText.asText(title),
         description: RichText.asText(description),
         image_large: image_large.url,
+        image_large_2x: image_large_2x.url ?? (image_large_2x.url || image_large.url),
         image_small: image_small.url,
+        image_small_2x: image_small_2x.url ?? (image_small_2x.url || image_small.url),
         projectDate: formatDate(project_date),
         specs
       };

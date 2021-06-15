@@ -4,7 +4,9 @@ import styles from './styles.module.scss';
 type SliderData = {
   image_large: string | null;
   image_small: string | null;
-  caption: string;
+  image_large_2x: string | null;
+  image_small_2x: string | null;
+  caption?: string;
 };
 
 type Project = {
