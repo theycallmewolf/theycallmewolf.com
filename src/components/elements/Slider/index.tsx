@@ -57,7 +57,6 @@ export function Slider({
   useEffect(() => {
     setSlideList(slides);
     setTestimonialList(testimonials);
-    console.log(slides);
   }, [slides, testimonials]);
 
   function handleSlideNumber(sliderIndex: number) {
