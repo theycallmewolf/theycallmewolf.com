@@ -1,5 +1,5 @@
 import Prismic from '@prismicio/client';
-import { GetServerSideProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { RichText } from 'prismic-dom';
 import { useEffect } from 'react';
@@ -93,8 +93,14 @@ export default function Work({ intro, cards }: WorkProps): JSX.Element {
     </ListPage>
   );
 }
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: ['/work/code', '/work/illustration', '/work/design', '/work/other'],
+    fallback: 'blocking'
+  };
+};
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const prismic = getPrismicClient();
   const { slug } = params;
   let cards: unknown;
