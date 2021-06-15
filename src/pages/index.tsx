@@ -1,5 +1,5 @@
 import Prismic from '@prismicio/client';
-import { GetServerSideProps } from 'next';
+import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { RichText } from 'prismic-dom';
 import { useEffect } from 'react';
@@ -104,7 +104,7 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const prismic = getPrismicClient();
 
   async function getPosts(): Promise<PostData[]> {
