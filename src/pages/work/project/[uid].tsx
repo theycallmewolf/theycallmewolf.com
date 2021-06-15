@@ -1,5 +1,5 @@
 import Prismic from '@prismicio/client';
-import { GetServerSideProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { RichText } from 'prismic-dom';
 import { useCallback, useEffect, useState } from 'react';
@@ -217,7 +217,14 @@ export default function Code({ project, posts }: CodeProps): JSX.Element {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: [],
+    fallback: 'blocking'
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { uid } = params;
   const prismic = getPrismicClient();
 
