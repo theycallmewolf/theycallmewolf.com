@@ -214,65 +214,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       cards = codeProjects;
       break;
   }
-  // function getCodeProjects(): CodeProjectsData[] {
-  //   return [
-  //     {
-  //       id: 4,
-  //       title: 'Hut reception',
-  //       description: 'web app for Fitness Hut club interactive reception area',
-  //       slug: 'hut-reception',
-  //       image:
-  //         'https://images.unsplash.com/photo-1540908300676-b00e9a003736?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1001&q=80',
-  //       publishDate: '2020-12-23T14:18:00Z',
-  //       updateDate: '2021-05-11T13:12:00Z',
-  //       repository: 'https://github.com/theycallmewolf/hut-reception',
-  //       repositoryApi: 'https://api.github.com/repos/theycallmewolf/hut-reception',
-  //       url: null,
-  //       specs: [
-  //         'reactjs',
-  //         'html',
-  //         'javascript',
-  //         'yup',
-  //         'styled-components',
-  //         'crypto-js',
-  //         'axios',
-  //         'public-ip',
-  //         'qrcode.react',
-  //         'uuid'
-  //       ],
-  //       team: null
-  //     },
-  //     {
-  //       id: 5,
-  //       title: 'wheel of fortune',
-  //       description: 'A wheel of fortune developed just to have fun with javascript',
-  //       slug: 'wheel-of-fortune',
-  //       image: '',
-  //       url: 'https://wheeloffortune.theycallmewolf.pt/',
-  //       repository: 'https://github.com/theycallmewolf/wheel-of-fortune',
-  //       repositoryApi: 'https://api.github.com/repos/theycallmewolf/wheel-of-fortune',
-  //       specs: ['javascript', 'html', 'css'],
-  //       publishDate: '2020-07-23T18:16:12Z',
-  //       updateDate: '2021-02-13T18:54:25Z',
-  //       team: null
-  //     },
-  //     {
-  //       id: 6,
-  //       title: 'Go Barber',
-  //       description: '',
-  //       image:
-  //         'https://images.unsplash.com/photo-1548053279-649e31d44b03?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80',
-  //       publishDate: '2020-11-21T13:42:00Z',
-  //       updateDate: '2021-02-09T14:51:56Z',
-  //       url: 'https://gobarber.theycallmewolf.pt/',
-  //       repository: 'https://github.com/theycallmewolf/gostack-gobarber-web',
-  //       repositoryApi: 'https://api.github.com/repos/theycallmewolf/gostack-gobarber-web',
-  //       team: null,
-  //       slug: 'go-barber',
-  //       specs: ['react', 'javascript', 'nodejs', 'react native']
-  //     }
-  //   ];
-  // }
 
   return {
     props: {
