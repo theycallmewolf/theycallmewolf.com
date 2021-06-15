@@ -7,7 +7,7 @@ type Post = {
   title: string;
   lead: string;
   slug: string;
-  updateDate: string;
+  update_date: string;
 };
 
 interface BlogProps {
@@ -34,7 +34,7 @@ export function Blog({ posts }: BlogProps): JSX.Element {
       {posts.map((post) => (
         <DefaultCard key={post.slug} customClass={styles.cardContainer}>
           <CardBody>
-            <span className={styles.date}>{post.updateDate}</span>
+            <span className={styles.date}>{post.update_date}</span>
             <h3>{post.title}</h3>
             <p>{post.lead}</p>
           </CardBody>

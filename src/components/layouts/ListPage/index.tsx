@@ -6,7 +6,7 @@ import { Header } from '../Header';
 import styles from './styles.module.scss';
 
 type Link = { id: number; link: string; label: string };
-type IntroData = { title: string; lead: string; linkList: Link[] };
+type IntroData = { title: string; lead: string; link_list: Link[] };
 
 interface ListPageProps {
   intro: IntroData;

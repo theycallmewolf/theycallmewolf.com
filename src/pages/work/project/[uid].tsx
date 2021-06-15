@@ -33,7 +33,7 @@ type ProjectData = {
   id: string;
   title: string;
   caption: string;
-  publishDate: string;
+  publish_date: string;
   description: string;
   link: string;
   repository: string;
@@ -44,7 +44,7 @@ type ProjectData = {
     cover_small_2x: string;
     cover_large: string;
     cover_large_2x: string;
-    projectImages: ProjectImagesData[];
+    project_images: ProjectImagesData[];
   };
 };
 
@@ -52,7 +52,7 @@ type PostData = {
   title: string;
   lead: string;
   slug: string;
-  publishDate: string;
+  publish_date: string;
 };
 
 interface CodeProps {
@@ -73,7 +73,7 @@ export default function Code({ project, posts }: CodeProps): JSX.Element {
 
   useEffect(() => {
     setSlides(
-      project.images.projectImages.map((slide) => {
+      project.images.project_images.map((slide) => {
         const { image_large, image_large_2x, image_small, image_small_2x, slug } = slide;
         return {
           slider: {
@@ -86,7 +86,7 @@ export default function Code({ project, posts }: CodeProps): JSX.Element {
         };
       })
     );
-  }, [project.images.projectImages]);
+  }, [project.images.project_images]);
 
   useEffect(() => {
     if (window.matchMedia('(min-width: 768px)').matches) {
@@ -200,7 +200,7 @@ export default function Code({ project, posts }: CodeProps): JSX.Element {
                   />
                 </CardHeader>
                 <CardBody>
-                  <span className={styles.date}>{post.publishDate}</span>
+                  <span className={styles.date}>{post.publish_date}</span>
                   <h3>{post.title}</h3>
                   <p>{post.lead}</p>
                 </CardBody>
@@ -249,7 +249,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       }));
     }
 
-    const projectImages = body1
+    const project_images = body1
       .filter(({ slice_type }) => slice_type === 'slider')
       .shift()
       .items.map(({ screen_small, screen_small_2x, screen_large, screen_large_2x }, i: number) => ({
@@ -264,7 +264,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
       id,
       title: RichText.asText(title),
       caption: RichText.asText(caption),
-      publishDate: project_date,
+      publish_date: project_date,
       description: RichText.asText(description),
       link: link?.url ? link.url : null,
       repository: repository.url ? repository.url : null,
@@ -275,7 +275,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         cover_small_2x: cover_small_2x.url ?? (cover_small.url || null),
         cover_large: cover_large.url ?? null,
         cover_large_2x: cover_large_2x.url ?? (cover_large.url || null),
-        projectImages
+        project_images
       }
     };
   }
@@ -296,8 +296,8 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
           slug: uid,
           title: RichText.asText(title),
           lead: RichText.asText(lead),
-          publishDate: formatDate(first_publication_date),
-          updateDate: formatDate(last_publication_date)
+          publish_date: formatDate(first_publication_date),
+          update_date: formatDate(last_publication_date)
         };
       }
     );

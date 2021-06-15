@@ -20,7 +20,7 @@ import styles from './styles.module.scss';
 
 type LinkData = { id: number; link: string; label: string };
 type SpecsData = { id: string; spec: string };
-type IntroData = { title: string; lead: string; linkList: LinkData[] };
+type IntroData = { title: string; lead: string; link_list: LinkData[] };
 
 type ProjectData = {
   id: string;
@@ -32,7 +32,7 @@ type ProjectData = {
   image_large_2x: string;
   image_small: string;
   image_small_2x: string;
-  projectDate: string;
+  project_date: string;
   specs: SpecsData[];
 };
 
@@ -74,7 +74,7 @@ export default function Work({ intro, cards }: WorkProps): JSX.Element {
             )}
           </CardHeader>
           <CardBody>
-            <span className={styles.date}>{project.projectDate}</span>
+            <span className={styles.date}>{project.project_date}</span>
             <h2>{project.title}</h2>
             <p>{project.description}</p>
             <ul className={styles.specs}>
@@ -102,7 +102,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const intro: IntroData = {
     title: 'work',
     lead: 'Maecenas faucibus mollis interdum. Nullam id dolor id nibh ultricies vehicula ut id elit.',
-    linkList: [
+    link_list: [
       {
         id: 1,
         link: '/work/code',
@@ -174,7 +174,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         image_large_2x: image_large_2x.url ?? (image_large_2x.url || image_large.url),
         image_small: image_small.url,
         image_small_2x: image_small_2x.url ?? (image_small_2x.url || image_small.url),
-        projectDate: formatDate(project_date),
+        project_date: formatDate(project_date),
         specs
       };
     });

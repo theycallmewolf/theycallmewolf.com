@@ -12,16 +12,16 @@ type Link = {
 
 interface NavProps extends React.HTMLAttributes<HTMLElement> {
   customClass?: string;
-  linkList: Link[];
+  link_list: Link[];
 }
 
-export function Nav({ customClass, linkList, ...rest }: NavProps): JSX.Element {
+export function Nav({ customClass, link_list, ...rest }: NavProps): JSX.Element {
   const { hasDarkMode } = useTheme();
   return (
     <nav
       className={`${styles.nav} ${customClass ?? ''} ${hasDarkMode ? styles.dark : ''}`}
       {...rest}>
-      {linkList.map((link) => (
+      {link_list.map((link) => (
         <NavLink link={link.link} label={link.label} key={link.id} />
       ))}
     </nav>

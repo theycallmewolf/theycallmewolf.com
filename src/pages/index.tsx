@@ -47,8 +47,8 @@ type PostData = {
   title: string;
   lead: string;
   slug: string;
-  publishDate: string;
-  updateDate: string;
+  publish_date: string;
+  update_date: string;
 };
 
 type TestimonialData = {
@@ -56,8 +56,8 @@ type TestimonialData = {
   quote: string;
   name: string;
   jobTitle: string;
-  publishDate: string;
-  updateDate: string;
+  publish_date: string;
+  update_date: string;
 };
 
 interface HomeProps {
@@ -123,8 +123,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
           slug: uid,
           title: RichText.asText(title),
           lead: RichText.asText(lead),
-          publishDate: formatDate(first_publication_date),
-          updateDate: formatDate(last_publication_date)
+          publish_date: formatDate(first_publication_date),
+          update_date: formatDate(last_publication_date)
         };
       }
     );
@@ -212,8 +212,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
         name: RichText.asText(name),
         quote: RichText.asText(quote),
         jobTitle: RichText.asText(job_title),
-        publishDate: formatDate(first_publication_date),
-        updateDate: formatDate(last_publication_date)
+        publish_date: formatDate(first_publication_date),
+        update_date: formatDate(last_publication_date)
       };
     });
   }

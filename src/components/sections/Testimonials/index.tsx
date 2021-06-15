@@ -8,8 +8,8 @@ type Testimonial = {
   quote: string;
   name: string;
   jobTitle: string;
-  publishDate: string;
-  updateDate: string;
+  publish_date: string;
+  update_date: string;
 };
 
 interface TestimonialsProps {

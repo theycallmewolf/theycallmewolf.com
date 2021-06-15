@@ -26,8 +26,8 @@ type Testimonial = {
   quote: string;
   name: string;
   jobTitle: string;
-  publishDate: string;
-  updateDate: string;
+  publish_date: string;
+  update_date: string;
 };
 
 interface SliderProps extends React.HTMLAttributes<HTMLElement> {
@@ -119,7 +119,7 @@ export function Slider({
               <p>
                 <small>
                   <strong>{testimonial.name}</strong>, {testimonial.jobTitle},{' '}
-                  {testimonial.publishDate}
+                  {testimonial.publish_date}
                 </small>
               </p>
             </SwiperSlide>

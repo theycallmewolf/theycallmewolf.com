@@ -13,7 +13,7 @@ import styles from './styles.module.scss';
 type Link = { id: number; link: string; label: string };
 type Graph = { id: number; title: string; percentage: number };
 
-type IntroData = { title: string; lead: string; linkList: Link[] };
+type IntroData = { title: string; lead: string; link_list: Link[] };
 
 type ActivityData = {
   id: number;
@@ -126,7 +126,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const intro: IntroData = {
     title: 'about',
     lead: 'Maecenas faucibus mollis interdum. Nullam id dolor id nibh ultricies vehicula ut id elit.',
-    linkList: [
+    link_list: [
       {
         id: 1,
         link: '/about/skills',
