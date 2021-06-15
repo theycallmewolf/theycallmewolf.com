@@ -219,6 +219,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       intro,
       cards
-    }
+    },
+    revalidate: 60 * 60 * 1 // 1 hour
   };
 };

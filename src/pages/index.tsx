@@ -229,6 +229,7 @@ export const getStaticProps: GetStaticProps = async () => {
       clients,
       posts,
       testimonials
-    }
+    },
+    revalidate: 60 * 60 * 1 // 1 hour
   };
 };
