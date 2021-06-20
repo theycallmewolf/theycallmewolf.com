@@ -89,8 +89,10 @@
         justify-content: space-between;
 
         .icon { 
-          stroke: var(--c-candy-red);
-          stroke-width: 2px;
+          path {
+            stroke: var(--c-candy-red);
+            stroke-width: 2px;
+          }
         }
 
         & + button { margin-left: 32px; }
