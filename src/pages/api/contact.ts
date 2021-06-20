@@ -5,10 +5,9 @@ sgMail.setApiKey(process.env.EMAIL_API_KEY);
 
 export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
   const { email, subject, message, name } = req.body;
-  console.log(subject);
   const msg = {
-    to: email,
-    from: 'hello@theycallmewolf.com',
+    to: process.env.PERSONAL_EMAIL_ADDRESS,
+    from: process.env.SITE_EMAIL_ADDRESS,
     subject,
     name,
     text: message

@@ -31,6 +31,44 @@ export function Chat(): JSX.Element {
     setIsOpen(!isOpen);
   }, [isOpen]);
 
+  const handleSubmit = useCallback(({ values, setSubmitting, resetForm }) => {
+    const { name, email, message } = values;
+
+    async function sendEmail(data: {
+      name: string;
+      email: string;
+      message: string;
+      subject: string;
+    }) {
+      try {
+        await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        //if success
+        setTimeout(() => {
+          console.log(values);
+          setSubmitting(false);
+          resetForm();
+        }, 2000);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    sendEmail({
+      email,
+      subject: `New contact from website.`,
+      message: `
+        Hi Wolf!
+        You have a new contact from ${name} @ ${email}. 
+        He/she left you this message: 
+        "${message}"`,
+      name
+    });
+  }, []);
+
   return (
     <>
       <div className={`${styles.container} ${isOpen ? styles.open : ''}`}>
@@ -56,39 +94,9 @@ export function Chat(): JSX.Element {
             validateOnBlur
             validateOnChange
             initialValues={initialValues}
-            onSubmit={(values, { setSubmitting, resetForm }) => {
-              const { name, email, message } = values;
-
-              async function sendEmail(data: {
-                name: string;
-                email: string;
-                message: string;
-                subject: string;
-              }) {
-                try {
-                  await fetch('/api/contact', {
-                    method: 'POST',
-                    headers: { 'content-type': 'application/json' },
-                    body: JSON.stringify(data)
-                  });
-                  //if success
-                  setTimeout(() => {
-                    console.log(values);
-                    setSubmitting(false);
-                    resetForm();
-                  }, 2000);
-                } catch (error) {
-                  console.log(error);
-                }
-              }
-
-              sendEmail({
-                email: 'bruno.m.lobato@gmail.com',
-                subject: 'Hello Bruno! Thank your for your contact.',
-                message,
-                name
-              });
-            }}>
+            onSubmit={(values, { setSubmitting, resetForm }) =>
+              handleSubmit({ values, setSubmitting, resetForm })
+            }>
             {({ errors, resetForm, isSubmitting, isValid, validateForm }) => {
               return (
                 <Form>
