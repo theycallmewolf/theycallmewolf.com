@@ -6,3 +6,4 @@ export { default as IPlus } from './IPlus';
 export { default as IMinus } from './IMinus';
 export { default as IChat } from './IChat';
 export { default as IArrowAlt } from './IArrowAlt';
+export { default as ILoading } from './ILoading';
