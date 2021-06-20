@@ -26,7 +26,8 @@
     svg {
       width: 40%;
       height: 40%;
-      stroke: var(--c-element-100);
+
+      path { stroke: var(--c-element-100); }
     }
 
     @media(min-width: 425px) { right: calc(420px - 50px); }
@@ -54,7 +55,7 @@
     height: 100%;
 
     display: grid;
-    grid-template-rows: 20% 80%;
+    grid-template-rows: 30% 70%;
     opacity: 0;
     transition: opacity 300ms ease-in-out 300ms;
 
