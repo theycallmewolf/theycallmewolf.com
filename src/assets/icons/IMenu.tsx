@@ -1,5 +1,3 @@
-import React from 'react';
-
 type SvgIMenuData = React.HTMLAttributes<HTMLOrSVGElement>;
 
 function SvgIMenu({ ...rest }: SvgIMenuData): JSX.Element {
