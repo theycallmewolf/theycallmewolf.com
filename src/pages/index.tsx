@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { RichText } from 'prismic-dom';
 import { useEffect } from 'react';
 
-import { Chat } from '../components/elements/Chat';
 import { Footer } from '../components/layouts/Footer';
 import { Header } from '../components/layouts/Header';
 import { About } from '../components/sections/About';
@@ -92,7 +91,6 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
         <Clients clients={clients} />
         <Testimonials testimonials={testimonials} />
         <Blog posts={posts} />
-        <Chat />
       </main>
       <Footer />
     </>

@@ -6,12 +6,14 @@ import '../components/elements/Slider/styles.scss';
 
 import type { AppProps } from 'next/app';
 
+import { Chat } from '../components/elements/Chat';
 import { AppProvider } from '../hooks';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <AppProvider>
       <Component {...pageProps} />
+      <Chat />
     </AppProvider>
   );
 }
