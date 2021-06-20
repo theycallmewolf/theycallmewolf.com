@@ -122,9 +122,10 @@
         }
 
         .icon { 
-          stroke: var(--c-candy-red);
           width: 22px;
           height: 22px;
+          
+          path { stroke: var(--c-candy-red); }
         }
       }
   
