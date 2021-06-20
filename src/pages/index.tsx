@@ -1,10 +1,11 @@
 import Prismic from '@prismicio/client';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
+import Link from 'next/link';
 import { RichText } from 'prismic-dom';
 import { useEffect } from 'react';
 
-import { Button } from '../components/elements/Button';
+import { Chat } from '../components/elements/Chat';
 import { Footer } from '../components/layouts/Footer';
 import { Header } from '../components/layouts/Header';
 import { About } from '../components/sections/About';
@@ -86,18 +87,12 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
       <Header />
       <main>
         <Banner />
-        <Button
-          type="button"
-          genre="outline"
-          customClass="call-to-action"
-          onClick={() => console.log('bananas')}>
-          say “hello, wolf!”
-        </Button>
         <About />
         <Projects projects={projects} />
         <Clients clients={clients} />
         <Testimonials testimonials={testimonials} />
         <Blog posts={posts} />
+        <Chat />
       </main>
       <Footer />
     </>

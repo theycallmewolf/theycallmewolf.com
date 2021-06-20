@@ -22,7 +22,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/components/graphics/icons/Wolf.js", "src/components/graphics/icons/index.js"  ],
+  ],
   "exclude": [
     "node_modules"
   ]
