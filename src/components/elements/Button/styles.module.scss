@@ -53,4 +53,9 @@
     &:hover,
     &:focus { filter: brightness(1.1); }
   }
+
+  &.outline,
+  &.fill {
+    &:disabled { opacity: 0.3; }
+  }
 }
