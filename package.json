@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@prismicio/client": "^5.0.0",
+    "@sendgrid/mail": "^7.4.5",
     "axios": "^0.21.1",
     "formik": "^2.2.9",
     "next": "10.2.3",
