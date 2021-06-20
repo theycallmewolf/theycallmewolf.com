@@ -28,6 +28,7 @@ type ProjectImagesData = {
   image_large_2x: string;
   slug: string;
 };
+type AboutData = { id: string; type: string; text: string };
 
 type ProjectData = {
   id: string;
@@ -38,6 +39,7 @@ type ProjectData = {
   link: string;
   repository: string;
   repository_api: string;
+  about: AboutData[];
   specs: SpecData[];
   images: {
     cover_small: string;
@@ -143,25 +145,9 @@ export default function Code({ project, posts }: CodeProps): JSX.Element {
               {hidesAbout ? <IPlus className={styles.icon} /> : <IMinus className={styles.icon} />}
             </button>
             <div className={hidesAbout ? styles.hide : ''}>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus tempora
-                molestias dolor ducimus? Molestiae corporis iste, optio sunt quam quidem tempore
-                cumque illum accusamus voluptatum sequi est ex perferendis quis! Labore quos,
-                laborum porro voluptatibus quaerat nemo <strong>recusandae sunt modi earum</strong>{' '}
-                aut deleniti mollitia ratione, suscipit fuga ea dolores et dicta sint. Vitae autem
-                pariatur provident quos, labore ullam quidem! Reprehenderit, sed beatae. Quasi
-                recusandae maxime laborum sunt veritatis at deserunt facere dolorum libero fuga a
-                nobis, animi corporis, distinctio tempora unde saepe, eveniet iste. Consequatur quos
-                quisquam amet corrupti. Dignissimos, obcaecati fugiat soluta ab ex repudiandae
-                adipisci sit odio sapiente earum modi repellendus illo, quae laboriosam facere ut
-                ipsum, cum pariatur impedit velit magnam eveniet dolorum! Error, eos doloremque?
-                Atque nam, ad quos voluptates deleniti a labore quae numquam vel sapiente possimus
-                recusandae dolores excepturi alias dignissimos ullam assumenda, cumque non voluptate
-                eligendi optio officiis aut? Dolorum, atque reiciendis? Quae neque consequatur
-                recusandae. Suscipit sapiente eos velit asperiores quae, quaerat debitis! Blanditiis
-                rerum ea obcaecati tempore voluptate hic quam similique commodi. Cupiditate rem
-                optio debitis saepe repudiandae, repellat officiis!
-              </p>
+              {project.about.map(
+                (item, i) => item.type === 'paragraph' && <p key={i}>{item.text}</p>
+              )}
             </div>
           </div>
           <div>
@@ -243,6 +229,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       cover_large,
       cover_large_2x,
       caption,
+      about,
       body,
       body1
     } = data;
@@ -277,6 +264,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       repository: repository.url ? repository.url : null,
       repository_api: repository_api.url ? repository_api.url : null,
       specs,
+      about,
       images: {
         cover_small: cover_small.url ?? null,
         cover_small_2x: cover_small_2x.url ?? (cover_small.url || null),
