@@ -57,11 +57,37 @@ export function Chat(): JSX.Element {
             validateOnChange
             initialValues={initialValues}
             onSubmit={(values, { setSubmitting, resetForm }) => {
-              setTimeout(() => {
-                console.log(values);
-                setSubmitting(false);
-                resetForm();
-              }, 2000);
+              const { name, email, message } = values;
+
+              async function sendEmail(data: {
+                name: string;
+                email: string;
+                message: string;
+                subject: string;
+              }) {
+                try {
+                  await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(data)
+                  });
+                  //if success
+                  setTimeout(() => {
+                    console.log(values);
+                    setSubmitting(false);
+                    resetForm();
+                  }, 2000);
+                } catch (error) {
+                  console.log(error);
+                }
+              }
+
+              sendEmail({
+                email: 'bruno.m.lobato@gmail.com',
+                subject: 'Hello Bruno! Thank your for your contact.',
+                message,
+                name
+              });
             }}>
             {({ errors, resetForm, isSubmitting, isValid, validateForm }) => {
               return (
