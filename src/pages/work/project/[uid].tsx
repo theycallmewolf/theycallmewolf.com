@@ -17,50 +17,9 @@ import { Footer } from '../../../components/layouts/Footer';
 import { Header } from '../../../components/layouts/Header';
 import { useTheme } from '../../../hooks/useTheme';
 import { getPrismicClient } from '../../../services/prismic';
+import { CodeProps, PostData, ProjectDetails } from '../../../types';
 import { formatDate } from '../../../utils';
 import styles from './styles.module.scss';
-
-type SpecData = { id: string; uid: string };
-type ProjectImagesData = {
-  image_small: string;
-  image_small_2x: string;
-  image_large: string;
-  image_large_2x: string;
-  slug: string;
-};
-type AboutData = { id: string; type: string; text: string };
-
-type ProjectData = {
-  id: string;
-  title: string;
-  caption: string;
-  publish_date: string;
-  description: string;
-  link: string;
-  repository: string;
-  repository_api: string;
-  about: AboutData[];
-  specs: SpecData[];
-  images: {
-    cover_small: string;
-    cover_small_2x: string;
-    cover_large: string;
-    cover_large_2x: string;
-    project_images: ProjectImagesData[];
-  };
-};
-
-type PostData = {
-  title: string;
-  lead: string;
-  slug: string;
-  publish_date: string;
-};
-
-interface CodeProps {
-  project: ProjectData;
-  posts: PostData[];
-}
 
 export default function Code({ project, posts }: CodeProps): JSX.Element {
   const [hidesAbout, setHidesAbout] = useState(true);
@@ -76,15 +35,14 @@ export default function Code({ project, posts }: CodeProps): JSX.Element {
   useEffect(() => {
     setSlides(
       project.images.project_images.map((slide) => {
-        const { image_large, image_large_2x, image_small, image_small_2x, slug } = slide;
+        const { image_large, image_large_2x, image_small, image_small_2x } = slide;
         return {
           slider: {
             image_large,
             image_large_2x,
             image_small,
             image_small_2x
-          },
-          slug
+          }
         };
       })
     );
@@ -117,7 +75,7 @@ export default function Code({ project, posts }: CodeProps): JSX.Element {
     <>
       <Head>
         <title>they call me wolf | {project.title}</title>
-        <meta name="description" content={project.caption} />
+        <meta name="description" content={project.images.caption} />
       </Head>
       <main className={styles.main}>
         <Header />
@@ -214,11 +172,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { uid } = params;
   const prismic = getPrismicClient();
 
-  async function getProject(): Promise<ProjectData> {
+  async function getProject(): Promise<ProjectDetails> {
     const projectResponse = await prismic.getByUID('projects', String(uid), {});
     const { id, data } = projectResponse;
     const {
       title,
+      type,
       project_date,
       description,
       link,
@@ -257,8 +216,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return {
       id,
       title: RichText.asText(title),
-      caption: RichText.asText(caption),
-      publish_date: project_date,
+      type,
+      slug: uid[0],
+      project_date: project_date,
       description: RichText.asText(description),
       link: link?.url ? link.url : null,
       repository: repository.url ? repository.url : null,
@@ -270,7 +230,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         cover_small_2x: cover_small_2x.url ?? (cover_small.url || null),
         cover_large: cover_large.url ?? null,
         cover_large_2x: cover_large_2x.url ?? (cover_large.url || null),
-        project_images
+        project_images,
+        caption: RichText.asText(caption)
       }
     };
   }

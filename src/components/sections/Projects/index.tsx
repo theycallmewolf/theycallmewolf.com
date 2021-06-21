@@ -1,17 +1,10 @@
+import { ProjectImages } from '../../../types';
 import { Slider } from '../../elements/Slider';
 import styles from './styles.module.scss';
 
-type SliderData = {
-  image_large: string | null;
-  image_small: string | null;
-  image_large_2x: string | null;
-  image_small_2x: string | null;
-  caption?: string;
-};
-
 type Project = {
   id: string;
-  slider: SliderData;
+  slider: ProjectImages;
   title: string;
   slug: string;
 };

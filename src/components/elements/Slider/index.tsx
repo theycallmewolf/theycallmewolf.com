@@ -3,41 +3,10 @@ import SwiperCore, { A11y, EffectFade, Navigation, Pagination, Scrollbar } from 
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { useTheme } from '../../../hooks/useTheme';
+import { SliderProps } from '../../../types';
 import { CustomLink } from '../Link';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
-
-type SliderData = {
-  image_large: string | null;
-  image_small: string | null;
-  image_large_2x: string | null;
-  image_small_2x: string | null;
-  caption?: string;
-};
-
-type Slide = {
-  slider: SliderData;
-  slug: string;
-  title?: string;
-};
-
-type Testimonial = {
-  id: string;
-  quote: string;
-  name: string;
-  jobTitle: string;
-  publish_date: string;
-  update_date: string;
-};
-
-interface SliderProps extends React.HTMLAttributes<HTMLElement> {
-  slides?: Slide[];
-  testimonials?: Testimonial[];
-  contentType: 'image' | 'testimonial';
-  additionalClass?: string;
-  hasLink?: boolean;
-  hasIcon?: boolean;
-}
 
 export function Slider({
   slides,

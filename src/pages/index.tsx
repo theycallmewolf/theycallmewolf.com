@@ -15,50 +15,8 @@ import { Projects } from '../components/sections/Projects';
 import { Testimonials } from '../components/sections/Testimonials';
 import { useTheme } from '../hooks/useTheme';
 import { getPrismicClient } from '../services/prismic';
+import { ClientData, PostData, ProjectData, TestimonialData } from '../types';
 import { formatDate } from '../utils/format-date';
-
-type SliderData = {
-  image_large: string | null;
-  image_small: string | null;
-  image_large_2x: string | null;
-  image_small_2x: string | null;
-  caption?: string;
-};
-
-type ProjectData = {
-  id: string;
-  slider: SliderData;
-  title: string;
-  slug: string;
-  type: string;
-  highlight: boolean;
-  project_date: number;
-};
-
-type ClientData = {
-  id: string;
-  name: string;
-  logo_svg: string;
-  link: string;
-};
-
-type PostData = {
-  id: string;
-  title: string;
-  lead: string;
-  slug: string;
-  publish_date: string;
-  update_date: string;
-};
-
-type TestimonialData = {
-  id: string;
-  quote: string;
-  name: string;
-  jobTitle: string;
-  publish_date: string;
-  update_date: string;
-};
 
 interface HomeProps {
   projects: ProjectData[];
@@ -154,20 +112,21 @@ export const getStaticProps: GetStaticProps = async () => {
           caption,
           highlight
         } = data;
+
         return {
           id,
-          slug: uid,
           type,
           title: RichText.asText(title) ?? null,
+          slug: uid,
+          project_date: String(new Date(project_date).getFullYear()),
           slider: {
-            image_large: image_large.url ?? null,
-            image_large_2x: image_large_2x.url ?? (image_large.url || null),
             image_small: image_small.url ?? null,
             image_small_2x: image_small_2x.url ?? (image_small.url || null),
+            image_large: image_large.url ?? null,
+            image_large_2x: image_large_2x.url ?? (image_large.url || null),
             caption: RichText.asText(caption) ?? null
           },
-          highlight,
-          project_date: new Date(project_date).getFullYear()
+          highlight
         };
       })
       .filter((project) => project.highlight);

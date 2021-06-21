@@ -15,26 +15,9 @@ import { CustomLink } from '../../components/elements/Link';
 import ListPage from '../../components/layouts/ListPage';
 import { useTheme } from '../../hooks/useTheme';
 import { getPrismicClient } from '../../services/prismic';
+import { IntroData, ProjectData } from '../../types';
 import { formatDate } from '../../utils';
 import styles from './styles.module.scss';
-
-type LinkData = { id: number; link: string; label: string };
-type SpecsData = { id: string; spec: string };
-type IntroData = { title: string; lead: string; link_list: LinkData[] };
-
-type ProjectData = {
-  id: string;
-  type: 'code' | 'illustration' | 'design' | 'other';
-  slug: string;
-  title: string;
-  description: string;
-  image_large: string;
-  image_large_2x: string;
-  image_small: string;
-  image_small_2x: string;
-  project_date: string;
-  specs: SpecsData[];
-};
 
 interface WorkProps {
   intro: IntroData;
@@ -60,14 +43,14 @@ export default function Work({ intro, cards }: WorkProps): JSX.Element {
       {cards.map((project) => (
         <DefaultCard key={project.id} customClass={styles.card}>
           <CardHeader>
-            {project.image_small !== '' ? (
+            {project.slider.image_small !== '' ? (
               <picture>
                 <source
-                  srcSet={`${project.image_large}, ${project.image_large_2x} 2x`}
+                  srcSet={`${project.slider.image_large}, ${project.slider.image_large_2x} 2x`}
                   media="(min-width: 425px)"
                 />
-                <source srcSet={`${project.image_small_2x} 2x`} />
-                <img src={project.image_small} alt={project.title} />
+                <source srcSet={`${project.slider.image_small_2x} 2x`} />
+                <img src={project.slider.image_small} alt={project.title} />
               </picture>
             ) : (
               <TangramCard customClass={styles.placeholder} />
@@ -144,7 +127,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         'projects.image_small',
         'projects.image_small_2x',
         'projects.image_large',
-        'projects.image_large_2x'
+        'projects.image_large_2x',
+        'projects.highlight'
       ],
       lang: 'en-us'
     });
@@ -159,8 +143,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         image_large_2x,
         image_small,
         image_small_2x,
-        description
+        description,
+        highlight
       } = data;
+
       let specs = body.filter(({ slice_type }) => slice_type === 'technologies').shift() ?? null;
 
       if (specs) {
@@ -172,15 +158,18 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 
       return {
         id,
-        slug: uid,
         type,
         title: RichText.asText(title),
-        description: RichText.asText(description),
-        image_large: image_large.url,
-        image_large_2x: image_large_2x.url ?? (image_large_2x.url || image_large.url),
-        image_small: image_small.url,
-        image_small_2x: image_small_2x.url ?? (image_small_2x.url || image_small.url),
+        slug: uid,
         project_date: formatDate(project_date),
+        description: RichText.asText(description),
+        slider: {
+          image_small: image_small.url,
+          image_small_2x: image_small_2x.url ?? (image_small_2x.url || image_small.url),
+          image_large: image_large.url,
+          image_large_2x: image_large_2x.url ?? (image_large_2x.url || image_large.url)
+        },
+        highlight,
         specs
       };
     });

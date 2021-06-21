@@ -1,18 +1,8 @@
+import { BlogProps } from '../../../pages/types';
 import { Button } from '../../elements/Button';
 import { CardBody, CardFooter, DefaultCard } from '../../elements/Cards/DefaultCard';
 import { CustomLink } from '../../elements/Link';
 import styles from './styles.module.scss';
-
-type Post = {
-  title: string;
-  lead: string;
-  slug: string;
-  update_date: string;
-};
-
-interface BlogProps {
-  posts: Post[];
-}
 
 export function Blog({ posts }: BlogProps): JSX.Element {
   return (
@@ -32,7 +22,7 @@ export function Blog({ posts }: BlogProps): JSX.Element {
         </div>
       </div>
       {posts.map((post) => (
-        <DefaultCard key={post.slug} customClass={styles.cardContainer}>
+        <DefaultCard key={post.id} customClass={styles.cardContainer}>
           <CardBody>
             <span className={styles.date}>{post.update_date}</span>
             <h3>{post.title}</h3>

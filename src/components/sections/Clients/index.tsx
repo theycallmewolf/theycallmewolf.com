@@ -1,16 +1,6 @@
+import { ClientsProps } from '../../../pages/types';
 import { LogoButton } from '../../elements/LogoButton';
 import styles from './styles.module.scss';
-
-type ClientData = {
-  id: string;
-  name: string;
-  logo_svg: string;
-  link: string;
-};
-
-interface ClientsProps {
-  clients: ClientData[];
-}
 
 export function Clients({ clients }: ClientsProps): JSX.Element {
   return (

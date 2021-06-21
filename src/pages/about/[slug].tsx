@@ -8,49 +8,15 @@ import { GraphicCard } from '../../components/elements/Cards/GraphicCard';
 import { Graph } from '../../components/elements/Graph';
 import ListPage from '../../components/layouts/ListPage';
 import { useTheme } from '../../hooks/useTheme';
+import {
+  AboutProps,
+  ActivityData,
+  CareerData,
+  EducationData,
+  IntroData,
+  SkillData
+} from '../../types';
 import styles from './styles.module.scss';
-
-type Link = { id: number; link: string; label: string };
-type Graph = { id: number; title: string; percentage: number };
-
-type IntroData = { title: string; lead: string; link_list: Link[] };
-
-type ActivityData = {
-  id: number;
-  icon: 'ui' | 'dev' | 'design' | 'illustration';
-  title: string;
-  description: string;
-};
-
-type CareerData = {
-  id: number;
-  logoSVG: string;
-  name: string;
-  dateInterval: string;
-  title: string;
-  description: string;
-};
-
-type EducationData = {
-  id: number;
-  logoSVG: string;
-  name: string;
-  dateInterval: string;
-  title: string;
-  description: string;
-};
-
-type SkillData = {
-  id: number;
-  title: string;
-  description: string;
-  graphs: Graph[];
-};
-
-interface AboutProps {
-  intro: IntroData;
-  cards: ActivityData[] | CareerData[] | EducationData[] | SkillData[];
-}
 
 export default function About({ intro, cards }: AboutProps): JSX.Element {
   const router = useRouter();
