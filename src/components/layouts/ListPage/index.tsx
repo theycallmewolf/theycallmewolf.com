@@ -1,7 +1,7 @@
 import Head from 'next/head';
 
 import { Cover } from '../../elements/Cover';
-import { Intro } from '../../elements/Intro';
+import { Intro } from '../../sections/Intro';
 import { Header } from '../Header';
 import styles from './styles.module.scss';
 

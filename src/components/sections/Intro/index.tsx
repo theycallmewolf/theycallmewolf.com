@@ -1,4 +1,4 @@
-import { Nav } from '../Nav';
+import { Nav } from '../../elements/Nav';
 import styles from './styles.module.scss';
 
 type Links = {
