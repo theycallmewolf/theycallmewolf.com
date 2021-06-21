@@ -1,5 +1,6 @@
 import Prismic from '@prismicio/client';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { RichText } from 'prismic-dom';
 import { useEffect } from 'react';
@@ -44,14 +45,18 @@ export default function Work({ intro, cards }: WorkProps): JSX.Element {
         <DefaultCard key={project.id} customClass={styles.card}>
           <CardHeader>
             {project.slider.image_small !== '' ? (
-              <picture>
-                <source
-                  srcSet={`${project.slider.image_large}, ${project.slider.image_large_2x} 2x`}
-                  media="(min-width: 425px)"
-                />
-                <source srcSet={`${project.slider.image_small_2x} 2x`} />
-                <img src={project.slider.image_small} alt={project.title} />
-              </picture>
+              <Link href={`/work/project/${project.slug}`}>
+                <a>
+                  <picture>
+                    <source
+                      srcSet={`${project.slider.image_large}, ${project.slider.image_large_2x} 2x`}
+                      media="(min-width: 425px)"
+                    />
+                    <source srcSet={`${project.slider.image_small_2x} 2x`} />
+                    <img src={project.slider.image_small} alt={project.title} />
+                  </picture>
+                </a>
+              </Link>
             ) : (
               <TangramCard customClass={styles.placeholder} />
             )}
