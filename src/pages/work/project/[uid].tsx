@@ -1,10 +1,11 @@
 import Prismic from '@prismicio/client';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import { RichText } from 'prismic-dom';
 import { useCallback, useEffect, useState } from 'react';
 
-import { IMinus, IPlus } from '../../../assets/icons';
+import { IArrow, IMinus, IPlus } from '../../../assets/icons';
 import {
   CardBody,
   CardFooter,
@@ -27,6 +28,7 @@ export default function Code({ project, posts }: CodeProps): JSX.Element {
   const [slides, setSlides] = useState([]);
 
   const { getTheme } = useTheme();
+  const router = useRouter();
 
   useEffect(() => {
     getTheme();
@@ -79,6 +81,7 @@ export default function Code({ project, posts }: CodeProps): JSX.Element {
       </Head>
       <main className={styles.main}>
         <Header />
+
         <section className={styles.intro}>
           <div>
             <picture>
@@ -94,7 +97,11 @@ export default function Code({ project, posts }: CodeProps): JSX.Element {
             <h1>{project.title}</h1>
             <p>{project.description}</p>
           </div>
+          <button className={styles.backBtn} onClick={() => router.back()}>
+            <IArrow color="white" />
+          </button>
         </section>
+
         <Slider slides={slides} contentType="image" additionalClass={styles.slider} />
         <section className={styles.specs}>
           <div>
