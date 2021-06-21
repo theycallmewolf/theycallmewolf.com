@@ -53,8 +53,8 @@ export function Slider({
         }}
         onSlideChange={(swiper) => handleSlideNumber(swiper.activeIndex)}>
         {contentType === 'image' &&
-          slideList.map((slide) => (
-            <SwiperSlide key={slide.slug}>
+          slideList.map((slide, i) => (
+            <SwiperSlide key={i}>
               <figure>
                 <picture>
                   <source
@@ -81,8 +81,8 @@ export function Slider({
           ))}
 
         {contentType === 'testimonial' &&
-          testimonialList.map((testimonial) => (
-            <SwiperSlide key={testimonial.id}>
+          testimonialList.map((testimonial, i) => (
+            <SwiperSlide key={i}>
               <p>{testimonial.quote}</p>
               <p>
                 <small>
