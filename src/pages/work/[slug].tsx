@@ -16,16 +16,17 @@ import { CustomLink } from '../../components/elements/Link';
 import ListPage from '../../components/layouts/ListPage';
 import { useTheme } from '../../hooks/useTheme';
 import { getPrismicClient } from '../../services/prismic';
-import { IntroData, ProjectData } from '../../types';
+import { IntroData, LinkData, ProjectData } from '../../types';
 import { formatDate } from '../../utils';
 import styles from './styles.module.scss';
 
 interface WorkProps {
   intro: IntroData;
+  link_list: LinkData[];
   cards: ProjectData[];
 }
 
-export default function Work({ intro, cards }: WorkProps): JSX.Element {
+export default function Work({ intro, link_list, cards }: WorkProps): JSX.Element {
   const router = useRouter();
   const { slug } = router.query;
   const { getTheme } = useTheme();
@@ -37,6 +38,7 @@ export default function Work({ intro, cards }: WorkProps): JSX.Element {
   return (
     <ListPage
       intro={intro}
+      link_list={link_list}
       pageTitle="work"
       imageURL="/assets/img/cover-work.jpg"
       slug={slug}
@@ -93,32 +95,31 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params;
   let cards: unknown;
 
-  const intro: IntroData = {
-    title: 'work',
-    lead: 'Maecenas faucibus mollis interdum. Nullam id dolor id nibh ultricies vehicula ut id elit.',
-    link_list: [
-      {
-        id: 1,
-        link: '/work/code',
-        label: 'code'
-      },
-      {
-        id: 2,
-        link: '/work/design',
-        label: 'design'
-      },
-      {
-        id: 3,
-        link: '/work/illustration',
-        label: 'illustration'
-      },
-      {
-        id: 4,
-        link: '/work/other',
-        label: 'other'
-      }
-    ]
-  };
+  async function getIntro(): Promise<IntroData[]> {
+    const response = await prismic.query(Prismic.Predicates.at('document.type', 'intro'), {
+      orderings: '[my.intro.title]'
+    });
+    return response.results
+      .filter(({ data }) => data.type === 'work')
+      .map(({ data }) => {
+        const { title, lead, link } = data;
+
+        return {
+          lead: RichText.asText(lead),
+          title: RichText.asText(title),
+          link_list: [
+            {
+              link: RichText.asText(link),
+              label: RichText.asText(title).toLowerCase()
+            }
+          ]
+        };
+      });
+  }
+
+  const introList = await getIntro();
+  const link_list = introList.map((item) => item.link_list).flat();
+  const intro = introList.filter(({ title }) => title === slug);
 
   async function getProjectData(): Promise<ProjectData[]> {
     const response = await prismic.query(Prismic.predicates.at('document.type', 'projects'), {
@@ -212,6 +213,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   return {
     props: {
       intro,
+      link_list,
       cards
     },
     revalidate: 60 * 60 * 1 // 1 hour
