@@ -107,6 +107,18 @@ export type SkillData = {
   graphs: GraphData[];
 };
 
+export type Links = {
+  id: number;
+  link: string;
+  label: string;
+};
+
+export interface IntroProps extends React.HTMLAttributes<HTMLElement> {
+  link_list: Links[];
+  title: string;
+  lead: string;
+}
+
 export interface CodeProps {
   project: ProjectDetails;
   posts: PostData[];

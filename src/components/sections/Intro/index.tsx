@@ -1,17 +1,6 @@
+import { IntroProps } from '../../../types';
 import { Nav } from '../../elements/Nav';
 import styles from './styles.module.scss';
-
-type Links = {
-  id: number;
-  link: string;
-  label: string;
-};
-
-interface IntroProps extends React.HTMLAttributes<HTMLElement> {
-  link_list: Links[];
-  title: string;
-  lead: string;
-}
 
 export function Intro({ link_list, title, lead, ...rest }: IntroProps): JSX.Element {
   return (
