@@ -1,7 +1,6 @@
 import Prismic from '@prismicio/client';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import Link from 'next/link';
 import { RichText } from 'prismic-dom';
 import { useEffect } from 'react';
 
