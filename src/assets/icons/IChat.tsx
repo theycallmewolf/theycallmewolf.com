@@ -1,8 +1,8 @@
-type SvgICrossData = React.HTMLAttributes<HTMLOrSVGElement>;
+import { SvgIcon } from './types';
 
-function SvgIChat({ ...rest }: SvgICrossData): JSX.Element {
+function SvgIChat(props: SvgIcon): JSX.Element {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" {...rest}>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" {...props}>
       <path d="M5 6.8h11m-11 4h8m-7.5 9.4l5.4-4.4h10.6v-14H.5v14h5v4.4z" strokeMiterlimit={10} />
     </svg>
   );
