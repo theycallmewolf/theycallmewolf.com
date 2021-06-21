@@ -1,4 +1,4 @@
-import { BlogProps } from '../../../pages/types';
+import { BlogProps } from '../../../types';
 import { Button } from '../../elements/Button';
 import { CardBody, CardFooter, DefaultCard } from '../../elements/Cards/DefaultCard';
 import { CustomLink } from '../../elements/Link';
