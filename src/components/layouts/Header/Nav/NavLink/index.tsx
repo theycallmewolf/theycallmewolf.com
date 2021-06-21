@@ -20,7 +20,7 @@ export function NavLink({ href, label }: NavLinkProps): JSX.Element {
   return (
     <a
       href={href}
-      className={`${styles.link} ${router.pathname === href && styles.active}`}
+      className={`${styles.link} ${router.asPath === href && styles.active}`}
       onClick={handleClick}>
       {label}
     </a>
