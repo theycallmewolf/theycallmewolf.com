@@ -1,5 +1,7 @@
+import Prismic from '@prismicio/client';
 import { GetServerSideProps } from 'next';
 import { useRouter } from 'next/router';
+import { RichText } from 'prismic-dom';
 import { useEffect } from 'react';
 
 import { ServicesSVG } from '../../assets/services';
@@ -8,6 +10,7 @@ import { GraphicCard } from '../../components/elements/Cards/GraphicCard';
 import { Graph } from '../../components/elements/Graph';
 import ListPage from '../../components/layouts/ListPage';
 import { useTheme } from '../../hooks/useTheme';
+import { getPrismicClient } from '../../services/prismic';
 import {
   AboutProps,
   ActivityData,
@@ -18,7 +21,7 @@ import {
 } from '../../types';
 import styles from './styles.module.scss';
 
-export default function About({ intro, cards }: AboutProps): JSX.Element {
+export default function About({ intro, link_list, cards }: AboutProps): JSX.Element {
   const router = useRouter();
   const { slug } = router.query;
   const { getTheme } = useTheme();
@@ -37,6 +40,7 @@ export default function About({ intro, cards }: AboutProps): JSX.Element {
   return (
     <ListPage
       intro={intro}
+      link_list={link_list}
       pageTitle="about"
       slug={slug}
       imageURL="/assets/img/cover-about.jpg"
@@ -86,35 +90,35 @@ export default function About({ intro, cards }: AboutProps): JSX.Element {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const prismic = getPrismicClient();
   const { slug } = params;
   let cards: unknown;
 
-  const intro: IntroData = {
-    title: 'about',
-    lead: 'Maecenas faucibus mollis interdum. Nullam id dolor id nibh ultricies vehicula ut id elit.',
-    link_list: [
-      {
-        id: 1,
-        link: '/about/skills',
-        label: 'skills'
-      },
-      {
-        id: 2,
-        link: '/about/activity',
-        label: 'activity'
-      },
-      {
-        id: 3,
-        link: '/about/career',
-        label: 'career'
-      },
-      {
-        id: 4,
-        link: '/about/education',
-        label: 'education'
-      }
-    ]
-  };
+  async function getIntro(): Promise<IntroData[]> {
+    const response = await prismic.query(Prismic.Predicates.at('document.type', 'intro'), {
+      orderings: '[my.intro.title]'
+    });
+    return response.results
+      .filter(({ data }) => data.type === 'about')
+      .map(({ data }) => {
+        const { title, lead, link } = data;
+
+        return {
+          lead: RichText.asText(lead),
+          title: RichText.asText(title),
+          link_list: [
+            {
+              link: RichText.asText(link),
+              label: RichText.asText(title).toLowerCase()
+            }
+          ]
+        };
+      });
+  }
+
+  const introList = await getIntro();
+  const link_list = introList.map((item) => item.link_list).flat();
+  const intro = introList.filter(({ title }) => title === slug);
 
   function getActivityContent(): ActivityData[] {
     return [
@@ -354,6 +358,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   return {
     props: {
       intro,
+      link_list,
       cards
     }
   };
