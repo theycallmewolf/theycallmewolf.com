@@ -64,7 +64,7 @@ export type TestimonialData = {
 };
 
 export type AboutData = { id: string; type: string; text: string };
-export type LinkData = { id: number; link: string; label: string };
+export type LinkData = { link: string; label: string };
 export type SpecData = { id: string; spec: string };
 export type IntroData = { title: string; lead: string; link_list: LinkData[] };
 export type GraphData = { id: number; title: string; percentage: number };
@@ -107,14 +107,8 @@ export type SkillData = {
   graphs: GraphData[];
 };
 
-export type Links = {
-  id: number;
-  link: string;
-  label: string;
-};
-
 export interface IntroProps extends React.HTMLAttributes<HTMLElement> {
-  link_list: Links[];
+  link_list: LinkData[];
   title: string;
   lead: string;
 }
@@ -126,6 +120,7 @@ export interface CodeProps {
 
 export interface AboutProps {
   intro: IntroData;
+  link_list: LinkData[];
   cards: ActivityData[] | CareerData[] | EducationData[] | SkillData[];
 }
 
@@ -144,4 +139,20 @@ export interface SliderProps extends React.HTMLAttributes<HTMLElement> {
   additionalClass?: string;
   hasLink?: boolean;
   hasIcon?: boolean;
+}
+
+type IntroData = {
+  title: string;
+  lead: string;
+  link_list: LinkData[];
+};
+
+export interface ListPageProps {
+  intro: IntroData;
+  link_list: LinkData[];
+  slug: string | string[];
+  children: React.ReactNode;
+  pageTitle: string;
+  imageURL: string;
+  pageDescription: string;
 }

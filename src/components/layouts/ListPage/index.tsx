@@ -1,23 +1,14 @@
 import Head from 'next/head';
 
+import { ListPageProps } from '../../../types';
 import { Cover } from '../../elements/Cover';
 import { Intro } from '../../sections/Intro';
 import { Header } from '../Header';
 import styles from './styles.module.scss';
 
-type Link = { id: number; link: string; label: string };
-type IntroData = { title: string; lead: string; link_list: Link[] };
-
-interface ListPageProps {
-  intro: IntroData;
-  slug: string | string[];
-  children: React.ReactNode;
-  pageTitle: string;
-  imageURL: string;
-  pageDescription: string;
-}
 export default function ListPage({
   intro,
+  link_list,
   slug,
   imageURL,
   pageTitle,
@@ -33,7 +24,7 @@ export default function ListPage({
       <main className={styles.main}>
         <Header />
         <Cover imageURL={imageURL} />
-        <Intro {...intro} />
+        <Intro link_list={link_list} title={intro[0].title} lead={intro[0].lead} />
         <div className={`${styles.cardList} ${slug === 'activity' && styles.col2}`}>{children}</div>
       </main>
     </>
