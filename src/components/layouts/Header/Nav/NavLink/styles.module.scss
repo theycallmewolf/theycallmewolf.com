@@ -2,7 +2,7 @@
   font-size: 3rem;
   font-family: var(--f-title);
   font-weight: var(--f-bold);
-  color: var(--c-candy-red);
+  color: var(--c-element-100);
   letter-spacing: 3px;
   text-transform: uppercase;
   
@@ -41,7 +41,7 @@
   
   &.active,
   &:hover {
-    color: var(--c-element-100);
+    color: var(--c-candy-red);
     
     &::before { left: 0; }
     &::after { right: 0; }
