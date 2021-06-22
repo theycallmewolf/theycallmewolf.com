@@ -30,7 +30,7 @@ export function Chat(): JSX.Element {
   const initialValues: FormValues = { name: '', email: '', message: '' };
 
   const toggleChat = useCallback(() => {
-    setShowMessage(false); //
+    setShowMessage(false);
     setEmailSent(false);
     setIsOpen(!isOpen);
   }, [isOpen]);
@@ -45,13 +45,10 @@ export function Chat(): JSX.Element {
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify(data)
         });
-        //if success
-        setTimeout(() => {
-          setEmailSent(true);
-          setShowMessage(true);
-          setSubmitting(false);
-          resetForm();
-        }, 1000);
+        setEmailSent(true);
+        setShowMessage(true);
+        setSubmitting(false);
+        resetForm();
       } catch (error) {
         setEmailSent(false);
         setShowMessage(true);
