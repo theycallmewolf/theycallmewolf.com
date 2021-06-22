@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { Wolf } from '../../../assets/icons';
 import { IChat, ICross, ILoading } from '../../../assets/icons';
 import { useTheme } from '../../../hooks/useTheme';
+import { EmailData } from '../../../types';
 import { Button } from '../Button';
 import styles from './styles.module.scss';
 
@@ -35,12 +36,7 @@ export function Chat(): JSX.Element {
   const handleSubmit = useCallback(({ values, setSubmitting, resetForm }) => {
     const { name, email, message } = values;
 
-    async function sendEmail(data: {
-      name: string;
-      email: string;
-      message: string;
-      subject: string;
-    }) {
+    async function sendEmail(data: EmailData) {
       try {
         await fetch('/api/contact', {
           method: 'POST',

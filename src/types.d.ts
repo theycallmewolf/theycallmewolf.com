@@ -107,6 +107,13 @@ export type SkillData = {
   graphs: GraphData[];
 };
 
+export interface EmailData {
+  name: string;
+  email: string;
+  message: string;
+  subject: string;
+}
+
 export interface IntroProps extends React.HTMLAttributes<HTMLElement> {
   link_list: LinkData[];
   title: string;
