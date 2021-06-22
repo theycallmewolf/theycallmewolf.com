@@ -1,5 +1,6 @@
 import { Field, Form, Formik } from 'formik';
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
+import ReCAPTCHA from 'react-google-recaptcha';
 import * as Yup from 'yup';
 
 import { Wolf } from '../../../assets/icons';
@@ -26,6 +27,7 @@ export function Chat(): JSX.Element {
   const [showMessage, setShowMessage] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
   const { hasDarkMode } = useTheme();
+  const recaptchaRef = useRef(null);
 
   const initialValues: FormValues = { name: '', email: '', message: '' };
 
@@ -35,8 +37,16 @@ export function Chat(): JSX.Element {
     setIsOpen(!isOpen);
   }, [isOpen]);
 
-  const handleSubmit = useCallback(({ values, setSubmitting, resetForm }) => {
+  const handleSubmit = useCallback(async ({ values, setSubmitting, resetForm }) => {
     const { name, email, message } = values;
+
+    const token = await recaptchaRef.current.execute();
+
+    if (!token) {
+      setEmailSent(false);
+      setShowMessage(true);
+      return;
+    }
 
     async function sendEmail(data: EmailData) {
       try {
@@ -63,15 +73,19 @@ export function Chat(): JSX.Element {
         You have a new contact from:
 
         name: ${name}
-        
+
         email: ${email}
-        
+
         message:
-        
+
         ${message}`,
       name
     });
   }, []);
+
+  function onChange(value: string) {
+    console.log('Captcha value:', value);
+  }
 
   return (
     <>
@@ -151,6 +165,14 @@ export function Chat(): JSX.Element {
               );
             }}
           </Formik>
+          <div className={styles.recaptchaContainer}>
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              size="invisible"
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+              onChange={onChange}
+            />
+          </div>
           <div className={`${styles.message} ${showMessage ? styles.show : ''}`}>
             <Wolf className={hasDarkMode ? styles.dark : ''} />
             {emailSent ? (
