@@ -24,12 +24,14 @@ const schema = Yup.object().shape({
 export function Chat(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
   const { hasDarkMode } = useTheme();
 
   const initialValues: FormValues = { name: '', email: '', message: '' };
 
   const toggleChat = useCallback(() => {
-    setShowMessage(false);
+    setShowMessage(false); //
+    setEmailSent(false);
     setIsOpen(!isOpen);
   }, [isOpen]);
 
@@ -45,12 +47,14 @@ export function Chat(): JSX.Element {
         });
         //if success
         setTimeout(() => {
+          setEmailSent(true);
           setShowMessage(true);
           setSubmitting(false);
           resetForm();
         }, 1000);
       } catch (error) {
-        console.log(error);
+        setEmailSent(false);
+        setShowMessage(true);
       }
     }
 
@@ -60,13 +64,13 @@ export function Chat(): JSX.Element {
       message: `
         Hey Wolf!
         You have a new contact from:
-        name:
-        ${name}
+
+        name: ${name}
         
-        email:
-        ${email}
+        email: ${email}
         
-        message: 
+        message:
+        
         ${message}`,
       name
     });
@@ -152,11 +156,29 @@ export function Chat(): JSX.Element {
           </Formik>
           <div className={`${styles.message} ${showMessage ? styles.show : ''}`}>
             <Wolf className={hasDarkMode ? styles.dark : ''} />
-            <h2>Wolf say thanks!</h2>
-            <p>
-              Thank you for your message.
-              <br /> Looking forward to read it!
-            </p>
+            {emailSent ? (
+              <>
+                <h2>Wolf say thanks!</h2>
+                <p>
+                  Thank you for your message.
+                  <br /> Looking forward to read it!
+                </p>
+              </>
+            ) : (
+              <>
+                <h2>Hmm...</h2>
+                <p>
+                  A problem sending your email? This is not a good impression, I know... Please send
+                  me an email to{' '}
+                  <a
+                    href="mailto:bruno@theycallmewolf.com?subject=I've%20visited%20your%20website%20Bruno!&body=Hi%20Bruno%2C%0D%0A..."
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    bruno@theycallmewolf.com
+                  </a>
+                </p>
+              </>
+            )}
             <Button genre="outline" onClick={() => setIsOpen(false)}>
               Close
             </Button>
