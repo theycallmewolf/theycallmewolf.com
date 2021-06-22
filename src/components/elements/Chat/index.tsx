@@ -2,7 +2,9 @@ import { Field, Form, Formik } from 'formik';
 import { useCallback, useState } from 'react';
 import * as Yup from 'yup';
 
+import { Wolf } from '../../../assets/icons';
 import { IChat, ICross, ILoading } from '../../../assets/icons';
+import { useTheme } from '../../../hooks/useTheme';
 import { Button } from '../Button';
 import styles from './styles.module.scss';
 
@@ -20,14 +22,13 @@ const schema = Yup.object().shape({
 
 export function Chat(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
+  const [showMessage, setShowMessage] = useState(false);
+  const { hasDarkMode } = useTheme();
 
-  const initialValues: FormValues = {
-    name: '',
-    email: '',
-    message: ''
-  };
+  const initialValues: FormValues = { name: '', email: '', message: '' };
 
   const toggleChat = useCallback(() => {
+    setShowMessage(false);
     setIsOpen(!isOpen);
   }, [isOpen]);
 
@@ -48,10 +49,10 @@ export function Chat(): JSX.Element {
         });
         //if success
         setTimeout(() => {
-          console.log(values);
+          setShowMessage(true);
           setSubmitting(false);
           resetForm();
-        }, 2000);
+        }, 1000);
       } catch (error) {
         console.log(error);
       }
@@ -83,10 +84,12 @@ export function Chat(): JSX.Element {
         <div className={styles.content}>
           <div className={styles.intro}>
             <h2>
-              Say
-              <br /> &quot;hello, wolf!&quot;
+              Say <br /> &quot;hello, wolf!&quot;
             </h2>
-            <p>Interested in know more about me and my work? Just drop a message.</p>
+            <p>
+              More about me and my work?
+              <br /> Just drop a message.
+            </p>
           </div>
           <Formik
             validationSchema={schema}
@@ -145,6 +148,17 @@ export function Chat(): JSX.Element {
               );
             }}
           </Formik>
+          <div className={`${styles.message} ${showMessage ? styles.show : ''}`}>
+            <Wolf className={hasDarkMode ? styles.dark : ''} />
+            <h2>Wolf say thanks!</h2>
+            <p>
+              Thank you for your message.
+              <br /> Looking forward to read it!
+            </p>
+            <Button genre="outline" onClick={() => setIsOpen(false)}>
+              Close
+            </Button>
+          </div>
         </div>
       </div>
     </>
