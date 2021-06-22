@@ -67,32 +67,31 @@ export type AboutData = { id: string; type: string; text: string };
 export type LinkData = { link: string; label: string };
 export type SpecData = { id: string; spec: string };
 export type IntroData = { title: string; lead: string; link_list: LinkData[] };
-export type GraphData = { id: number; title: string; percentage: number };
+export type GraphData = {
+  id: string;
+  title: string;
+  percentage: number;
+  category: string;
+};
 
 export type ActivityData = {
-  id: number;
+  id: string;
   icon: 'ui' | 'dev' | 'design' | 'illustration';
   title: string;
   description: string;
 };
 
 export type CareerData = {
-  id: number;
-  logoSVG: string;
+  id: string;
+  logo_svg: string;
   name: string;
-  dateInterval: string;
+  year_start: number;
+  year_end: number;
   title: string;
   description: string;
 };
 
-export type EducationData = {
-  id: number;
-  logoSVG: string;
-  name: string;
-  dateInterval: string;
-  title: string;
-  description: string;
-};
+export type EducationData = CareerData;
 
 export type SlideData = {
   slider: ProjectImages;
@@ -101,7 +100,7 @@ export type SlideData = {
 };
 
 export type SkillData = {
-  id: number;
+  id: string;
   title: string;
   description: string;
   graphs: GraphData[];
@@ -128,7 +127,10 @@ export interface CodeProps {
 export interface AboutProps {
   intro: IntroData;
   link_list: LinkData[];
-  cards: ActivityData[] | CareerData[] | EducationData[] | SkillData[];
+  activity: ActivityData[];
+  career: CareerData[];
+  education: EducationData[];
+  skills: SkillData[];
 }
 
 export interface BlogProps {
