@@ -62,10 +62,16 @@ export function Chat(): JSX.Element {
       email,
       subject: `New contact from website.`,
       message: `
-        Hi Wolf!
-        You have a new contact from ${name} @ ${email}. 
-        He/she left you this message: 
-        "${message}"`,
+        Hey Wolf!
+        You have a new contact from:
+        name:
+        ${name}
+        
+        email:
+        ${email}
+        
+        message: 
+        ${message}`,
       name
     });
   }, []);
