@@ -159,7 +159,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   async function getTestimonials(): Promise<TestimonialData[]> {
     const response = await prismic.query(Prismic.predicates.at('document.type', 'testimonials'), {
-      orderings: '[clients.name]',
+      orderings: '[document.last_publication_date desc]',
       fetch: ['testimonials.quote', 'testimonials.name', 'testimonials.job_title']
     });
 
