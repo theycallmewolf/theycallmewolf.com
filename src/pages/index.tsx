@@ -8,7 +8,7 @@ import { Footer } from '../components/layouts/Footer';
 import { Header } from '../components/layouts/Header';
 import { About } from '../components/sections/About';
 import { Banner } from '../components/sections/Banner';
-import { Blog } from '../components/sections/Blog';
+// import { Blog } from '../components/sections/Blog';
 import { Clients } from '../components/sections/Clients';
 import { Projects } from '../components/sections/Projects';
 import { Testimonials } from '../components/sections/Testimonials';
@@ -54,7 +54,7 @@ export default function Home({
         <Projects projects={projects} />
         <Clients clients={clients} />
         <Testimonials testimonials={testimonials} />
-        <Blog posts={posts} />
+        {/* <Blog posts={posts} /> */}
       </main>
       <Footer />
     </>
