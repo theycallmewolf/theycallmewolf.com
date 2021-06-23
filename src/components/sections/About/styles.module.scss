@@ -1,7 +1,7 @@
 .section {
   width: 100%;
   max-width: 960px;
-  margin: 0 auto;
+  margin: 240px auto;
 
   display: flex;
   align-items: center;
@@ -9,6 +9,8 @@
 
   .card {
     .cardBody {
+      h3 { margin-bottom: 16px;}
+
       &> div {
         margin-top: 8px;
         display: grid;
