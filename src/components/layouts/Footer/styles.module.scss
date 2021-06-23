@@ -26,6 +26,11 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
+    p { 
+      font-size: 1.3rem;
+      line-height: 1.4;
+    }
   }
 
   @media (min-width: 420px) {background-size: cover, cover; }
