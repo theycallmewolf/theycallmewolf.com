@@ -27,7 +27,7 @@ export function About({ skills }: AboutProps): JSX.Element {
         <CardImage customClass={styles.cardImage}>
           <Wolf />
         </CardImage>
-        <CustomLink label="about" href="/about" customClass={styles.button} />
+        <CustomLink label="about" href="/about/activity" customClass={styles.button} />
       </AlternativeCard>
     </section>
   );
