@@ -111,7 +111,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
 
   async function getIntro(): Promise<IntroData[]> {
     const response = await prismic.query(Prismic.Predicates.at('document.type', 'intro'), {
-      orderings: '[my.intro.title]'
+      orderings: '[my.intro.order]'
     });
     return response.results
       .filter(({ data }) => data.type === 'about')
