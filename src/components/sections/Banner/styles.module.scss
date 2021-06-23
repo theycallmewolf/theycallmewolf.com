@@ -24,6 +24,8 @@
   background-blend-mode: lighten, multiply;
   background-size: cover, cover;
   background-attachment: scroll, fixed;
+  
+  @media (prefers-reduced-motion: no-preference) { animation: bg-pan-left 24s both; }
 
   .clip {
     position: absolute;
@@ -53,8 +55,6 @@
     width: 60%;
     height: 10px;
   }
-
-  
   
   .content {
     z-index: 1;
@@ -91,4 +91,9 @@
 
     @media (min-width: 1024px) { bottom: 24%; }
   }
+}
+
+@keyframes bg-pan-left {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
