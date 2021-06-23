@@ -14,7 +14,7 @@ import { Projects } from '../components/sections/Projects';
 import { Testimonials } from '../components/sections/Testimonials';
 import { useTheme } from '../hooks/useTheme';
 import { getPrismicClient } from '../services/prismic';
-import { ClientData, PostData, ProjectData, TestimonialData } from '../types';
+import { ClientData, GraphData, PostData, ProjectData, TestimonialData } from '../types';
 import { formatDate } from '../utils/format-date';
 
 interface HomeProps {
@@ -22,9 +22,16 @@ interface HomeProps {
   clients: ClientData[];
   posts: PostData[];
   testimonials: TestimonialData[];
+  skills: GraphData[];
 }
 
-export default function Home({ projects, clients, posts, testimonials }: HomeProps): JSX.Element {
+export default function Home({
+  projects,
+  clients,
+  posts,
+  testimonials,
+  skills
+}: HomeProps): JSX.Element {
   const { getTheme } = useTheme();
 
   useEffect(() => {
@@ -43,7 +50,7 @@ export default function Home({ projects, clients, posts, testimonials }: HomePro
       <Header />
       <main>
         <Banner />
-        <About />
+        <About skills={skills} />
         <Projects projects={projects} />
         <Clients clients={clients} />
         <Testimonials testimonials={testimonials} />
@@ -169,17 +176,34 @@ export const getStaticProps: GetStaticProps = async () => {
     });
   }
 
+  async function getSkills(): Promise<GraphData[]> {
+    const response = await prismic.query(Prismic.Predicates.at('document.type', 'skills_graphs'));
+    return response.results
+      .filter(({ data }) => data.highlight)
+      .map(({ id, data }) => {
+        const { title, percentage, category } = data;
+        return {
+          id,
+          title: RichText.asText(title),
+          percentage,
+          category
+        };
+      });
+  }
+
   const posts = await getPosts();
   const projects = await getProjects();
   const clients = await getClients();
   const testimonials = await getTestimonials();
+  const skills = await getSkills();
 
   return {
     props: {
       projects,
       clients,
       posts,
-      testimonials
+      testimonials,
+      skills
     },
     revalidate: 60 * 60 * 1 // 1 hour
   };
