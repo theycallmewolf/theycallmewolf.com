@@ -8,13 +8,13 @@
   background-position: left center, 70% center;
   background-blend-mode: lighten, multiply;
   background-attachment: scroll;
-
+  
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: -1;
-  
+
   .container {
     width: calc(100% - 24px);
     margin: 0 auto;
@@ -31,7 +31,15 @@
       font-size: 1.3rem;
       line-height: 1.4;
     }
+
+    @media (orientation: landscape) {
+      height: 0;
+      
+      @media( min-height: 560px) { height: 80px; }
+      @media( min-height: 600px) { height: 120px; }
+      @media( min-height: 780px) { height: 244px; }
+    }
   }
 
-  @media (min-width: 420px) {background-size: cover, cover; }
+  @media (min-width: 420px) { background-size: cover, cover; }
 }
