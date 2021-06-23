@@ -177,7 +177,10 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 
   async function getSkills(): Promise<GraphData[]> {
-    const response = await prismic.query(Prismic.Predicates.at('document.type', 'skills_graphs'));
+    const response = await prismic.query(Prismic.Predicates.at('document.type', 'skills_graphs'), {
+      orderings: '[my.skills_graphs.highlight_order]',
+      fetch: ['testimonials.quote', 'testimonials.name', 'testimonials.job_title']
+    });
     return response.results
       .filter(({ data }) => data.highlight)
       .map(({ id, data }) => {
