@@ -85,7 +85,8 @@ export default function Work({ intro, link_list, cards }: WorkProps): JSX.Elemen
 }
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
-    paths: ['/work/code', '/work/illustration', '/work/design', '/work/other'],
+    // paths: ['/work/code', '/work/illustration', '/work/design', '/work/other'],
+    paths: ['/work/code', '/work/illustration', '/work/design'],
     fallback: 'blocking'
   };
 };
