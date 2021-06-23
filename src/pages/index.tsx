@@ -140,7 +140,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   async function getClients(): Promise<ClientData[]> {
     const response = await prismic.query(Prismic.predicates.at('document.type', 'clients'), {
-      orderings: '[clients.name]',
+      orderings: '[my.clients.name desc]',
       fetch: ['clients.uid', 'clients.name', 'clients.logo_svg', 'clients.link'],
       pageSize: 4
     });
