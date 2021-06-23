@@ -19,7 +19,9 @@ interface TestimonialsProps {
 export function Testimonials({ testimonials }: TestimonialsProps): JSX.Element {
   return (
     <section className={styles.section}>
-      <div className={styles.cover}></div>
+      <div className={styles.cover}>
+        <h2>mentions</h2>
+      </div>
       <Slider testimonials={testimonials} contentType="testimonial" />
     </section>
   );
