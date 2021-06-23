@@ -56,7 +56,10 @@
   .content {
     max-width: 340px;
 
-    h1 { margin-bottom: 16px; }
+    h1 {
+      margin-bottom: 16px;
+      font-size: 2.6rem;
+    }
     p { 
       margin-bottom: 24px;
       min-height: 66px;
@@ -66,31 +69,85 @@
 }
 
 .cardList {
-  margin-top: 160px;
+  margin-top: 80px;
 
   @media (min-width: 1024px) { 
     max-width: 66vw;
+    margin-top: 160px;
     margin-left: auto;
-    padding: 24px;
+    padding: 48px;
   }
 
   & > div { 
-    max-width: 620px;
+    max-width: 720px;
     margin: 0 auto;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: slide-in-bottom 1000ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+
+      &:nth-of-type(2) { animation-delay: 300ms; }
+      &:nth-of-type(3) { animation-delay: 600ms; }
+      &:nth-of-type(4) { animation-delay: 900ms; }
+    }
   }
   
-  &.col2{
+  &.col2 {
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 24px;
+
+    @media (prefers-reduced-motion: no-preference) { 
+      & > div {
+        animation: slide-in-bottom 1000ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        svg { animation: blinking-one infinite linear alternate 8s 5s; }
+      }
+      
+      & > div:nth-of-type(2) {
+        animation-delay: 300ms;
+        svg { animation-delay: 7000ms; }
+      }
+      
+      & > div:nth-of-type(3) {
+        animation-delay: 600ms;
+        svg { animation-delay: 3000ms; }
+      }
+      
+      & > div:nth-of-type(4) {
+        animation-delay: 900ms;
+        svg { animation-delay: 5000ms; }
+      }
+
+    }
     
     @media (min-width: 600px) { 
       grid-template-columns: repeat(2, 1fr);
       padding: 48px;
       padding-bottom: 320px;
     }
-    @media (min-width: 1920px) { 
-      grid-template-columns: repeat(4, 1fr);
-    }
+    
+    @media (min-width: 1920px) { grid-template-columns: repeat(4, 1fr); }
   }
+}
+
+@keyframes blinking-one {
+  0% { opacity: 0.7; filter: brightness(1); }
+  2% { opacity: 1; filter: brightness(1.2); }
+  6% { opacity: 1; filter: brightness(1.7); }
+  10% { opacity: 0.6; filter: brightness(1); }
+  12% { opacity: 0.3; filter: brightness(0.4); }
+  18% { opacity: 1; filter: brightness(1); }
+}
+
+@keyframes blinking-two {
+  0% { opacity: 1; filter: brightness(1.7); }
+  5% { opacity: 0.4; filter: brightness(1); }
+  10% { opacity: 0.8; filter: brightness(1.2); }
+  15% { opacity: 1; filter: brightness(1.8); }
+  20% { opacity: 0.3; filter: brightness(0.4); }
+  25% { opacity: 1; filter: brightness(1); }
+}
+
+@keyframes slide-in-bottom {
+  0% { transform: translateY(1000px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
