@@ -1,23 +1,96 @@
-.main {
-  .container {
-    max-width: 1136px;
-    margin: 0 auto;
-    margin-bottom: 220px;
-    padding-bottom: 240px;
+.aside {
+  width: 100%;
+  height: 100%;
+  padding: 24px;
 
-    .cardList {
-      max-width: 600px;
-      margin: 48px 0 0 auto;
+  @media (min-width: 1024px) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-width: 32vw;
+  }
+
+  .cover {
+    width: calc(100% + (2 * 12px) + (2 * 24px));
+    height: 290px;
+    position: relative;
+    overflow: hidden;
+    margin: -80px calc(-12px - 24px) 24px;
   
-    &.col2{
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-gap: 24px;
-      
-      @media (min-width: 600px) { grid-template-columns: repeat(2, 1fr); }
+    background-color: var(--c-candy-red);
+    background-position: center, center;
+    background-blend-mode: multiply;
+    background-size:  cover;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+
+    @media (min-width: 1024px) {
+      margin: -80px 0 24px calc(-12px - 24px);
+      width: calc(100% + 12px + (2 * 24px))
+    }
+
+    @media (min-height: 700px) { height: 360px; }
+    
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background-color: var(--c-background-200);
+      z-index: 2;
     }
   
-      @media (min-width: 1024px) { margin-top: 480px; }
+    &::before {
+      width: 40px;
+      height: 60px;
+    }
+  
+    &::after {
+      width: 34%;
+      height: 40px;
+    }
+  }
+
+  .content {
+    max-width: 340px;
+
+    h1 { margin-bottom: 16px; }
+    p { 
+      margin-bottom: 24px;
+      min-height: 66px;
+    }
+  }
+
+}
+
+.cardList {
+  margin-top: 160px;
+
+  @media (min-width: 1024px) { 
+    max-width: 66vw;
+    margin-left: auto;
+    padding: 24px;
+  }
+
+  & > div { 
+    max-width: 620px;
+    margin: 0 auto;
+  }
+  
+  &.col2{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 24px;
+    
+    @media (min-width: 600px) { 
+      grid-template-columns: repeat(2, 1fr);
+      padding: 48px;
+      padding-bottom: 320px;
+    }
+    @media (min-width: 1920px) { 
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 }

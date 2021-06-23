@@ -9,7 +9,7 @@
 
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
 
   position: fixed;
   bottom: -4px;
@@ -24,12 +24,13 @@
   
   &::-webkit-scrollbar-track { 
     background: var(--c-background-200);
+    background: transparent;
     border-radius: 2px;
   }
   
   &::-webkit-scrollbar-thumb { 
     border-radius: 2px;
-    background-color: var(--c-background-100);
+    background-color: var(--c-background-200);
     
     &:hover { background-color: var(--c-candy-red); }
   }
