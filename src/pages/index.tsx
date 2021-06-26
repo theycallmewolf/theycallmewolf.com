@@ -159,10 +159,11 @@ export const getStaticProps: GetStaticProps = async () => {
 
     return response.results.map(({ id, first_publication_date, last_publication_date, data }) => {
       const { name, quote, job_title } = data;
+
       return {
         id,
         name: RichText.asText(name),
-        quote: RichText.asText(quote),
+        quote: quote.map(({ text }) => text),
         jobTitle: RichText.asText(job_title),
         publish_date: formatDate(first_publication_date),
         update_date: formatDate(last_publication_date)

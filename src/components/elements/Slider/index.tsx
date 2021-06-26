@@ -84,16 +84,22 @@ export function Slider({
           })}
 
         {contentType === 'testimonial' &&
-          testimonialList.map(({ quote, name, jobTitle, publish_date }, i) => (
-            <SwiperSlide key={i}>
-              <p>{quote}</p>
-              <p>
-                <small>
-                  <strong>{name}</strong>, {jobTitle}, {publish_date}
-                </small>
-              </p>
-            </SwiperSlide>
-          ))}
+          testimonialList.map(({ quote, name, jobTitle, publish_date }, i) => {
+            return (
+              <SwiperSlide key={i}>
+                <div>
+                  {quote.map((paragraph: string, i: number) => (
+                    <p key={i}>{paragraph}</p>
+                  ))}
+                </div>
+                <div>
+                  <p>
+                    <strong>{name}</strong>, {jobTitle}, {publish_date}
+                  </p>
+                </div>
+              </SwiperSlide>
+            );
+          })}
 
         {contentType === 'image' && <SwiperSlide></SwiperSlide>}
       </Swiper>
