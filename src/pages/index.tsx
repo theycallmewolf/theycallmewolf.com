@@ -16,7 +16,7 @@ import { useTheme } from '../hooks/useTheme';
 import { useToast } from '../hooks/useToast';
 import { getPrismicClient } from '../services/prismic';
 import { ClientData, GraphData, PostData, ProjectData, TestimonialData } from '../types';
-import { iOSCheck } from '../utils';
+import { deviceCheck } from '../utils';
 import { formatDate } from '../utils/format-date';
 
 interface HomeProps {
@@ -36,15 +36,21 @@ export default function Home({ projects, clients, testimonials, skills }: HomePr
   }, [getTheme]);
 
   useEffect(() => {
-    const isIOS = iOSCheck();
+    const { isAndroid, isIOS } = deviceCheck();
+    const isInstalled = window.matchMedia('(display-mode: standalone)').matches;
+    if (!isInstalled) {
+      if (isIOS || isAndroid) {
+        const description = isIOS
+          ? 'Tap on the share button below, then "Add to Home screen".'
+          : 'Open the More menu by tapping on the three vertical dots button (top right), then "Add to Home screen".';
 
-    if (isIOS) {
-      addToast({
-        title: 'Have an app-like experience!',
-        description: 'Tap on the share button below, then "Add to Home screen".',
-        type: 'info',
-        delay: 60 * 1000
-      });
+        addToast({
+          title: 'Have an app-like experience!',
+          description,
+          type: 'info',
+          delay: 60 * 1000
+        });
+      }
     }
   }, []);
 
