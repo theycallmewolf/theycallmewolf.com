@@ -12,7 +12,7 @@ export function ServicesSVG({ icon }: ServicesSVGProps): JSX.Element {
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 575 200"
           preserveAspectRatio="xMidYMid">
-          <g className={icon !== 'design' && styles.hide}>
+          <g className={icon !== 'design' ? styles.hide : undefined}>
             <path
               d="M285 95H0m293 52V52m-4 115v8h50l75-72 3-3-78-75h-50v8m117 67l-70 67"
               className={styles.fg}
@@ -23,7 +23,7 @@ export function ServicesSVG({ icon }: ServicesSVGProps): JSX.Element {
             />
           </g>
 
-          <g className={icon !== 'dev' && styles.hide}>
+          <g className={icon !== 'dev' ? styles.hide : undefined}>
             <path
               d="M0 162.1h204.4l48.6-48.6 49.8 49.8 23.3-23.3-5.6-5.7-17.7 17.7-44.2-44.1"
               className={styles.fg}
@@ -42,7 +42,7 @@ export function ServicesSVG({ icon }: ServicesSVGProps): JSX.Element {
             />
           </g>
 
-          <g className={icon !== 'illustration' && styles.hide}>
+          <g className={icon !== 'illustration' ? styles.hide : undefined}>
             <path
               d="M0 154.9h244.5V200M244.5 146.9H0M575 190.3H252.5v-86.8h-8"
               className={styles.fg}
@@ -50,7 +50,7 @@ export function ServicesSVG({ icon }: ServicesSVGProps): JSX.Element {
             <path d="M249.4 103.5h-8v43.4H0v8h241.4v43.4H575v-8H249.4z" className={styles.bg} />
           </g>
 
-          <g className={icon !== 'ui' && styles.hide}>
+          <g className={icon !== 'ui' ? styles.hide : undefined}>
             <path
               d="M344 200v-92L411 0m-74 105l-1 1v94M196 0l-11 18v103L55 50v9l228 128M318 0l-43 69v104l-82-48v-25"
               className={styles.fg}

@@ -11,9 +11,9 @@ function IArrow({ color = 'white' }: IArrowProps): JSX.Element {
         className={
           styles.element +
           ' ' +
-          (color === 'white' ? styles.white : '') +
-          (color === 'red' ? styles.red : '') +
-          (color === 'black' ? styles.black : '')
+          (color === 'white' ? styles.white : undefined) +
+          (color === 'red' ? styles.red : undefined) +
+          (color === 'black' ? styles.black : undefined)
         }
         d="M15 13l-9 9M6 0l11 11"
         strokeMiterlimit={10}

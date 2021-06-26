@@ -109,7 +109,7 @@ export default function Code({ project, posts }: CodeProps): JSX.Element {
               <h2>About</h2>
               {hidesAbout ? <IPlus className={styles.icon} /> : <IMinus className={styles.icon} />}
             </button>
-            <div className={hidesAbout ? styles.hide : ''}>
+            <div className={hidesAbout ? styles.hide : undefined}>
               {project.about.map(
                 (item, i) => item.type === 'paragraph' && <p key={i}>{item.text}</p>
               )}
@@ -120,7 +120,7 @@ export default function Code({ project, posts }: CodeProps): JSX.Element {
               <h2>Specs</h2>
               {hidesSpecs ? <IPlus className={styles.icon} /> : <IMinus className={styles.icon} />}
             </button>
-            <div className={hidesSpecs ? styles.hide : ''}>
+            <div className={hidesSpecs ? styles.hide : undefined}>
               <p>
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam distinctio
                 aspernatur reiciendis, praesentium neque nemo, quia consequatur repellendus dicta

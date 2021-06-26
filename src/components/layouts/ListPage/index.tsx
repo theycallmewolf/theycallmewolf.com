@@ -38,7 +38,7 @@ export default function ListPage({
             <Nav customClass={styles.nav} link_list={link_list} />
           </div>
         </aside>
-        <section className={`${styles.cardList} ${slug === 'activity' ? styles.col2 : ''}`}>
+        <section className={`${styles.cardList} ${slug === 'activity' ? styles.col2 : undefined}`}>
           {children}
         </section>
       </main>

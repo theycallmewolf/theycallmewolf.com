@@ -5,16 +5,14 @@ interface CardContainerProps extends React.HTMLAttributes<HTMLElement> {
   imageFilter?: boolean;
 }
 export function CardContainer({
-  customClass,
+  customClass = '',
   imageFilter = false,
   children,
   ...rest
 }: CardContainerProps): JSX.Element {
   return (
     <div
-      className={`${styles.cardContainer} ${customClass ?? ''} ${
-        imageFilter && styles.imageFilter
-      }`}
+      className={`${styles.cardContainer} ${customClass} ${imageFilter ?? styles.imageFilter}`}
       {...rest}>
       {children}
     </div>

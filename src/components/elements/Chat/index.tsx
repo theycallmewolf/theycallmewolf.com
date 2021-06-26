@@ -89,12 +89,12 @@ export function Chat(): JSX.Element {
 
   return (
     <>
-      <div className={`${styles.container} ${isOpen ? styles.open : ''}`}>
+      <div className={`${styles.container} ${isOpen ? styles.open : undefined}`}>
         <Button
           type="button"
           genre="fill"
           customClass="call-to-action"
-          className={`${styles.button} ${isOpen ? styles.open : ''}`}
+          className={`${styles.button} ${isOpen ? styles.open : undefined}`}
           onClick={() => toggleChat()}>
           {isOpen ? <ICross /> : <IChat />}
         </Button>
@@ -173,8 +173,8 @@ export function Chat(): JSX.Element {
               onChange={onChange}
             />
           </div>
-          <div className={`${styles.message} ${showMessage ? styles.show : ''}`}>
-            <Wolf className={hasDarkMode ? styles.dark : ''} />
+          <div className={`${styles.message} ${showMessage ? styles.show : undefined}`}>
+            <Wolf className={hasDarkMode ? styles.dark : undefined} />
             {emailSent ? (
               <>
                 <h2>Wolf say thanks!</h2>

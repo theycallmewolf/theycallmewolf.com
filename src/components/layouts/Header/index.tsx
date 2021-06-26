@@ -12,8 +12,8 @@ export function Header(): JSX.Element {
 
   return (
     <header
-      className={`${styles.container} ${isOpen ? styles.open : ''} ${
-        hasDarkMode ? styles.dark : ''
+      className={`${styles.container} ${isOpen ? styles.open : undefined} ${
+        hasDarkMode ? styles.dark : undefined
       }`}>
       <div className={styles.navigation}>
         <Nav />

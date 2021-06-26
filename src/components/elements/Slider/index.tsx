@@ -33,7 +33,9 @@ export function Slider({
   }
 
   return (
-    <div className={`slider-container ${hasDarkMode ? 'dark' : ''} ${additionalClass}`} {...rest}>
+    <div
+      className={`slider-container ${hasDarkMode ? 'dark' : undefined} ${additionalClass}`}
+      {...rest}>
       <Swiper
         spaceBetween={48}
         navigation
