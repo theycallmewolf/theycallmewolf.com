@@ -13,8 +13,10 @@ import { Clients } from '../components/sections/Clients';
 import { Projects } from '../components/sections/Projects';
 import { Testimonials } from '../components/sections/Testimonials';
 import { useTheme } from '../hooks/useTheme';
+import { useToast } from '../hooks/useToast';
 import { getPrismicClient } from '../services/prismic';
 import { ClientData, GraphData, PostData, ProjectData, TestimonialData } from '../types';
+import { iOSCheck } from '../utils';
 import { formatDate } from '../utils/format-date';
 
 interface HomeProps {
@@ -27,10 +29,24 @@ interface HomeProps {
 
 export default function Home({ projects, clients, testimonials, skills }: HomeProps): JSX.Element {
   const { getTheme } = useTheme();
+  const { addToast } = useToast();
 
   useEffect(() => {
     getTheme();
   }, [getTheme]);
+
+  useEffect(() => {
+    const isIOS = iOSCheck();
+
+    if (isIOS) {
+      addToast({
+        title: 'Have an app-like experience!',
+        description: 'Tap on the share button below, then "Add to Home screen".',
+        type: 'info',
+        delay: 60 * 1000
+      });
+    }
+  }, []);
 
   return (
     <>
