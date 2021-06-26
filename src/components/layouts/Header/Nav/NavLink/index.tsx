@@ -16,12 +16,13 @@ export function NavLink({ href, label }: NavLinkProps): JSX.Element {
     router.push(href);
     toggleNav();
   };
-  console.log(router.asPath, href);
 
   return (
     <a
       href={href}
-      className={`${styles.link} ${router.asPath === href && styles.active}`}
+      className={`${styles.link} ${
+        router.asPath.split('/')[1] === href.split('/')[1] ? styles.active : undefined
+      }`}
       onClick={handleClick}>
       {label}
     </a>
