@@ -1,0 +1,12 @@
+.toastContainer {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  
+  @media (min-width: 375px) {
+    transform: none;
+    left: 24px;
+  }
+}
