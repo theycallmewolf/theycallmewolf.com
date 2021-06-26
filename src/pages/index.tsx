@@ -52,8 +52,8 @@ export default function Home({
         <Banner />
         <About skills={skills} />
         <Projects projects={projects} />
-        <Clients clients={clients} />
         <Testimonials testimonials={testimonials} />
+        <Clients clients={clients} />
         {/* <Blog posts={posts} /> */}
       </main>
       <Footer />
