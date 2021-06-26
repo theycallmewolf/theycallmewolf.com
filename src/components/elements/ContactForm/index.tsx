@@ -22,7 +22,7 @@ const schema = Yup.object().shape({
   message: Yup.string().required('required')
 });
 
-export function Chat(): JSX.Element {
+export function ContactForm(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
