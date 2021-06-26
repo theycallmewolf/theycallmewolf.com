@@ -48,7 +48,13 @@
   }
 
   @media (min-width: 768px) { 
-    font-size: 4rem;
-    padding: 24px;
+    font-size: 1.8rem;
+    padding: 4px;
+    color: var(--c-candy-red);
+
+    &.active,
+    &:hover {
+      color: var(--c-element-100)
+    }
   }
 }

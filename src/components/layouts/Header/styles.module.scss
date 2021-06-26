@@ -158,4 +158,20 @@
   }
 
   &.open { top: 0; }
+
+  @media (min-width: 768px) {
+    top: 0;
+    height: 80px;
+
+    .navigation {
+      position: relative;
+      height: 100%;
+    }
+
+    .header {
+      .buttonContainer {
+        button.menu { display: none;}
+      }
+    }
+  }
 }
