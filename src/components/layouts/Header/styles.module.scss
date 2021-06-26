@@ -61,7 +61,11 @@
         width: 100%;
       }
 
-      &.open { margin-bottom: -10px; }
+      &.open {
+        margin-bottom: -10px;
+
+        @media (min-width: 768px) { margin-bottom: -50px;}
+      }
     }
 
     .buttonContainer {
