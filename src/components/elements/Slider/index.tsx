@@ -55,41 +55,41 @@ export function Slider({
         }}
         onSlideChange={(swiper) => handleSlideNumber(swiper.activeIndex)}>
         {contentType === 'image' &&
-          slideList.map((slide, i) => (
-            <SwiperSlide key={i}>
-              <figure>
-                <picture>
-                  <source
-                    srcSet={`${slide.slider.image_large}, ${slide.slider.image_large_2x} 2x`}
-                    media="(min-width: 1440px)"
-                  />
-                  <source
-                    srcSet={`${slide.slider.image_small}, ${slide.slider.image_small_2x} 2x`}
-                    media="(min-width: 1024px)"
-                  />
-                  <source
-                    srcSet={`${slide.slider.image_large}, ${slide.slider.image_large_2x} 2x`}
-                    media="(min-width: 600px)"
-                  />
-                  <source srcSet={`${slide.slider.image_small_2x} 2x`} />
-                  <img src={slide.slider.image_small} alt={slide.title} />
-                </picture>
-                {slide.slider.caption && (
-                  <figcaption>{`(${slide.project_date}) ${slide.slider.caption}`}</figcaption>
-                )}
-              </figure>
-              {hasLink && <CustomLink href={`work/project/${slide.slug}`} hasIcon={hasIcon} />}
-            </SwiperSlide>
-          ))}
+          slideList.map(({ slider, title, project_date, slug }, i) => {
+            const { image_large, image_large_2x, image_small, image_small_2x, caption } = slider;
+            return (
+              <SwiperSlide key={i}>
+                <figure>
+                  <picture>
+                    <source
+                      srcSet={`${image_large}, ${image_large_2x} 2x`}
+                      media="(min-width: 1440px)"
+                    />
+                    <source
+                      srcSet={`${image_small}, ${image_small_2x} 2x`}
+                      media="(min-width: 1024px)"
+                    />
+                    <source
+                      srcSet={`${image_large}, ${image_large_2x} 2x`}
+                      media="(min-width: 600px)"
+                    />
+                    <source srcSet={`${image_small_2x} 2x`} />
+                    <img src={image_small} alt={title} />
+                  </picture>
+                  {caption && <figcaption>{`(${project_date}) ${caption}`}</figcaption>}
+                </figure>
+                {hasLink && <CustomLink href={`work/project/${slug}`} hasIcon={hasIcon} />}
+              </SwiperSlide>
+            );
+          })}
 
         {contentType === 'testimonial' &&
-          testimonialList.map((testimonial, i) => (
+          testimonialList.map(({ quote, name, jobTitle, publish_date }, i) => (
             <SwiperSlide key={i}>
-              <p>{testimonial.quote}</p>
+              <p>{quote}</p>
               <p>
                 <small>
-                  <strong>{testimonial.name}</strong>, {testimonial.jobTitle},{' '}
-                  {testimonial.publish_date}
+                  <strong>{name}</strong>, {jobTitle}, {publish_date}
                 </small>
               </p>
             </SwiperSlide>
