@@ -48,7 +48,7 @@ export default function Home({ projects, clients, testimonials, skills }: HomePr
           title: 'Have an app-like experience!',
           description,
           type: 'info',
-          delay: 60 * 1000
+          duration: 60 * 1000
         });
       }
     }

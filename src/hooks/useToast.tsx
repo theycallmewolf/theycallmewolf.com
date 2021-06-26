@@ -5,7 +5,7 @@ import { Toast } from '../components/elements/Toast';
 import { ToastProps } from '../components/elements/Toast/types';
 
 interface ToastContextData {
-  addToast({ type, title, description }: ToastProps): void;
+  addToast({ type, title, description, duration }: ToastProps): void;
   removeToast(id: string): void;
   hasToast: boolean;
   timeout: number;
@@ -19,7 +19,7 @@ const ToastProvider: React.FC = ({ children }) => {
   const [timeout, setTimeout] = useState(3000);
 
   const addToast = useCallback(
-    ({ type, title, description, delay }) => {
+    ({ type, title, description, duration }) => {
       const id = uuidv4();
 
       const toast = {
@@ -29,7 +29,7 @@ const ToastProvider: React.FC = ({ children }) => {
         description
       };
 
-      setTimeout(delay);
+      setTimeout(duration);
       setMessages([...messages, toast]);
     },
     [messages]

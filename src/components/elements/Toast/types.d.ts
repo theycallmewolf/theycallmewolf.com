@@ -3,5 +3,5 @@ export interface ToastProps {
   type?: 'error' | 'success' | 'info';
   title: string;
   description: string;
-  delay?: number;
+  duration?: number;
 }
