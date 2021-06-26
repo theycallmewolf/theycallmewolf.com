@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useNav } from '../../../../../hooks/useNav';
 import styles from './styles.module.scss';
 
-interface NavLinkProps {
+interface NavLinkProps extends React.HTMLAttributes<HTMLAnchorElement> {
   href: string;
   label: string;
 }
@@ -16,6 +16,7 @@ export function NavLink({ href, label }: NavLinkProps): JSX.Element {
     router.push(href);
     toggleNav();
   };
+  console.log(router.asPath, href);
 
   return (
     <a
