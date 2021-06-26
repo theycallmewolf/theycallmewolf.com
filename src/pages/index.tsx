@@ -25,13 +25,7 @@ interface HomeProps {
   skills: GraphData[];
 }
 
-export default function Home({
-  projects,
-  clients,
-  posts,
-  testimonials,
-  skills
-}: HomeProps): JSX.Element {
+export default function Home({ projects, clients, testimonials, skills }: HomeProps): JSX.Element {
   const { getTheme } = useTheme();
 
   useEffect(() => {
