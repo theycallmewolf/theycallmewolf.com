@@ -1,2 +1,2 @@
 export { formatDate } from './format-date';
-export { iOSCheck } from './ios-check';
+export { deviceCheck } from './ios-check';
