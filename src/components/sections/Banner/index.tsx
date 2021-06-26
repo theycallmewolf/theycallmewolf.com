@@ -2,25 +2,10 @@ import 'react-typed/dist/animatedCursor.css';
 
 import Typed from 'react-typed';
 
+import { introCopy } from '../../../assets/constants';
 import styles from './styles.module.scss';
 
 export function Banner(): JSX.Element {
-  const introCopy = [
-    '"Mr. Wolf", actually.',
-    'Cames from the movie.',
-    'Pulp Fiction…',
-    'My favorite!',
-    'Like the character',
-    'they say I solve problems.',
-    'Who are they?',
-    'Well...',
-    'You are starting to ask too much.',
-    '...',
-    '👋 Hi there!',
-    "I'm Bruno",
-    'I’m a frontend developer + designer.'
-  ];
-
   return (
     <section className={styles.container}>
       <div className={styles.content}>

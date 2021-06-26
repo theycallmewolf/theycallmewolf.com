@@ -1,0 +1,1 @@
+export { introCopy } from './intro';
