@@ -10,6 +10,9 @@
   z-index: 4;
 
   transition: right 300ms ease-in-out;
+  @media (prefers-reduced-motion: no-preference) {
+    animation: slide-in-right 1s 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
   
   svg {
     fill: none;
@@ -235,4 +238,9 @@
 @keyframes rotating {
   from { transform: rotate(0); }
   to { transform: rotate(360deg); }
+}
+
+@keyframes slide-in-right {
+  0% { transform: translateX(1000px); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
 }
