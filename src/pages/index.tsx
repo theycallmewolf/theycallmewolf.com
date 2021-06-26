@@ -36,22 +36,24 @@ export default function Home({ projects, clients, testimonials, skills }: HomePr
   }, [getTheme]);
 
   useEffect(() => {
-    const { isAndroid, isIOS } = deviceCheck();
-    const isInstalled = window.matchMedia('(display-mode: standalone)').matches;
-    if (!isInstalled) {
-      if (isIOS || isAndroid) {
-        const description = isIOS
-          ? 'Tap on the share button below, then "Add to Home screen".'
-          : 'Open the More menu by tapping on the three vertical dots button (top right), then "Add to Home screen".';
+    setTimeout(() => {
+      const { isAndroid, isIOS } = deviceCheck();
+      const isInstalled = window.matchMedia('(display-mode: standalone)').matches;
+      if (!isInstalled) {
+        if (isIOS || isAndroid) {
+          const description = isIOS
+            ? 'Tap on the share button below, then "Add to Home screen".'
+            : 'Open the More menu by tapping on the three vertical dots button (top right), then "Add to Home screen".';
 
-        addToast({
-          title: 'Have an app-like experience!',
-          description,
-          type: 'info',
-          duration: 60 * 1000
-        });
+          addToast({
+            title: 'Have an app-like experience!',
+            description,
+            type: 'info',
+            duration: 60 * 1000
+          });
+        }
       }
-    }
+    }, 45 * 1000);
   }, []);
 
   return (
