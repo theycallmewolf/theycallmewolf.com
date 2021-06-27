@@ -2,3 +2,11 @@
 @import './colors';
 @import './type';
 @import './elements';
+
+
+*:focus { outline: 1px solid var(--c-candy-red); }
+button:focus {
+  outline: 1px solid var(--c-candy-red);
+  box-shadow: none;
+  border: 1px solid var(--c-candy-red);
+}
