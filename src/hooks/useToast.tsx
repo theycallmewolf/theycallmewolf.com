@@ -5,7 +5,7 @@ import { Toast } from '../components/elements/Toast';
 import { ToastProps } from '../components/elements/Toast/types';
 
 interface ToastContextData {
-  addToast({ type, title, description, duration }: ToastProps): { id: string };
+  addToast({ type, title, description, duration }: Omit<ToastProps, 'id'>): { id: string };
   removeToast(id: string): void;
   hasToast: boolean;
   timeout: number;

@@ -1,5 +1,5 @@
 export interface ToastProps {
-  id?: string;
+  id: string;
   type?: 'error' | 'success' | 'info';
   title: string;
   description: string;
