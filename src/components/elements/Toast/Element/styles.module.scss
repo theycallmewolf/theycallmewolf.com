@@ -1,29 +1,28 @@
 .toast {
   position: absolute;
-  bottom: -100vh;
-  left: 50%;
+  bottom:  0;
+  left: -100vw;
   width: calc(100vw - 32px);
   max-width: 300px;
-  transform: translateX(-50%);
   opacity: 0;
   
   padding: 32px;
   background: var(--c-background-100);
   box-shadow: 10px 10px 20px 0px rgb(0 0 0 / 25%);
-  transition: bottom 600ms ease-in-out 1000ms, opacity 600ms ease-in-out 1000ms;
+  transition: 
+    left 600ms ease-out 1000ms, 
+    opacity 600ms ease-out 1000ms;
   
-  &.show { bottom: 0; opacity: 1; }
-
-  @media (min-width: 375px) { transform: none; left: 0; }
+  &.show { left: 0; opacity: 1; }
 
   strong, span { display: block; }
-  strong { 
+  strong {
     margin-bottom: 8px;
     letter-spacing: 0.5px;
     line-height: 1.2;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
-  span { line-height: 1.4; }
+  span { font-size: 14px; line-height: 1.4; }
 
   button {
     width: 16px;
