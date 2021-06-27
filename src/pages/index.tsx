@@ -2,7 +2,7 @@ import Prismic from '@prismicio/client';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { RichText } from 'prismic-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Footer } from '../components/layouts/Footer';
 import { Header } from '../components/layouts/Header';
@@ -28,33 +28,48 @@ interface HomeProps {
 }
 
 export default function Home({ projects, clients, testimonials, skills }: HomeProps): JSX.Element {
+  const [toastID, setToastID] = useState('');
   const { getTheme } = useTheme();
-  const { addToast } = useToast();
+  const { addToast, hasClosed } = useToast();
 
   useEffect(() => {
     getTheme();
   }, [getTheme]);
 
   useEffect(() => {
-    setTimeout(() => {
-      const { isAndroid, isIOS } = deviceCheck();
-      const isInstalled = window.matchMedia('(display-mode: standalone)').matches;
-      if (!isInstalled) {
-        if (isIOS || isAndroid) {
-          const description = isIOS
-            ? 'Tap on the share button below, then "Add to Home screen".'
-            : 'Open the More menu by tapping on the three vertical dots button (top right), then "Add to Home screen".';
+    const hasSeenBanner = localStorage.getItem('@wolf_pwa');
+    const diffTime = Math.abs(Date.now() - Number(hasSeenBanner));
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    if (diffDays > 30) localStorage.removeItem('@wolf_pwa');
 
-          addToast({
-            title: 'Have an app-like experience!',
-            description,
-            type: 'info',
-            duration: 60 * 1000
-          });
+    if (!hasSeenBanner) {
+      setTimeout(() => {
+        const { isAndroid, isIOS } = deviceCheck();
+        const isInstalled = window.matchMedia('(display-mode: standalone)').matches;
+        if (!isInstalled) {
+          if (isIOS || isAndroid) {
+            const description = isIOS
+              ? 'Tap on the share button below, then "Add to Home screen".'
+              : 'Open the More menu by tapping on the three vertical dots button (top right), then "Add to Home screen".';
+
+            const { id } = addToast({
+              title: 'Have an app-like experience!',
+              description,
+              type: 'info',
+              duration: 60 * 1000
+            });
+
+            setToastID(id);
+          }
         }
-      }
-    }, 45 * 1000);
+      }, 45 * 1000);
+    }
   }, []);
+
+  useEffect(() => {
+    const { status, id } = hasClosed;
+    if (status && toastID === id) localStorage.setItem('@wolf_pwa', String(Date.now()));
+  }, [hasClosed, toastID]);
 
   return (
     <>
