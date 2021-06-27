@@ -5,7 +5,7 @@ import { Toast } from '../components/elements/Toast';
 import { ToastProps } from '../components/elements/Toast/types';
 
 interface ToastContextData {
-  addToast({ type, title, description, duration }: ToastProps): void;
+  addToast({ type, title, description, duration }: ToastProps): { id: string };
   removeToast(id: string): void;
   hasToast: boolean;
   timeout: number;
@@ -33,7 +33,9 @@ const ToastProvider: React.FC = ({ children }) => {
 
       setTimeout(duration);
       setMessages([...messages, toast]);
-      setHasClosed(false);
+      setHasClosed({ status: false, id: '' });
+
+      return { id };
     },
     [messages]
   );
