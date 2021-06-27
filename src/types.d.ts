@@ -171,3 +171,8 @@ export interface AsideProps {
   intro: IntroData;
   link_list: LinkData[];
 }
+
+export interface CardListProps {
+  children: React.ReactNode;
+  slug: string | string[];
+}

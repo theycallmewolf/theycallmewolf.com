@@ -2,9 +2,9 @@ import Head from 'next/head';
 
 import { ListPageProps } from '../../../types';
 import { Aside } from '../../sections/Aside';
+import { CardList } from '../../sections/CardList';
 import { Footer } from '../Footer';
 import { Header } from '../Header';
-import styles from './styles.module.scss';
 
 export default function ListPage({
   intro,
@@ -24,9 +24,7 @@ export default function ListPage({
       <main>
         <Header />
         <Aside intro={intro} link_list={link_list} imageURL={imageURL} />
-        <section className={`${styles.cardList} ${slug === 'activity' ? styles.col2 : undefined}`}>
-          {children}
-        </section>
+        <CardList slug={slug}>{children}</CardList>
       </main>
       <Footer />
     </>
