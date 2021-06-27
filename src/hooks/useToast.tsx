@@ -9,6 +9,7 @@ interface ToastContextData {
   removeToast(id: string): void;
   hasToast: boolean;
   timeout: number;
+  hasClosed: boolean;
 }
 
 const ToastContext = createContext<ToastContextData>({} as ToastContextData);
@@ -17,6 +18,7 @@ const ToastProvider: React.FC = ({ children }) => {
   const [messages, setMessages] = useState<ToastProps[]>([] as ToastProps[]);
   const [hasToast, setHasToast] = useState(false);
   const [timeout, setTimeout] = useState(3000);
+  const [hasClosed, setHasClosed] = useState(false);
 
   const addToast = useCallback(
     ({ type, title, description, duration }) => {
@@ -31,11 +33,13 @@ const ToastProvider: React.FC = ({ children }) => {
 
       setTimeout(duration);
       setMessages([...messages, toast]);
+      setHasClosed(false);
     },
     [messages]
   );
 
   const removeToast = useCallback((id) => {
+    setHasClosed(true);
     setMessages((state) => state.filter((msg) => msg.id !== id));
   }, []);
 
@@ -44,7 +48,7 @@ const ToastProvider: React.FC = ({ children }) => {
   }, [messages.length]);
 
   return (
-    <ToastContext.Provider value={{ addToast, removeToast, hasToast, timeout }}>
+    <ToastContext.Provider value={{ addToast, removeToast, hasToast, timeout, hasClosed }}>
       {children}
       <Toast messages={messages} />
     </ToastContext.Provider>
