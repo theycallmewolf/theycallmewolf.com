@@ -58,4 +58,6 @@
   &.fill {
     &:disabled { opacity: 0.3; }
   }
+
+  &:focus { outline: 1px solid var(--c-candy-red); box-shadow: none; }
 }

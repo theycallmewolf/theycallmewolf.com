@@ -103,6 +103,8 @@
       &::after { display: none; }
 
       &:hover { filter: brightness(1.4);}
+
+      &:focus { outline: 1px solid var(--c-candy-red); box-shadow: none; }
       
       &.swiper-button-disabled {
         opacity: 0.6;
