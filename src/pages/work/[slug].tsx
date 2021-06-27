@@ -14,7 +14,7 @@ import {
   DefaultCard
 } from '../../components/elements/Cards/DefaultCard';
 import { CustomLink } from '../../components/elements/Link';
-import { Footer } from '../../components/layouts/Footer';
+import { Footer } from '../../components/sections/Footer';
 import { Header } from '../../components/sections/Header';
 import { Aside } from '../../components/sections/Aside';
 import { CardList } from '../../components/sections/CardList';

@@ -14,7 +14,7 @@ import {
 } from '../../../components/elements/Cards/DefaultCard';
 import { CustomLink } from '../../../components/elements/Link';
 import { Slider } from '../../../components/elements/Slider';
-import { Footer } from '../../../components/layouts/Footer';
+import { Footer } from '../../../components/sections/Footer';
 import { Header } from '../../../components/sections/Header';
 import { useTheme } from '../../../hooks/useTheme';
 import { getPrismicClient } from '../../../services/prismic';

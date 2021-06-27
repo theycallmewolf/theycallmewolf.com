@@ -4,7 +4,7 @@ import Head from 'next/head';
 import { RichText } from 'prismic-dom';
 import { useEffect, useState } from 'react';
 
-import { Footer } from '../components/layouts/Footer';
+import { Footer } from '../components/sections/Footer';
 import { Header } from '../components/sections/Header';
 import { About } from '../components/sections/About';
 import { Banner } from '../components/sections/Banner';
