@@ -165,3 +165,9 @@ export interface ListPageProps {
   imageURL: string;
   pageDescription: string;
 }
+
+export interface AsideProps {
+  imageURL: string;
+  intro: IntroData;
+  link_list: LinkData[];
+}
