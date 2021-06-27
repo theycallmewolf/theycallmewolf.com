@@ -10,7 +10,7 @@ import { CardBody, CardHeader, DefaultCard } from '../../components/elements/Car
 import { GraphicCard } from '../../components/elements/Cards/GraphicCard';
 import { Graph } from '../../components/elements/Graph';
 import { Footer } from '../../components/layouts/Footer';
-import { Header } from '../../components/layouts/Header';
+import { Header } from '../../components/sections/Header';
 import { Aside } from '../../components/sections/Aside';
 import { CardList } from '../../components/sections/CardList';
 import { useTheme } from '../../hooks/useTheme';

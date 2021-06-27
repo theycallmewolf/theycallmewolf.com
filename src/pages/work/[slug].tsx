@@ -15,7 +15,7 @@ import {
 } from '../../components/elements/Cards/DefaultCard';
 import { CustomLink } from '../../components/elements/Link';
 import { Footer } from '../../components/layouts/Footer';
-import { Header } from '../../components/layouts/Header';
+import { Header } from '../../components/sections/Header';
 import { Aside } from '../../components/sections/Aside';
 import { CardList } from '../../components/sections/CardList';
 import { useTheme } from '../../hooks/useTheme';

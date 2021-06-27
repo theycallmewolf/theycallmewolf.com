@@ -5,7 +5,7 @@ import { RichText } from 'prismic-dom';
 import { useEffect, useState } from 'react';
 
 import { Footer } from '../components/layouts/Footer';
-import { Header } from '../components/layouts/Header';
+import { Header } from '../components/sections/Header';
 import { About } from '../components/sections/About';
 import { Banner } from '../components/sections/Banner';
 // import { Blog } from '../components/sections/Blog';
