@@ -156,16 +156,6 @@ type IntroData = {
   link_list: LinkData[];
 };
 
-export interface ListPageProps {
-  intro: IntroData;
-  link_list: LinkData[];
-  slug: string | string[];
-  children: React.ReactNode;
-  pageTitle: string;
-  imageURL: string;
-  pageDescription: string;
-}
-
 export interface AsideProps {
   imageURL: string;
   intro: IntroData;
