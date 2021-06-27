@@ -1,5 +1,6 @@
 import Prismic from '@prismicio/client';
 import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { RichText } from 'prismic-dom';
@@ -13,7 +14,10 @@ import {
   DefaultCard
 } from '../../components/elements/Cards/DefaultCard';
 import { CustomLink } from '../../components/elements/Link';
-import ListPage from '../../components/layouts/ListPage';
+import { Footer } from '../../components/layouts/Footer';
+import { Header } from '../../components/layouts/Header';
+import { Aside } from '../../components/sections/Aside';
+import { CardList } from '../../components/sections/CardList';
 import { useTheme } from '../../hooks/useTheme';
 import { getPrismicClient } from '../../services/prismic';
 import { IntroData, LinkData, ProjectData } from '../../types';
@@ -36,51 +40,56 @@ export default function Work({ intro, link_list, cards }: WorkProps): JSX.Elemen
   }, [getTheme]);
 
   return (
-    <ListPage
-      intro={intro}
-      link_list={link_list}
-      pageTitle="work"
-      imageURL="/assets/img/cover-work.jpg"
-      slug={slug}
-      pageDescription="...">
-      {cards.map((project) => (
-        <DefaultCard key={project.id} customClass={styles.card}>
-          <CardHeader>
-            {project.slider.image_small !== '' ? (
-              <Link href={`/work/project/${project.slug}`}>
-                <a>
-                  <picture>
-                    <source
-                      srcSet={`${project.slider.image_large}, ${project.slider.image_large_2x} 2x`}
-                      media="(min-width: 425px)"
-                    />
-                    <source srcSet={`${project.slider.image_small_2x} 2x`} />
-                    <img src={project.slider.image_small} alt={project.title} />
-                  </picture>
-                </a>
-              </Link>
-            ) : (
-              <TangramCard customClass={styles.placeholder} />
-            )}
-          </CardHeader>
-          <CardBody>
-            <span className={styles.date}>{project.project_date}</span>
-            <h2>{project.title}</h2>
-            <p>{project.description}</p>
-            <ul className={styles.specs}>
-              {!!project.specs && project.specs.map(({ spec, id }) => <li key={id}>{spec}</li>)}
-            </ul>
-          </CardBody>
-          <CardFooter>
-            <CustomLink
-              label="more"
-              href={`/work/project/${project.slug}`}
-              customClass={styles.button}
-            />
-          </CardFooter>
-        </DefaultCard>
-      ))}
-    </ListPage>
+    <>
+      <Head>
+        <title>they call me wolf | Work</title>
+        <meta name="description" content="..." />
+      </Head>
+      <main>
+        <Header />
+        <Aside intro={intro} link_list={link_list} imageURL="/assets/img/cover-work.jpg" />
+        <CardList slug={slug}>
+          {cards.map((project) => (
+            <DefaultCard key={project.id} customClass={styles.card}>
+              <CardHeader>
+                {project.slider.image_small !== '' ? (
+                  <Link href={`/work/project/${project.slug}`}>
+                    <a>
+                      <picture>
+                        <source
+                          srcSet={`${project.slider.image_large}, ${project.slider.image_large_2x} 2x`}
+                          media="(min-width: 425px)"
+                        />
+                        <source srcSet={`${project.slider.image_small_2x} 2x`} />
+                        <img src={project.slider.image_small} alt={project.title} />
+                      </picture>
+                    </a>
+                  </Link>
+                ) : (
+                  <TangramCard customClass={styles.placeholder} />
+                )}
+              </CardHeader>
+              <CardBody>
+                <span className={styles.date}>{project.project_date}</span>
+                <h2>{project.title}</h2>
+                <p>{project.description}</p>
+                <ul className={styles.specs}>
+                  {!!project.specs && project.specs.map(({ spec, id }) => <li key={id}>{spec}</li>)}
+                </ul>
+              </CardBody>
+              <CardFooter>
+                <CustomLink
+                  label="more"
+                  href={`/work/project/${project.slug}`}
+                  customClass={styles.button}
+                />
+              </CardFooter>
+            </DefaultCard>
+          ))}
+        </CardList>
+      </main>
+      <Footer />
+    </>
   );
 }
 export const getStaticPaths: GetStaticPaths = async () => {
