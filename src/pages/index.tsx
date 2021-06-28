@@ -4,12 +4,12 @@ import Head from 'next/head';
 import { RichText } from 'prismic-dom';
 import { useEffect, useState } from 'react';
 
-import { Footer } from '../components/sections/Footer';
-import { Header } from '../components/sections/Header';
 import { About } from '../components/sections/About';
 import { Banner } from '../components/sections/Banner';
 // import { Blog } from '../components/sections/Blog';
 import { Clients } from '../components/sections/Clients';
+import { Footer } from '../components/sections/Footer';
+import { Header } from '../components/sections/Header';
 import { Projects } from '../components/sections/Projects';
 import { Testimonials } from '../components/sections/Testimonials';
 import { useTheme } from '../hooks/useTheme';
@@ -62,7 +62,7 @@ export default function Home({ projects, clients, testimonials, skills }: HomePr
             setToastID(id);
           }
         }
-      }, 45 * 1000);
+      }, 1 * 1000);
     }
   }, []);
 

@@ -1,21 +1,23 @@
 .toast {
   position: absolute;
-  bottom:  0;
-  left: -100vw;
-  width: calc(100vw - 32px);
-  max-width: 300px;
-  opacity: 0;
-  
+  bottom: -200px;
+  left: 0;
+  width: 100%;
   padding: 32px;
   background: var(--c-background-100);
-  box-shadow: 10px 10px 20px 0px rgb(0 0 0 / 25%);
-  transition: 
-    left 600ms ease-out 1000ms, 
-    opacity 600ms ease-out 1000ms;
-  
-  &.show { left: 0; opacity: 1; }
+  box-shadow: 0 -20px 20px 0px rgb(0 0 0 / 25%);
+  filter: brightness(1.4);
+  transition: bottom 600ms ease-out;
 
-  strong, span { display: block; }
+  @media (min-width: 768px) { box-shadow: 10px 10px 20px 0px rgb(0 0 0 / 25%); }
+  
+  &.show { bottom: 0; }
+
+  strong, span { 
+    display: block;
+    color: var(--c-element-200);
+  }
+
   strong {
     margin-bottom: 8px;
     letter-spacing: 0.5px;
@@ -28,11 +30,12 @@
     width: 16px;
     height: 16px;
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 16px;
+    right: 16px;
     border: none;
     background: transparent;
 
     svg { stroke: var(--c-element-100)}
   }
+
 }
