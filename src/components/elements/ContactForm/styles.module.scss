@@ -100,6 +100,11 @@
           background: var(--c-background-200);
           border: none;
           position: relative;
+
+          &:focus { 
+            outline: 1px solid rgb(210 1 32 / 0.3); 
+            filter: none;
+          }
         }
   
         .error {
