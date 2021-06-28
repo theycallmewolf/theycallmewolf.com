@@ -138,30 +138,6 @@ export default function Code({ project, posts }: CodeProps): JSX.Element {
             </div>
           </div>
         </section>
-
-        <section className={styles.recomended}>
-          <h2>You may also like</h2>
-          <div className={styles.cardContainer}>
-            {posts.map((post) => (
-              <DefaultCard key={post.slug}>
-                <CardHeader>
-                  <img
-                    src="https://images.unsplash.com/photo-1550165702-5d96d4dc8f76?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
-                    alt="..."
-                  />
-                </CardHeader>
-                <CardBody>
-                  <span className={styles.date}>{post.publish_date}</span>
-                  <h3>{post.title}</h3>
-                  <p>{post.lead}</p>
-                </CardBody>
-                <CardFooter customClass={styles.cardFooter}>
-                  <CustomLink href={`/${post.slug}`} label="Read" />
-                </CardFooter>
-              </DefaultCard>
-            ))}
-          </div>
-        </section>
       </main>
       <Footer />
     </>
