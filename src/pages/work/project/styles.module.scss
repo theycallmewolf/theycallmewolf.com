@@ -1,4 +1,9 @@
 .main {
+  margin-bottom: -70px;
+
+  @media (min-width: 768px) { margin-bottom: -20px; }
+  @media (min-width: 1024px) { margin-bottom: -90px; }
+
   .intro {
     margin: 0 -12px 220px;
     width: calc(100% + 24px);
@@ -102,11 +107,12 @@
       width: 50px;
       height: 50px;
 
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      svg {
+        transform: rotate(180deg); 
+        fill: none;
 
-      svg { transform: rotate(180deg); }
+        path { stroke: var(--c-polar-white); }
+      }
 
       @media (min-width: 768px) { top: 380px; }
       @media (min-width: 1024px) { top: 480px; }
@@ -235,45 +241,5 @@
         p { padding: 0; }
       }
     }
-  }
-
-  .recomended {
-    max-width: 960px;
-    margin: 220px auto;
-    
-    .cardContainer {
-      margin-top: 48px;
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-
-      h3 {
-        font-size: 2rem;
-        line-height: 2.8rem;
-        font-weight: var(--f-regular);
-        text-transform: uppercase;
-        margin-bottom: 48px;
-        
-        @media (min-width: 768px) { margin-right: 120px;}
-      }
-      
-      .date { 
-        display: inline-block;
-        color: var(--c-element-200);
-        text-transform: uppercase;
-        font-size: 12px;
-        letter-spacing: 1px;
-        opacity: .6;
-      }
-
-      a {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-      }
-      
-      @media (min-width: 768px ) { grid-template-columns: repeat(2, 1fr); }
-    }
-
   }
 }

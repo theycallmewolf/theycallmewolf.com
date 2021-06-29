@@ -38,6 +38,16 @@ export interface ProjectDetails extends Project {
   };
 }
 
+export interface NextProject extends Project {
+  description: string;
+  images: {
+    cover_small: string;
+    cover_small_2x: string;
+    cover_large: string;
+    cover_large_2x: string;
+  };
+}
+
 export type ClientData = {
   id: string;
   name: string;
@@ -119,9 +129,9 @@ export interface IntroProps extends React.HTMLAttributes<HTMLElement> {
   lead: string;
 }
 
-export interface CodeProps {
+export interface ProjectProps {
   project: ProjectDetails;
-  posts: PostData[];
+  nextProjects: NextProject[];
 }
 
 export interface AboutProps {

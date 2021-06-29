@@ -3,29 +3,22 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { RichText } from 'prismic-dom';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { IArrow, IMinus, IPlus } from '../../../assets/icons';
-import {
-  CardBody,
-  CardFooter,
-  CardHeader,
-  DefaultCard
-} from '../../../components/elements/Cards/DefaultCard';
-import { CustomLink } from '../../../components/elements/Link';
 import { Slider } from '../../../components/elements/Slider';
-import { Footer } from '../../../components/sections/Footer';
 import { Header } from '../../../components/sections/Header';
 import { useTheme } from '../../../hooks/useTheme';
 import { getPrismicClient } from '../../../services/prismic';
-import { CodeProps, PostData, ProjectDetails } from '../../../types';
-import { formatDate } from '../../../utils';
+import { NextProject, ProjectDetails, ProjectProps } from '../../../types';
 import styles from './styles.module.scss';
 
-export default function Code({ project, posts }: CodeProps): JSX.Element {
+export default function Code({ project, nextProjects }: ProjectProps): JSX.Element {
   const [hidesAbout, setHidesAbout] = useState(true);
   const [hidesSpecs, setHidesSpec] = useState(true);
   const [slides, setSlides] = useState([]);
+  const [nextProject, setNextProject] = useState(null);
+  const projectPreview = useRef(null);
 
   const { getTheme } = useTheme();
   const router = useRouter();
@@ -59,6 +52,17 @@ export default function Code({ project, posts }: CodeProps): JSX.Element {
       setHidesSpec(true);
     }
   }, []);
+
+  useEffect(() => {
+    function getRandomInt(min: number, max: number): number {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+    }
+    const randomIndex = getRandomInt(1, 10);
+    console.log(randomIndex, nextProjects);
+    setNextProject(nextProjects[randomIndex]);
+  }, [nextProjects]);
 
   const handleAccordion = useCallback(
     (content: 'about' | 'specs') => {
@@ -138,8 +142,31 @@ export default function Code({ project, posts }: CodeProps): JSX.Element {
             </div>
           </div>
         </section>
+
+        {nextProject && (
+          <section className={styles.intro} ref={projectPreview}>
+            <div>
+              <picture>
+                <source
+                  srcSet={`${nextProject.images.cover_large}, ${nextProject.images.cover_large_2x} 2x`}
+                  media="(min-width: 425px)"
+                />
+                <source srcSet={`${nextProject.images.cover_small_2x} 2x`} />
+                <img src={nextProject.images.cover_small} alt={nextProject.title} />
+              </picture>
+            </div>
+            <div>
+              <h1>{nextProject.title}</h1>
+              <p>{nextProject.description}</p>
+            </div>
+            <button
+              className={styles.backBtn}
+              onClick={() => router.push(`/work/project/${nextProject.slug}`)}>
+              <IPlus />
+            </button>
+          </section>
+        )}
       </main>
-      <Footer />
     </>
   );
 }
@@ -156,8 +183,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const prismic = getPrismicClient();
 
   async function getProject(): Promise<ProjectDetails> {
-    const projectResponse = await prismic.getByUID('projects', String(uid), {});
-    const { id, data } = projectResponse;
+    const response = await prismic.getByUID('projects', String(uid), {});
+    const { id, data } = response;
     const {
       title,
       type,
@@ -219,36 +246,58 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     };
   }
 
-  async function getPosts(): Promise<PostData[]> {
-    const response = await prismic.query(Prismic.predicates.at('document.type', 'posts'), {
-      orderings: '[document.last_publication_date]',
-      fetch: ['posts.title', 'posts.lead', 'posts.content'],
-      pageSize: 2,
+  async function getNextProject(): Promise<NextProject[]> {
+    const response = await prismic.query(Prismic.predicates.at('document.type', 'projects'), {
+      fetch: [
+        'projects.title',
+        'projects.description',
+        'projects.highlight',
+        'projects.project_date',
+        'projects.type',
+        'projects.cover_large',
+        'projects.cover_large_2x',
+        'projects.cover_small',
+        'projects.cover_small_2x'
+      ],
+      pageSize: 12,
       lang: 'en-us'
     });
+    return response.results.map(({ id, uid, data }) => {
+      const {
+        title,
+        project_date,
+        type,
+        cover_large,
+        cover_large_2x,
+        cover_small,
+        cover_small_2x,
+        description
+      } = data;
 
-    return response.results.map(
-      ({ id, uid, data, first_publication_date, last_publication_date }) => {
-        const { title, lead } = data;
-        return {
-          id,
-          slug: uid,
-          title: RichText.asText(title),
-          lead: RichText.asText(lead),
-          publish_date: formatDate(first_publication_date),
-          update_date: formatDate(last_publication_date)
-        };
-      }
-    );
+      return {
+        id,
+        type,
+        title: RichText.asText(title) ?? null,
+        slug: uid,
+        project_date: String(new Date(project_date).getFullYear()),
+        description: RichText.asText(description),
+        images: {
+          cover_large: cover_large.url,
+          cover_large_2x: cover_large_2x.url,
+          cover_small: cover_small.url,
+          cover_small_2x: cover_small_2x.url
+        }
+      };
+    });
   }
 
   const project = await getProject();
-  const posts = await getPosts();
+  const nextProjects = await getNextProject();
 
   return {
     props: {
       project,
-      posts
+      nextProjects
     },
     revalidate: 60 * 60 * 1 // 1 hour
   };
