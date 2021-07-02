@@ -159,7 +159,10 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
 
         {nextProject && (
           <section className={styles.intro} ref={projectPreview}>
-            <h2>You may also like</h2>
+            <span className={styles.lead}>
+              <h2>You may also like</h2>
+              <p>just keep scrolling</p>
+            </span>
             <div>
               <picture>
                 <source
