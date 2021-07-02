@@ -96,8 +96,8 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
         <title>they call me wolf | {project.title}</title>
         <meta name="description" content={project.images.caption} />
       </Head>
+      <Header />
       <main className={styles.main} onScroll={onScroll}>
-        <Header />
         <span ref={topMark}></span>
 
         <section className={styles.intro}>
