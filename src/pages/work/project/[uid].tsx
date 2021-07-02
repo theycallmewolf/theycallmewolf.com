@@ -159,6 +159,7 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
 
         {nextProject && (
           <section className={styles.intro} ref={projectPreview}>
+            <h2>You may also like</h2>
             <div>
               <picture>
                 <source

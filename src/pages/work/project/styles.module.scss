@@ -24,6 +24,17 @@
       // max-height: 640px;
     }
 
+    & > h2 {
+      font-size: 2rem;
+      margin: 24px auto;
+      text-align: center;
+
+      @media (min-width: 768px) { 
+        margin: 24px auto 24px 12px;
+        text-align: left;
+      }
+    }
+
     &>div {
       &:first-of-type {
         position: absolute;
