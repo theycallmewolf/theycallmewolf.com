@@ -14,16 +14,7 @@
   .intro {
     margin: 0 -12px 220px;
     width: calc(100% + 24px);
-    height: 600px;
-
     position: relative;
-
-    @media (min-width: 768px) { height: 520px; }
-    @media (min-width: 1024px) { height: 600px; }
-    @media (min-width: 1440px) { 
-      height: 80vh;
-      // max-height: 640px;
-    }
 
     .title {
       display: block;
@@ -54,7 +45,7 @@
       }
     }
 
-    &>div {
+    & > div {
       &:first-of-type {
         position: absolute;
         top: 0;
@@ -62,11 +53,9 @@
         width: 100%;
         max-width: 1200px;
         margin-left: auto;
-        height: 300px;
+        height: 60vh;
         position: relative;
-
-        @media (min-width: 768px) { height: 400px; }
-        @media (min-width: 1024px) { height: 500px; }
+        
         @media (min-width: 1440px) { height: 100%; }
 
         img {
@@ -74,50 +63,36 @@
           height: 100%;
           object-fit: cover;
           animation: fade-in 1000ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-        }  
-  
-        &::before,
-        &::after {
-          content: '';
-          background: var(--c-background-200);
-          position: absolute;
-          bottom: -1px;
-          left: -1px;
-        }
-    
-        &::before { width: 62px; height: 36px; }
-        &::after { width: 200px; height: 16px; }
-        
-        @media (min-width: 1440px) { 
-          &::before { width: 62px; height: 36px; }
-          &::after { width: 200px; height: 16px; }
         }
       }
 
       &:last-of-type { 
         position: absolute;
-        bottom: 0;
+        top: 60vh;
         right: 0;
-        width: 90%;
-        max-width: 420px;
-        padding: 36px 24px; 
+        width: 100%;
+        max-width: 480px;
+        padding: 36px 62px 36px 18px; 
         background: var(--c-candy-red);
         
-        &> * { color: var(--c-polar-white); }
+        & > * { color: var(--c-polar-white); }
         
         h1 { 
           font-size: 2.2rem;
           line-height: 2.6rem;
-          margin-bottom: 1.8rem;
         }
         
         p { font-size: 1.8rem; }
         
+        @media (min-width: 768px) {
+          top: calc(60vh - 50px);
+          right: 50%;
+          transform: translateX(50%)
+        }
+
         @media (min-width: 1440px) {
           right: 1020px;
-          bottom: 50%;
-          padding: 64px 24px; 
-          transform: translateY(50%);
+          transform: translate(10%, -100%);
           
           h1 {
             font-size: 3.6rem;
@@ -139,7 +114,7 @@
       z-index: 2;
 
       position: absolute;
-      top: 280px;
+      top: calc(60vh - 50px);
       left: 0;
       width: 50px;
       height: 50px;
@@ -151,9 +126,6 @@
         path { stroke: var(--c-polar-white); }
       }
 
-      @media (min-width: 768px) { top: 380px; }
-      @media (min-width: 1024px) { top: 480px; }
-      
       @media (min-width: 1260px) {
         top: 42px;
         left: unset;
@@ -171,6 +143,7 @@
     width: calc(100% - 2 * 12px);
     max-width: 428px;
     margin-left: 12px;
+    margin-bottom: 240px;
 
     @media (min-width: 768px) { margin: 0 auto 220px; }
 
