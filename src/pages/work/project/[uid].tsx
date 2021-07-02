@@ -127,7 +127,7 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
               <h2>About</h2>
               {hidesAbout ? <IPlus className={styles.icon} /> : <IMinus className={styles.icon} />}
             </button>
-            <div className={hidesAbout ? styles.hide : undefined}>
+            <div className={`${styles.content} ${hidesAbout ? styles.hide : ''}`}>
               {project.about.map(
                 (item, i) => item.type === 'paragraph' && <p key={i}>{item.text}</p>
               )}
@@ -138,21 +138,38 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
               <h2>Specs</h2>
               {hidesSpecs ? <IPlus className={styles.icon} /> : <IMinus className={styles.icon} />}
             </button>
-            <div className={hidesSpecs ? styles.hide : undefined}>
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam distinctio
-                aspernatur reiciendis, praesentium neque nemo, quia consequatur repellendus dicta
-                eveniet modi dolorem nihil sunt earum. <a href="/">Eos quia fuga harum</a> expedita.
-                Rerum, fugit reprehenderit harum ut sapiente id tenetur vel veniam obcaecati ex
-                ullam nobis mollitia sunt minima corporis voluptatum deserunt natus debitis rem
-                optio aperiam possimus! Reprehenderit vero inventore beatae. Sunt, natus?
-                Perspiciatis possimus dolor suscipit non, fugiat dolores culpa minus animi tenetur,
-                voluptates eum earum. Sit eligendi ad, tempore, vitae itaque nobis deleniti
-                consectetur error animi voluptatum fugit modi. Saepe, alias fuga laudantium amet
-                velit autem laboriosam sit beatae dolore odio ipsa laborum quidem iusto possimus
-                exercitationem et quibusdam cum aperiam rem delectus nesciunt sint dicta aspernatur
-                voluptatem? Similique?
-              </p>
+            <div className={`${styles.content} ${hidesSpecs ? styles.hide : ''}`}>
+              <div>
+                <strong>release date</strong>
+                <span>20/07/2020</span>
+              </div>
+              <div>
+                <a href="." className={styles.btn}>
+                  visit project website <IArrow />
+                </a>
+                <a href="." className={styles.btn}>
+                  check the code at GitHub <IArrow />
+                </a>
+              </div>
+              <div>
+                <strong>technologies</strong>
+                <div className={styles.tags}>
+                  <span>HTML</span>
+                  <span>JavaScript</span>
+                  <span>CSS</span>
+                  <span>React</span>
+                </div>
+              </div>
+              <div>
+                <strong>dependencies</strong>
+                <div className={styles.tags}>
+                  <a href=".">axios</a>
+                  <a href=".">react-slick</a>
+                  <a href=".">slick-carousel</a>
+                  <a href=".">react-dom</a>
+                  <a href=".">react-router-dom</a>
+                </div>
+              </div>
             </div>
           </div>
         </section>

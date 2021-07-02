@@ -1,7 +1,9 @@
 :root {
   --c-polar-white: #F5F5F5;
   --c-iridium-white: #F0F0F0;
+  --c-silver-arrow: #d7d7d7;
   // --c-cosmos-black: #1B2A2F;
+  --c-neutral-grey: #3f3f3f;
   --c-cosmos-black: #141f23;
   --c-night-black: #111517;
   --c-candy-red: #D20120;
@@ -9,13 +11,15 @@
 
 html, #root {
   &.dark {
+    --c-element-050: var(--c-neutral-grey);
     --c-element-100: var(--c-polar-white);
     --c-element-200: var(--c-iridium-white);
     --c-background-100: var(--c-cosmos-black);
     --c-background-200: var(--c-night-black);
-   }
+  }
   
-   &.light {
+  &.light {
+    --c-element-050: var(--c-silver-arrow);
     --c-element-100: var(--c-cosmos-black);
     --c-element-200: var(--c-night-black);
     --c-background-100: var(--c-polar-white);
