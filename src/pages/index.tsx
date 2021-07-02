@@ -62,7 +62,7 @@ export default function Home({ projects, clients, testimonials, skills }: HomePr
             setToastID(id);
           }
         }
-      }, 1 * 1000);
+      }, 45 * 1000);
     }
   }, []);
 
