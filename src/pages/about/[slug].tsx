@@ -9,10 +9,10 @@ import { ServicesSVG } from '../../assets/services';
 import { CardBody, CardHeader, DefaultCard } from '../../components/elements/Cards/DefaultCard';
 import { GraphicCard } from '../../components/elements/Cards/GraphicCard';
 import { Graph } from '../../components/elements/Graph';
-import { Footer } from '../../components/sections/Footer';
-import { Header } from '../../components/sections/Header';
 import { Aside } from '../../components/sections/Aside';
 import { CardList } from '../../components/sections/CardList';
+import { Footer } from '../../components/sections/Footer';
+import { Header } from '../../components/sections/Header';
 import { useTheme } from '../../hooks/useTheme';
 import { getPrismicClient } from '../../services/prismic';
 import {
@@ -54,7 +54,7 @@ export default function About({
         <title>they call me wolf | About</title>
         <meta name="description" content="..." />
       </Head>
-      <main>
+      <main className={styles.main}>
         <Header />
         <Aside intro={intro} link_list={link_list} imageURL="/assets/img/cover-about.jpg" />
         <CardList slug={slug}>
