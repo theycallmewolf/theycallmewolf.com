@@ -1,5 +1,11 @@
 .main {
   margin-bottom: -70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-y: scroll;
 
   @media (min-width: 768px) { margin-bottom: -20px; }
   @media (min-width: 1024px) { margin-bottom: -90px; }
@@ -8,16 +14,16 @@
     margin: 0 -12px 220px;
     width: calc(100% + 24px);
     height: 600px;
-    
+
     position: relative;
 
     @media (min-width: 768px) { height: 520px; }
     @media (min-width: 1024px) { height: 600px; }
     @media (min-width: 1440px) { 
       height: 80vh;
-      max-height: 640px;
+      // max-height: 640px;
     }
-    
+
     &>div {
       &:first-of-type {
         position: absolute;
@@ -36,7 +42,8 @@
         img {
           width: 100%;
           height: 100%;
-          object-fit: cover;          
+          object-fit: cover;
+          animation: fade-in 1000ms cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
         }  
   
         &::before,
@@ -128,6 +135,7 @@
         transform: translateY(-50%);
       }
     }
+
   }
 
   .slider { 
@@ -242,4 +250,11 @@
       }
     }
   }
+  
+  section:last-of-type { padding-bottom: 0;}
+}
+
+@keyframes fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }

@@ -19,6 +19,7 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
   const [slides, setSlides] = useState([]);
   const [nextProject, setNextProject] = useState(null);
   const projectPreview = useRef(null);
+  const topMark = useRef(null);
 
   const { getTheme } = useTheme();
   const router = useRouter();
@@ -57,12 +58,24 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
     function getRandomInt(min: number, max: number): number {
       min = Math.ceil(min);
       max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+      return Math.floor(Math.random() * (max - min) + min); // max is exclusive, min is inclusive
     }
-    const randomIndex = getRandomInt(1, 10);
-    console.log(randomIndex, nextProjects);
+
+    let randomIndex = getRandomInt(0, nextProjects.length);
+    if (nextProject && nextProjects[randomIndex].id === nextProject.id)
+      randomIndex = getRandomInt(0, nextProjects.length);
     setNextProject(nextProjects[randomIndex]);
-  }, [nextProjects]);
+  }, [nextProject, nextProjects]);
+
+  const onScroll = () => {
+    const { top } = projectPreview.current.getBoundingClientRect();
+    const { slug } = nextProject;
+
+    if (top <= 80) {
+      router.push(`/work/project/${slug}`);
+      topMark.current.scrollIntoView();
+    }
+  };
 
   const handleAccordion = useCallback(
     (content: 'about' | 'specs') => {
@@ -83,8 +96,9 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
         <title>they call me wolf | {project.title}</title>
         <meta name="description" content={project.images.caption} />
       </Head>
-      <main className={styles.main}>
+      <main className={styles.main} onScroll={onScroll}>
         <Header />
+        <span ref={topMark}></span>
 
         <section className={styles.intro}>
           <div>
@@ -161,7 +175,10 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
             </div>
             <button
               className={styles.backBtn}
-              onClick={() => router.push(`/work/project/${nextProject.slug}`)}>
+              onClick={() => {
+                router.push(`/work/project/${nextProject.slug}`);
+                topMark.current.scrollIntoView();
+              }}>
               <IPlus />
             </button>
           </section>
