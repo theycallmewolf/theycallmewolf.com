@@ -25,7 +25,7 @@
       // max-height: 640px;
     }
 
-    .lead {
+    .title {
       display: block;
       margin: 0 auto 24px;
       width: 100%;
@@ -165,7 +165,23 @@
         transform: translateY(-50%);
       }
     }
+  }
 
+  .lead {
+    width: calc(100% - 2 * 12px);
+    max-width: 428px;
+    margin-left: 12px;
+
+    @media (min-width: 768px) { margin: 0 auto 220px; }
+
+    svg {
+      width: 72px;
+      height: 72px;
+      margin-left: -20px;
+      path { stroke : var(--c-candy-red); }
+    }
+
+    h2 { margin-left: 48px; }
   }
 
   .slider { 

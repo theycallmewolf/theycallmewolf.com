@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { RichText } from 'prismic-dom';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import { IArrow, IMinus, IPlus } from '../../../assets/icons';
+import { IArrow, IMenu, IMinus, IPlus } from '../../../assets/icons';
 import { Slider } from '../../../components/elements/Slider';
 import { Header } from '../../../components/sections/Header';
 import { useTheme } from '../../../hooks/useTheme';
@@ -120,7 +120,18 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
           </button>
         </section>
 
+        <section className={styles.lead}>
+          <IPlus />
+          <h2>My first professional experience using React</h2>
+        </section>
+
         <Slider slides={slides} contentType="image" additionalClass={styles.slider} />
+
+        <section className={styles.lead}>
+          <IArrow />
+          <h2>A great project to practice forms validation</h2>
+        </section>
+
         <section className={styles.specs}>
           <div>
             <button onClick={() => handleAccordion('about')}>
@@ -174,9 +185,14 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
           </div>
         </section>
 
+        <section className={styles.lead}>
+          <IMenu />
+          <h2>encrypt data to send in url, and decrypt it to be display at the page</h2>
+        </section>
+
         {nextProject && (
           <section className={styles.intro} ref={projectPreview}>
-            <span className={styles.lead}>
+            <span className={styles.title}>
               <h2>You may also like</h2>
               <p>just keep scrolling</p>
             </span>
