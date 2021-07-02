@@ -14,10 +14,10 @@ import {
   DefaultCard
 } from '../../components/elements/Cards/DefaultCard';
 import { CustomLink } from '../../components/elements/Link';
-import { Footer } from '../../components/sections/Footer';
-import { Header } from '../../components/sections/Header';
 import { Aside } from '../../components/sections/Aside';
 import { CardList } from '../../components/sections/CardList';
+import { Footer } from '../../components/sections/Footer';
+import { Header } from '../../components/sections/Header';
 import { useTheme } from '../../hooks/useTheme';
 import { getPrismicClient } from '../../services/prismic';
 import { IntroData, LinkData, ProjectData } from '../../types';
@@ -47,7 +47,7 @@ export default function Work({ intro, link_list, cards }: WorkProps): JSX.Elemen
       </Head>
       <main>
         <Header />
-        <Aside intro={intro} link_list={link_list} imageURL="/assets/img/cover-work.jpg" />
+        <Aside intro={intro} link_list={link_list} imageURL="/assets/img/cover-work-alt.jpg" />
         <CardList slug={slug}>
           {cards.map((project) => (
             <DefaultCard key={project.id} customClass={styles.card}>
