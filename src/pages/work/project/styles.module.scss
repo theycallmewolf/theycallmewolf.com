@@ -123,18 +123,13 @@
         transform: rotate(180deg); 
         fill: none;
 
-        path { stroke: var(--c-polar-white); }
+        path { stroke: var(--c-element-100); }
       }
 
       @media (min-width: 1260px) {
         top: 42px;
         left: unset;
         right: 1220px;
-      }
-
-      @media (min-width: 1440px) { 
-        top: 82%;
-        transform: translateY(-50%);
       }
     }
   }
@@ -150,11 +145,18 @@
     svg {
       width: 72px;
       height: 72px;
-      margin-left: -20px;
+      transform: rotate(90deg);
+      
       path { stroke : var(--c-candy-red); }
     }
 
-    h2 { margin-left: 48px; }
+    h2 { 
+      font-size: 21px;
+      margin-left: 48px;
+
+      @media (min-width: 375px) { font-size: 24px; }
+      @media (min-width: 425px) { font-size: 28px; }
+    }
   }
 
   .slider { 
@@ -168,6 +170,18 @@
 
   .specs {
     margin: 240px auto;
+
+    @media (min-width: 768px) {
+      max-width: 960px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 48px;
+    }
+    
+    @media (min-width: 1440px) {
+      padding-left: 216px;
+    }
+
 
     & > div {
       button {
@@ -234,7 +248,25 @@
         }
   
       }
-      
+
+      @media (min-width: 768px) {
+        border-top: 1px solid var(--c-candy-red);
+        border-bottom: 1px solid var(--c-candy-red);
+        padding: 48px 0;
+
+        button { 
+          cursor: default;
+          padding: 0;
+          border: none;
+
+          h2 { margin-bottom: 24px; }
+          
+          .icon { display: none; }
+        }
+        
+        p { padding: 0; }
+      }
+
       .hide { display: none; }
       
       &:not(:first-of-type) button { border-top: none; }
@@ -300,33 +332,6 @@
             }
           }
         }
-      }
-    }
-
-    @media (min-width: 768px) {
-      max-width: 960px;
-      padding-left: 216px;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 48px;
-  
-      &> div { 
-        border-top: 1px solid var(--c-candy-red);
-        border-bottom: 1px solid var(--c-candy-red);
-        padding: 48px 0;
-
-
-        button { 
-          cursor: default;
-          padding: 0;
-          border: none;
-
-          h2 { margin-bottom: 24px; }
-          
-          .icon { display: none; }
-        }
-        
-        p { padding: 0; }
       }
     }
   }
