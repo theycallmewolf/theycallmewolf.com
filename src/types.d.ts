@@ -28,6 +28,7 @@ export interface ProjectDetails extends Project {
   repository_api: string;
   about: AboutData[];
   specs: SpecData[];
+  leads: string[];
   images: {
     cover_small: string;
     cover_small_2x: string;

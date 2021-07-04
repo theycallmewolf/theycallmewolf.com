@@ -122,14 +122,14 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
 
         <section className={styles.lead}>
           <IPlus />
-          <h2>My first professional experience using React</h2>
+          <h2>{project.leads[0]}</h2>
         </section>
 
         <Slider slides={slides} contentType="image" additionalClass={styles.slider} />
 
         <section className={styles.lead}>
           <IArrow />
-          <h2>A great project to practice forms validation</h2>
+          <h2>{project.leads[1]}</h2>
         </section>
 
         <section className={styles.specs}>
@@ -187,7 +187,7 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
 
         <section className={styles.lead}>
           <IMenu />
-          <h2>encrypt data to send in url, and decrypt it to be display at the page</h2>
+          <h2>{project.leads[2]}</h2>
         </section>
 
         {nextProject && (
@@ -266,6 +266,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       }));
     }
 
+    let leads = body.filter(({ slice_type }) => slice_type === 'leads').shift() ?? null;
+
+    if (leads) leads = leads.items.map(({ lead }) => RichText.asText(lead));
+
     const project_images = body1
       .filter(({ slice_type }) => slice_type === 'slider')
       .shift()
@@ -289,6 +293,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       repository_api: repository_api.url ? repository_api.url : null,
       specs,
       about,
+      leads,
       images: {
         cover_small: cover_small.url ?? null,
         cover_small_2x: cover_small_2x.url ?? (cover_small.url || null),
