@@ -7,7 +7,6 @@ export function CardHeader({ customClass = '', children, ...rest }: CardHeaderPr
   return (
     <div className={`${styles.cardHeader} ${customClass}`} {...rest}>
       {children}
-      <div className={styles.clip}></div>
     </div>
   );
 }
