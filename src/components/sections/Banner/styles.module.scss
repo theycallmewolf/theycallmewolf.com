@@ -66,27 +66,15 @@
   &::after {
     content: '';
     position: absolute;
-    bottom: 0;
     background-color: var(--c-background-200);
-    right: 0%;
+    width: 24px;
+    height: 24px;
     z-index: 2;
   }
   
-  &::before {
-    width: 60px;
-    height: 50px;
-    
-    @media(min-width: 1024px) { width: 80px; height: 80px; }
-    @media(min-width: 1440px) { width: 120px; height: 100px; }
-  }
+  &::before { bottom: 38px; right: 36px; }
   
-  &::after {
-    width: 120px;
-    height: 20px;
-    
-    @media(min-width: 1024px) { width: 180px; height: 30px; }
-    @media(min-width: 1440px) { width: 280px; height: 30px; }
-  }
+  &::after { bottom: 14px; right: 12px; }
   
   .content {
     z-index: 1;
