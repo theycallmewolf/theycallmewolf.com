@@ -27,7 +27,6 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
 
   useEffect(() => {
     getTheme();
-    console.log(project);
   }, [getTheme]);
 
   useEffect(() => {
@@ -86,11 +85,14 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
     [hidesAbout, hidesSpecs]
   );
 
+  const { title, images, description, leads, about, dependencies } = project;
+  const { caption, cover_large, cover_large_2x, cover_small_2x, cover_small } = images;
+
   return (
     <>
       <Head>
-        <title>they call me wolf | {project.title}</title>
-        <meta name="description" content={project.images.caption} />
+        <title>they call me wolf | {title}</title>
+        <meta name="description" content={caption} />
       </Head>
       <Header />
       <main className={styles.main} onScroll={onScroll}>
@@ -99,17 +101,14 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
         <section className={styles.intro}>
           <div>
             <picture>
-              <source
-                srcSet={`${project.images.cover_large}, ${project.images.cover_large_2x} 2x`}
-                media="(min-width: 425px)"
-              />
-              <source srcSet={`${project.images.cover_small_2x} 2x`} />
-              <img src={project.images.cover_small} alt={project.title} />
+              <source srcSet={`${cover_large}, ${cover_large_2x} 2x`} media="(min-width: 425px)" />
+              <source srcSet={`${cover_small_2x} 2x`} />
+              <img src={cover_small} alt={title} />
             </picture>
           </div>
           <div>
-            <h1>{project.title}</h1>
-            <p>{project.description}</p>
+            <h1>{title}</h1>
+            <p>{description}</p>
           </div>
           <button className={styles.backBtn} onClick={() => router.back()}>
             <IArrow color="white" />
@@ -118,14 +117,14 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
 
         <section className={styles.lead}>
           <IPlus />
-          <h2>{project.leads[0]}</h2>
+          <h2>{leads[0]}</h2>
         </section>
 
         <Slider slides={slides} contentType="image" additionalClass={styles.slider} />
 
         <section className={styles.lead}>
           <IArrow />
-          <h2>{project.leads[1]}</h2>
+          <h2>{leads[1]}</h2>
         </section>
 
         <section className={styles.specs}>
@@ -135,9 +134,7 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
               {hidesAbout ? <IPlus className={styles.icon} /> : <IMinus className={styles.icon} />}
             </button>
             <div className={`${styles.content} ${hidesAbout ? styles.hide : ''}`}>
-              {project.about.map(
-                (item, i) => item.type === 'paragraph' && <p key={i}>{item.text}</p>
-              )}
+              {about.map((item, i) => item.type === 'paragraph' && <p key={i}>{item.text}</p>)}
             </div>
           </div>
           <div>
@@ -167,11 +164,11 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
                   <span>React</span>
                 </div>
               </div>
-              {project.dependencies && (
+              {dependencies && (
                 <div>
                   <strong>dependencies</strong>
                   <div className={styles.tags}>
-                    {project.dependencies.map(({ label, url }, i) => (
+                    {dependencies.map(({ label, url }, i) => (
                       <a href={url} key={i} target="_blank" rel="noreferrer noopener">
                         {label}
                       </a>
@@ -185,7 +182,7 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
 
         <section className={styles.lead}>
           <IMenu />
-          <h2>{project.leads[2]}</h2>
+          <h2>{leads[2]}</h2>
         </section>
 
         {nextProject && (
