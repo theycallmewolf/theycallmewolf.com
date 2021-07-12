@@ -27,6 +27,7 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
 
   useEffect(() => {
     getTheme();
+    console.log(project);
   }, [getTheme]);
 
   useEffect(() => {
@@ -166,16 +167,18 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
                   <span>React</span>
                 </div>
               </div>
-              <div>
-                <strong>dependencies</strong>
-                <div className={styles.tags}>
-                  <a href=".">axios</a>
-                  <a href=".">react-slick</a>
-                  <a href=".">slick-carousel</a>
-                  <a href=".">react-dom</a>
-                  <a href=".">react-router-dom</a>
+              {project.dependencies && (
+                <div>
+                  <strong>dependencies</strong>
+                  <div className={styles.tags}>
+                    {project.dependencies.map(({ label, url }, i) => (
+                      <a href={url} key={i} target="_blank" rel="noreferrer noopener">
+                        {label}
+                      </a>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
         </section>
@@ -234,6 +237,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   async function getProject(): Promise<ProjectDetails> {
     const response = await prismic.getByUID('projects', String(uid), {});
     const { id, data } = response;
+
     const {
       title,
       type,
@@ -258,6 +262,16 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       specs = specs.items.map(({ tech }, i: number) => ({
         spec: tech,
         id: i
+      }));
+    }
+
+    let dependencies =
+      body.filter(({ slice_type }) => slice_type === 'dependencies').shift() ?? null;
+
+    if (dependencies) {
+      dependencies = dependencies.items.map(({ url, label }) => ({
+        url: url.url,
+        label: RichText.asText(label)
       }));
     }
 
@@ -296,7 +310,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         cover_large_2x: cover_large_2x.url ?? (cover_large.url || null),
         project_images,
         caption: RichText.asText(caption)
-      }
+      },
+      dependencies
     };
   }
 

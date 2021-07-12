@@ -21,6 +21,11 @@ export interface ProjectData extends Project {
   specs?: SpecData[];
 }
 
+interface DependenciesData {
+  label: string;
+  url: string;
+}
+
 export interface ProjectDetails extends Project {
   description: string;
   link: string;
@@ -37,6 +42,7 @@ export interface ProjectDetails extends Project {
     project_images: ProjectImages[];
     caption?: string;
   };
+  dependencies: DependenciesData[];
 }
 
 export interface NextProject extends Project {
