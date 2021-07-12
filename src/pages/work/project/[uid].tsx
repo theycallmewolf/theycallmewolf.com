@@ -11,6 +11,7 @@ import { Header } from '../../../components/sections/Header';
 import { useTheme } from '../../../hooks/useTheme';
 import { getPrismicClient } from '../../../services/prismic';
 import { NextProject, ProjectDetails, ProjectProps } from '../../../types';
+import { getRandomInt } from '../../../utils';
 import styles from './styles.module.scss';
 
 export default function Code({ project, nextProjects }: ProjectProps): JSX.Element {
@@ -55,12 +56,6 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
   }, []);
 
   useEffect(() => {
-    function getRandomInt(min: number, max: number): number {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min) + min); // max is exclusive, min is inclusive
-    }
-
     let randomIndex = getRandomInt(0, nextProjects.length);
     if (nextProject && nextProjects[randomIndex].id === nextProject.id)
       randomIndex = getRandomInt(0, nextProjects.length);
