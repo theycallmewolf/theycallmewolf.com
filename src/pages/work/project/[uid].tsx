@@ -11,7 +11,7 @@ import { Header } from '../../../components/sections/Header';
 import { useTheme } from '../../../hooks/useTheme';
 import { getPrismicClient } from '../../../services/prismic';
 import { NextProject, ProjectDetails, ProjectProps } from '../../../types';
-import { getRandomInt } from '../../../utils';
+import { formatDate, getRandomInt } from '../../../utils';
 import styles from './styles.module.scss';
 
 export default function Code({ project, nextProjects }: ProjectProps): JSX.Element {
@@ -27,6 +27,7 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
 
   useEffect(() => {
     getTheme();
+    console.log(project);
   }, [getTheme]);
 
   useEffect(() => {
@@ -85,7 +86,18 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
     [hidesAbout, hidesSpecs]
   );
 
-  const { title, images, description, leads, about, dependencies } = project;
+  const {
+    title,
+    images,
+    description,
+    leads,
+    about,
+    dependencies,
+    project_date,
+    link,
+    repository,
+    specs
+  } = project;
   const { caption, cover_large, cover_large_2x, cover_small_2x, cover_small } = images;
 
   return (
@@ -143,27 +155,38 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
               {hidesSpecs ? <IPlus className={styles.icon} /> : <IMinus className={styles.icon} />}
             </button>
             <div className={`${styles.content} ${hidesSpecs ? styles.hide : ''}`}>
-              <div>
-                <strong>release date</strong>
-                <span>20/07/2020</span>
-              </div>
-              <div>
-                <a href="." className={styles.btn}>
-                  visit project website <IArrow />
-                </a>
-                <a href="." className={styles.btn}>
-                  check the code at GitHub <IArrow />
-                </a>
-              </div>
-              <div>
-                <strong>technologies</strong>
-                <div className={styles.tags}>
-                  <span>HTML</span>
-                  <span>JavaScript</span>
-                  <span>CSS</span>
-                  <span>React</span>
+              {project_date && (
+                <div>
+                  <strong>release date</strong>
+                  <span>{formatDate(project_date)}</span>
                 </div>
+              )}
+              <div className={!link && !repository ? 'hide' : undefined}>
+                {link && (
+                  <a href={link} className={styles.btn} target="_blank" rel="noopener noreferrer ">
+                    visit project website <IArrow />
+                  </a>
+                )}
+                {repository && (
+                  <a
+                    href={repository}
+                    className={styles.btn}
+                    target="_blank"
+                    rel="noopener noreferrer ">
+                    check the code at GitHub <IArrow />
+                  </a>
+                )}
               </div>
+              {specs && (
+                <div>
+                  <strong>technologies</strong>
+                  <div className={styles.tags}>
+                    {specs.map(({ spec }, i) => (
+                      <span key={i}>{spec}</span>
+                    ))}
+                  </div>
+                </div>
+              )}
               {dependencies && (
                 <div>
                   <strong>dependencies</strong>
