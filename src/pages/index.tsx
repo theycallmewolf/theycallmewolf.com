@@ -18,6 +18,7 @@ import { getPrismicClient } from '../services/prismic';
 import { ClientData, GraphData, PostData, ProjectData, TestimonialData } from '../types';
 import { deviceCheck } from '../utils';
 import { formatDate } from '../utils/format-date';
+import { Share } from '../utils/share';
 
 interface HomeProps {
   projects: ProjectData[];
@@ -77,7 +78,7 @@ export default function Home({ projects, clients, testimonials, skills }: HomePr
         <title>they call me wolf | home</title>
         <meta
           name="description"
-          content="They call me wolf is the web portfolio of Bruno Lobato, a designer since 2001 that felt in love with coding around 2016."
+          content="They call me wolf is the web portfolio of Bruno Lobato, a designer since 2001 that felt in love with coding around 2014."
         />
       </Head>
       <Header />
@@ -88,6 +89,7 @@ export default function Home({ projects, clients, testimonials, skills }: HomePr
         <Testimonials testimonials={testimonials} />
         <Clients clients={clients} />
         {/* <Blog posts={posts} /> */}
+        <Share />
       </main>
       <Footer />
     </>
