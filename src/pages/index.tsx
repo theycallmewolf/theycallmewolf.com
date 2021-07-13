@@ -18,7 +18,6 @@ import { getPrismicClient } from '../services/prismic';
 import { ClientData, GraphData, PostData, ProjectData, TestimonialData } from '../types';
 import { deviceCheck } from '../utils';
 import { formatDate } from '../utils/format-date';
-import { Share } from '../utils/share';
 
 interface HomeProps {
   projects: ProjectData[];
@@ -89,7 +88,6 @@ export default function Home({ projects, clients, testimonials, skills }: HomePr
         <Testimonials testimonials={testimonials} />
         <Clients clients={clients} />
         {/* <Blog posts={posts} /> */}
-        <Share />
       </main>
       <Footer />
     </>
