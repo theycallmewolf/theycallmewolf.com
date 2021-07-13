@@ -23,8 +23,11 @@ export default class MyDocument extends Document {
           <meta name="googlebot" content="index, follow" />
           <meta name="robots" content="index, all" />
           <meta name="msnbot" content="index, follow" />
-          <meta property="og:title" content="<?= $title; ?>" />
-          <meta property="og:description" content="<?= $description; ?>" />
+          <meta property="og:title" content="They Call Me Wolf" />
+          <meta
+            property="og:description"
+            content="The web portfolio of Bruno Lobato, a designer since 2001 that felt in love with coding around 2014."
+          />
           <meta property="og:locale" content="en" />
           <meta property="og:type" content="website" />
           <meta property="og:site_name" content="https://www.theycallmewolf.com/" />
