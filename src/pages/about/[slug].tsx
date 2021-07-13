@@ -52,7 +52,10 @@ export default function About({
     <>
       <Head>
         <title>they call me wolf | About</title>
-        <meta name="description" content="..." />
+        <meta
+          name="description"
+          content="Get to know a little more about mr. Wolf's activity, skills, career and education."
+        />
       </Head>
       <main className={styles.main}>
         <Header />
