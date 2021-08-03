@@ -95,7 +95,7 @@ export default function About({
                   dangerouslySetInnerHTML={{ __html: logo_svg }}
                 />
                 <span className={styles.center}>
-                  <p className={styles.date}>{`${year_start} - ${year_end}`}</p>
+                  <p className={styles.date}>{`${year_start} - ${year_end || 'today'}`}</p>
                   <h2>{title}</h2>
                   <p>{description}</p>
                 </span>
@@ -177,7 +177,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
         logo_svg: RichText.asText(logo_svg),
         name: RichText.asText(name),
         year_start: new Date(date_start).getFullYear(),
-        year_end: new Date(date_end).getFullYear(),
+        year_end: date_end ? new Date(date_end).getFullYear() : null,
         title: RichText.asText(title),
         description: RichText.asText(description)
       };
