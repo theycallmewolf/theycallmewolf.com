@@ -36,7 +36,7 @@ export function Banner(): JSX.Element {
           strings={introCopy}
           typeSpeed={40}
           backSpeed={20}
-          startDelay={2000}
+          startDelay={5000}
           backDelay={1000}
           className={styles.typed}
         />
