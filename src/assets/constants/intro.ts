@@ -7,9 +7,9 @@ export const introCopy = [
   'they say I solve problems.',
   'Who are they?',
   'Well...',
-  'You are starting to ask too much.',
+  "You're starting to ask too much.",
   '...',
   '👋 Hi there!',
   "I'm Bruno",
-  'I’m a frontend developer + designer.'
+  'I’m a coder + designer.'
 ];
