@@ -1,6 +1,6 @@
 export const introCopy = [
   '"Mr. Wolf", actually.',
-  'Cames from the movie.',
+  'Comes from the movie.',
   'Pulp Fiction…',
   'My favorite!',
   'Like the character',
