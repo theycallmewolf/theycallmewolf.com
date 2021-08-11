@@ -9,6 +9,7 @@ import styles from './styles.module.scss';
 
 export function Banner(): JSX.Element {
   const [bgImage, setBgImage] = useState(null);
+  const [wallBackground, setWallBackground] = useState({});
 
   useEffect(() => {
     function addBackgroundImage() {
@@ -18,6 +19,10 @@ export function Banner(): JSX.Element {
     addBackgroundImage();
     // setInterval(() => addBackgroundImage(), 5000);
   }, []);
+
+  useEffect(() => {
+    setWallBackground({ background: `url(${bgImage})` });
+  }, [bgImage]);
 
   return (
     <section className={styles.container}>
@@ -38,38 +43,18 @@ export function Banner(): JSX.Element {
       </div>
       <div className={styles.scene}>
         <div className={styles.wrap}>
-          <div
-            className={styles.wall + ' ' + styles.right}
-            style={{ backgroundImage: `url(${bgImage})` }}></div>
-          <div
-            className={styles.wall + ' ' + styles.left}
-            style={{ backgroundImage: `url(${bgImage})` }}></div>
-          <div
-            className={styles.wall + ' ' + styles.top}
-            style={{ backgroundImage: `url(${bgImage})` }}></div>
-          <div
-            className={styles.wall + ' ' + styles.bottom}
-            style={{ backgroundImage: `url(${bgImage})` }}></div>
-          <div
-            className={styles.wall + ' ' + styles.back}
-            style={{ backgroundImage: `url(${bgImage})` }}></div>
+          <div className={styles.wall + ' ' + styles.right} style={wallBackground}></div>
+          <div className={styles.wall + ' ' + styles.left} style={wallBackground}></div>
+          <div className={styles.wall + ' ' + styles.top} style={wallBackground}></div>
+          <div className={styles.wall + ' ' + styles.bottom} style={wallBackground}></div>
+          <div className={styles.wall + ' ' + styles.back} style={wallBackground}></div>
         </div>
         <div className={styles.wrap}>
-          <div
-            className={styles.wall + ' ' + styles.right}
-            style={{ backgroundImage: `url(${bgImage})` }}></div>
-          <div
-            className={styles.wall + ' ' + styles.left}
-            style={{ backgroundImage: `url(${bgImage})` }}></div>
-          <div
-            className={styles.wall + ' ' + styles.top}
-            style={{ backgroundImage: `url(${bgImage})` }}></div>
-          <div
-            className={styles.wall + ' ' + styles.bottom}
-            style={{ backgroundImage: `url(${bgImage})` }}></div>
-          <div
-            className={styles.wall + ' ' + styles.back}
-            style={{ backgroundImage: `url(${bgImage})` }}></div>
+          <div className={styles.wall + ' ' + styles.right} style={wallBackground}></div>
+          <div className={styles.wall + ' ' + styles.left} style={wallBackground}></div>
+          <div className={styles.wall + ' ' + styles.top} style={wallBackground}></div>
+          <div className={styles.wall + ' ' + styles.bottom} style={wallBackground}></div>
+          <div className={styles.wall + ' ' + styles.back} style={wallBackground}></div>
         </div>
       </div>
     </section>
