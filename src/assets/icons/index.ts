@@ -7,3 +7,4 @@ export { default as IMinus } from './IMinus';
 export { default as IChat } from './IChat';
 export { default as IArrowAlt } from './IArrowAlt';
 export { default as ILoading } from './ILoading';
+export { default as IShuffle } from './IShuffle';

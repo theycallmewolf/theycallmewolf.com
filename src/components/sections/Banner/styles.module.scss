@@ -128,6 +128,28 @@ $duration: 48;
       }
     }
   }
+
+  .shuffleButton {
+    background: transparent;
+    border: none;
+
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    width: 28px;
+    height: 28px;
+    z-index: 1;
+
+    transition: transform 300ms ease;
+
+    svg {
+      fill: var(--c-polar-white);
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 }
 
 @keyframes fade {

@@ -1,9 +1,10 @@
 import 'react-typed/dist/animatedCursor.css';
 
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import Typed from 'react-typed';
 
 import { bgImages, introCopy } from '../../../assets/constants';
+import { IShuffle } from '../../../assets/icons';
 import { getRandomInt } from '../../../utils';
 import styles from './styles.module.scss';
 
@@ -11,14 +12,15 @@ export function Banner(): JSX.Element {
   const [bgImage, setBgImage] = useState(null);
   const [wallBackground, setWallBackground] = useState({});
 
+  const addBackgroundImage = useCallback(() => {
+    const index = getRandomInt(0, bgImages.length - 1);
+    setBgImage(bgImages[index]);
+  }, []);
+
   useEffect(() => {
-    function addBackgroundImage() {
-      const index = getRandomInt(0, bgImages.length - 1);
-      setBgImage(bgImages[index]);
-    }
     addBackgroundImage();
     // setInterval(() => addBackgroundImage(), 5000);
-  }, []);
+  }, [addBackgroundImage]);
 
   useEffect(() => {
     setWallBackground({ background: `url(${bgImage})` });
@@ -26,6 +28,9 @@ export function Banner(): JSX.Element {
 
   return (
     <section className={styles.container}>
+      <button className={styles.shuffleButton} onClick={addBackgroundImage}>
+        <IShuffle />
+      </button>
       <div className={styles.content}>
         <h1>
           They
