@@ -22,6 +22,8 @@ $duration: 48;
     perspective: 15px;
     perspective-origin: 50% 50%;
     left: 50%;
+    transform: rotate(45deg);
+    animation: rotate #{$duration * 1.5}s infinite linear;
 
     .wrap {
       position: absolute;
@@ -173,5 +175,14 @@ $duration: 48;
   }
   100% {
     transform: translateZ(500px) rotate(0deg);
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
