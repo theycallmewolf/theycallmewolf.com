@@ -45,12 +45,12 @@ export function SpotifyNotification(): JSX.Element {
   useEffect(() => {
     const getCurrentMusic = async () => {
       const { data } = await axios.get('/api/spotify');
-      setSpotifyMusic(data);
+      if (data.song.name !== spotifyMusic?.song?.name) setSpotifyMusic(data);
     };
 
     getCurrentMusic();
     setInterval(getCurrentMusic, 30 * 1000);
-  }, []);
+  }, [spotifyMusic]);
 
   useEffect(() => {
     if (!spotifyMusic.is_playing) return;
