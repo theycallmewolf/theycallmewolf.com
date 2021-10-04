@@ -9,6 +9,7 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
 import { ContactForm } from '../components/elements/ContactForm';
+import { SpotifyNotification } from '../components/elements/SpotifyNotification';
 import { AppProvider } from '../hooks';
 import { pageView } from '../utils/google-analytics';
 
@@ -34,6 +35,7 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
     <AppProvider>
       <Component {...pageProps} />
       <ContactForm />
+      <SpotifyNotification />
     </AppProvider>
   );
 }
