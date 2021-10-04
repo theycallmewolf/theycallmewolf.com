@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { animated, config, useSpring } from 'react-spring';
 
-import { IHeadphones, IPlay } from '../../../assets/icons';
+import { ICross, IHeadphones, IPlay } from '../../../assets/icons';
 import { LogoSpotify } from './LogoSpotify';
 import styles from './styles.module.scss';
 
@@ -59,7 +59,10 @@ export function SpotifyNotification(): JSX.Element {
   }, [spotifyMusic]);
 
   return spotifyMusic.is_playing ? (
-    <animated.button className={styles.toast} style={appearFromLeft}>
+    <animated.div className={styles.toast} style={appearFromLeft}>
+      <button className={styles.close} onClick={() => setShowToast(false)}>
+        <ICross />
+      </button>
       <div className={styles.details}>
         <strong>
           <IHeadphones />
@@ -98,7 +101,7 @@ export function SpotifyNotification(): JSX.Element {
           />
         </a>
       </div>
-    </animated.button>
+    </animated.div>
   ) : (
     <div>no music</div>
   );
