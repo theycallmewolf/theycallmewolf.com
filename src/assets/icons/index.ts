@@ -8,3 +8,5 @@ export { default as IChat } from './IChat';
 export { default as IArrowAlt } from './IArrowAlt';
 export { default as ILoading } from './ILoading';
 export { default as IShuffle } from './IShuffle';
+export { default as IHeadphones } from './IHeadphones';
+export { default as IPlay } from './IPlay';
