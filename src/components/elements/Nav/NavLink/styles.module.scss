@@ -1,15 +1,39 @@
 @keyframes motionAfter {
-  0% { opacity: 0; top: 50%; }
-  33% { opacity: 1; top: 0; }
-  66% { opacity: 0; top: 50%; }
-  100% { opacity: 1; top: 100%; }
+  0% {
+    opacity: 0;
+    top: 50%;
+  }
+  33% {
+    opacity: 1;
+    top: 0;
+  }
+  66% {
+    opacity: 0;
+    top: 50%;
+  }
+  100% {
+    opacity: 1;
+    top: 100%;
+  }
 }
 
 @keyframes motionBefore {
-  0% { opacity: 0; bottom: 50%; }
-  33% { opacity: 1; bottom: 0; }
-  66% { opacity: 0; bottom: 50%; }
-  100% { opacity: 1; bottom: 100%; }
+  0% {
+    opacity: 0;
+    bottom: 50%;
+  }
+  33% {
+    opacity: 1;
+    bottom: 0;
+  }
+  66% {
+    opacity: 0;
+    bottom: 50%;
+  }
+  100% {
+    opacity: 1;
+    bottom: 100%;
+  }
 }
 
 .link {
@@ -33,29 +57,23 @@
     width: 40px;
     height: 1px;
     transform: translateX(-50%);
-    
+
     background: var(--c-candy-red);
     opacity: 0;
 
-    transition: 
-      bottom 200ms ease-in-out,
-      top 200ms ease-in-out,
-      opacity 200ms ease-in-out;
+    transition: bottom 200ms ease-in-out, top 200ms ease-in-out, opacity 200ms ease-in-out;
   }
 
-  // &::before { bottom: 50%; }
-  // &::after { top: 50%; }
-
-
+  &:focus,
   &:hover {
     opacity: 1;
 
     &::before,
-    &::after { 
+    &::after {
       animation-duration: 600ms;
       animation-iteration-count: 1;
       animation-direction: normal;
-    
+
       opacity: 1;
     }
 
@@ -64,7 +82,7 @@
 
       top: 0;
     }
-    
+
     &::before {
       animation-name: motionBefore;
 
@@ -72,13 +90,13 @@
     }
   }
 
-  &.selected { 
+  &.selected {
     opacity: 1;
 
     &::before,
     &::after {
       content: '';
-      background: var(--c-candy-red);
+      background: var(--c-iridium-white);
 
       position: absolute;
       left: 50%;
@@ -88,11 +106,21 @@
       transform: translateX(-50%);
     }
 
-    &::before { bottom: 0 }
-    &::after { top: 0 }
+    &::before {
+      bottom: 0;
+    }
+    &::after {
+      top: 0;
+    }
   }
 
-  @media(min-width: 1024px) { 
-    & + .link { margin-left: 8px; }
+  &:focus {
+    filter: brightness(1);
   }
-} 
+
+  @media (min-width: 1024px) {
+    & + .link {
+      margin-left: 8px;
+    }
+  }
+}
