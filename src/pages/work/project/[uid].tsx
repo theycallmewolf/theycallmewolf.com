@@ -27,7 +27,6 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
 
   useEffect(() => {
     getTheme();
-    console.log(project);
   }, [getTheme]);
 
   useEffect(() => {
