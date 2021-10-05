@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { animated, config, useSpring } from 'react-spring';
 
 import { ICross, IHeadphones, IPlay } from '../../../assets/icons';
@@ -42,21 +42,23 @@ export function SpotifyNotification(): JSX.Element {
     config: config.slow
   });
 
-  useEffect(() => {
-    const getCurrentMusic = async () => {
-      const { data } = await axios.get('/api/spotify');
-      if (data.song.name !== spotifyMusic?.song?.name) setSpotifyMusic(data);
-    };
+  const getCurrentMusic = useCallback(async () => {
+    const { data } = await axios.get('/api/spotify');
+    const { is_playing } = data;
+    if (is_playing) setSpotifyMusic(data);
+  }, []);
 
+  useEffect(() => {
     getCurrentMusic();
-    setInterval(getCurrentMusic, 30 * 1000);
-  }, [spotifyMusic]);
+    setInterval(getCurrentMusic, 10 * 1000);
+  }, [getCurrentMusic]);
 
   useEffect(() => {
-    if (!spotifyMusic.is_playing) return;
     setShowToast(true);
-    setTimeout(() => setShowToast(false), 10 * 1000);
-  }, [spotifyMusic]);
+    setTimeout(() => {
+      setShowToast(false);
+    }, 10 * 1000);
+  }, [spotifyMusic?.song?.name]);
 
   return spotifyMusic.is_playing ? (
     <animated.div className={styles.toast} style={appearFromLeft}>
