@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Field, Form, Formik } from 'formik';
 import { useCallback, useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
@@ -14,12 +15,16 @@ interface FormValues {
   name: string;
   email: string;
   message: string;
+  phone: number;
 }
 
 const schema = Yup.object().shape({
   name: Yup.string().required('required'),
   email: Yup.string().email('invalid email').required('required'),
-  message: Yup.string().required('required')
+  message: Yup.string().required('required'),
+  phone: Yup.number()
+    .required('required')
+    .test('len', '9 digits', (val) => (val ? val.toString().length === 9 : false))
 });
 
 export function ContactForm(): JSX.Element {
@@ -29,7 +34,7 @@ export function ContactForm(): JSX.Element {
   const { hasDarkMode } = useTheme();
   const recaptchaRef = useRef(null);
 
-  const initialValues: FormValues = { name: '', email: '', message: '' };
+  const initialValues: FormValues = { name: '', email: '', message: '', phone: 9 };
 
   const toggleChat = useCallback(() => {
     setShowMessage(false);
@@ -38,7 +43,7 @@ export function ContactForm(): JSX.Element {
   }, [isOpen]);
 
   const handleSubmit = useCallback(async ({ values, setSubmitting, resetForm }) => {
-    const { name, email, message } = values;
+    const { name, email, message, phone } = values;
 
     const token = await recaptchaRef.current.execute();
 
@@ -64,6 +69,13 @@ export function ContactForm(): JSX.Element {
         setShowMessage(true);
       }
     }
+
+    await axios.get('/api/send-sms', {
+      params: {
+        phone,
+        message: `Hi ${name}! Thanks for your contact. You'll hear from me in a few days. Bruno @ they call me <Wolf />`
+      }
+    });
 
     sendEmail({
       email,
@@ -130,6 +142,11 @@ export function ContactForm(): JSX.Element {
                       <label htmlFor="email">email</label>
                       <Field type="email" id="email" name="email" />
                       {errors.email && <span className={styles.error}>{errors.email}</span>}
+                    </div>
+                    <div className={styles.formItem}>
+                      <label htmlFor="phone">phone</label>
+                      <Field type="phone" id="phone" name="phone" />
+                      {errors.phone && <span className={styles.error}>{errors.phone}</span>}
                     </div>
                     <div className={`${styles.formItem} ${styles.textarea}`}>
                       <label htmlFor="message">message</label>
