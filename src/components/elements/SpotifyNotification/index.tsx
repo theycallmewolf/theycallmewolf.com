@@ -66,7 +66,7 @@ export function SpotifyNotification(): JSX.Element {
       <div className={styles.details}>
         <strong>
           <IHeadphones />
-          Now Listening
+          {`On Wolf's headphones`}
         </strong>
         <span className={styles.song}>
           <a href={spotifyMusic.song.spotify_url} target="_blank" rel="noopener noreferrer">
