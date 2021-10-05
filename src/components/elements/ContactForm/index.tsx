@@ -31,6 +31,7 @@ export function ContactForm(): JSX.Element {
   const [isOpen, setIsOpen] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
+  const [userName, setUserName] = useState('');
   const { hasDarkMode } = useTheme();
   const recaptchaRef = useRef(null);
 
@@ -44,8 +45,9 @@ export function ContactForm(): JSX.Element {
 
   const handleSubmit = useCallback(async ({ values, setSubmitting, resetForm }) => {
     const { name, email, message, phone } = values;
-
     const token = await recaptchaRef.current.execute();
+
+    setUserName(name);
 
     if (!token) {
       setEmailSent(false);
@@ -193,11 +195,10 @@ export function ContactForm(): JSX.Element {
           <Wolf className={hasDarkMode ? styles.dark : undefined} />
           {emailSent ? (
             <>
-              <h2>Wolf say thanks!</h2>
-              <p>
-                Thank you for your message.
-                <br /> Looking forward to read it!
-              </p>
+              <h2>
+                thank you <br /> {userName}!
+              </h2>
+              <p>Looking forward to read your message and get in touch with to you!</p>
             </>
           ) : (
             <>
