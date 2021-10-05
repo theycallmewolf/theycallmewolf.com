@@ -38,7 +38,7 @@ export function SpotifyNotification(): JSX.Element {
 
   const appearFromLeft = useSpring({
     x: showToast ? 0 : -600,
-    delay: 2 * 1000,
+    delay: 0 * 1000,
     config: config.slow
   });
 
@@ -49,7 +49,6 @@ export function SpotifyNotification(): JSX.Element {
   }, []);
 
   useEffect(() => {
-    getCurrentMusic();
     setInterval(getCurrentMusic, 10 * 1000);
   }, [getCurrentMusic]);
 
