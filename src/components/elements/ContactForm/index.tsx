@@ -90,6 +90,8 @@ export function ContactForm(): JSX.Element {
 
         email: ${email}
 
+        phone: ${phone}
+
         message:
 
         ${message}`,
