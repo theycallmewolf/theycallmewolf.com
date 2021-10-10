@@ -61,7 +61,11 @@ export function SpotifyNotification(): JSX.Element {
 
   return spotifyMusic.is_playing ? (
     <animated.div className={styles.toast} style={appearFromLeft}>
-      <button className={styles.close} onClick={() => setShowToast(false)}>
+      <button
+        className={styles.close}
+        onClick={() => setShowToast(false)}
+        aria-label="Close"
+        title="Close">
         <ICross />
       </button>
       <div className={styles.details}>
@@ -86,12 +90,20 @@ export function SpotifyNotification(): JSX.Element {
             {spotifyMusic.album.name}
           </a>
         </span>
-        <a href="https://developer.spotify.com/" target="_blank" rel="noopener noreferrer">
+        <a
+          href="https://developer.spotify.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="visit Spotify For Developers website">
           <LogoSpotify className={styles.logo} />
         </a>
       </div>
       <div className={styles.cover}>
-        <a href={spotifyMusic.song.spotify_url} target="_blank" rel="noopener noreferrer">
+        <a
+          href={spotifyMusic.song.spotify_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`listen "${spotifyMusic.album.name}" album on Spotify`}>
           <IPlay />
           <Image
             src={spotifyMusic.album.images[1].url}

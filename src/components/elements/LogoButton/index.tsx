@@ -12,6 +12,7 @@ export function LogoButton({ svgLogo, link, name, ...rest }: LogoButton): JSX.El
       href={link}
       target="_blank"
       rel="noreferrer noopener"
+      role="button"
       aria-label={`visit ${name} website`}
       dangerouslySetInnerHTML={{ __html: svgLogo }}
       className={styles.button}

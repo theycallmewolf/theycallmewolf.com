@@ -87,7 +87,7 @@ export function Slider({
           testimonialList.map(({ quote, name, jobTitle, publish_date }, i) => {
             return (
               <SwiperSlide key={i}>
-                <div>
+                <div tabIndex={-1}>
                   {quote.map((paragraph: string, i: number) => (
                     <p key={i}>{paragraph}</p>
                   ))}
