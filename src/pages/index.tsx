@@ -183,7 +183,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
       return {
         id,
-        name,
+        name: name[0].text,
         logo_svg: RichText.asText(logo_svg),
         link: link.url ?? null
       };
