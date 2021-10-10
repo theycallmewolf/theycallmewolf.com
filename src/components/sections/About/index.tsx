@@ -14,10 +14,10 @@ export function About({ skills }: AboutProps): JSX.Element {
     <section className={styles.section}>
       <AlternativeCard customClass={styles.card}>
         <CardBody customClass={styles.cardBody}>
-          <h3>
+          <h2>
             coder
             <br /> + designer
-          </h3>
+          </h2>
           <div>
             {skills.map(({ id, title, percentage }) => (
               <Graph title={title} percentage={percentage} key={id} />

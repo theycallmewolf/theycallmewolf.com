@@ -9,17 +9,18 @@
 
   .card {
     .cardBody {
-      h3 { margin-bottom: 16px;}
+      h2 {
+        margin-bottom: 16px;
+      }
 
-      &> div {
+      & > div {
         margin-top: 8px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
       }
-
     }
-    
+
     .cardImage {
       background: var(--c-element-200);
       display: flex;
@@ -32,7 +33,7 @@
         fill: var(--c-background-100);
       }
     }
-    
+
     .button {
       position: absolute;
       bottom: 0;
