@@ -109,6 +109,7 @@ export function ContactForm(): JSX.Element {
         type="button"
         genre="fill"
         customClass="call-to-action"
+        aria-label="contact form"
         className={`${styles.button} ${isOpen ? styles.open : undefined}`}
         onClick={() => toggleChat()}>
         {isOpen ? <ICross /> : <IChat />}

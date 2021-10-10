@@ -20,7 +20,7 @@ export function Header(): JSX.Element {
       </div>
       <div className={styles.header}>
         <Link href="/">
-          <a className={`${styles.logo} ${isOpen && styles.open}`}>
+          <a className={`${styles.logo} ${isOpen && styles.open}`} aria-label="back to homepage">
             <Wolf className={styles.logo} />
           </a>
         </Link>

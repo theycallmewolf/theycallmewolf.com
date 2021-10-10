@@ -19,7 +19,10 @@ export function CustomLink({
 }: CustomLinkProps): JSX.Element {
   return (
     <Link href={href}>
-      <a className={`${styles.link} ${customClass ?? ''} ${hasIcon ? styles.icon : ''}`} {...rest}>
+      <a
+        className={`${styles.link} ${customClass ?? ''} ${hasIcon ? styles.icon : ''}`}
+        {...rest}
+        aria-label="show details">
         {label}
         {hasIcon && <IPlus />}
       </a>

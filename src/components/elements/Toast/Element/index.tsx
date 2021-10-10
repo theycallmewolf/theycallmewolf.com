@@ -18,7 +18,7 @@ export function ToastElement({ title, description, id }: ToastProps): JSX.Elemen
     <div className={`${styles.toast} ${hasToast ? styles.show : ''}`} data-message-id={id}>
       <strong>{title}</strong>
       <span>{description}</span>
-      <button onClick={() => removeToast(id)}>
+      <button onClick={() => removeToast(id)} aria-label="close toast">
         <ICross />
       </button>
     </div>

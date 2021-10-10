@@ -28,7 +28,10 @@ export function Banner(): JSX.Element {
 
   return (
     <section className={styles.container}>
-      <button className={styles.shuffleButton} onClick={addBackgroundImage}>
+      <button
+        className={styles.shuffleButton}
+        onClick={addBackgroundImage}
+        aria-label="shuffle background">
         <IShuffle />
       </button>
       <div className={styles.content}>
