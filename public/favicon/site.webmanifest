@@ -14,5 +14,7 @@
     ],
     "theme_color": "#111517",
     "background_color": "#111517",
-    "display": "standalone"
+    "display": "standalone",
+    "start_url": "http://theycallmewolf.com/",
+    "prefer_related_applications": false
 }
