@@ -100,6 +100,7 @@ export function ContactForm(): JSX.Element {
   }, []);
 
   function onChange(value: string) {
+    return;
     console.log('Captcha value:', value);
   }
 
