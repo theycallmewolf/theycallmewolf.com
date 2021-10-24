@@ -62,22 +62,28 @@ export function ContactForm(): JSX.Element {
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify(data)
         });
-        setEmailSent(true);
-        setShowMessage(true);
-        setSubmitting(false);
         resetForm();
+        setShowMessage(true);
+        setEmailSent(true);
+        setSubmitting(false);
       } catch (error) {
         setEmailSent(false);
         setShowMessage(true);
       }
     }
 
-    await axios.get('/api/send-sms', {
-      params: {
-        phone,
-        message: `Hi ${name}! Thanks for your contact. You'll hear from me in a few days. Bruno @ they call me <Wolf />`
+    async function sendSMS(message: string) {
+      try {
+        await axios.get('/api/send-sms', {
+          params: {
+            phone,
+            message
+          }
+        });
+      } catch (error) {
+        console.log({ error });
       }
-    });
+    }
 
     sendEmail({
       email,
@@ -97,6 +103,9 @@ export function ContactForm(): JSX.Element {
         ${message}`,
       name
     });
+    sendSMS(
+      `Hi ${name}! Thanks for your contact. You'll hear from me in a few days. Bruno @ they call me <Wolf />`
+    );
   }, []);
 
   function onChange(value: string) {
