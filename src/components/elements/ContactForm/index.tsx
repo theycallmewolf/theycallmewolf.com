@@ -7,6 +7,8 @@ import * as Yup from 'yup';
 import { Wolf } from '../../../assets/icons';
 import { IChat, ICross, ILoading } from '../../../assets/icons';
 import { useTheme } from '../../../hooks/useTheme';
+import { useToast } from '../../../hooks/useToast';
+import { api } from '../../../services/api';
 import { EmailData } from '../../../types';
 import { Button } from '../Button';
 import styles from './styles.module.scss';
@@ -32,8 +34,11 @@ export function ContactForm(): JSX.Element {
   const [showMessage, setShowMessage] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
   const [userName, setUserName] = useState('');
+  const [sendErrorEmail, setSendErrorEmail] = useState(true);
   const { hasDarkMode } = useTheme();
   const recaptchaRef = useRef(null);
+
+  const { addToast } = useToast();
 
   const initialValues: FormValues = { name: '', email: '', message: '', phone: 9 };
 
@@ -43,52 +48,81 @@ export function ContactForm(): JSX.Element {
     setIsOpen(!isOpen);
   }, [isOpen]);
 
-  const handleSubmit = useCallback(async ({ values, setSubmitting, resetForm }) => {
-    const { name, email, message, phone } = values;
-    const token = await recaptchaRef.current.execute();
+  const handleSubmit = useCallback(
+    async ({ values, setSubmitting, resetForm }) => {
+      const { name, email, message, phone } = values;
+      const token = await recaptchaRef.current.execute();
 
-    setUserName(name);
+      setUserName(name);
 
-    if (!token) {
-      setEmailSent(false);
-      setShowMessage(true);
-      return;
-    }
-
-    async function sendEmail(data: EmailData) {
-      try {
-        await fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify(data)
-        });
-        resetForm();
-        setShowMessage(true);
-        setEmailSent(true);
-        setSubmitting(false);
-      } catch (error) {
+      if (!token) {
         setEmailSent(false);
         setShowMessage(true);
+        return;
       }
-    }
 
-    async function sendSMS(message: string) {
-      try {
-        await axios.get('/api/send-sms', {
-          params: {
-            phone,
-            message
+      async function sendSMS(message: string) {
+        try {
+          await axios.get('/api/send-sms', {
+            params: {
+              phone,
+              message
+            }
+          });
+        } catch (error) {
+          if (sendErrorEmail) {
+            // sendEmail({
+            //   email: 'bruno@theycallmewolf.com',
+            //   subject: 'Issues with sendSMS()',
+            //   message: `
+            //   Hello Master.
+            //   The sendSMS() feature failed after ${name} has filled the website contact form. He/She didn't received the thank you SMS.
+            //   Here's the received error code: ${error}.
+            //   Please take a look.
+            //   `,
+            //   name: 'Wolf'
+            // });
+            setSendErrorEmail(false);
           }
-        });
-      } catch (error) {
-        console.log({ error });
+        }
       }
-    }
 
-    sendEmail({
-      email,
-      subject: `New contact from website.`,
-      message: `
+      async function sendEmail(data: EmailData) {
+        try {
+          await api.post('/api/contact', data, {
+            headers: { 'content-type': 'application/json' }
+          });
+          resetForm();
+          setShowMessage(true);
+          setEmailSent(true);
+          setSubmitting(false);
+
+          sendSMS(
+            `Hi ${name}! Thanks for your contact. You'll hear from me in a few days. Bruno @theycallmewolf`
+          );
+        } catch (error) {
+          resetForm();
+          setSubmitting(false);
+          setEmailSent(false);
+          setShowMessage(false);
+          setIsOpen(false);
+          addToast({
+            type: 'error',
+            title: 'I had issues sending your data',
+            description: 'Please send me an email to bruno@theycallmewolf.com',
+            duration: 8000
+          });
+
+          sendSMS(
+            `Hi ${name}! Looks like I'm having issues with my contact form. Please reach me by email to bruno@theycallmewolf.com. Tks`
+          );
+        }
+      }
+
+      sendEmail({
+        email,
+        subject: `New contact from website.`,
+        message: `
         Hey Wolf!
         You have a new contact from:
 
@@ -101,12 +135,11 @@ export function ContactForm(): JSX.Element {
         message:
 
         ${message}`,
-      name
-    });
-    sendSMS(
-      `Hi ${name}! Thanks for your contact. You'll hear from me in a few days. Bruno @ they call me <Wolf />`
-    );
-  }, []);
+        name
+      });
+    },
+    [addToast, sendErrorEmail]
+  );
 
   function onChange(value: string) {
     return;
