@@ -243,8 +243,10 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const prismic = getPrismicClient();
+  const { results } = await prismic.query(Prismic.Predicates.at('document.type', 'projects'));
   return {
-    paths: [],
+    paths: results.map(({ uid }) => `/work/project/${uid}`),
     fallback: 'blocking'
   };
 };
@@ -254,8 +256,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const prismic = getPrismicClient();
 
   async function getProject(): Promise<ProjectDetails> {
-    const response = await prismic.getByUID('projects', String(uid), {});
-    const { id, data } = response;
+    const { id, data } = await prismic.getByUID('projects', String(uid), {});
 
     const {
       title,
