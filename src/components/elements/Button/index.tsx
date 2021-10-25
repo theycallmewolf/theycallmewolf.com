@@ -1,6 +1,6 @@
+import { useTheme } from 'hooks/useTheme';
 import { ButtonHTMLAttributes } from 'react';
 
-import { useTheme } from '../../../hooks/useTheme';
 import styles from './styles.module.scss';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

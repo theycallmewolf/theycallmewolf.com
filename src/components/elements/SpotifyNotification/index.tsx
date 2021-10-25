@@ -1,9 +1,9 @@
+import { ICross, IHeadphones, IPlay } from 'assets/icons';
 import axios from 'axios';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
 import { animated, config, useSpring } from 'react-spring';
 
-import { ICross, IHeadphones, IPlay } from '../../../assets/icons';
 import { LogoSpotify } from './LogoSpotify';
 import styles from './styles.module.scss';
 

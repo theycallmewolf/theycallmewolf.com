@@ -1,6 +1,6 @@
+import { useNav } from 'hooks/useNav';
 import { useRouter } from 'next/router';
 
-import { useNav } from '../../../../../hooks/useNav';
 import styles from './styles.module.scss';
 
 interface NavLinkProps extends React.HTMLAttributes<HTMLAnchorElement> {

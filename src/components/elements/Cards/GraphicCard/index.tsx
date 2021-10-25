@@ -1,6 +1,6 @@
+import { TangramCard } from 'assets/tangrams';
 import React from 'react';
 
-import { TangramCard } from '../../../../assets/tangrams';
 import styles from './styles.module.scss';
 
 interface GraphicCardProps extends React.HTMLAttributes<HTMLElement> {

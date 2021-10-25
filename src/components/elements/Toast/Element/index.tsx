@@ -1,7 +1,7 @@
+import { ICross } from 'assets/icons';
+import { useToast } from 'hooks/useToast';
 import { useEffect } from 'react';
 
-import { ICross } from '../../../../assets/icons';
-import { useToast } from '../../../../hooks/useToast';
 import { ToastProps } from '../types';
 import styles from './styles.module.scss';
 

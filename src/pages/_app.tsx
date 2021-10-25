@@ -1,17 +1,16 @@
-import '../styles/global.scss';
+import 'styles/global.scss';
 import 'swiper/swiper.scss';
 import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/effect-fade/effect-fade.min.css';
-import '../components/elements/Slider/styles.scss';
+import 'components/elements/Slider/styles.scss';
 
+import { ContactForm } from 'components/elements/ContactForm';
+import { SpotifyNotification } from 'components/elements/SpotifyNotification';
+import { AppProvider } from 'hooks';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-
-import { ContactForm } from '../components/elements/ContactForm';
-import { SpotifyNotification } from '../components/elements/SpotifyNotification';
-import { AppProvider } from '../hooks';
-import { pageView } from '../utils/google-analytics';
+import { pageView } from 'utils/google-analytics';
 
 function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   const router = useRouter();

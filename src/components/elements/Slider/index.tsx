@@ -1,9 +1,9 @@
+import { useTheme } from 'hooks/useTheme';
 import { useEffect, useState } from 'react';
 import SwiperCore, { A11y, EffectFade, Navigation, Pagination, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { SliderProps } from 'types';
 
-import { useTheme } from '../../../hooks/useTheme';
-import { SliderProps } from '../../../types';
 import { CustomLink } from '../Link';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);

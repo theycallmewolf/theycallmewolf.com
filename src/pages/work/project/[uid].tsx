@@ -1,17 +1,17 @@
 import Prismic from '@prismicio/client';
+import { IArrow, IMenu, IMinus, IPlus } from 'assets/icons';
+import { Slider } from 'components/elements/Slider';
+import { Header } from 'components/sections/Header';
+import { useTheme } from 'hooks/useTheme';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { RichText } from 'prismic-dom';
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { getPrismicClient } from 'services/prismic';
+import { NextProject, ProjectDetails, ProjectProps } from 'types';
+import { formatDate, getRandomInt } from 'utils';
 
-import { IArrow, IMenu, IMinus, IPlus } from '../../../assets/icons';
-import { Slider } from '../../../components/elements/Slider';
-import { Header } from '../../../components/sections/Header';
-import { useTheme } from '../../../hooks/useTheme';
-import { getPrismicClient } from '../../../services/prismic';
-import { NextProject, ProjectDetails, ProjectProps } from '../../../types';
-import { formatDate, getRandomInt } from '../../../utils';
 import styles from './styles.module.scss';
 
 export default function Code({ project, nextProjects }: ProjectProps): JSX.Element {

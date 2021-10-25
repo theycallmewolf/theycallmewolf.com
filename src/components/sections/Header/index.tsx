@@ -1,8 +1,8 @@
+import { ICross, IMenu, Wolf } from 'assets/icons';
+import { useNav } from 'hooks/useNav';
+import { useTheme } from 'hooks/useTheme';
 import Link from 'next/link';
 
-import { ICross, IMenu, Wolf } from '../../../assets/icons';
-import { useNav } from '../../../hooks/useNav';
-import { useTheme } from '../../../hooks/useTheme';
 import { Nav } from './Nav';
 import styles from './styles.module.scss';
 

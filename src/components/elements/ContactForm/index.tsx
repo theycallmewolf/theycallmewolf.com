@@ -1,15 +1,15 @@
+import { Wolf } from 'assets/icons';
+import { IChat, ICross, ILoading } from 'assets/icons';
 import axios from 'axios';
 import { Field, Form, Formik } from 'formik';
+import { useTheme } from 'hooks/useTheme';
+import { useToast } from 'hooks/useToast';
 import { useCallback, useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
+import { api } from 'services/api';
+import { EmailData } from 'types';
 import * as Yup from 'yup';
 
-import { Wolf } from '../../../assets/icons';
-import { IChat, ICross, ILoading } from '../../../assets/icons';
-import { useTheme } from '../../../hooks/useTheme';
-import { useToast } from '../../../hooks/useToast';
-import { api } from '../../../services/api';
-import { EmailData } from '../../../types';
 import { Button } from '../Button';
 import styles from './styles.module.scss';
 

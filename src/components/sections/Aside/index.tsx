@@ -1,4 +1,5 @@
-import { AsideProps } from '../../../types';
+import { AsideProps } from 'types';
+
 import { Nav } from '../../elements/Nav';
 import styles from './styles.module.scss';
 

@@ -1,23 +1,22 @@
 import Prismic from '@prismicio/client';
+import { About } from 'components/sections/About';
+import { Banner } from 'components/sections/Banner';
+// import { Blog } from 'components/sections/Blog';
+import { Clients } from 'components/sections/Clients';
+import { Footer } from 'components/sections/Footer';
+import { Header } from 'components/sections/Header';
+import { Projects } from 'components/sections/Projects';
+import { Testimonials } from 'components/sections/Testimonials';
+import { useTheme } from 'hooks/useTheme';
+import { useToast } from 'hooks/useToast';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { RichText } from 'prismic-dom';
 import { useEffect, useState } from 'react';
-
-import { About } from '../components/sections/About';
-import { Banner } from '../components/sections/Banner';
-// import { Blog } from '../components/sections/Blog';
-import { Clients } from '../components/sections/Clients';
-import { Footer } from '../components/sections/Footer';
-import { Header } from '../components/sections/Header';
-import { Projects } from '../components/sections/Projects';
-import { Testimonials } from '../components/sections/Testimonials';
-import { useTheme } from '../hooks/useTheme';
-import { useToast } from '../hooks/useToast';
-import { getPrismicClient } from '../services/prismic';
-import { ClientData, GraphData, PostData, ProjectData, TestimonialData } from '../types';
-import { deviceCheck } from '../utils';
-import { formatDate } from '../utils/format-date';
+import { getPrismicClient } from 'services/prismic';
+import { ClientData, GraphData, PostData, ProjectData, TestimonialData } from 'types';
+import { deviceCheck } from 'utils';
+import { formatDate } from 'utils/format-date';
 
 interface HomeProps {
   projects: ProjectData[];

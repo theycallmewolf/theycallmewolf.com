@@ -1,27 +1,27 @@
 import Prismic from '@prismicio/client';
+import { TangramCard } from 'assets/tangrams/';
+import {
+  CardBody,
+  CardFooter,
+  CardHeader,
+  DefaultCard
+} from 'components/elements/Cards/DefaultCard';
+import { CustomLink } from 'components/elements/Link';
+import { Aside } from 'components/sections/Aside';
+import { CardList } from 'components/sections/CardList';
+import { Footer } from 'components/sections/Footer';
+import { Header } from 'components/sections/Header';
+import { useTheme } from 'hooks/useTheme';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { RichText } from 'prismic-dom';
 import { useEffect } from 'react';
+import { getPrismicClient } from 'services/prismic';
+import { IntroData, LinkData, ProjectData } from 'types';
+import { formatDate } from 'utils';
 
-import { TangramCard } from '../../assets/tangrams/';
-import {
-  CardBody,
-  CardFooter,
-  CardHeader,
-  DefaultCard
-} from '../../components/elements/Cards/DefaultCard';
-import { CustomLink } from '../../components/elements/Link';
-import { Aside } from '../../components/sections/Aside';
-import { CardList } from '../../components/sections/CardList';
-import { Footer } from '../../components/sections/Footer';
-import { Header } from '../../components/sections/Header';
-import { useTheme } from '../../hooks/useTheme';
-import { getPrismicClient } from '../../services/prismic';
-import { IntroData, LinkData, ProjectData } from '../../types';
-import { formatDate } from '../../utils';
 import styles from './styles.module.scss';
 
 interface WorkProps {

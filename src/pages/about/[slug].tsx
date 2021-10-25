@@ -1,20 +1,20 @@
 import Prismic from '@prismicio/client';
+import { ServicesSVG } from 'assets/services';
+import { CardBody, CardHeader, DefaultCard } from 'components/elements/Cards/DefaultCard';
+import { GraphicCard } from 'components/elements/Cards/GraphicCard';
+import { Graph } from 'components/elements/Graph';
+import { Aside } from 'components/sections/Aside';
+import { CardList } from 'components/sections/CardList';
+import { Footer } from 'components/sections/Footer';
+import { Header } from 'components/sections/Header';
+import { useTheme } from 'hooks/useTheme';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { RichText } from 'prismic-dom';
 import { useEffect } from 'react';
+import { getPrismicClient } from 'services/prismic';
 
-import { ServicesSVG } from '../../assets/services';
-import { CardBody, CardHeader, DefaultCard } from '../../components/elements/Cards/DefaultCard';
-import { GraphicCard } from '../../components/elements/Cards/GraphicCard';
-import { Graph } from '../../components/elements/Graph';
-import { Aside } from '../../components/sections/Aside';
-import { CardList } from '../../components/sections/CardList';
-import { Footer } from '../../components/sections/Footer';
-import { Header } from '../../components/sections/Header';
-import { useTheme } from '../../hooks/useTheme';
-import { getPrismicClient } from '../../services/prismic';
 import {
   AboutProps,
   ActivityData,

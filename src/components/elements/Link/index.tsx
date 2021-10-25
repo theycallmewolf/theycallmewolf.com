@@ -1,6 +1,6 @@
+import { IPlus } from 'assets/icons';
 import Link from 'next/link';
 
-import { IPlus } from '../../../assets/icons';
 import styles from './styles.module.scss';
 
 interface CustomLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {

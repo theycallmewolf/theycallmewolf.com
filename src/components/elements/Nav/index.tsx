@@ -1,7 +1,7 @@
+import { useTheme } from 'hooks/useTheme';
 import React from 'react';
+import { LinkData } from 'types';
 
-import { useTheme } from '../../../hooks/useTheme';
-import { LinkData } from '../../../types';
 import { NavLink } from './NavLink';
 import styles from './styles.module.scss';
 

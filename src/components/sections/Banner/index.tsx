@@ -1,11 +1,11 @@
 import 'react-typed/dist/animatedCursor.css';
 
+import { bgImages, introCopy } from 'assets/constants';
+import { IShuffle } from 'assets/icons';
 import { useCallback, useEffect, useState } from 'react';
 import Typed from 'react-typed';
+import { getRandomInt } from 'utils';
 
-import { bgImages, introCopy } from '../../../assets/constants';
-import { IShuffle } from '../../../assets/icons';
-import { getRandomInt } from '../../../utils';
 import styles from './styles.module.scss';
 
 export function Banner(): JSX.Element {
