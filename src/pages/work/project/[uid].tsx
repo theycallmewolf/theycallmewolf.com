@@ -1,6 +1,6 @@
 import Prismic from '@prismicio/client';
 import { IArrow, IMenu, IMinus, IPlus } from 'assets/icons';
-import { Slider } from 'components/elements/Slider';
+import { Slider } from 'components/elements';
 import { Header } from 'components/sections/Header';
 import { useTheme } from 'hooks/useTheme';
 import { GetStaticPaths, GetStaticProps } from 'next';

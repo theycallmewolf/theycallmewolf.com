@@ -4,8 +4,7 @@ import 'swiper/components/navigation/navigation.scss';
 import 'swiper/components/effect-fade/effect-fade.min.css';
 import 'components/elements/Slider/styles.scss';
 
-import { ContactForm } from 'components/elements/ContactForm';
-import { SpotifyNotification } from 'components/elements/SpotifyNotification';
+import { ContactForm, SpotifyNotification } from 'components/elements';
 import { AppProvider } from 'hooks';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';

@@ -1,12 +1,6 @@
 import Prismic from '@prismicio/client';
 import { TangramCard } from 'assets/tangrams/';
-import {
-  CardBody,
-  CardFooter,
-  CardHeader,
-  DefaultCard
-} from 'components/elements/Cards/DefaultCard';
-import { CustomLink } from 'components/elements/Link';
+import { CardBody, CardFooter, CardHeader, CustomLink, DefaultCard } from 'components/elements';
 import { Aside } from 'components/sections/Aside';
 import { CardList } from 'components/sections/CardList';
 import { Footer } from 'components/sections/Footer';

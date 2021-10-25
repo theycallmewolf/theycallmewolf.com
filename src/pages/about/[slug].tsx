@@ -1,8 +1,6 @@
 import Prismic from '@prismicio/client';
 import { ServicesSVG } from 'assets/services';
-import { CardBody, CardHeader, DefaultCard } from 'components/elements/Cards/DefaultCard';
-import { GraphicCard } from 'components/elements/Cards/GraphicCard';
-import { Graph } from 'components/elements/Graph';
+import { CardBody, CardHeader, DefaultCard, Graph, GraphicCard } from 'components/elements';
 import { Aside } from 'components/sections/Aside';
 import { CardList } from 'components/sections/CardList';
 import { Footer } from 'components/sections/Footer';
