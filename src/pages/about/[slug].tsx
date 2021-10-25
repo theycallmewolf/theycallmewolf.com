@@ -1,10 +1,7 @@
 import Prismic from '@prismicio/client';
 import { ServicesSVG } from 'assets/services';
 import { CardBody, CardHeader, DefaultCard, Graph, GraphicCard } from 'components/elements';
-import { Aside } from 'components/sections/Aside';
-import { CardList } from 'components/sections/CardList';
-import { Footer } from 'components/sections/Footer';
-import { Header } from 'components/sections/Header';
+import { Aside, CardList, Footer, Header } from 'components/sections';
 import { useTheme } from 'hooks/useTheme';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';

@@ -1,12 +1,14 @@
 import Prismic from '@prismicio/client';
-import { About } from 'components/sections/About';
-import { Banner } from 'components/sections/Banner';
-// import { Blog } from 'components/sections/Blog';
-import { Clients } from 'components/sections/Clients';
-import { Footer } from 'components/sections/Footer';
-import { Header } from 'components/sections/Header';
-import { Projects } from 'components/sections/Projects';
-import { Testimonials } from 'components/sections/Testimonials';
+import {
+  About,
+  Banner,
+  Clients,
+  Footer,
+  Header,
+  Projects,
+  Testimonials
+} from 'components/sections';
+// import { Blog } from 'components/sections';
 import { useTheme } from 'hooks/useTheme';
 import { useToast } from 'hooks/useToast';
 import { GetStaticProps } from 'next';

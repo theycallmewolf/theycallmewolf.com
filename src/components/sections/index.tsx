@@ -1,0 +1,10 @@
+export { About } from './About';
+export { Aside } from './Aside';
+export { Banner } from './Banner';
+export { Blog } from './Blog';
+export { CardList } from './CardList';
+export { Clients } from './Clients';
+export { Footer } from './Footer';
+export { Header } from './Header';
+export { Projects } from './Projects';
+export { Testimonials } from './Testimonials';
