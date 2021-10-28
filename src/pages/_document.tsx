@@ -37,6 +37,7 @@ export default class MyDocument extends Document {
           <meta property="og:image:type" content="image/png" />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
+          <meta name="author" content="Bruno | theycallmewolf.com" />
           <link
             href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;700&display=swap"
             rel="stylesheet"
