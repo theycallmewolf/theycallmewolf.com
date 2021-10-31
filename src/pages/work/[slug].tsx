@@ -5,6 +5,7 @@ import { Aside, CardList, Footer, Header } from 'components/sections';
 import { useTheme } from 'hooks/useTheme';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { RichText } from 'prismic-dom';
@@ -49,14 +50,7 @@ export default function Work({ intro, link_list, cards }: WorkProps): JSX.Elemen
                 {project.slider.image_small !== '' ? (
                   <Link href={`/work/project/${project.slug}`}>
                     <a>
-                      <picture>
-                        <source
-                          srcSet={`${project.slider.image_large}, ${project.slider.image_large_2x} 2x`}
-                          media="(min-width: 425px)"
-                        />
-                        <source srcSet={`${project.slider.image_small_2x} 2x`} />
-                        <img src={project.slider.image_small} alt={project.title} />
-                      </picture>
+                      <Image src={project.slider.image_small_2x} layout="fill" objectFit="cover" />
                     </a>
                   </Link>
                 ) : (

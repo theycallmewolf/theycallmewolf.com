@@ -5,7 +5,7 @@ const withPWA = require('next-pwa');
 module.exports = withPWA({
   reactStrictMode: true,
   images: {
-    domains: ['i.scdn.co']
+    domains: ['i.scdn.co', 'images.prismic.io']
   },
   pwa: {
     dest: 'public'
