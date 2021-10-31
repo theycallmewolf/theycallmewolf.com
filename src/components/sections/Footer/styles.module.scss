@@ -1,14 +1,11 @@
 .footer {
-  background-image: 
-    url('../../../../public/assets/wires/w-footer-red.svg'), 
-    url('../../../../public/assets/img/footer.jpg');
   background-color: var(--c-candy-red);
   background-size: 400%, 400%;
   background-repeat: no-repeat, no-repeat;
   background-position: left center, 70% center;
   background-blend-mode: lighten, multiply;
   background-attachment: scroll;
-  
+
   position: fixed;
   bottom: 0;
   left: 0;
@@ -22,24 +19,32 @@
     height: 244px;
 
     color: var(--c-polar-white);
-    
+
     display: flex;
     justify-content: flex-start;
     align-items: center;
 
-    p { 
+    p {
       font-size: 1.3rem;
       line-height: 1.4;
     }
 
     @media (orientation: landscape) {
       height: 0;
-      
-      @media( min-height: 560px) { height: 80px; }
-      @media( min-height: 600px) { height: 120px; }
-      @media( min-height: 780px) { height: 244px; }
+
+      @media (min-height: 560px) {
+        height: 80px;
+      }
+      @media (min-height: 600px) {
+        height: 120px;
+      }
+      @media (min-height: 780px) {
+        height: 244px;
+      }
     }
   }
 
-  @media (min-width: 420px) { background-size: cover, cover; }
+  @media (min-width: 420px) {
+    background-size: cover, cover;
+  }
 }
