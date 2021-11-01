@@ -77,10 +77,7 @@ export const getProjects: GetProjects = async () => {
     orderings: '[my.projects.project_date desc]',
     fetch: [
       'projects.title',
-      'projects.image_large',
-      'projects.image_small',
       'projects.image_large_2x',
-      'projects.image_small_2x',
       'projects.caption',
       'projects.type',
       'projects.highlight',
@@ -92,18 +89,7 @@ export const getProjects: GetProjects = async () => {
   });
 
   return response.results.map(({ id, uid, data }) => {
-    const {
-      type,
-      project_date,
-      title,
-      image_small,
-      image_small_2x,
-      image_large,
-      image_large_2x,
-      caption,
-      body,
-      highlight
-    } = data;
+    const { type, project_date, title, image_large_2x, caption, body, highlight } = data;
 
     let specs = body?.filter(({ slice_type }) => slice_type === 'technologies').shift() ?? null;
     if (specs) {
@@ -120,10 +106,7 @@ export const getProjects: GetProjects = async () => {
       slug: uid,
       project_date: String(new Date(project_date).getFullYear()),
       slider: {
-        image_small: image_small.url ?? null,
-        image_small_2x: image_small_2x.url ?? (image_small.url || null),
-        image_large: image_large.url ?? null,
-        image_large_2x: image_large_2x.url ?? (image_large.url || null),
+        image_large_2x: image_large_2x.url ?? null,
         caption: RichText.asText(caption) ?? null
       },
       highlight,
@@ -143,9 +126,6 @@ export const getProject: GetProject = async ({ uid }) => {
     link,
     repository,
     repository_api,
-    cover_small,
-    cover_small_2x,
-    cover_large,
     cover_large_2x,
     caption,
     about,
@@ -178,11 +158,8 @@ export const getProject: GetProject = async ({ uid }) => {
   const project_images = body1
     .filter(({ slice_type }) => slice_type === 'slider')
     .shift()
-    .items.map(({ screen_small, screen_small_2x, screen_large, screen_large_2x }, i: number) => ({
-      image_small: screen_small.url,
-      image_small_2x: screen_small_2x.url ?? (screen_small.url || null),
-      image_large: screen_large.url,
-      image_large_2x: screen_large_2x.url ?? (screen_large.url || null),
+    .items.map(({ screen_large_2x }, i: number) => ({
+      image_large_2x: screen_large_2x.url ?? null,
       slug: String(i)
     }));
 
@@ -200,10 +177,7 @@ export const getProject: GetProject = async ({ uid }) => {
     about,
     leads,
     images: {
-      cover_small: cover_small.url ?? null,
-      cover_small_2x: cover_small_2x.url ?? (cover_small.url || null),
-      cover_large: cover_large.url ?? null,
-      cover_large_2x: cover_large_2x.url ?? (cover_large.url || null),
+      cover_large_2x: cover_large_2x.url ?? null,
       project_images,
       caption: RichText.asText(caption)
     },
@@ -219,25 +193,13 @@ export const getNextProject: GetNextProject = async () => {
       'projects.highlight',
       'projects.project_date',
       'projects.type',
-      'projects.cover_large',
-      'projects.cover_large_2x',
-      'projects.cover_small',
-      'projects.cover_small_2x'
+      'projects.cover_large_2x'
     ],
     pageSize: 12,
     lang: 'en-us'
   });
   return response.results.map(({ id, uid, data }) => {
-    const {
-      title,
-      project_date,
-      type,
-      cover_large,
-      cover_large_2x,
-      cover_small,
-      cover_small_2x,
-      description
-    } = data;
+    const { title, project_date, type, cover_large_2x, description } = data;
 
     return {
       id,
@@ -247,10 +209,7 @@ export const getNextProject: GetNextProject = async () => {
       project_date: String(new Date(project_date).getFullYear()),
       description: RichText.asText(description),
       images: {
-        cover_large: cover_large.url,
-        cover_large_2x: cover_large_2x.url,
-        cover_small: cover_small.url,
-        cover_small_2x: cover_small_2x.url
+        cover_large_2x: cover_large_2x.url
       }
     };
   });

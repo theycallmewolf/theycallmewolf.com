@@ -41,15 +41,15 @@ export default function Work({ intro, link_list, cards }: WorkProps): JSX.Elemen
         <Header />
         <Aside intro={intro} link_list={link_list} imageURL="/assets/img/cover-work-alt.jpg" />
         <CardList slug={slug}>
-          {cards.map((project) => (
-            <DefaultCard key={project.id} customClass={styles.card}>
+          {cards.map(({ id, slider, slug, project_date, title, description, specs }) => (
+            <DefaultCard key={id} customClass={styles.card}>
               <CardHeader>
-                {project.slider.image_small_2x !== '' ? (
+                {slider.image_large_2x !== '' ? (
                   <div className={styles.imageContainer}>
-                    <Link href={`/work/project/${project.slug}`}>
+                    <Link href={`/work/project/${slug}`}>
                       <a>
                         <Image
-                          src={project.slider.image_small_2x}
+                          src={slider.image_large_2x}
                           layout="fill"
                           objectFit="cover"
                           quality={90}
@@ -62,17 +62,17 @@ export default function Work({ intro, link_list, cards }: WorkProps): JSX.Elemen
                 )}
               </CardHeader>
               <CardBody>
-                <span className={styles.date}>{project.project_date}</span>
-                <h2>{project.title}</h2>
-                <p>{project.description}</p>
+                <span className={styles.date}>{project_date}</span>
+                <h2>{title}</h2>
+                <p>{description}</p>
                 <ul className={styles.specs}>
-                  {!!project.specs && project.specs.map(({ spec, id }) => <li key={id}>{spec}</li>)}
+                  {!!specs && specs.map(({ spec, id }) => <li key={id}>{spec}</li>)}
                 </ul>
               </CardBody>
               <CardFooter>
                 <CustomLink
                   label="more"
-                  href={`/work/project/${project.slug}`}
+                  href={`/work/project/${slug}`}
                   customClass={styles.button}
                 />
               </CardFooter>

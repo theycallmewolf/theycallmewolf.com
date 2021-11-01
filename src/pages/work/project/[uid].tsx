@@ -32,13 +32,10 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
   useEffect(() => {
     setSlides(
       project.images.project_images.map((slide) => {
-        const { image_large, image_large_2x, image_small, image_small_2x } = slide;
+        const { image_large_2x } = slide;
         return {
           slider: {
-            image_large,
-            image_large_2x,
-            image_small,
-            image_small_2x
+            image_large_2x
           }
         };
       })
