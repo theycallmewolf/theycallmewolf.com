@@ -1,10 +1,10 @@
 .main {
   margin: 0 auto -70px;
-  position: fixed;
+  position: sticky;
   top: 80px;
   left: 0;
   right: 0;
-  bottom: 0;
+  height: calc(100vh - 8rem - env(safe-area-inset-bottom));
   overflow-y: scroll;
   padding-bottom: 100vh;
 
@@ -55,6 +55,7 @@
       position: absolute;
       top: 0;
       left: 0;
+      width: 8rem;
       height: 4.8rem;
       padding: 1rem;
       border: none;

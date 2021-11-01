@@ -14,6 +14,7 @@ import { GetStaticProps } from 'next';
 import Head from 'next/head';
 import { useEffect, useState } from 'react';
 import { getClients, getPosts, getProjects, getSkills, getTestimonials } from 'services/prismic';
+import { COLORS } from 'theme';
 import { ClientData, GraphData, PostData, ProjectData, TestimonialData } from 'types';
 import { deviceCheck } from 'utils';
 
@@ -27,12 +28,10 @@ interface HomeProps {
 
 export default function Home({ projects, clients, testimonials, skills }: HomeProps): JSX.Element {
   const [toastID, setToastID] = useState('');
-  const { getTheme } = useTheme();
+  const { getTheme, hasDarkMode } = useTheme();
   const { addToast, hasClosed } = useToast();
 
-  useEffect(() => {
-    getTheme();
-  }, [getTheme]);
+  useEffect(getTheme);
 
   useEffect(() => {
     const hasSeenBanner = localStorage.getItem('@wolf_pwa');
@@ -76,6 +75,20 @@ export default function Home({ projects, clients, testimonials, skills }: HomePr
         <meta
           name="description"
           content="They call me wolf is the web portfolio of Bruno Lobato, a designer since 2001 that felt in love with coding around 2014."
+        />
+        <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
+        <link
+          rel="mask-icon"
+          href="/favicon/safari-pinned-tab.svg"
+          color={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
+        />
+        <meta
+          name="msapplication-TileColor"
+          content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
+        />
+        <meta
+          name="theme-color"
+          content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
         />
       </Head>
       <Header />

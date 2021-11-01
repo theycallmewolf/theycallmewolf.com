@@ -9,6 +9,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { getNextProject, getPrismicClient, getProject } from 'services/prismic';
+import { COLORS } from 'theme';
 import { ProjectProps } from 'types';
 import { formatDate, getRandomInt } from 'utils';
 
@@ -22,12 +23,10 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
   const projectPreview = useRef(null);
   const topMark = useRef(null);
 
-  const { getTheme } = useTheme();
+  const { getTheme, hasDarkMode } = useTheme();
   const router = useRouter();
 
-  useEffect(() => {
-    getTheme();
-  }, [getTheme]);
+  useEffect(getTheme);
 
   useEffect(() => {
     setSlides(
@@ -99,8 +98,22 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
   return (
     <>
       <Head>
-        <title>they call me wolf | {title}</title>
+        <title>{title} | they call me wolf</title>
         <meta name="description" content={caption} />
+        <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
+        <link
+          rel="mask-icon"
+          href="/favicon/safari-pinned-tab.svg"
+          color={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
+        />
+        <meta
+          name="msapplication-TileColor"
+          content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
+        />
+        <meta
+          name="theme-color"
+          content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
+        />
       </Head>
       <Header />
       <main className={styles.main} onScroll={onScroll}>

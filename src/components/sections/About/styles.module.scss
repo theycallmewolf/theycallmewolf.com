@@ -2,6 +2,8 @@
   width: 100%;
   max-width: 960px;
   margin: 240px auto;
+  padding-left: calc(env(safe-area-inset-left) + 2rem);
+  padding-right: calc(env(safe-area-inset-right) + 2rem);
 
   display: flex;
   align-items: center;

@@ -15,6 +15,7 @@ import { useEffect } from 'react';
 import { useTheme } from 'hooks/useTheme';
 import { useRouter } from 'next/router';
 import styles from './styles.module.scss';
+import { COLORS } from 'theme';
 
 export default function About({
   intro,
@@ -26,7 +27,7 @@ export default function About({
 }: AboutProps): JSX.Element {
   const router = useRouter();
   const { slug } = router.query;
-  const { getTheme } = useTheme();
+  const { getTheme, hasDarkMode } = useTheme();
 
   useEffect(getTheme);
 
@@ -39,10 +40,24 @@ export default function About({
   return (
     <>
       <Head>
-        <title>they call me wolf | About</title>
+        <title>{slug} | they call me wolf</title>
         <meta
           name="description"
           content="Get to know a little more about mr. Wolf's activity, skills, career and education."
+        />
+        <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
+        <link
+          rel="mask-icon"
+          href="/favicon/safari-pinned-tab.svg"
+          color={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
+        />
+        <meta
+          name="msapplication-TileColor"
+          content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
+        />
+        <meta
+          name="theme-color"
+          content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
         />
       </Head>
       <Header />

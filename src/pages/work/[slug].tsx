@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { getIntro, getProjects } from 'services/prismic';
+import { COLORS } from 'theme';
 import { IntroData, LinkData, ProjectData } from 'types';
 
 import styles from './styles.module.scss';
@@ -22,19 +23,31 @@ interface WorkProps {
 export default function Work({ intro, link_list, cards }: WorkProps): JSX.Element {
   const router = useRouter();
   const { slug } = router.query;
-  const { getTheme } = useTheme();
+  const { getTheme, hasDarkMode } = useTheme();
 
-  useEffect(() => {
-    getTheme();
-  }, [getTheme]);
+  useEffect(getTheme);
 
   return (
     <>
       <Head>
-        <title>they call me wolf | Work</title>
+        <title>work | they call me wolf</title>
         <meta
           name="description"
           content="Here's the list of some of the projects (personal and profissional) that Mr. Wolf worked on. From Web development to illustration, passing through UI design and graphic design. It's a lot... of gray hair at least."
+        />
+        <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
+        <link
+          rel="mask-icon"
+          href="/favicon/safari-pinned-tab.svg"
+          color={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
+        />
+        <meta
+          name="msapplication-TileColor"
+          content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
+        />
+        <meta
+          name="theme-color"
+          content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
         />
       </Head>
       <main>
