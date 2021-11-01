@@ -97,7 +97,7 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
   return (
     <>
       <Head>
-        <title>they call me wolf | {title}</title>
+        <title>{title} | they call me wolf</title>
         <meta name="description" content={caption} />
       </Head>
       <Header />

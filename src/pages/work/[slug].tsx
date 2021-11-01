@@ -29,7 +29,7 @@ export default function Work({ intro, link_list, cards }: WorkProps): JSX.Elemen
   return (
     <>
       <Head>
-        <title>they call me wolf | Work</title>
+        <title>work | they call me wolf</title>
         <meta
           name="description"
           content="Here's the list of some of the projects (personal and profissional) that Mr. Wolf worked on. From Web development to illustration, passing through UI design and graphic design. It's a lot... of gray hair at least."
