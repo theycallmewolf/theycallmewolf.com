@@ -22,7 +22,11 @@ export function Testimonials({ testimonials }: TestimonialsProps): JSX.Element {
       <div className={styles.cover}>
         <h2>mentions</h2>
       </div>
-      <Slider testimonials={testimonials} contentType="testimonial" />
+      <Slider
+        testimonials={testimonials}
+        contentType="testimonial"
+        additionalClass={styles.slider}
+      />
     </section>
   );
 }

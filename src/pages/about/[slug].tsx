@@ -52,9 +52,9 @@ export default function About({
           content="Get to know a little more about mr. Wolf's activity, skills, career and education."
         />
       </Head>
-      <main className={styles.main}>
-        <Header />
-        <Aside intro={intro} link_list={link_list} imageURL="/assets/img/cover-about.jpg" />
+      <Header />
+      <Aside intro={intro} link_list={link_list} imageURL="/assets/img/cover-about.jpg" />
+      <main>
         <CardList slug={slug}>
           {slug === 'skills' &&
             skills.map(({ id, title, description, graphs }) => (

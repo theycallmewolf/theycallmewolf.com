@@ -1,12 +1,12 @@
 .section {
   .cover {
-    width: calc(100% + 24px);
     height: 360px;
     margin-left: -12px;
     position: relative;
     overflow: hidden;
-    
-    background-image: url('../../../../public/assets/wires/w-testimonials-cover-red.svg'), url('../../../../public/assets/img/testimonials.jpg');
+
+    background-image: url('../../../../public/assets/wires/w-testimonials-cover-red.svg'),
+      url('../../../../public/assets/img/testimonials.jpg');
     background-color: var(--c-candy-red);
     background-position: center;
     background-blend-mode: lighten, multiply;
@@ -15,28 +15,18 @@
     background-attachment: scroll, fixed;
 
     // Ipad Landscape & Portrait
-    @media
-      only screen 
-      and (min-device-width : 768px) 
-      and (max-device-width : 1024px) {
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
       background-attachment: scroll, scroll;
     }
 
     // iPhone 6+, 7+ and 8+ Landscape & Portrait
-    @media
-      only screen
-      and (min-device-width: 414px)
-      and (max-device-width: 736px)
-      and (-webkit-min-device-pixel-ratio: 3) {
-        background-attachment: scroll, scroll;
+    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {
+      background-attachment: scroll, scroll;
     }
 
     // iPhone X Landscape & Portrait
-    @media 
-      only screen and (min-device-width: 375px)
-      and (max-device-width: 812px)
-      and (-webkit-min-device-pixel-ratio: 3) {
-        background-attachment: scroll, scroll;
+    @media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-min-device-pixel-ratio: 3) {
+      background-attachment: scroll, scroll;
     }
 
     h2 {
@@ -48,10 +38,11 @@
       text-align: center;
     }
   }
+}
 
-  &>div:nth-child(2) {
-    max-width: 684px;
-    background: var(--c-background-200);
-    margin: -220px auto 0;
-  }
+.slider {
+  width: 90%;
+  max-width: 684px;
+  background: var(--c-background-200);
+  margin: -220px auto 0;
 }
