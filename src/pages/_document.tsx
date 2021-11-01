@@ -1,5 +1,4 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
-import { COLORS } from 'theme';
 
 export default class MyDocument extends Document {
   render(): JSX.Element {

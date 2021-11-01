@@ -45,6 +45,7 @@ export default function About({
           name="description"
           content="Get to know a little more about mr. Wolf's activity, skills, career and education."
         />
+        <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
         <link
           rel="mask-icon"
           href="/favicon/safari-pinned-tab.svg"

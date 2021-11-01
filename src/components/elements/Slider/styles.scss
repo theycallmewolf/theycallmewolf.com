@@ -4,29 +4,31 @@
 
   .swiper-container {
     padding-bottom: 115px;
-    
-    @media (min-width: 768px ) {
+
+    @media (min-width: 768px) {
       padding-bottom: 60px;
     }
-  
+
     .swiper-wrapper {
       .swiper-slide {
         width: 100%;
         height: 415px;
         opacity: 0.1;
         position: relative;
-        
+
         transition: border 1000ms ease-in-out;
 
-        @media (max-width: 1024px) { 
-          &:last-of-type { display: none; }
+        @media (max-width: 1024px) {
+          &:last-of-type {
+            display: none;
+          }
         }
-        
+
         figure {
           width: 100%;
           height: 100%;
           position: relative;
-          
+
           img {
             width: 100%;
             height: 100%;
@@ -40,7 +42,7 @@
             height: 46px;
             width: calc(100% - 44px);
             padding: 0 12px;
-            
+
             font-size: 1.4rem;
             line-height: 1.8rem;
             letter-spacing: 1.4px;
@@ -55,7 +57,7 @@
             transition: opacity 300ms ease-in-out;
             transition-delay: 300ms;
 
-            @media(min-width: 768px) {
+            @media (min-width: 768px) {
               left: 60px;
               bottom: -60px;
               width: calc(100% - 180px);
@@ -71,21 +73,29 @@
           cursor: pointer;
 
           &:hover,
-          &:focus { transform: none; }
+          &:focus {
+            transform: none;
+          }
 
-          @media(min-width: 768px) { bottom: 0; }
+          @media (min-width: 768px) {
+            bottom: 0;
+          }
         }
       }
-      
+
       .swiper-slide-active {
         opacity: 1;
 
-        figure figcaption { opacity: 1; }
+        figure figcaption {
+          opacity: 1;
+        }
       }
-      
-      .swiper-slide-next img { filter: grayscale(1); }
+
+      .swiper-slide-next img {
+        filter: grayscale(1);
+      }
     }
-  
+
     .swiper-button-prev,
     .swiper-button-next {
       background-image: url('../../../assets/icons/svg/i-arrow-black.svg');
@@ -93,31 +103,40 @@
       background-repeat: no-repeat;
       background-size: 64% auto;
       background-position: center;
-      
+
       top: unset;
       bottom: 1px;
       width: 50px;
       height: 50px;
       z-index: 11;
-      
-      &::after { display: none; }
 
-      &:hover { filter: brightness(1.4);}
+      &::after {
+        display: none;
+      }
 
-      &:focus { outline: 1px solid var(--c-candy-red); box-shadow: none; }
-      
+      &:hover {
+        filter: brightness(1.4);
+      }
+
+      &:focus {
+        outline: 1px solid var(--c-candy-red);
+        box-shadow: none;
+      }
+
       &.swiper-button-disabled {
         opacity: 0.6;
-        @media (prefers-color-scheme: dark) { 
+        @media (prefers-color-scheme: dark) {
           background-image: url('../../../assets/icons/svg/i-arrow-red.svg');
         }
-        @media (prefers-color-scheme: light) { 
+        @media (prefers-color-scheme: light) {
           background-image: url('../../../assets/icons/svg/i-arrow-white.svg');
         }
       }
     }
-    
-    .swiper-button-next { right: 1px; }
+
+    .swiper-button-next {
+      right: 1px;
+    }
     .swiper-button-prev {
       left: unset;
       right: 60px;
@@ -137,13 +156,13 @@
 
     &.testimonial {
       padding-bottom: 56px;
-      
+
       .swiper-wrapper {
         .swiper-slide {
           height: 420px;
           overflow: hidden;
 
-          background-image: url('/assets/wires/w-testimonials-light-100.svg'); 
+          background-image: url('/assets/wires/w-testimonials-light-100.svg');
           background-color: var(--c-background-200);
           background-size: cover;
           background-position: center;
@@ -153,14 +172,14 @@
           grid-template-columns: 1fr;
           grid-template-rows: 336px 84px;
           grid-template-areas:
-          'quote'
-          'name';
+            'quote'
+            'name';
 
           div {
             width: 100%;
             height: 100%;
             padding: 0 24px 48px 24px;
-            
+
             &:first-of-type {
               grid-area: quote;
               overflow: scroll;
@@ -168,11 +187,15 @@
               padding-right: 24px;
 
               p {
-                &:first-of-type { padding-top: 32px; }
-                & + p { margin-top: 8px;}
+                &:first-of-type {
+                  padding-top: 32px;
+                }
+                & + p {
+                  margin-top: 8px;
+                }
               }
             }
-            
+
             &:last-of-type {
               grid-area: name;
               padding: 8px 24px;
@@ -184,7 +207,9 @@
 
               background-color: var(--c-background-200);
 
-              p { font-size: 1.4rem;}
+              p {
+                font-size: 1.4rem;
+              }
 
               &::after {
                 content: '';
@@ -199,19 +224,27 @@
               }
             }
           }
-          
-          
+
           @media (min-width: 768px) {
-            p { font-size: 18px; letter-spacing: 1px; }
+            p {
+              font-size: 18px;
+              letter-spacing: 1px;
+            }
           }
         }
       }
 
-      .swiper-button-prev { left: unset; right: 56px; }
-      .swiper-button-next { left: unset; right: 1px; }
+      .swiper-button-prev {
+        left: unset;
+        right: 56px;
+      }
+      .swiper-button-next {
+        left: unset;
+        right: 1px;
+      }
     }
   }
-  
+
   .current-slide {
     background: var(--c-background-100);
     width: 50px;
@@ -231,15 +264,15 @@
       &.testimonial {
         .swiper-wrapper {
           .swiper-slide {
-            background-image: url('/assets/wires/w-testimonials-dark-100.svg'); 
+            background-image: url('/assets/wires/w-testimonials-dark-100.svg');
 
             div:last-of-type {
-              &::after { 
+              &::after {
                 height: 96px;
-                background: linear-gradient(rgba(0, 0, 0, 0) 20%, #00000042 100%)
+                background: linear-gradient(rgba(0, 0, 0, 0) 20%, #00000042 100%);
               }
             }
-          };
+          }
         }
       }
     }

@@ -76,6 +76,7 @@ export default function Home({ projects, clients, testimonials, skills }: HomePr
           name="description"
           content="They call me wolf is the web portfolio of Bruno Lobato, a designer since 2001 that felt in love with coding around 2014."
         />
+        <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
         <link
           rel="mask-icon"
           href="/favicon/safari-pinned-tab.svg"

@@ -100,6 +100,7 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
       <Head>
         <title>{title} | they call me wolf</title>
         <meta name="description" content={caption} />
+        <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
         <link
           rel="mask-icon"
           href="/favicon/safari-pinned-tab.svg"
