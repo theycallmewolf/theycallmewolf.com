@@ -1,8 +1,11 @@
-import Head from 'next/head';
 import { ServicesSVG } from 'assets/services';
 import { CardBody, CardHeader, DefaultCard, Graph, GraphicCard } from 'components/elements';
 import { Aside, CardList, Footer, Header } from 'components/sections';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { useTheme } from 'hooks/useTheme';
+import { GetServerSideProps } from 'next';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import {
   getActivityContent,
   getCareerContent,
@@ -10,10 +13,8 @@ import {
   getIntro,
   getSkillsContent
 } from 'services/prismic';
-import { AboutProps } from 'types';
-import { useEffect } from 'react';
-import { useTheme } from 'hooks/useTheme';
-import { useRouter } from 'next/router';
+
+import { AboutProps } from '../../types';
 import styles from './styles.module.scss';
 
 export default function About({
@@ -28,14 +29,19 @@ export default function About({
   const { slug } = router.query;
   const { getTheme } = useTheme();
 
-  useEffect(getTheme);
+  console.warn({ intro, link_list, activity, career, education, skills });
 
-  useEffect(() => {
-    const activeArea = ['activity', 'skills', 'career', 'education'].filter(
-      (area) => area === slug
-    );
-    activeArea.length === 0 && router.push('/');
-  }, [router, slug]);
+  // useEffect(() => {
+  //   getTheme();
+  // }, [getTheme]);
+
+  // useEffect(() => {
+  //   const activeArea = ['activity', 'skills', 'career', 'education'].filter(
+  //     (area) => area === slug
+  //   );
+  //   activeArea.length === 0 && router.push('/');
+  // }, [router, slug]);
+
   return (
     <>
       <Head>
@@ -45,9 +51,10 @@ export default function About({
           content="Get to know a little more about mr. Wolf's activity, skills, career and education."
         />
       </Head>
-      <Header />
-      <Aside intro={intro} link_list={link_list} imageURL="/assets/img/cover-about.jpg" />
-      <main>
+      <h1>Wolf Test</h1>
+      {/* <Header /> */}
+      {/* <Aside intro={intro} link_list={link_list} imageURL="/assets/img/cover-about.jpg" /> */}
+      {/* <main>
         <CardList slug={slug}>
           {slug === 'skills' &&
             skills.map(({ id, title, description, graphs }) => (
@@ -105,44 +112,31 @@ export default function About({
               </GraphicCard>
             ))}
         </CardList>
-      </main>
-      <Footer />
+      </main> */}
+      {/* <Footer /> */}
     </>
   );
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: ['/about/activity', '/about/skills', '/about/career', '/about/education'],
-    fallback: 'blocking'
-  };
-};
+// export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+//   const { slug } = params;
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { slug } = params;
-  const introList = await getIntro({ area: 'about' });
-  const link_list = introList.map((item) => item.link_list).flat();
-  const intro = introList.filter(({ title }) => title === slug);
-  const activity = await getActivityContent();
-  const career = await getCareerContent();
-  const education = await getEducationContent();
-  const skills = await getSkillsContent();
+//   const introList = await getIntro({ area: 'about' });
+//   const link_list = introList.map((item) => item.link_list).flat();
+//   const intro = introList.filter(({ title }) => title === slug);
+//   const activity = await getActivityContent();
+//   const career = await getCareerContent();
+//   const education = await getEducationContent();
+//   const skills = await getSkillsContent();
 
-  if (!link_list) {
-    return {
-      notFound: true
-    };
-  }
-
-  return {
-    props: {
-      intro,
-      link_list,
-      activity,
-      career,
-      education,
-      skills
-    },
-    revalidate: 60 * 60 * 24 // 24 hours
-  };
-};
+//   return {
+//     props: {
+//       intro,
+//       link_list,
+//       activity,
+//       career,
+//       education,
+//       skills
+//     }
+//   };
+// };

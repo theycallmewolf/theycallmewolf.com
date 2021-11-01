@@ -1,4 +1,5 @@
 import { useTheme } from 'hooks/useTheme';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import SwiperCore, { A11y, EffectFade, Navigation, Pagination, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -33,9 +34,7 @@ export function Slider({
   }
 
   return (
-    <div
-      className={`slider-container ${hasDarkMode ? 'dark' : undefined} ${additionalClass}`}
-      {...rest}>
+    <div className={`slider-container ${hasDarkMode ? 'dark' : ''} ${additionalClass}`} {...rest}>
       <Swiper
         spaceBetween={48}
         navigation
@@ -55,27 +54,12 @@ export function Slider({
         }}
         onSlideChange={(swiper) => handleSlideNumber(swiper.activeIndex)}>
         {contentType === 'image' &&
-          slideList.map(({ slider, title, project_date, slug }, i) => {
-            const { image_large, image_large_2x, image_small, image_small_2x, caption } = slider;
+          slideList.map(({ slider, project_date, slug }, i) => {
+            const { image_large_2x, caption } = slider;
             return (
               <SwiperSlide key={i}>
                 <figure>
-                  <picture>
-                    <source
-                      srcSet={`${image_large}, ${image_large_2x} 2x`}
-                      media="(min-width: 1440px)"
-                    />
-                    <source
-                      srcSet={`${image_small}, ${image_small_2x} 2x`}
-                      media="(min-width: 1024px)"
-                    />
-                    <source
-                      srcSet={`${image_large}, ${image_large_2x} 2x`}
-                      media="(min-width: 600px)"
-                    />
-                    <source srcSet={`${image_small_2x} 2x`} />
-                    <img src={image_small} alt={title} />
-                  </picture>
+                  <Image src={image_large_2x} layout="fill" quality={90} />
                   {caption && <figcaption>{`(${project_date}) ${caption}`}</figcaption>}
                 </figure>
                 {hasLink && <CustomLink href={`work/project/${slug}`} hasIcon={hasIcon} />}

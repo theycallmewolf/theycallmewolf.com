@@ -1,13 +1,18 @@
 .card {
-  h2 { 
+  width: 96%;
+  margin: 0 auto;
+
+  h2 {
     font-size: 1.8rem;
     line-height: 2rem;
     margin-bottom: 48px;
 
-    @media (min-width: 600px) { margin-bottom: 8px;}
+    @media (min-width: 600px) {
+      margin-bottom: 8px;
+    }
   }
 
-  p { 
+  p {
     font-size: 1.4rem;
     line-height: 2.4rem;
     color: var(--c-element-200);
@@ -19,9 +24,11 @@
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .center { text-align: center;}
+  .center {
+    text-align: center;
+  }
 
-  .date { 
+  .date {
     font-size: 1.3rem;
     text-transform: uppercase;
     opacity: 0.8;
@@ -42,15 +49,23 @@
       width: 160px;
       height: 50px;
 
-      & + svg { margin-top: 24px;}
+      & + svg {
+        margin-top: 24px;
+      }
 
       @media (min-width: 400px) {
-        & + svg { margin: 0;}
+        & + svg {
+          margin: 0;
+        }
       }
     }
 
-    @media (min-width: 400px) { flex-direction: row;}
+    @media (min-width: 400px) {
+      flex-direction: row;
+    }
   }
 
-  & + .card { margin-top: 42px; }
+  & + .card {
+    margin-top: 42px;
+  }
 }

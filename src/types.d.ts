@@ -7,9 +7,6 @@ interface Project {
 }
 
 export interface ProjectImages {
-  image_small: string;
-  image_small_2x: string;
-  image_large: string;
   image_large_2x: string;
   caption?: string;
 }
@@ -35,9 +32,6 @@ export interface ProjectDetails extends Project {
   specs: SpecData[];
   leads: string[];
   images: {
-    cover_small: string;
-    cover_small_2x: string;
-    cover_large: string;
     cover_large_2x: string;
     project_images: ProjectImages[];
     caption?: string;
@@ -48,9 +42,6 @@ export interface ProjectDetails extends Project {
 export interface NextProject extends Project {
   description: string;
   images: {
-    cover_small: string;
-    cover_small_2x: string;
-    cover_large: string;
     cover_large_2x: string;
   };
 }
