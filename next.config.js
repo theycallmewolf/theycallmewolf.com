@@ -8,6 +8,7 @@ module.exports = withPWA({
     domains: ['i.scdn.co', 'images.prismic.io']
   },
   pwa: {
-    dest: 'public'
+    dest: 'public',
+    disable: process.env.NODE_ENV === 'development'
   }
 });
