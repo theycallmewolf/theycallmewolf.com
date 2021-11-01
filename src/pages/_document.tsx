@@ -27,8 +27,9 @@ export default class MyDocument extends Document {
           />
           <meta property="og:locale" content="en" />
           <meta property="og:type" content="website" />
-          <meta property="og:site_name" content="https://www.theycallmewolf.com/" />
-          <meta property="og:image" content="https://i.ibb.co/8K9Ly43/share.jpg" />
+          <meta property="og:title" content="The web portfolio of Bruno Lobato" />
+          <meta property="og:site_name" content="They call me <wolf />" />
+          <meta property="og:image" content="/assets/img/share.jpg" />
           <meta property="og:image:secure_url" content="https://www.theycallmewolf.com/" />
           <meta property="og:image:alt" content="thumbnail" />
           <meta property="og:image:type" content="image/png" />
