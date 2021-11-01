@@ -29,16 +29,18 @@ export default function About({
   const { slug } = router.query;
   const { getTheme } = useTheme();
 
-  useEffect(() => {
-    getTheme();
-  }, [getTheme]);
+  console.warn({ intro, link_list, activity, career, education, skills });
 
-  useEffect(() => {
-    const activeArea = ['activity', 'skills', 'career', 'education'].filter(
-      (area) => area === slug
-    );
-    activeArea.length === 0 && router.push('/');
-  }, [router, slug]);
+  // useEffect(() => {
+  //   getTheme();
+  // }, [getTheme]);
+
+  // useEffect(() => {
+  //   const activeArea = ['activity', 'skills', 'career', 'education'].filter(
+  //     (area) => area === slug
+  //   );
+  //   activeArea.length === 0 && router.push('/');
+  // }, [router, slug]);
 
   return (
     <>
@@ -49,9 +51,10 @@ export default function About({
           content="Get to know a little more about mr. Wolf's activity, skills, career and education."
         />
       </Head>
-      <Header />
-      <Aside intro={intro} link_list={link_list} imageURL="/assets/img/cover-about.jpg" />
-      <main>
+      <h1>Wolf Test</h1>
+      {/* <Header /> */}
+      {/* <Aside intro={intro} link_list={link_list} imageURL="/assets/img/cover-about.jpg" /> */}
+      {/* <main>
         <CardList slug={slug}>
           {slug === 'skills' &&
             skills.map(({ id, title, description, graphs }) => (
@@ -109,8 +112,8 @@ export default function About({
               </GraphicCard>
             ))}
         </CardList>
-      </main>
-      <Footer />
+      </main> */}
+      {/* <Footer /> */}
     </>
   );
 }
