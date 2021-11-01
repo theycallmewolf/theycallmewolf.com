@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import { Header, Aside, Footer } from 'components/sections';
-import { GetServerSideProps } from 'next';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { getIntro } from 'services/prismic';
 import { AboutProps } from '../../types';
 
@@ -23,7 +23,14 @@ export default function About({ link_list }: AboutProps): JSX.Element {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+export const getStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: ['/about/activity', '/about/skills', '/about/career', '/about/education'],
+    fallback: 'blocking'
+  };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params;
   const introList = await getIntro({ area: 'about' });
   const link_list = introList.map((item) => item.link_list).flat();
@@ -38,6 +45,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   return {
     props: {
       link_list
-    }
+    },
+    revalidate: 60 * 60 * 24 // 24 hours
   };
 };
