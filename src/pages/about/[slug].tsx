@@ -118,25 +118,25 @@ export default function About({
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const { slug } = params;
+// export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+//   const { slug } = params;
 
-  const introList = await getIntro({ area: 'about' });
-  const link_list = introList.map((item) => item.link_list).flat();
-  const intro = introList.filter(({ title }) => title === slug);
-  const activity = await getActivityContent();
-  const career = await getCareerContent();
-  const education = await getEducationContent();
-  const skills = await getSkillsContent();
+//   const introList = await getIntro({ area: 'about' });
+//   const link_list = introList.map((item) => item.link_list).flat();
+//   const intro = introList.filter(({ title }) => title === slug);
+//   const activity = await getActivityContent();
+//   const career = await getCareerContent();
+//   const education = await getEducationContent();
+//   const skills = await getSkillsContent();
 
-  return {
-    props: {
-      intro,
-      link_list,
-      activity,
-      career,
-      education,
-      skills
-    }
-  };
-};
+//   return {
+//     props: {
+//       intro,
+//       link_list,
+//       activity,
+//       career,
+//       education,
+//       skills
+//     }
+//   };
+// };
