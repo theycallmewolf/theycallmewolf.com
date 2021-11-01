@@ -30,9 +30,7 @@ export default function Home({ projects, clients, testimonials, skills }: HomePr
   const { getTheme } = useTheme();
   const { addToast, hasClosed } = useToast();
 
-  useEffect(() => {
-    getTheme();
-  }, [getTheme]);
+  useEffect(getTheme);
 
   useEffect(() => {
     const hasSeenBanner = localStorage.getItem('@wolf_pwa');

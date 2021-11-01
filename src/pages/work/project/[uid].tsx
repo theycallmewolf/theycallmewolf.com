@@ -25,9 +25,7 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
   const { getTheme } = useTheme();
   const router = useRouter();
 
-  useEffect(() => {
-    getTheme();
-  }, [getTheme]);
+  useEffect(getTheme);
 
   useEffect(() => {
     setSlides(

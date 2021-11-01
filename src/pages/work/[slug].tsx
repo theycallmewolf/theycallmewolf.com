@@ -24,9 +24,7 @@ export default function Work({ intro, link_list, cards }: WorkProps): JSX.Elemen
   const { slug } = router.query;
   const { getTheme } = useTheme();
 
-  useEffect(() => {
-    getTheme();
-  }, [getTheme]);
+  useEffect(getTheme);
 
   return (
     <>
