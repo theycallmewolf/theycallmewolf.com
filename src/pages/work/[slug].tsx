@@ -1,4 +1,3 @@
-import Prismic from '@prismicio/client';
 import { TangramCard } from 'assets/tangrams/';
 import { CardBody, CardFooter, CardHeader, CustomLink, DefaultCard } from 'components/elements';
 import { Aside, CardList, Footer, Header } from 'components/sections';
@@ -8,11 +7,9 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { RichText } from 'prismic-dom';
 import { useEffect } from 'react';
-import { getPrismicClient } from 'services/prismic';
+import { getIntro, getProjects } from 'services/prismic';
 import { IntroData, LinkData, ProjectData } from 'types';
-import { formatDate } from 'utils';
 
 import styles from './styles.module.scss';
 
@@ -96,98 +93,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const prismic = getPrismicClient();
   const { slug } = params;
   let cards: unknown;
 
-  async function getIntro(): Promise<IntroData[]> {
-    const response = await prismic.query(Prismic.Predicates.at('document.type', 'intro'), {
-      orderings: '[my.intro.order]'
-    });
-    return response.results
-      .filter(({ data }) => data.type === 'work')
-      .map(({ data }) => {
-        const { title, lead, link } = data;
-
-        return {
-          lead: RichText.asText(lead),
-          title: RichText.asText(title),
-          link_list: [
-            {
-              link: RichText.asText(link),
-              label: RichText.asText(title).toLowerCase()
-            }
-          ]
-        };
-      });
-  }
-
-  const introList = await getIntro();
+  const introList = await getIntro({ area: 'work' });
   const link_list = introList.map((item) => item.link_list).flat();
   const intro = introList.filter(({ title }) => title === slug);
 
-  async function getProjectData(): Promise<ProjectData[]> {
-    const response = await prismic.query(Prismic.predicates.at('document.type', 'projects'), {
-      orderings: '[my.projects.project_date desc]',
-      fetch: [
-        'projects.title',
-        'projects.description',
-        'projects.type',
-        'projects.project_date',
-        'projects.body',
-        'projects.image_small',
-        'projects.image_small_2x',
-        'projects.image_large',
-        'projects.image_large_2x',
-        'projects.highlight'
-      ],
-      lang: 'en-us'
-    });
-
-    return response.results.map(({ id, uid, data }) => {
-      const {
-        title,
-        type,
-        project_date,
-        body,
-        image_large,
-        image_large_2x,
-        image_small,
-        image_small_2x,
-        description,
-        highlight
-      } = data;
-
-      let specs = body.filter(({ slice_type }) => slice_type === 'technologies').shift() ?? null;
-
-      if (specs) {
-        specs = specs.items.map(({ tech }, i: number) => ({
-          spec: tech,
-          id: i
-        }));
-      }
-
-      return {
-        id,
-        type,
-        title: RichText.asText(title),
-        slug: uid,
-        project_date: formatDate(project_date),
-        description: RichText.asText(description),
-        slider: {
-          image_small: image_small.url,
-          image_small_2x: image_small_2x.url ?? (image_small_2x.url || image_small.url),
-          image_large: image_large.url,
-          image_large_2x: image_large_2x.url ?? (image_large_2x.url || image_large.url)
-        },
-        highlight,
-        specs
-      };
-    });
-  }
-
-  const projects = await getProjectData();
-
+  const projects = await getProjects();
   const codeProjects = projects.filter((project) => project.type === 'code');
   const designProjects = projects.filter((project) => project.type === 'design');
   const illustrationProjects = projects.filter((project) => project.type === 'illustration');

@@ -1,4 +1,3 @@
-import Prismic from '@prismicio/client';
 import { ServicesSVG } from 'assets/services';
 import { CardBody, CardHeader, DefaultCard, Graph, GraphicCard } from 'components/elements';
 import { Aside, CardList, Footer, Header } from 'components/sections';
@@ -6,18 +5,16 @@ import { useTheme } from 'hooks/useTheme';
 import { GetServerSideProps } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { RichText } from 'prismic-dom';
 import { useEffect } from 'react';
-import { getPrismicClient } from 'services/prismic';
-
 import {
-  AboutProps,
-  ActivityData,
-  CareerData,
-  EducationData,
-  IntroData,
-  SkillData
-} from '../../types';
+  getActivityContent,
+  getCareerContent,
+  getEducationContent,
+  getIntro,
+  getSkillsContent
+} from 'services/prismic';
+
+import { AboutProps } from '../../types';
 import styles from './styles.module.scss';
 
 export default function About({
@@ -119,128 +116,9 @@ export default function About({
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
-  const prismic = getPrismicClient();
   const { slug } = params;
 
-  async function getIntro(): Promise<IntroData[]> {
-    const response = await prismic.query(Prismic.Predicates.at('document.type', 'intro'), {
-      orderings: '[my.intro.order]'
-    });
-    return response.results
-      .filter(({ data }) => data.type === 'about')
-      .map(({ data }) => {
-        const { title, lead, link } = data;
-
-        return {
-          lead: RichText.asText(lead),
-          title: RichText.asText(title),
-          link_list: [
-            {
-              link: RichText.asText(link),
-              label: RichText.asText(title).toLowerCase()
-            }
-          ]
-        };
-      });
-  }
-
-  async function getActivityContent(): Promise<ActivityData[]> {
-    const response = await prismic.query(Prismic.Predicates.at('document.type', 'activities'), {
-      orderings: '[my.activities.order]'
-    });
-
-    return response.results.map(({ id, data }) => {
-      const { icon, title, description } = data;
-      return {
-        id,
-        icon,
-        title: RichText.asText(title),
-        description: RichText.asText(description)
-      };
-    });
-  }
-
-  async function getCareerContent(): Promise<CareerData[]> {
-    const response = await prismic.query(Prismic.Predicates.at('document.type', 'career'), {
-      orderings: '[my.career.date_start desc]'
-    });
-
-    return response.results.map(({ id, data }) => {
-      const { logo_svg, name, date_start, date_end, title, description } = data;
-      return {
-        id,
-        logo_svg: RichText.asText(logo_svg),
-        name: RichText.asText(name),
-        year_start: new Date(date_start).getFullYear(),
-        year_end: date_end ? new Date(date_end).getFullYear() : null,
-        title: RichText.asText(title),
-        description: RichText.asText(description)
-      };
-    });
-  }
-
-  async function getEducationContent(): Promise<EducationData[]> {
-    const response = await prismic.query(Prismic.Predicates.at('document.type', 'education'), {
-      orderings: '[my.career.date_start desc]'
-    });
-
-    return response.results.map(({ id, data }) => {
-      const { logo_svg, name, date_start, date_end, title, description } = data;
-      return {
-        id,
-        logo_svg: RichText.asText(logo_svg),
-        name: RichText.asText(name),
-        year_start: new Date(date_start).getFullYear(),
-        year_end: new Date(date_end).getFullYear(),
-        title: RichText.asText(title),
-        description: RichText.asText(description)
-      };
-    });
-  }
-
-  async function getSkillsContent(): Promise<SkillData[]> {
-    async function getCategories() {
-      const response = await prismic.query(
-        Prismic.Predicates.at('document.type', 'skills_categories'),
-        {
-          orderings: '[my.skills_categories.order]'
-        }
-      );
-      return response.results.map(({ data, id }) => {
-        const { title, description } = data;
-        return {
-          id,
-          title: RichText.asText(title),
-          description: RichText.asText(description)
-        };
-      });
-    }
-
-    async function getGraphs() {
-      const response = await prismic.query(Prismic.Predicates.at('document.type', 'skills_graphs'));
-      return response.results.map(({ id, data }) => {
-        const { title, percentage, category } = data;
-        return {
-          id,
-          title: RichText.asText(title),
-          percentage,
-          category
-        };
-      });
-    }
-
-    const categories = await getCategories();
-    const graphs = await getGraphs();
-
-    return categories.map(({ id, title, description }) => ({
-      id: id,
-      title: title,
-      description: description,
-      graphs: graphs.filter(({ category }) => category === title)
-    }));
-  }
-
-  const introList = await getIntro();
+  const introList = await getIntro({ area: 'about' });
   const link_list = introList.map((item) => item.link_list).flat();
   const intro = introList.filter(({ title }) => title === slug);
   const activity = await getActivityContent();

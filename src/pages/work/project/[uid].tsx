@@ -7,10 +7,9 @@ import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { RichText } from 'prismic-dom';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { getPrismicClient } from 'services/prismic';
-import { NextProject, ProjectDetails, ProjectProps } from 'types';
+import { getNextProject, getPrismicClient, getProject } from 'services/prismic';
+import { ProjectProps } from 'types';
 import { formatDate, getRandomInt } from 'utils';
 
 import styles from './styles.module.scss';
@@ -241,134 +240,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { uid } = params;
-  const prismic = getPrismicClient();
 
-  async function getProject(): Promise<ProjectDetails> {
-    const { id, data } = await prismic.getByUID('projects', String(uid), {});
-
-    const {
-      title,
-      type,
-      project_date,
-      description,
-      link,
-      repository,
-      repository_api,
-      cover_small,
-      cover_small_2x,
-      cover_large,
-      cover_large_2x,
-      caption,
-      about,
-      body,
-      body1
-    } = data;
-
-    let specs = body.filter(({ slice_type }) => slice_type === 'technologies').shift() ?? null;
-
-    if (specs) {
-      specs = specs.items.map(({ tech }, i: number) => ({
-        spec: tech,
-        id: i
-      }));
-    }
-
-    let dependencies =
-      body.filter(({ slice_type }) => slice_type === 'dependencies').shift() ?? null;
-
-    if (dependencies) {
-      dependencies = dependencies.items.map(({ url, label }) => ({
-        url: url.url,
-        label: RichText.asText(label)
-      }));
-    }
-
-    let leads = body.filter(({ slice_type }) => slice_type === 'leads').shift() ?? null;
-
-    if (leads) leads = leads.items.map(({ lead }) => RichText.asText(lead));
-
-    const project_images = body1
-      .filter(({ slice_type }) => slice_type === 'slider')
-      .shift()
-      .items.map(({ screen_small, screen_small_2x, screen_large, screen_large_2x }, i: number) => ({
-        image_small: screen_small.url,
-        image_small_2x: screen_small_2x.url ?? (screen_small.url || null),
-        image_large: screen_large.url,
-        image_large_2x: screen_large_2x.url ?? (screen_large.url || null),
-        slug: String(i)
-      }));
-
-    return {
-      id,
-      title: RichText.asText(title),
-      type,
-      slug: uid[0],
-      project_date: project_date,
-      description: RichText.asText(description),
-      link: link?.url ? link.url : null,
-      repository: repository.url ? repository.url : null,
-      repository_api: repository_api.url ? repository_api.url : null,
-      specs,
-      about,
-      leads,
-      images: {
-        cover_small: cover_small.url ?? null,
-        cover_small_2x: cover_small_2x.url ?? (cover_small.url || null),
-        cover_large: cover_large.url ?? null,
-        cover_large_2x: cover_large_2x.url ?? (cover_large.url || null),
-        project_images,
-        caption: RichText.asText(caption)
-      },
-      dependencies
-    };
-  }
-
-  async function getNextProject(): Promise<NextProject[]> {
-    const response = await prismic.query(Prismic.predicates.at('document.type', 'projects'), {
-      fetch: [
-        'projects.title',
-        'projects.description',
-        'projects.highlight',
-        'projects.project_date',
-        'projects.type',
-        'projects.cover_large',
-        'projects.cover_large_2x',
-        'projects.cover_small',
-        'projects.cover_small_2x'
-      ],
-      pageSize: 12,
-      lang: 'en-us'
-    });
-    return response.results.map(({ id, uid, data }) => {
-      const {
-        title,
-        project_date,
-        type,
-        cover_large,
-        cover_large_2x,
-        cover_small,
-        cover_small_2x,
-        description
-      } = data;
-
-      return {
-        id,
-        type,
-        title: RichText.asText(title) ?? null,
-        slug: uid,
-        project_date: String(new Date(project_date).getFullYear()),
-        description: RichText.asText(description),
-        images: {
-          cover_large: cover_large.url,
-          cover_large_2x: cover_large_2x.url,
-          cover_small: cover_small.url,
-          cover_small_2x: cover_small_2x.url
-        }
-      };
-    });
-  }
-
-  const project = await getProject();
+  const project = await getProject({ uid });
   const nextProjects = await getNextProject();
 
   return {
