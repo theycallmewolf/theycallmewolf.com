@@ -5,6 +5,7 @@ import { Header } from 'components/sections';
 import { useTheme } from 'hooks/useTheme';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Head from 'next/head';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { RichText } from 'prismic-dom';
 import { useCallback, useEffect, useRef, useState } from 'react';
@@ -97,7 +98,7 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
     repository,
     specs
   } = project;
-  const { caption, cover_large, cover_large_2x, cover_small_2x, cover_small } = images;
+  const { caption, cover_large_2x } = images;
 
   return (
     <>
@@ -110,19 +111,16 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
         <span ref={topMark}></span>
 
         <section className={styles.intro}>
-          <div>
-            <picture>
-              <source srcSet={`${cover_large}, ${cover_large_2x} 2x`} media="(min-width: 425px)" />
-              <source srcSet={`${cover_small_2x} 2x`} />
-              <img src={cover_small} alt={title} />
-            </picture>
+          <div className={styles.imageContainer}>
+            <Image src={cover_large_2x} layout="fill" objectFit="cover" />
           </div>
-          <div>
+          <div className={styles.projectDetails}>
             <h1>{title}</h1>
             <p>{description}</p>
           </div>
           <button className={styles.backBtn} onClick={() => router.back()}>
-            <IArrow color="white" />
+            <IArrow />
+            back
           </button>
         </section>
 
@@ -208,33 +206,23 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
         </section>
 
         {nextProject && (
-          <section className={styles.intro} ref={projectPreview}>
-            <span className={styles.title}>
-              <h2>You may also like</h2>
+          <section className={`${styles.intro} ${styles.next}`} ref={projectPreview}>
+            <div className={styles.title}>
+              <h2>Next</h2>
               <p>just keep scrolling</p>
-            </span>
-            <div>
-              <picture>
-                <source
-                  srcSet={`${nextProject.images.cover_large}, ${nextProject.images.cover_large_2x} 2x`}
-                  media="(min-width: 425px)"
-                />
-                <source srcSet={`${nextProject.images.cover_small_2x} 2x`} />
-                <img src={nextProject.images.cover_small} alt={nextProject.title} />
-              </picture>
             </div>
-            <div>
+            <div className={styles.imageContainer}>
+              <Image
+                src={nextProject.images.cover_large_2x}
+                layout="fill"
+                objectFit="cover"
+                quality={90}
+              />
+            </div>
+            <div className={styles.projectDetails}>
               <h1>{nextProject.title}</h1>
               <p>{nextProject.description}</p>
             </div>
-            <button
-              className={styles.backBtn}
-              onClick={() => {
-                router.push(`/work/project/${nextProject.slug}`);
-                topMark.current.scrollIntoView();
-              }}>
-              <IPlus />
-            </button>
           </section>
         )}
       </main>

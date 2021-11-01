@@ -116,6 +116,6 @@ export function SpotifyNotification(): JSX.Element {
       </div>
     </animated.div>
   ) : (
-    <div>no music</div>
+    <></>
   );
 }

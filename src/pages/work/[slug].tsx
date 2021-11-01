@@ -47,12 +47,19 @@ export default function Work({ intro, link_list, cards }: WorkProps): JSX.Elemen
           {cards.map((project) => (
             <DefaultCard key={project.id} customClass={styles.card}>
               <CardHeader>
-                {project.slider.image_small !== '' ? (
-                  <Link href={`/work/project/${project.slug}`}>
-                    <a>
-                      <Image src={project.slider.image_small_2x} layout="fill" objectFit="cover" />
-                    </a>
-                  </Link>
+                {project.slider.image_small_2x !== '' ? (
+                  <div className={styles.imageContainer}>
+                    <Link href={`/work/project/${project.slug}`}>
+                      <a>
+                        <Image
+                          src={project.slider.image_small_2x}
+                          layout="fill"
+                          objectFit="cover"
+                          quality={90}
+                        />
+                      </a>
+                    </Link>
+                  </div>
                 ) : (
                   <TangramCard customClass={styles.placeholder} />
                 )}
