@@ -42,6 +42,42 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;700&display=swap"
             rel="stylesheet"
           />
+          {/* <!-- apple splash screen images --> */}
+          <link
+            rel="apple-touch-startup-image"
+            href="/assets/img/apple_splash_2048.jpg"
+            sizes="2048x2732"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="/assets/img/apple_splash_1668.jpg"
+            sizes="1668x2224"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="/assets/img/apple_splash_1536.jpg"
+            sizes="1536x2048"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="/assets/img/apple_splash_1125.jpg"
+            sizes="1125x2436"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="/assets/img/apple_splash_1242.jpg"
+            sizes="1242x2208"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="/assets/img/apple_splash_750.jpg"
+            sizes="750x1334"
+          />
+          <link
+            rel="apple-touch-startup-image"
+            href="/assets/img/apple_splash_640.jpg"
+            sizes="640x1136"
+          />
           {/* Global Site Tag (gtag.js) - Google Analytics */}
           <script
             async
