@@ -67,7 +67,7 @@ export function ContactForm(): JSX.Element {
 
       async function sendSMS(message: string) {
         try {
-          await axios.get('/api/send-sms', {
+          await axios.get('/api/sms', {
             params: {
               phone: phoneNumber,
               message
