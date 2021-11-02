@@ -141,7 +141,7 @@ export function ContactForm(): JSX.Element {
     [addToast, sendErrorEmail]
   );
 
-  function onChange(value: string) {
+  function onRecaptchaChange(value: string) {
     return;
     console.log('Captcha value:', value);
   }
@@ -234,7 +234,7 @@ export function ContactForm(): JSX.Element {
             ref={recaptchaRef}
             size="invisible"
             sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
-            onChange={onChange}
+            onChange={onRecaptchaChange}
           />
         </div>
         <div className={`${styles.message} ${showMessage ? styles.show : undefined}`}>
