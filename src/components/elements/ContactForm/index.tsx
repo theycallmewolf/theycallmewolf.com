@@ -5,6 +5,8 @@ import { Field, Form, Formik } from 'formik';
 import { useTheme } from 'hooks/useTheme';
 import { useToast } from 'hooks/useToast';
 import { useCallback, useRef, useState } from 'react';
+import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
+import { E164Number } from 'libphonenumber-js/core';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { api } from 'services/api';
 import { EmailData } from 'types';
@@ -12,21 +14,21 @@ import * as Yup from 'yup';
 
 import { Button } from '../Button';
 import styles from './styles.module.scss';
+import 'react-phone-number-input/style.css';
 
 interface FormValues {
   name: string;
   email: string;
   message: string;
-  phone: number;
+  // phone: string;
 }
 
 const schema = Yup.object().shape({
   name: Yup.string().required('required'),
   email: Yup.string().email('invalid email').required('required'),
-  message: Yup.string().required('required'),
-  phone: Yup.number()
-    .required('required')
-    .test('len', '9 digits', (val) => (val ? val.toString().length === 9 : false))
+  message: Yup.string().required('required')
+  // phone: Yup.string().required('required')
+  // .test('len', '9 digits', (val) => (val ? val.toString().length === 9 : false))
 });
 
 export function ContactForm(): JSX.Element {
@@ -35,12 +37,14 @@ export function ContactForm(): JSX.Element {
   const [emailSent, setEmailSent] = useState(false);
   const [userName, setUserName] = useState('');
   const [sendErrorEmail, setSendErrorEmail] = useState(true);
+  const [phoneNumber, setPhoneNumber] = useState<E164Number>();
+  const [hasError, setHasError] = useState(false);
   const { hasDarkMode } = useTheme();
   const recaptchaRef = useRef(null);
 
   const { addToast } = useToast();
 
-  const initialValues: FormValues = { name: '', email: '', message: '', phone: 9 };
+  const initialValues: FormValues = { name: '', email: '', message: '' };
 
   const toggleChat = useCallback(() => {
     setShowMessage(false);
@@ -50,7 +54,7 @@ export function ContactForm(): JSX.Element {
 
   const handleSubmit = useCallback(
     async ({ values, setSubmitting, resetForm }) => {
-      const { name, email, message, phone } = values;
+      const { name, email, message } = values;
       const token = await recaptchaRef.current.execute();
 
       setUserName(name);
@@ -65,7 +69,7 @@ export function ContactForm(): JSX.Element {
         try {
           await axios.get('/api/send-sms', {
             params: {
-              phone,
+              phone: phoneNumber,
               message
             }
           });
@@ -93,6 +97,7 @@ export function ContactForm(): JSX.Element {
             headers: { 'content-type': 'application/json' }
           });
           resetForm();
+          setPhoneNumber('');
           setShowMessage(true);
           setEmailSent(true);
           setSubmitting(false);
@@ -102,6 +107,7 @@ export function ContactForm(): JSX.Element {
           );
         } catch (error) {
           resetForm();
+          setPhoneNumber('');
           setSubmitting(false);
           setEmailSent(false);
           setShowMessage(false);
@@ -130,7 +136,7 @@ export function ContactForm(): JSX.Element {
 
         email: ${email}
 
-        phone: ${phone}
+        phone: ${phoneNumber}
 
         message:
 
@@ -138,8 +144,16 @@ export function ContactForm(): JSX.Element {
         name
       });
     },
-    [addToast, sendErrorEmail]
+    [addToast, sendErrorEmail, phoneNumber]
   );
+
+  const handlePhoneInputChange = (value: E164Number) => {
+    setPhoneNumber(value);
+    setHasError(false);
+    if (!isValidPhoneNumber(String(value))) {
+      setHasError(true);
+    }
+  };
 
   function onRecaptchaChange(value: string) {
     return;
@@ -193,8 +207,14 @@ export function ContactForm(): JSX.Element {
                     </div>
                     <div className={styles.formItem}>
                       <label htmlFor="phone">phone</label>
-                      <Field type="phone" id="phone" name="phone" />
-                      {errors.phone && <span className={styles.error}>{errors.phone}</span>}
+                      <PhoneInput
+                        defaultCountry="PT"
+                        value={phoneNumber}
+                        onChange={handlePhoneInputChange}
+                        id="phone"
+                        name="phone"
+                      />
+                      {hasError && <span className={styles.error}>Check number</span>}
                     </div>
                     <div className={`${styles.formItem} ${styles.textarea}`}>
                       <label htmlFor="message">message</label>
@@ -213,7 +233,7 @@ export function ContactForm(): JSX.Element {
                       </Button>
                       <Button
                         customClass={styles.submitBtn}
-                        disabled={!isValid || isSubmitting}
+                        disabled={!isValid || isSubmitting || hasError}
                         type="submit">
                         send
                       </Button>
@@ -264,6 +284,7 @@ export function ContactForm(): JSX.Element {
           <Button genre="outline" onClick={() => setIsOpen(false)}>
             Close
           </Button>
+          <div className="alert alert-info" style={{ display: 'none' }}></div>
         </div>
       </div>
     </div>

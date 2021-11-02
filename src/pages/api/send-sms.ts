@@ -18,7 +18,7 @@ export default (req: NextApiRequest, res: NextApiResponse): void => {
     .create({
       body: `${message}`,
       from: process.env.TWILIO_PHONE,
-      to: `+351${phone}`
+      to: `${phone}`
     })
     .then((message) => {
       return message.sid;
