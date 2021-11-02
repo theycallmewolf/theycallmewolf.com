@@ -20,16 +20,18 @@ export default class MyDocument extends Document {
           <meta name="googlebot" content="index, follow" />
           <meta name="robots" content="index, all" />
           <meta name="msnbot" content="index, follow" />
-          <meta property="og:title" content="They Call Me Wolf" />
-          <meta
-            property="og:description"
-            content="The web portfolio of Bruno Lobato, a designer since 2001 that felt in love with coding around 2014."
-          />
           <meta property="og:locale" content="en" />
           <meta property="og:type" content="website" />
-          <meta property="og:title" content="The web portfolio of Bruno Lobato" />
-          <meta property="og:site_name" content="They call me <wolf />" />
-          <meta property="og:image" content="/assets/img/share.jpg" />
+          <meta property="og:site_name" content="they call me <wolf />" />
+          <meta property="og:title" content="they call me <wolf />" />
+          <meta
+            property="og:description"
+            content="The web portfolio of Bruno Lobato, coder + designer."
+          />
+          <meta
+            property="og:image"
+            content="https://firebasestorage.googleapis.com/v0/b/theycallmewolf.appspot.com/o/share.jpg?alt=media&token=075252b0-fba6-417f-aaff-c2053ceacfdc"
+          />
           <meta property="og:image:secure_url" content="https://www.theycallmewolf.com/" />
           <meta property="og:image:alt" content="thumbnail" />
           <meta property="og:image:type" content="image/png" />
