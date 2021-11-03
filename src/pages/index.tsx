@@ -31,9 +31,7 @@ export default function Home({ projects, clients, testimonials, skills }: HomePr
   const { getTheme, hasDarkMode } = useTheme();
   const { addToast, hasClosed } = useToast();
 
-  useEffect(getTheme);
-
-  useEffect(() => {
+  const checkPWABanner = () => {
     const hasSeenBanner = localStorage.getItem('@wolf_pwa');
     const diffTime = Math.abs(Date.now() - Number(hasSeenBanner));
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
@@ -59,9 +57,12 @@ export default function Home({ projects, clients, testimonials, skills }: HomePr
             setToastID(id);
           }
         }
-      }, 45 * 1000);
+      }, 1000 * 45);
     }
-  }, []);
+  };
+
+  useEffect(getTheme, []);
+  useEffect(checkPWABanner, []);
 
   useEffect(() => {
     const { status, id } = hasClosed;
