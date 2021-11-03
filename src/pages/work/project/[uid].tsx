@@ -26,7 +26,7 @@ export default function Code({ project, nextProjects }: ProjectProps): JSX.Eleme
   const { getTheme, hasDarkMode } = useTheme();
   const router = useRouter();
 
-  useEffect(getTheme);
+  useEffect(getTheme, []);
 
   useEffect(() => {
     setSlides(

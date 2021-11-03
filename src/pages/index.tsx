@@ -61,7 +61,7 @@ export default function Home({ projects, clients, testimonials, skills }: HomePr
     }
   };
 
-  useEffect(getTheme);
+  useEffect(getTheme, []);
   useEffect(checkPWABanner, []);
 
   useEffect(() => {

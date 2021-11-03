@@ -25,7 +25,7 @@ export default function Work({ intro, link_list, cards }: WorkProps): JSX.Elemen
   const { slug } = router.query;
   const { getTheme, hasDarkMode } = useTheme();
 
-  useEffect(getTheme);
+  useEffect(getTheme, []);
 
   return (
     <>

@@ -29,7 +29,7 @@ export default function About({
   const { slug } = router.query;
   const { getTheme, hasDarkMode } = useTheme();
 
-  useEffect(getTheme);
+  useEffect(getTheme, []);
 
   useEffect(() => {
     const activeArea = ['activity', 'skills', 'career', 'education'].filter(
