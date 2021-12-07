@@ -19,7 +19,7 @@ export function NavButton({ href, label }: NavButtonProps): JSX.Element {
   return (
     <button
       className={`${styles.button} ${
-        router.asPath.split('/')[1] === href.split('/')[1] ? styles.active : undefined
+        router.asPath.split('/')[1] === href.split('/')[1] ? styles.active : ''
       }`}
       onClick={handleClick}>
       {label}
