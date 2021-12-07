@@ -1,16 +1,18 @@
 .button {
+  height: 3.2rem;
   font-size: 3rem;
   font-family: var(--f-title);
   font-weight: var(--f-bold);
+  line-height: 1;
   color: var(--c-element-100);
-  letter-spacing: 3px;
+  letter-spacing: 0.1rem;
   text-transform: uppercase;
   background: transparent;
   border: none;
 
   overflow: hidden;
-  margin: 12px;
-  padding: 12px;
+  margin: 1rem;
+  padding: 1.6rem;
   position: relative;
 
   display: flex;
@@ -22,7 +24,7 @@
   &::before {
     content: '';
     width: 50%;
-    height: 2px;
+    height: 1px;
     background: var(--c-element-100);
     position: absolute;
     bottom: 0;
@@ -33,7 +35,7 @@
   &::after {
     content: '';
     width: 50%;
-    height: 2px;
+    height: 1px;
     background: var(--c-element-100);
     position: absolute;
     top: 0;
