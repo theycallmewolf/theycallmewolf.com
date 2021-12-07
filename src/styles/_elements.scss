@@ -9,7 +9,7 @@ body {
 
 main {
   width: 100%;
-  margin: 8rem auto 22rem;
+  margin: 0 auto 22rem;
   overflow: hidden;
   background: var(--c-background-200);
 
@@ -20,6 +20,10 @@ main {
       margin-bottom: 220px;
       padding-bottom: 240px;
     }
+  }
+
+  @media (min-width: 1024px) {
+    margin: 8rem auto 22rem;
   }
 }
 
