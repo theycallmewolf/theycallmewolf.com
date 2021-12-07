@@ -54,9 +54,7 @@ export function SpotifyNotification(): JSX.Element {
 
   useEffect(() => {
     setShowToast(true);
-    setTimeout(() => {
-      setShowToast(false);
-    }, 10 * 1000);
+    setTimeout(() => setShowToast(false), 10 * 1000);
   }, [spotifyMusic?.song?.name]);
 
   return spotifyMusic.is_playing ? (
