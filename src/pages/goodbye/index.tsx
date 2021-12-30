@@ -165,10 +165,10 @@ export default function Goodbye(): JSX.Element {
 
     setTimeout(() => setImg1(true), 1000 * 1);
     setTimeout(() => setImg2(true), 1000 * 3);
-    setTimeout(() => setImg3(true), 1000 * 6);
+    setTimeout(() => setImg3(true), 1000 * 15);
     setTimeout(() => setImg4(true), 1000 * 9);
     setTimeout(() => setImg5(true), 1000 * 12);
-    setTimeout(() => setImg6(true), 1000 * 15);
+    setTimeout(() => setImg6(true), 1000 * 6);
     setTimeout(() => setImg7(true), 1000 * 18);
     setTimeout(() => setImg8(true), 1000 * 21);
     setTimeout(() => setImg9(true), 1000 * 24);
@@ -733,9 +733,7 @@ export default function Goodbye(): JSX.Element {
               onEnded={resetAnimation}
               muted
             />
-            <p>
-              {music.title}, {music.artist} ({music.released_date})
-            </p>
+            <p>{`"${music.title}", ${music.artist} (${music.released_date})`}</p>
           </div>
         </div>
       </section>
