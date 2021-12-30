@@ -668,6 +668,35 @@ export default function Goodbye(): JSX.Element {
       animation: appearFromBottomImg55,
       style: 'img55',
       image: IMAGES.RITA_OLIVEIRA_1
+    },
+    //////////////////////
+    {
+      id: 56,
+      name: 'Gonçalo',
+      animation: appearFromBottomImg55,
+      style: 'img56',
+      image: IMAGES.GONCALO_1
+    },
+    {
+      id: 57,
+      name: 'Heidi',
+      animation: appearFromBottomImg55,
+      style: 'img57',
+      image: IMAGES.HEIDI_1
+    },
+    {
+      id: 58,
+      name: 'Goat',
+      animation: appearFromBottomImg55,
+      style: 'img58',
+      image: IMAGES.GOAT
+    },
+    {
+      id: 59,
+      name: 'Cat',
+      animation: appearFromBottomImg55,
+      style: 'img59',
+      image: IMAGES.CAT_1
     }
   ];
 
@@ -716,10 +745,15 @@ export default function Goodbye(): JSX.Element {
             <div className={styles.images}>
               <div className={styles.wrapper}>
                 {people.map((p) => (
+                  <div key={p.id} className={styles[p.style]}>
+                    <Image src={p.image} alt={p.name} layout="fill" objectFit="contain" />
+                  </div>
+                ))}
+                {/* {people.map((p) => (
                   <animated.div key={p.id} style={p.animation} className={styles[p.style]}>
                     <Image src={p.image} alt={p.name} layout="fill" objectFit="contain" />
                   </animated.div>
-                ))}
+                ))} */}
               </div>
             </div>
           </div>
