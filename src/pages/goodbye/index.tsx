@@ -2,6 +2,7 @@ import { IMAGES } from 'constants/images';
 import { useTheme } from 'hooks/useTheme';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 import { animated, config, useSpring } from 'react-spring';
@@ -20,6 +21,7 @@ export default function Goodbye(): JSX.Element {
   };
 
   const [isPlaying, setIsPlaying] = useState(false);
+  const [hasEnded, setHasEnded] = useState(false);
   const [quote1, setQuote1] = useState(false);
   const [quote2, setQuote2] = useState(false);
   const [author, setAuthor] = useState(false);
@@ -179,6 +181,7 @@ export default function Goodbye(): JSX.Element {
 
   useEffect(() => {
     if (!isPlaying) return;
+    setHasEnded(false);
     setTimeout(() => setQuote1(true), 1000 * 2);
     setTimeout(() => setQuote2(true), 1000 * 3);
     setTimeout(() => setAuthor(true), 1000 * 4);
@@ -325,6 +328,8 @@ export default function Goodbye(): JSX.Element {
     setTimeout(() => setImg64(false), 1000 * 3.95);
     setTimeout(() => setImg65(false), 1000 * 4);
     setTimeout(() => setImg66(false), 1000 * 4.05);
+    setIsPlaying(false);
+    setHasEnded(true);
   }, []);
 
   const people = [
@@ -828,29 +833,48 @@ export default function Goodbye(): JSX.Element {
                 - Hans Christian Andersen -
               </animated.figcaption>
             </figure>
-            <animated.p style={appearFromBottomMsg}>
-              Até já amigos.
-              <br /> Felicidades colegas.
-            </animated.p>
-            <animated.p style={appearFromBottomSignature} className={styles.signature}>
-              Wolf
-            </animated.p>
-            <div className={styles.images}>
-              <div className={styles.wrapper}>
-                {people.map((p) => (
-                  <animated.div key={p.id} style={p.animation} className={styles[p.style]}>
-                    <Image src={p.image} alt={p.name} layout="fill" objectFit="contain" />
-                  </animated.div>
-                ))}
+            {hasEnded ? (
+              <>
+                <p>Humm... Ainda estás aí?</p>
+                <p className={styles.signature} style={{ zIndex: 100 }}>
+                  Então visita o{' '}
+                  <Link href="/">
+                    <a style={{ borderBottom: '2px dashed #D20120' }}>meu site</a>
+                  </Link>
+                </p>
+              </>
+            ) : (
+              <>
+                <animated.p style={appearFromBottomMsg}>
+                  Até já amigos.
+                  <br /> Felicidades colegas.
+                </animated.p>
+                <animated.p style={appearFromBottomSignature} className={styles.signature}>
+                  Wolf
+                </animated.p>
+              </>
+            )}
+            {!hasEnded && (
+              <div className={styles.images}>
+                <div className={styles.wrapper}>
+                  {people.map((p) => (
+                    <animated.div key={p.id} style={p.animation} className={styles[p.style]}>
+                      <Image src={p.image} alt={p.name} layout="fill" objectFit="contain" />
+                    </animated.div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
           <div className={styles.player}>
             <ReactAudioPlayer
               src={music.file}
               autoPlay
               controls
-              onPlay={() => setIsPlaying(true)}
+              onPlay={() => {
+                setIsPlaying(true);
+                setHasEnded(false);
+              }}
               onPause={() => setIsPlaying(false)}
               onEnded={resetAnimation}
               // muted
