@@ -879,7 +879,7 @@ export default function Goodbye(): JSX.Element {
               onEnded={resetAnimation}
               // muted
             />
-            <p>{`"${music.title}", ${music.artist} (${music.released_date})`}</p>
+            {isPlaying && <p>{`"${music.title}", ${music.artist} (${music.released_date})`}</p>}
           </div>
         </div>
       </section>
