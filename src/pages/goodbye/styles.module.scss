@@ -581,18 +581,10 @@
         width: 100%;
       }
 
-      ul {
-        margin-top: 2rem;
-        list-style-type: none;
-
-        li {
-          font-size: 1.3rem;
-          line-height: 1.4;
-
-          span {
-            color: var(--c-candy-red);
-          }
-        }
+      p {
+        margin-top: 1rem;
+        font-size: 1.3rem;
+        line-height: 1.4;
       }
     }
   }

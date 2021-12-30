@@ -733,20 +733,9 @@ export default function Goodbye(): JSX.Element {
               onEnded={resetAnimation}
               muted
             />
-            <ul>
-              <li>
-                <span>titulo:</span> {music.title}
-              </li>
-              <li>
-                <span>artista:</span> {music.artist}
-              </li>
-              <li>
-                <span>album:</span> {music.album}
-              </li>
-              <li>
-                <span>ano:</span> {music.released_date}
-              </li>
-            </ul>
+            <p>
+              {music.title}, {music.artist} ({music.released_date})
+            </p>
           </div>
         </div>
       </section>
