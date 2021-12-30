@@ -80,6 +80,17 @@ export default function Goodbye(): JSX.Element {
   const [img53, setImg53] = useState(false);
   const [img54, setImg54] = useState(false);
   const [img55, setImg55] = useState(false);
+  const [img56, setImg56] = useState(false);
+  const [img57, setImg57] = useState(false);
+  const [img58, setImg58] = useState(false);
+  const [img59, setImg59] = useState(false);
+  const [img60, setImg60] = useState(false);
+  const [img61, setImg61] = useState(false);
+  const [img62, setImg62] = useState(false);
+  const [img63, setImg63] = useState(false);
+  const [img64, setImg64] = useState(false);
+  const [img65, setImg65] = useState(false);
+  const [img66, setImg66] = useState(false);
 
   const renderProps = useCallback(
     (element: boolean) => ({
@@ -151,6 +162,17 @@ export default function Goodbye(): JSX.Element {
   const appearFromBottomImg53 = useSpring(renderProps(img53));
   const appearFromBottomImg54 = useSpring(renderProps(img54));
   const appearFromBottomImg55 = useSpring(renderProps(img55));
+  const appearFromBottomImg56 = useSpring(renderProps(img56));
+  const appearFromBottomImg57 = useSpring(renderProps(img57));
+  const appearFromBottomImg58 = useSpring(renderProps(img58));
+  const appearFromBottomImg59 = useSpring(renderProps(img59));
+  const appearFromBottomImg60 = useSpring(renderProps(img60));
+  const appearFromBottomImg61 = useSpring(renderProps(img61));
+  const appearFromBottomImg62 = useSpring(renderProps(img62));
+  const appearFromBottomImg63 = useSpring(renderProps(img63));
+  const appearFromBottomImg64 = useSpring(renderProps(img64));
+  const appearFromBottomImg65 = useSpring(renderProps(img65));
+  const appearFromBottomImg66 = useSpring(renderProps(img66));
 
   const { getTheme, hasDarkMode } = useTheme();
   useEffect(() => getTheme(), [getTheme]);
@@ -204,20 +226,31 @@ export default function Goodbye(): JSX.Element {
     setTimeout(() => setImg39(true), 1000 * 114);
     setTimeout(() => setImg40(true), 1000 * 117);
     setTimeout(() => setImg41(true), 1000 * 120);
-    setTimeout(() => setImg42(true), 1000 * 123);
-    setTimeout(() => setImg43(true), 1000 * 126);
-    setTimeout(() => setImg44(true), 1000 * 129);
-    setTimeout(() => setImg45(true), 1000 * 132);
-    setTimeout(() => setImg46(true), 1000 * 135);
-    setTimeout(() => setImg47(true), 1000 * 138);
-    setTimeout(() => setImg48(true), 1000 * 141);
-    setTimeout(() => setImg49(true), 1000 * 144);
-    setTimeout(() => setImg50(true), 1000 * 147);
-    setTimeout(() => setImg51(true), 1000 * 150);
-    setTimeout(() => setImg52(true), 1000 * 153);
-    setTimeout(() => setImg53(true), 1000 * 156);
-    setTimeout(() => setImg54(true), 1000 * 159);
-    setTimeout(() => setImg55(true), 1000 * 162);
+    setTimeout(() => setImg42(true), 1000 * 122);
+    setTimeout(() => setImg43(true), 1000 * 124);
+    setTimeout(() => setImg44(true), 1000 * 126);
+    setTimeout(() => setImg45(true), 1000 * 128);
+    setTimeout(() => setImg46(true), 1000 * 130);
+    setTimeout(() => setImg47(true), 1000 * 132);
+    setTimeout(() => setImg48(true), 1000 * 134);
+    setTimeout(() => setImg49(true), 1000 * 136);
+    setTimeout(() => setImg50(true), 1000 * 138);
+    setTimeout(() => setImg51(true), 1000 * 140);
+    setTimeout(() => setImg52(true), 1000 * 142);
+    setTimeout(() => setImg53(true), 1000 * 144);
+    setTimeout(() => setImg54(true), 1000 * 146);
+    setTimeout(() => setImg55(true), 1000 * 148);
+    setTimeout(() => setImg56(true), 1000 * 150);
+    setTimeout(() => setImg57(true), 1000 * 152);
+    setTimeout(() => setImg58(true), 1000 * 154);
+    setTimeout(() => setImg59(true), 1000 * 156);
+    setTimeout(() => setImg60(true), 1000 * 158);
+    setTimeout(() => setImg61(true), 1000 * 160);
+    setTimeout(() => setImg62(true), 1000 * 162);
+    setTimeout(() => setImg63(true), 1000 * 164);
+    setTimeout(() => setImg64(true), 1000 * 166);
+    setTimeout(() => setImg65(true), 1000 * 168);
+    setTimeout(() => setImg66(true), 1000 * 170);
   }, [isPlaying]);
 
   const resetAnimation = useCallback(() => {
@@ -281,6 +314,17 @@ export default function Goodbye(): JSX.Element {
     setImg53(false);
     setImg54(false);
     setImg55(false);
+    setImg56(false);
+    setImg57(false);
+    setImg58(false);
+    setImg59(false);
+    setImg60(false);
+    setImg61(false);
+    setImg62(false);
+    setImg63(false);
+    setImg64(false);
+    setImg65(false);
+    setImg66(false);
   }, []);
 
   const people = [
@@ -673,30 +717,79 @@ export default function Goodbye(): JSX.Element {
     {
       id: 56,
       name: 'Gonçalo',
-      animation: appearFromBottomImg55,
+      animation: appearFromBottomImg56,
       style: 'img56',
       image: IMAGES.GONCALO_1
     },
     {
       id: 57,
       name: 'Heidi',
-      animation: appearFromBottomImg55,
+      animation: appearFromBottomImg57,
       style: 'img57',
       image: IMAGES.HEIDI_1
     },
     {
       id: 58,
       name: 'Goat',
-      animation: appearFromBottomImg55,
+      animation: appearFromBottomImg58,
       style: 'img58',
       image: IMAGES.GOAT
     },
     {
       id: 59,
       name: 'Cat',
-      animation: appearFromBottomImg55,
+      animation: appearFromBottomImg59,
       style: 'img59',
       image: IMAGES.CAT_1
+    },
+    {
+      id: 60,
+      name: 'Junior',
+      animation: appearFromBottomImg60,
+      style: 'img60',
+      image: IMAGES.JUNIOR_1
+    },
+    {
+      id: 61,
+      name: 'Bomb',
+      animation: appearFromBottomImg61,
+      style: 'img61',
+      image: IMAGES.BOMB
+    },
+    {
+      id: 62,
+      name: 'Marta Simão',
+      animation: appearFromBottomImg62,
+      style: 'img62',
+      image: IMAGES.MARTA_SIMAO_1
+    },
+    {
+      id: 63,
+      name: 'Toni',
+      animation: appearFromBottomImg63,
+      style: 'img63',
+      image: IMAGES.TONI_1
+    },
+    {
+      id: 64,
+      name: 'Wally',
+      animation: appearFromBottomImg64,
+      style: 'img64',
+      image: IMAGES.WALLY
+    },
+    {
+      id: 65,
+      name: 'João Monteiro',
+      animation: appearFromBottomImg65,
+      style: 'img65',
+      image: IMAGES.JOAO_MONTEIRO_1
+    },
+    {
+      id: 66,
+      name: 'Carla Pereira',
+      animation: appearFromBottomImg66,
+      style: 'img66',
+      image: IMAGES.CARLA_PEREIRA_1
     }
   ];
 
@@ -745,15 +838,10 @@ export default function Goodbye(): JSX.Element {
             <div className={styles.images}>
               <div className={styles.wrapper}>
                 {people.map((p) => (
-                  <div key={p.id} className={styles[p.style]}>
-                    <Image src={p.image} alt={p.name} layout="fill" objectFit="contain" />
-                  </div>
-                ))}
-                {/* {people.map((p) => (
                   <animated.div key={p.id} style={p.animation} className={styles[p.style]}>
                     <Image src={p.image} alt={p.name} layout="fill" objectFit="contain" />
                   </animated.div>
-                ))} */}
+                ))}
               </div>
             </div>
           </div>
@@ -765,7 +853,7 @@ export default function Goodbye(): JSX.Element {
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
               onEnded={resetAnimation}
-              muted
+              // muted
             />
             <p>{`"${music.title}", ${music.artist} (${music.released_date})`}</p>
           </div>
