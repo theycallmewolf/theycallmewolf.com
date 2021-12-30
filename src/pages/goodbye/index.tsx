@@ -283,6 +283,394 @@ export default function Goodbye(): JSX.Element {
     setImg55(false);
   }, []);
 
+  const people = [
+    {
+      id: 1,
+      name: 'Marcia',
+      animation: appearFromBottomImg1,
+      style: 'img1',
+      image: IMAGES.MARSIA_2
+    },
+    {
+      id: 2,
+      name: 'Dipanda',
+      animation: appearFromBottomImg2,
+      style: 'img2',
+      image: IMAGES.DIPANDA_1
+    },
+    {
+      id: 3,
+      name: 'Sandra',
+      animation: appearFromBottomImg3,
+      style: 'img3',
+      image: IMAGES.SANDRA_1
+    },
+    {
+      id: 4,
+      name: 'Pedro',
+      animation: appearFromBottomImg4,
+      style: 'img4',
+      image: IMAGES.PEDRO_1
+    },
+    {
+      id: 5,
+      name: 'Tania',
+      animation: appearFromBottomImg5,
+      style: 'img5',
+      image: IMAGES.TANIA_1
+    },
+    {
+      id: 6,
+      name: 'Ines e Eu',
+      animation: appearFromBottomImg6,
+      style: 'img6',
+      image: IMAGES.INES_1
+    },
+    {
+      id: 7,
+      name: 'Sandra, Camila e Eu',
+      animation: appearFromBottomImg7,
+      style: 'img7',
+      image: IMAGES.MKT_1
+    },
+    {
+      id: 8,
+      name: 'Ed',
+      animation: appearFromBottomImg8,
+      style: 'img8',
+      image: IMAGES.ED_2
+    },
+    {
+      id: 9,
+      name: 'Juke',
+      animation: appearFromBottomImg9,
+      style: 'img9',
+      image: IMAGES.JUKE_1
+    },
+    {
+      id: 10,
+      name: 'Susana',
+      animation: appearFromBottomImg10,
+      style: 'img10',
+      image: IMAGES.SUSANA_2
+    },
+    {
+      id: 11,
+      name: 'Ana',
+      animation: appearFromBottomImg11,
+      style: 'img11',
+      image: IMAGES.ANA_2
+    },
+    {
+      id: 12,
+      name: 'Camila',
+      animation: appearFromBottomImg12,
+      style: 'img12',
+      image: IMAGES.CAMILA_1
+    },
+    {
+      id: 13,
+      name: 'Pedro',
+      animation: appearFromBottomImg13,
+      style: 'img13',
+      image: IMAGES.PEDRO_2
+    },
+    {
+      id: 14,
+      name: 'Isabel',
+      animation: appearFromBottomImg14,
+      style: 'img14',
+      image: IMAGES.ISABEL_1
+    },
+    {
+      id: 15,
+      name: 'Camila',
+      animation: appearFromBottomImg15,
+      style: 'img15',
+      image: IMAGES.CAMILA_2
+    },
+    {
+      id: 16,
+      name: 'Pedrasus',
+      animation: appearFromBottomImg16,
+      style: 'img16',
+      image: IMAGES.PEDRASUS_1
+    },
+    {
+      id: 17,
+      name: 'Flash',
+      animation: appearFromBottomImg17,
+      style: 'img17',
+      image: IMAGES.FLASH_1
+    },
+    {
+      id: 18,
+      name: 'Nadia e Ricardo',
+      animation: appearFromBottomImg18,
+      style: 'img18',
+      image: IMAGES.NADIA_RICARDO_1
+    },
+    {
+      id: 19,
+      name: 'Selos',
+      animation: appearFromBottomImg19,
+      style: 'img19',
+      image: IMAGES.SELOS
+    },
+    {
+      id: 20,
+      name: 'Rita',
+      animation: appearFromBottomImg20,
+      style: 'img20',
+      image: IMAGES.RITA_1
+    },
+    {
+      id: 21,
+      name: 'Mafalda',
+      animation: appearFromBottomImg21,
+      style: 'img21',
+      image: IMAGES.MAFALDA_1
+    },
+    {
+      id: 22,
+      name: 'Cris',
+      animation: appearFromBottomImg22,
+      style: 'img22',
+      image: IMAGES.CRIS_1
+    },
+    {
+      id: 23,
+      name: 'Goat',
+      animation: appearFromBottomImg23,
+      style: 'img23',
+      image: IMAGES.GOAT_1
+    },
+    {
+      id: 24,
+      name: 'fortune cookie',
+      animation: appearFromBottomImg24,
+      style: 'img24',
+      image: IMAGES.COOKIE
+    },
+    {
+      id: 25,
+      name: 'Morgadinho',
+      animation: appearFromBottomImg25,
+      style: 'img25',
+      image: IMAGES.MORGADINHO_1
+    },
+    {
+      id: 26,
+      name: 'Florence',
+      animation: appearFromBottomImg26,
+      style: 'img26',
+      image: IMAGES.FLORENCE_1
+    },
+    {
+      id: 27,
+      name: 'Ti Lu',
+      animation: appearFromBottomImg27,
+      style: 'img27',
+      image: IMAGES.TI_LU_1
+    },
+    {
+      id: 28,
+      name: 'Baliza',
+      animation: appearFromBottomImg28,
+      style: 'img28',
+      image: IMAGES.BALIZA_1
+    },
+    {
+      id: 29,
+      name: 'Bengas',
+      animation: appearFromBottomImg29,
+      style: 'img29',
+      image: IMAGES.BENGAS_1
+    },
+    {
+      id: 30,
+      name: 'Manequim',
+      animation: appearFromBottomImg30,
+      style: 'img30',
+      image: IMAGES.MANEQUIM
+    },
+    {
+      id: 31,
+      name: 'Rodrigo',
+      animation: appearFromBottomImg31,
+      style: 'img31',
+      image: IMAGES.RODRIGO_1
+    },
+    {
+      id: 32,
+      name: 'Siri',
+      animation: appearFromBottomImg32,
+      style: 'img32',
+      image: IMAGES.SIRI_1
+    },
+    {
+      id: 33,
+      name: 'Radio',
+      animation: appearFromBottomImg33,
+      style: 'img33',
+      image: IMAGES.RADIO
+    },
+    {
+      id: 34,
+      name: 'Ricardo Almeida',
+      animation: appearFromBottomImg34,
+      style: 'img34',
+      image: IMAGES.RICARDO_ALMEIDA_1
+    },
+    {
+      id: 35,
+      name: 'Chewie',
+      animation: appearFromBottomImg35,
+      style: 'img35',
+      image: IMAGES.CHEWIE
+    },
+    {
+      id: 36,
+      name: 'Carla',
+      animation: appearFromBottomImg36,
+      style: 'img36',
+      image: IMAGES.CARLA_1
+    },
+    {
+      id: 37,
+      name: 'Paula',
+      animation: appearFromBottomImg37,
+      style: 'img37',
+      image: IMAGES.PAULA_1
+    },
+    {
+      id: 38,
+      name: 'Monica',
+      animation: appearFromBottomImg38,
+      style: 'img38',
+      image: IMAGES.MONICA_1
+    },
+    {
+      id: 39,
+      name: 'Paulo',
+      animation: appearFromBottomImg39,
+      style: 'img39',
+      image: IMAGES.PAULO_1
+    },
+    {
+      id: 40,
+      name: 'Nando',
+      animation: appearFromBottomImg40,
+      style: 'img40',
+      image: IMAGES.NANDO_2
+    },
+    {
+      id: 41,
+      name: 'Cubana',
+      animation: appearFromBottomImg41,
+      style: 'img41',
+      image: IMAGES.CUBANA_1
+    },
+    {
+      id: 42,
+      name: 'Ana e Camila',
+      animation: appearFromBottomImg42,
+      style: 'img42',
+      image: IMAGES.ANA_1
+    },
+    {
+      id: 43,
+      name: 'RIR',
+      animation: appearFromBottomImg43,
+      style: 'img43',
+      image: IMAGES.MUSIC_1
+    },
+    {
+      id: 44,
+      name: 'Andre',
+      animation: appearFromBottomImg44,
+      style: 'img44',
+      image: IMAGES.ANDRE_1
+    },
+    {
+      id: 45,
+      name: 'Renault e Juke',
+      animation: appearFromBottomImg45,
+      style: 'img45',
+      image: IMAGES.MARTA_1
+    },
+    {
+      id: 46,
+      name: 'JP',
+      animation: appearFromBottomImg46,
+      style: 'img46',
+      image: IMAGES.JP_1
+    },
+    {
+      id: 47,
+      name: 'Fale',
+      animation: appearFromBottomImg47,
+      style: 'img47',
+      image: IMAGES.FALE_1
+    },
+    {
+      id: 48,
+      name: 'Lourisela',
+      animation: appearFromBottomImg48,
+      style: 'img48',
+      image: IMAGES.LOURISELA_1
+    },
+    {
+      id: 49,
+      name: 'Mo',
+      animation: appearFromBottomImg49,
+      style: 'img49',
+      image: IMAGES.INES_GOIS_1
+    },
+    {
+      id: 50,
+      name: 'Mo',
+      animation: appearFromBottomImg50,
+      style: 'img50',
+      image: IMAGES.DAVIDE_1
+    },
+    {
+      id: 51,
+      name: 'Nick',
+      animation: appearFromBottomImg51,
+      style: 'img51',
+      image: IMAGES.NICK_1
+    },
+    {
+      id: 52,
+      name: 'Ricardo Duarte',
+      animation: appearFromBottomImg52,
+      style: 'img52',
+      image: IMAGES.RICARDO_DUARTE_1
+    },
+    {
+      id: 53,
+      name: 'Barbara',
+      animation: appearFromBottomImg53,
+      style: 'img53',
+      image: IMAGES.BARBARA_1
+    },
+    {
+      id: 54,
+      name: 'António',
+      animation: appearFromBottomImg54,
+      style: 'img54',
+      image: IMAGES.ANTONIO_1
+    },
+    {
+      id: 55,
+      name: 'Rita Oliveira',
+      animation: appearFromBottomImg55,
+      style: 'img55',
+      image: IMAGES.RITA_OLIVEIRA_1
+    }
+  ];
+
   return (
     <>
       <Head>
@@ -327,221 +715,11 @@ export default function Goodbye(): JSX.Element {
             </animated.p>
             <div className={styles.images}>
               <div className={styles.wrapper}>
-                <animated.div style={appearFromBottomImg1} className={styles.img1}>
-                  <Image src={IMAGES.MARSIA_2} alt="Marcia" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg2} className={styles.img2}>
-                  <Image src={IMAGES.DIPANDA_1} alt="Dipanda" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg3} className={styles.img3}>
-                  <Image src={IMAGES.SANDRA_1} alt="Sandra" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg4} className={styles.img4}>
-                  <Image src={IMAGES.PEDRO_1} alt="Pedro" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg5} className={styles.img5}>
-                  <Image src={IMAGES.TANIA_1} alt="Tania" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg6} className={styles.img6}>
-                  <Image src={IMAGES.INES_1} alt="Ines e Eu" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg7} className={styles.img7}>
-                  <Image
-                    src={IMAGES.MKT_1}
-                    alt="Sandra, Camila e Eu"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </animated.div>
-                <animated.div style={appearFromBottomImg8} className={styles.img8}>
-                  <Image src={IMAGES.ED_2} alt="Ed" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg9} className={styles.img9}>
-                  <Image src={IMAGES.JUKE_1} alt="Juke" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg10} className={styles.img10}>
-                  <Image src={IMAGES.SUSANA_2} alt="Susana" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg11} className={styles.img11}>
-                  <Image src={IMAGES.ANA_2} alt="Ana" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg12} className={styles.img12}>
-                  <Image src={IMAGES.CAMILA_1} alt="Camila" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg13} className={styles.img13}>
-                  <Image src={IMAGES.PEDRO_2} alt="Pedro" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg14} className={styles.img14}>
-                  <Image src={IMAGES.ISABEL_1} alt="Isabel" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg15} className={styles.img15}>
-                  <Image src={IMAGES.CAMILA_2} alt="Isabel" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg16} className={styles.img16}>
-                  <Image src={IMAGES.PEDRASUS_1} alt="Pedrasus" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg17} className={styles.img17}>
-                  <Image src={IMAGES.FLASH_1} alt="Flash" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg18} className={styles.img18}>
-                  <Image
-                    src={IMAGES.NADIA_RICARDO_1}
-                    alt="Nadia e Ricardo"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </animated.div>
-                <animated.div style={appearFromBottomImg19} className={styles.img19}>
-                  <Image src={IMAGES.SELOS} alt="Selos" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg20} className={styles.img20}>
-                  <Image src={IMAGES.RITA_1} alt="Rita" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg21} className={styles.img21}>
-                  <Image src={IMAGES.MAFALDA_1} alt="Mafalda" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg22} className={styles.img22}>
-                  <Image src={IMAGES.CRIS_1} alt="Cris" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg23} className={styles.img23}>
-                  <Image src={IMAGES.GOAT_1} alt="Goat" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg24} className={styles.img24}>
-                  <Image
-                    src={IMAGES.COOKIE}
-                    alt="fortune cookie"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </animated.div>
-                <animated.div style={appearFromBottomImg25} className={styles.img25}>
-                  <Image
-                    src={IMAGES.MORGADINHO_1}
-                    alt="Morgadinho"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </animated.div>
-                <animated.div style={appearFromBottomImg26} className={styles.img26}>
-                  <Image src={IMAGES.FLORENCE_1} alt="Florence" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg27} className={styles.img27}>
-                  <Image src={IMAGES.TI_LU_1} alt="Ti Lu" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg28} className={styles.img28}>
-                  <Image src={IMAGES.BALIZA_1} alt="Ti Lu" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg29} className={styles.img29}>
-                  <Image src={IMAGES.BENGAS_1} alt="Bengas" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg30} className={styles.img30}>
-                  <Image src={IMAGES.MANEQUIM} alt="Manequim" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg31} className={styles.img31}>
-                  <Image src={IMAGES.RODRIGO_1} alt="Rodrigo" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg32} className={styles.img32}>
-                  <Image src={IMAGES.SIRI_1} alt="Siri" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg33} className={styles.img33}>
-                  <Image src={IMAGES.RADIO} alt="Radio" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg34} className={styles.img34}>
-                  <Image
-                    src={IMAGES.RICARDO_ALMEIDA_1}
-                    alt="Ricardo Almeida"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </animated.div>
-                <animated.div style={appearFromBottomImg35} className={styles.img35}>
-                  <Image src={IMAGES.CHEWIE} alt="Chewie" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg36} className={styles.img36}>
-                  <Image src={IMAGES.CARLA_1} alt="Carla" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg37} className={styles.img37}>
-                  <Image src={IMAGES.PAULA_1} alt="Paula" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg38} className={styles.img38}>
-                  <Image src={IMAGES.MONICA_1} alt="Monica" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg39} className={styles.img39}>
-                  <Image src={IMAGES.PAULO_1} alt="Paulo" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg40} className={styles.img40}>
-                  <Image src={IMAGES.NANDO_2} alt="Nando" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg41} className={styles.img41}>
-                  <Image src={IMAGES.CUBANA_1} alt="Cubana" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg42} className={styles.img42}>
-                  <Image src={IMAGES.ANA_1} alt="Ana e Camila" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg43} className={styles.img43}>
-                  <Image src={IMAGES.MUSIC_1} alt="RIR" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg44} className={styles.img44}>
-                  <Image src={IMAGES.ANDRE_1} alt="Andre" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg45} className={styles.img45}>
-                  <Image
-                    src={IMAGES.MARTA_1}
-                    alt="Renault e Juke"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </animated.div>
-                <animated.div style={appearFromBottomImg46} className={styles.img46}>
-                  <Image src={IMAGES.JP_1} alt="JP" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg47} className={styles.img47}>
-                  <Image src={IMAGES.FALE_1} alt="Fale" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg48} className={styles.img48}>
-                  <Image
-                    src={IMAGES.LOURISELA_1}
-                    alt="Lourisela"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </animated.div>
-                <animated.div style={appearFromBottomImg49} className={styles.img49}>
-                  <Image
-                    src={IMAGES.INES_GOIS_1}
-                    alt="Inês Gois"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </animated.div>
-                <animated.div style={appearFromBottomImg50} className={styles.img50}>
-                  <Image src={IMAGES.DAVIDE_1} alt="Davide" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg51} className={styles.img51}>
-                  <Image src={IMAGES.NICK_1} alt="Nick" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg52} className={styles.img52}>
-                  <Image
-                    src={IMAGES.RICARDO_DUARTE_1}
-                    alt="Ricardo Duarte"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </animated.div>
-                <animated.div style={appearFromBottomImg53} className={styles.img53}>
-                  <Image src={IMAGES.BARBARA_1} alt="Barbara" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg54} className={styles.img54}>
-                  <Image src={IMAGES.ANTONIO_1} alt="António" layout="fill" objectFit="contain" />
-                </animated.div>
-                <animated.div style={appearFromBottomImg55} className={styles.img55}>
-                  <Image
-                    src={IMAGES.RITA_OLIVEIRA_1}
-                    alt="Rita Oliveira"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </animated.div>
+                {people.map((p) => (
+                  <animated.div key={p.id} style={p.animation} className={styles[p.style]}>
+                    <Image src={p.image} alt={p.name} layout="fill" objectFit="contain" />
+                  </animated.div>
+                ))}
               </div>
             </div>
           </div>
@@ -553,7 +731,7 @@ export default function Goodbye(): JSX.Element {
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
               onEnded={resetAnimation}
-              // muted
+              muted
             />
             <ul>
               <li>
