@@ -326,206 +326,223 @@ export default function Goodbye(): JSX.Element {
               Wolf
             </animated.p>
             <div className={styles.images}>
-              <animated.div style={appearFromBottomImg1} className={styles.img1}>
-                <Image src={IMAGES.MARSIA_2} alt="Marcia" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg2} className={styles.img2}>
-                <Image src={IMAGES.DIPANDA_1} alt="Dipanda" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg3} className={styles.img3}>
-                <Image src={IMAGES.SANDRA_1} alt="Sandra" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg4} className={styles.img4}>
-                <Image src={IMAGES.PEDRO_1} alt="Pedro" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg5} className={styles.img5}>
-                <Image src={IMAGES.TANIA_1} alt="Tania" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg6} className={styles.img6}>
-                <Image src={IMAGES.INES_1} alt="Ines e Eu" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg7} className={styles.img7}>
-                <Image
-                  src={IMAGES.MKT_1}
-                  alt="Sandra, Camila e Eu"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </animated.div>
-              <animated.div style={appearFromBottomImg8} className={styles.img8}>
-                <Image src={IMAGES.ED_2} alt="Ed" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg9} className={styles.img9}>
-                <Image src={IMAGES.JUKE_1} alt="Juke" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg10} className={styles.img10}>
-                <Image src={IMAGES.SUSANA_2} alt="Susana" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg11} className={styles.img11}>
-                <Image src={IMAGES.ANA_2} alt="Ana" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg12} className={styles.img12}>
-                <Image src={IMAGES.CAMILA_1} alt="Camila" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg13} className={styles.img13}>
-                <Image src={IMAGES.PEDRO_2} alt="Pedro" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg14} className={styles.img14}>
-                <Image src={IMAGES.ISABEL_1} alt="Isabel" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg15} className={styles.img15}>
-                <Image src={IMAGES.CAMILA_2} alt="Isabel" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg16} className={styles.img16}>
-                <Image src={IMAGES.PEDRASUS_1} alt="Pedrasus" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg17} className={styles.img17}>
-                <Image src={IMAGES.FLASH_1} alt="Flash" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg18} className={styles.img18}>
-                <Image
-                  src={IMAGES.NADIA_RICARDO_1}
-                  alt="Nadia e Ricardo"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </animated.div>
-              <animated.div style={appearFromBottomImg19} className={styles.img19}>
-                <Image src={IMAGES.SELOS} alt="Selos" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg20} className={styles.img20}>
-                <Image src={IMAGES.RITA_1} alt="Rita" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg21} className={styles.img21}>
-                <Image src={IMAGES.MAFALDA_1} alt="Mafalda" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg22} className={styles.img22}>
-                <Image src={IMAGES.CRIS_1} alt="Cris" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg23} className={styles.img23}>
-                <Image src={IMAGES.GOAT_1} alt="Goat" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg24} className={styles.img24}>
-                <Image src={IMAGES.COOKIE} alt="fortune cookie" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg25} className={styles.img25}>
-                <Image
-                  src={IMAGES.MORGADINHO_1}
-                  alt="Morgadinho"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </animated.div>
-              <animated.div style={appearFromBottomImg26} className={styles.img26}>
-                <Image src={IMAGES.FLORENCE_1} alt="Florence" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg27} className={styles.img27}>
-                <Image src={IMAGES.TI_LU_1} alt="Ti Lu" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg28} className={styles.img28}>
-                <Image src={IMAGES.BALIZA_1} alt="Ti Lu" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg29} className={styles.img29}>
-                <Image src={IMAGES.BENGAS_1} alt="Bengas" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg30} className={styles.img30}>
-                <Image src={IMAGES.MANEQUIM} alt="Manequim" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg31} className={styles.img31}>
-                <Image src={IMAGES.RODRIGO_1} alt="Rodrigo" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg32} className={styles.img32}>
-                <Image src={IMAGES.SIRI_1} alt="Siri" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg33} className={styles.img33}>
-                <Image src={IMAGES.RADIO} alt="Radio" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg34} className={styles.img34}>
-                <Image
-                  src={IMAGES.RICARDO_ALMEIDA_1}
-                  alt="Ricardo Almeida"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </animated.div>
-              <animated.div style={appearFromBottomImg35} className={styles.img35}>
-                <Image src={IMAGES.CHEWIE} alt="Chewie" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg36} className={styles.img36}>
-                <Image src={IMAGES.CARLA_1} alt="Carla" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg37} className={styles.img37}>
-                <Image src={IMAGES.PAULA_1} alt="Paula" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg38} className={styles.img38}>
-                <Image src={IMAGES.MONICA_1} alt="Monica" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg39} className={styles.img39}>
-                <Image src={IMAGES.PAULO_1} alt="Paulo" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg40} className={styles.img40}>
-                <Image src={IMAGES.NANDO_2} alt="Nando" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg41} className={styles.img41}>
-                <Image src={IMAGES.CUBANA_1} alt="Cubana" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg42} className={styles.img42}>
-                <Image src={IMAGES.ANA_1} alt="Ana e Camila" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg43} className={styles.img43}>
-                <Image src={IMAGES.MUSIC_1} alt="RIR" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg44} className={styles.img44}>
-                <Image src={IMAGES.ANDRE_1} alt="Andre" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg45} className={styles.img45}>
-                <Image
-                  src={IMAGES.MARTA_1}
-                  alt="Renault e Juke"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </animated.div>
-              <animated.div style={appearFromBottomImg46} className={styles.img46}>
-                <Image src={IMAGES.JP_1} alt="JP" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg47} className={styles.img47}>
-                <Image src={IMAGES.FALE_1} alt="Fale" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg48} className={styles.img48}>
-                <Image src={IMAGES.LOURISELA_1} alt="Lourisela" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg49} className={styles.img49}>
-                <Image src={IMAGES.INES_GOIS_1} alt="Inês Gois" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg50} className={styles.img50}>
-                <Image src={IMAGES.DAVIDE_1} alt="Davide" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg51} className={styles.img51}>
-                <Image src={IMAGES.NICK_1} alt="Nick" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg52} className={styles.img52}>
-                <Image
-                  src={IMAGES.RICARDO_DUARTE_1}
-                  alt="Ricardo Duarte"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </animated.div>
-              <animated.div style={appearFromBottomImg53} className={styles.img53}>
-                <Image src={IMAGES.BARBARA_1} alt="Barbara" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg54} className={styles.img54}>
-                <Image src={IMAGES.ANTONIO_1} alt="António" layout="fill" objectFit="contain" />
-              </animated.div>
-              <animated.div style={appearFromBottomImg55} className={styles.img55}>
-                <Image
-                  src={IMAGES.RITA_OLIVEIRA_1}
-                  alt="Rita Oliveira"
-                  layout="fill"
-                  objectFit="contain"
-                />
-              </animated.div>
+              <div className={styles.wrapper}>
+                <animated.div style={appearFromBottomImg1} className={styles.img1}>
+                  <Image src={IMAGES.MARSIA_2} alt="Marcia" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg2} className={styles.img2}>
+                  <Image src={IMAGES.DIPANDA_1} alt="Dipanda" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg3} className={styles.img3}>
+                  <Image src={IMAGES.SANDRA_1} alt="Sandra" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg4} className={styles.img4}>
+                  <Image src={IMAGES.PEDRO_1} alt="Pedro" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg5} className={styles.img5}>
+                  <Image src={IMAGES.TANIA_1} alt="Tania" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg6} className={styles.img6}>
+                  <Image src={IMAGES.INES_1} alt="Ines e Eu" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg7} className={styles.img7}>
+                  <Image
+                    src={IMAGES.MKT_1}
+                    alt="Sandra, Camila e Eu"
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </animated.div>
+                <animated.div style={appearFromBottomImg8} className={styles.img8}>
+                  <Image src={IMAGES.ED_2} alt="Ed" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg9} className={styles.img9}>
+                  <Image src={IMAGES.JUKE_1} alt="Juke" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg10} className={styles.img10}>
+                  <Image src={IMAGES.SUSANA_2} alt="Susana" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg11} className={styles.img11}>
+                  <Image src={IMAGES.ANA_2} alt="Ana" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg12} className={styles.img12}>
+                  <Image src={IMAGES.CAMILA_1} alt="Camila" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg13} className={styles.img13}>
+                  <Image src={IMAGES.PEDRO_2} alt="Pedro" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg14} className={styles.img14}>
+                  <Image src={IMAGES.ISABEL_1} alt="Isabel" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg15} className={styles.img15}>
+                  <Image src={IMAGES.CAMILA_2} alt="Isabel" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg16} className={styles.img16}>
+                  <Image src={IMAGES.PEDRASUS_1} alt="Pedrasus" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg17} className={styles.img17}>
+                  <Image src={IMAGES.FLASH_1} alt="Flash" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg18} className={styles.img18}>
+                  <Image
+                    src={IMAGES.NADIA_RICARDO_1}
+                    alt="Nadia e Ricardo"
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </animated.div>
+                <animated.div style={appearFromBottomImg19} className={styles.img19}>
+                  <Image src={IMAGES.SELOS} alt="Selos" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg20} className={styles.img20}>
+                  <Image src={IMAGES.RITA_1} alt="Rita" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg21} className={styles.img21}>
+                  <Image src={IMAGES.MAFALDA_1} alt="Mafalda" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg22} className={styles.img22}>
+                  <Image src={IMAGES.CRIS_1} alt="Cris" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg23} className={styles.img23}>
+                  <Image src={IMAGES.GOAT_1} alt="Goat" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg24} className={styles.img24}>
+                  <Image
+                    src={IMAGES.COOKIE}
+                    alt="fortune cookie"
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </animated.div>
+                <animated.div style={appearFromBottomImg25} className={styles.img25}>
+                  <Image
+                    src={IMAGES.MORGADINHO_1}
+                    alt="Morgadinho"
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </animated.div>
+                <animated.div style={appearFromBottomImg26} className={styles.img26}>
+                  <Image src={IMAGES.FLORENCE_1} alt="Florence" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg27} className={styles.img27}>
+                  <Image src={IMAGES.TI_LU_1} alt="Ti Lu" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg28} className={styles.img28}>
+                  <Image src={IMAGES.BALIZA_1} alt="Ti Lu" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg29} className={styles.img29}>
+                  <Image src={IMAGES.BENGAS_1} alt="Bengas" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg30} className={styles.img30}>
+                  <Image src={IMAGES.MANEQUIM} alt="Manequim" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg31} className={styles.img31}>
+                  <Image src={IMAGES.RODRIGO_1} alt="Rodrigo" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg32} className={styles.img32}>
+                  <Image src={IMAGES.SIRI_1} alt="Siri" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg33} className={styles.img33}>
+                  <Image src={IMAGES.RADIO} alt="Radio" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg34} className={styles.img34}>
+                  <Image
+                    src={IMAGES.RICARDO_ALMEIDA_1}
+                    alt="Ricardo Almeida"
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </animated.div>
+                <animated.div style={appearFromBottomImg35} className={styles.img35}>
+                  <Image src={IMAGES.CHEWIE} alt="Chewie" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg36} className={styles.img36}>
+                  <Image src={IMAGES.CARLA_1} alt="Carla" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg37} className={styles.img37}>
+                  <Image src={IMAGES.PAULA_1} alt="Paula" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg38} className={styles.img38}>
+                  <Image src={IMAGES.MONICA_1} alt="Monica" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg39} className={styles.img39}>
+                  <Image src={IMAGES.PAULO_1} alt="Paulo" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg40} className={styles.img40}>
+                  <Image src={IMAGES.NANDO_2} alt="Nando" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg41} className={styles.img41}>
+                  <Image src={IMAGES.CUBANA_1} alt="Cubana" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg42} className={styles.img42}>
+                  <Image src={IMAGES.ANA_1} alt="Ana e Camila" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg43} className={styles.img43}>
+                  <Image src={IMAGES.MUSIC_1} alt="RIR" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg44} className={styles.img44}>
+                  <Image src={IMAGES.ANDRE_1} alt="Andre" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg45} className={styles.img45}>
+                  <Image
+                    src={IMAGES.MARTA_1}
+                    alt="Renault e Juke"
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </animated.div>
+                <animated.div style={appearFromBottomImg46} className={styles.img46}>
+                  <Image src={IMAGES.JP_1} alt="JP" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg47} className={styles.img47}>
+                  <Image src={IMAGES.FALE_1} alt="Fale" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg48} className={styles.img48}>
+                  <Image
+                    src={IMAGES.LOURISELA_1}
+                    alt="Lourisela"
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </animated.div>
+                <animated.div style={appearFromBottomImg49} className={styles.img49}>
+                  <Image
+                    src={IMAGES.INES_GOIS_1}
+                    alt="Inês Gois"
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </animated.div>
+                <animated.div style={appearFromBottomImg50} className={styles.img50}>
+                  <Image src={IMAGES.DAVIDE_1} alt="Davide" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg51} className={styles.img51}>
+                  <Image src={IMAGES.NICK_1} alt="Nick" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg52} className={styles.img52}>
+                  <Image
+                    src={IMAGES.RICARDO_DUARTE_1}
+                    alt="Ricardo Duarte"
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </animated.div>
+                <animated.div style={appearFromBottomImg53} className={styles.img53}>
+                  <Image src={IMAGES.BARBARA_1} alt="Barbara" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg54} className={styles.img54}>
+                  <Image src={IMAGES.ANTONIO_1} alt="António" layout="fill" objectFit="contain" />
+                </animated.div>
+                <animated.div style={appearFromBottomImg55} className={styles.img55}>
+                  <Image
+                    src={IMAGES.RITA_OLIVEIRA_1}
+                    alt="Rita Oliveira"
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </animated.div>
+              </div>
             </div>
           </div>
           <div className={styles.player}>
