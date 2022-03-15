@@ -161,12 +161,12 @@ export const ContactForm: React.FC = () => {
   }
 
   return (
-    <div className={`${styles.container} ${isOpen && styles.open}`}>
+    <div className={`${styles.container} ${isOpen ? styles.open : ''}`}>
       <Button
         type="button"
         genre="fill"
         aria-label="contact form"
-        className={`${styles.button} ${isOpen && styles.open}`}
+        className={`${styles.button} ${isOpen ? styles.open : ''}`}
         onClick={() => toggleChat()}>
         {isOpen ? <ICross /> : <IChat />}
       </Button>
@@ -256,7 +256,7 @@ export const ContactForm: React.FC = () => {
             onChange={onRecaptchaChange}
           />
         </div>
-        <div className={`${styles.message} ${showMessage ? styles.show : undefined}`}>
+        <div className={`${styles.message} ${showMessage ? styles.show : ''}`}>
           <Wolf className={hasDarkMode ? styles.dark : undefined} />
           {emailSent ? (
             <>

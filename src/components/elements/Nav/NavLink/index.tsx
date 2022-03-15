@@ -12,7 +12,9 @@ export const NavLink: React.FC<NavLinkProps> = ({ link, label, ...props }) => {
   const { slug } = router.query;
   return (
     <Link href={link}>
-      <a className={`${styles.link} ${slug === link.split('/')[2] && styles.selected}`} {...props}>
+      <a
+        className={`${styles.link} ${slug === link.split('/')[2] ? styles.selected : ''}`}
+        {...props}>
         {label}
       </a>
     </Link>

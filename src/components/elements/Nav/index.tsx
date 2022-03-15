@@ -13,9 +13,7 @@ interface NavProps extends React.HTMLAttributes<HTMLElement> {
 export const Nav: React.FC<NavProps> = ({ className = '', link_list, ...props }) => {
   const { hasDarkMode } = useTheme();
   return (
-    <nav
-      className={`${styles.nav} ${className} ${hasDarkMode ? styles.dark : undefined}`}
-      {...props}>
+    <nav className={`${styles.nav} ${className} ${hasDarkMode ? styles.dark : ''}`} {...props}>
       {link_list.map((link, i) => (
         <NavLink link={link.link} label={link.label} key={i} />
       ))}

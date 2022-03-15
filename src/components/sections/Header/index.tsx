@@ -11,21 +11,23 @@ export const Header: React.FC = () => {
 
   return (
     <header
-      className={`${styles.container} ${isOpen ? styles.open : undefined} ${
-        hasDarkMode ? styles.dark : undefined
+      className={`${styles.container} ${isOpen ? styles.open : ''} ${
+        hasDarkMode ? styles.dark : ''
       }`}>
       <div className={styles.navigation}>
         <Nav />
       </div>
       <div className={styles.header}>
         <Link href="/">
-          <a className={`${styles.logo} ${isOpen && styles.open}`} aria-label="back to homepage">
+          <a
+            className={`${styles.logo} ${isOpen ? styles.open : ''}`}
+            aria-label="back to homepage">
             <Wolf className={styles.logo} />
           </a>
         </Link>
         <div className={styles.buttonContainer}>
           <button
-            className={`${styles.toggle} ${hasDarkMode && styles.dark}`}
+            className={`${styles.toggle} ${hasDarkMode ? styles.dark : ''}`}
             onClick={toggleTheme}
             aria-label="toggle light/dark mode"
           />

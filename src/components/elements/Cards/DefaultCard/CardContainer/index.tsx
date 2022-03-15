@@ -12,7 +12,7 @@ export const CardContainer: React.FC<CardContainerProps> = ({
 }) => {
   return (
     <div
-      className={`${styles.cardContainer} ${className} ${imageFilter ?? styles.imageFilter}`}
+      className={`${styles.cardContainer} ${className} ${imageFilter ? styles.imageFilter : ''}`}
       {...props}>
       {children}
     </div>
