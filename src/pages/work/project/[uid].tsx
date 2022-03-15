@@ -17,7 +17,7 @@ import styles from './styles.module.scss';
 
 type NextProjectProps = {
   nextProject: NextProject;
-  projectPreview: MutableRefObject<HTMLDivElement>;
+  projectPreviewRef: MutableRefObject<HTMLDivElement>;
 };
 
 type LeadProps = {
@@ -141,10 +141,10 @@ const Specs: React.FC<ProjectProps> = ({ project }) => {
   );
 };
 
-const NextProject: React.FC<NextProjectProps> = ({ nextProject, projectPreview }) => {
+const NextProject: React.FC<NextProjectProps> = ({ nextProject, projectPreviewRef }) => {
   if (nextProject)
     return (
-      <section className={`${styles.intro} ${styles.next}`} ref={projectPreview}>
+      <section className={`${styles.intro} ${styles.next}`} ref={projectPreviewRef}>
         <div className={styles.title}>
           <h2>Next</h2>
           <p>just keep scrolling</p>
@@ -180,47 +180,40 @@ const Code: NextPage<ProjectProps> = ({ project, nextProjects }) => {
   const router = useRouter();
   const { getTheme, hasDarkMode } = useTheme();
 
-  const topMark = useRef<HTMLSpanElement>(null);
-  const projectPreview = useRef<HTMLDivElement>(null);
+  const topMarkRef = useRef<HTMLSpanElement>(null);
+  const projectPreviewRef = useRef<HTMLDivElement>(null);
 
   const [slides, setSlides] = useState([]);
-  const [nextProjectsList, setNextProjectsList] = useState<NextProject[] | undefined>(undefined);
   const [nextProject, setNextProject] = useState<NextProject | undefined>(undefined);
   const [projectsSeenIDs, setProjectsSeenIDs] = useState<string[]>([]);
 
   const onScroll = useCallback(() => {
-    const { top } = projectPreview.current.getBoundingClientRect();
+    const { top } = projectPreviewRef.current.getBoundingClientRect();
     const { slug } = nextProject;
 
     if (top <= 80) {
       router.push(`/work/project/${slug}`);
-      topMark.current.scrollIntoView();
+      topMarkRef.current.scrollIntoView();
     }
   }, [nextProject, router]);
 
   const handleNextProject = useCallback(() => {
-    if (!nextProjectsList) return;
+    let i = getRandomInt(0, nextProjects.length);
 
-    const i = getRandomInt(0, nextProjectsList.length);
-    const notSeen = !projectsSeenIDs.includes[nextProjectsList[i].id];
+    if (nextProject && projectsSeenIDs.includes[nextProjects[i].id]) {
+      i = getRandomInt(0, nextProjects.length);
 
-    console.log({ projectsSeenIDs, l: nextProjectsList[i], notSeen, nextProject });
-
-    if (nextProject && notSeen) {
-      setProjectsSeenIDs([...projectsSeenIDs, nextProjectsList[i].id]);
-      setNextProjectsList(nextProjectsList.filter((p) => p.id !== nextProjectsList[i].id));
-      setNextProject(nextProjectsList[i]);
-      return;
+      setProjectsSeenIDs((state) => [...state, nextProjects[i].id]);
+      setNextProject(
+        nextProjects.map((p) => {
+          if (p.id !== nextProjects[i].id) return p;
+        })[i]
+      );
     }
-    setNextProject(nextProjectsList[i]);
-  }, [nextProject, nextProjectsList, projectsSeenIDs]);
 
-  // useEffect(
-  //   () => console.log({ projectsSeenIDs, nextProjectsList, nextProject }),
-  //   [projectsSeenIDs, nextProjectsList, nextProject]
-  // );
+    setNextProject(nextProjects[i]);
+  }, [nextProject, nextProjects, projectsSeenIDs.includes]);
 
-  useEffect(() => setNextProjectsList(nextProjects), [nextProjects]);
   useEffect(handleNextProject);
   useEffect(getTheme);
 
@@ -257,14 +250,14 @@ const Code: NextPage<ProjectProps> = ({ project, nextProjects }) => {
       <Header />
 
       <main className={styles.main} onScroll={onScroll}>
-        <span ref={topMark}></span>
+        <span ref={topMarkRef}></span>
         <Intro project={project} />
         <Lead title={project.leads[0]} icon="plus" />
         <Slider slides={slides} contentType="image" additionalClass={styles.slider} />
         <Lead title={project.leads[1]} icon="arrow" />
         <Specs project={project} />
         <Lead title={project.leads[2]} icon="menu" />
-        <NextProject projectPreview={projectPreview} nextProject={nextProject} />
+        <NextProject projectPreviewRef={projectPreviewRef} nextProject={nextProject} />
       </main>
     </>
   );
