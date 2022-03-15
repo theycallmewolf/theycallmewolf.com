@@ -6,28 +6,33 @@ import 'components/elements/Slider/styles.scss';
 
 import { ContactForm, SpotifyNotification } from 'components/elements';
 import { AppProvider } from 'hooks';
+import { NextPage } from 'next';
 import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 import { pageView } from 'utils/google-analytics';
 
-function MyApp({ Component, pageProps }: AppProps): JSX.Element {
+const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   const router = useRouter();
 
-  useEffect(() => {
-    const handleRouteChange = (url) => {
-      pageView(url);
-    };
-    //When the component is mounted, subscribe to router changes
-    //and log those page views
+  const handleGoogleAnalytics = useCallback(() => {
+    const handleRouteChange = (url: string) => pageView(url);
+    /*
+     * When the component is mounted, subscribe to router changes
+     * and log those page views
+     */
     router.events.on('routeChangeComplete', handleRouteChange);
 
-    // If the component is unmounted, unsubscribe
-    // from the event with the `off` method
+    /*
+     *  If the component is unmounted, unsubscribe
+     * from the event with the `off` method
+     */
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
   }, [router.events]);
+
+  useEffect(handleGoogleAnalytics);
 
   return (
     <AppProvider>
@@ -36,6 +41,6 @@ function MyApp({ Component, pageProps }: AppProps): JSX.Element {
       <SpotifyNotification />
     </AppProvider>
   );
-}
+};
 
 export default MyApp;
