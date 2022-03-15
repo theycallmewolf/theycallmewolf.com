@@ -184,8 +184,9 @@ const Code: NextPage<ProjectProps> = ({ project, nextProjects }) => {
   const projectPreview = useRef<HTMLDivElement>(null);
 
   const [slides, setSlides] = useState([]);
+  const [nextProjectsList, setNextProjectsList] = useState<NextProject[] | undefined>(undefined);
   const [nextProject, setNextProject] = useState<NextProject | undefined>(undefined);
-  const [projectsSeen, setProjectsSeen] = useState([]);
+  const [projectsSeenIDs, setProjectsSeenIDs] = useState<string[]>([]);
 
   const onScroll = useCallback(() => {
     const { top } = projectPreview.current.getBoundingClientRect();
@@ -198,21 +199,28 @@ const Code: NextPage<ProjectProps> = ({ project, nextProjects }) => {
   }, [nextProject, router]);
 
   const handleNextProject = useCallback(() => {
-    let i = getRandomInt(0, nextProjects.length);
+    if (!nextProjectsList) return;
 
-    if (nextProject && projectsSeen.includes[nextProjects[i].id]) {
-      i = getRandomInt(0, nextProjects.length);
+    const i = getRandomInt(0, nextProjectsList.length);
+    const notSeen = !projectsSeenIDs.includes[nextProjectsList[i].id];
 
-      setNextProject(
-        nextProjects.map((p) => {
-          if (p.id !== nextProjects[i].id) return p;
-        })[i]
-      );
+    console.log({ projectsSeenIDs, l: nextProjectsList[i], notSeen, nextProject });
+
+    if (nextProject && notSeen) {
+      setProjectsSeenIDs([...projectsSeenIDs, nextProjectsList[i].id]);
+      setNextProjectsList(nextProjectsList.filter((p) => p.id !== nextProjectsList[i].id));
+      setNextProject(nextProjectsList[i]);
+      return;
     }
+    setNextProject(nextProjectsList[i]);
+  }, [nextProject, nextProjectsList, projectsSeenIDs]);
 
-    setNextProject(nextProjects[i]);
-  }, [nextProject, nextProjects, projectsSeen]);
+  // useEffect(
+  //   () => console.log({ projectsSeenIDs, nextProjectsList, nextProject }),
+  //   [projectsSeenIDs, nextProjectsList, nextProject]
+  // );
 
+  useEffect(() => setNextProjectsList(nextProjects), [nextProjects]);
   useEffect(handleNextProject);
   useEffect(getTheme);
 

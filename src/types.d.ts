@@ -174,3 +174,11 @@ export interface CardListProps {
   children: React.ReactNode;
   slug: string | string[];
 }
+
+export interface HomeProps {
+  projects: ProjectData[];
+  clients: ClientData[];
+  posts: PostData[];
+  testimonials: TestimonialData[];
+  skills: GraphData[];
+}
