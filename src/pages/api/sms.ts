@@ -2,9 +2,11 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import Twilio from 'twilio';
 
 export default async (req: NextApiRequest, res: NextApiResponse): Promise<void> => {
-  // Download the helper library from https://www.twilio.com/docs/node/install
-  // Find your Account SID and Auth Token at twilio.com/console
-  // and set the environment variables. See http://twil.io/secure
+  /**
+   * Download the helper library from @see https://www.twilio.com/docs/node/install
+   * Find your Account SID and Auth Token @see https://twilio.com/console
+   * and set the environment variables. @see http://twil.io/secure
+   */
   const { phone, message } = req.query;
 
   if (!phone || !message)
