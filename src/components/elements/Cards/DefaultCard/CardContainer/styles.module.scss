@@ -5,29 +5,35 @@
   transition: filter 1000ms ease-in-out;
   overflow: hidden;
 
+  border-radius: 2.4rem;
+
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
 
-  img {transition: transform 2000ms ease-in-out;}
-  
+  img {
+    transition: transform 2000ms ease-in-out;
+  }
+
   &:hover {
     filter: brightness(1.2);
 
-    img { transform: scale(1.2);}
+    img {
+      transform: scale(1.2);
+    }
   }
 
   &.imageFilter {
-    &>div:first-of-type {
+    & > div:first-of-type {
       &::after {
         content: '';
-        position: absolute; 
+        position: absolute;
         top: 0;
         left: 0;
         height: 100%;
         width: 100%;
-        
+
         background: var(--c-candy-red);
         mix-blend-mode: multiply;
         opacity: 1;
@@ -35,14 +41,20 @@
         transition: opacity 1000ms ease-in-out;
       }
 
-      img { filter: grayscale(1); }
+      img {
+        filter: grayscale(1);
+      }
     }
   }
 
   &:hover {
-    &>div:first-of-type {
-      img { filter: grayscale(0); }
-      &::after { opacity: 0; }
+    & > div:first-of-type {
+      img {
+        filter: grayscale(0);
+      }
+      &::after {
+        opacity: 0;
+      }
     }
   }
 }
