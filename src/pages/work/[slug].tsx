@@ -2,7 +2,7 @@ import { TangramCard } from 'assets/tangrams/';
 import { CardBody, CardFooter, CardHeader, CustomLink, DefaultCard } from 'components/elements';
 import { Aside, CardList, Footer, Header } from 'components/sections';
 import { useTheme } from 'hooks/useTheme';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -20,12 +20,12 @@ interface WorkProps {
   cards: ProjectData[];
 }
 
-export default function Work({ intro, link_list, cards }: WorkProps): JSX.Element {
+const Work: NextPage<WorkProps> = ({ intro, link_list, cards }) => {
   const router = useRouter();
   const { slug } = router.query;
   const { getTheme, hasDarkMode } = useTheme();
 
-  useEffect(getTheme, []);
+  useEffect(getTheme);
 
   return (
     <>
@@ -96,7 +96,10 @@ export default function Work({ intro, link_list, cards }: WorkProps): JSX.Elemen
       <Footer />
     </>
   );
-}
+};
+
+export default Work;
+
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
     // paths: ['/work/code', '/work/illustration', '/work/design', '/work/other'],
