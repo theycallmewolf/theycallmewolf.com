@@ -1,7 +1,7 @@
 import { BlogProps } from 'types';
 
 import { Button } from '../../elements/Button';
-import { CardBody, CardFooter, DefaultCard } from '../../elements/Cards/Card';
+import { Card, CardBody, CardFooter } from '../../elements/Cards/Card';
 import { CustomLink } from '../../elements/Link';
 import styles from './styles.module.scss';
 
@@ -22,7 +22,7 @@ export const Blog: React.FC<BlogProps> = ({ posts }) => (
       </div>
     </div>
     {posts.map((post) => (
-      <DefaultCard key={post.id} className={styles.cardContainer}>
+      <Card key={post.id} className={styles.cardContainer}>
         <CardBody>
           <span className={styles.date}>{post.update_date}</span>
           <h3>{post.title}</h3>
@@ -31,7 +31,7 @@ export const Blog: React.FC<BlogProps> = ({ posts }) => (
         <CardFooter className={styles.cardFooter}>
           <CustomLink href={`/${post.slug}`} label="Read" />
         </CardFooter>
-      </DefaultCard>
+      </Card>
     ))}
   </section>
 );
