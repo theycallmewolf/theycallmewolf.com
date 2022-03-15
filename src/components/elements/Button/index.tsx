@@ -16,17 +16,11 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
   const { hasDarkMode } = useTheme();
 
+  const themeClassName = hasDarkMode ? styles.dark : styles.light;
+  const genreClassName = genre === 'outline' ? styles.outline : styles.fill;
   return (
     <button
-      className={
-        styles.button +
-        ' ' +
-        (genre === 'outline' ? styles.outline : styles.fill) +
-        ' ' +
-        (hasDarkMode ? styles.dark : styles.light) +
-        ' ' +
-        className
-      }
+      className={`${styles.button} ${genreClassName} ${themeClassName} ${className}`}
       {...props}>
       {children}
     </button>
