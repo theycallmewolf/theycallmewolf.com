@@ -3,13 +3,11 @@ import { Button } from 'components/elements';
 import { useTheme } from 'hooks/useTheme';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import SwiperCore, { A11y, EffectFade, Navigation, Pagination, Scrollbar } from 'swiper';
+import { A11y, EffectFade, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { SliderProps } from 'types';
+import { SlideData, SliderProps, TestimonialData } from 'types';
 
 import { CustomLink } from '../Link';
-
-SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, EffectFade]);
 
 export const Slider: React.FC<SliderProps> = ({
   slides,
@@ -19,9 +17,9 @@ export const Slider: React.FC<SliderProps> = ({
   className = '',
   ...props
 }) => {
-  const [slideNumber, setSlideNumber] = useState('01');
-  const [slideList, setSlideList] = useState([]);
-  const [testimonialList, setTestimonialList] = useState([]);
+  // const [slideNumber, setSlideNumber] = useState('01');
+  const [slideList, setSlideList] = useState<SlideData[]>([]);
+  const [testimonialList, setTestimonialList] = useState<TestimonialData[]>([]);
   const [showCaption, setShowCaption] = useState(false);
 
   const { hasDarkMode } = useTheme();
@@ -31,13 +29,14 @@ export const Slider: React.FC<SliderProps> = ({
     setTestimonialList(testimonials);
   }, [slides, testimonials]);
 
-  const handleSlideNumber = (sliderIndex: number) => {
-    setSlideNumber(String(sliderIndex + 1).padStart(2, '0'));
-  };
+  // const handleSlideNumber = (sliderIndex: number) => {
+  //   setSlideNumber(String(sliderIndex + 1).padStart(2, '0'));
+  // };
 
   return (
-    <div className={`slider-container ${hasDarkMode && 'dark'} ${className}`} {...props}>
+    <div className={`slider-container ${hasDarkMode ? 'dark' : ''} ${className}`}>
       <Swiper
+        modules={[Navigation, A11y, EffectFade]}
         spaceBetween={48}
         navigation
         slidesPerView={1}
@@ -46,59 +45,54 @@ export const Slider: React.FC<SliderProps> = ({
         speed={1200}
         effect={contentType === 'testimonial' ? 'fade' : 'slide'}
         className={contentType === 'testimonial' && 'testimonial'}
-        onSlideChange={(swiper) => handleSlideNumber(swiper.activeIndex)}>
+        // onSlideChange={(swiper) => handleSlideNumber(swiper.activeIndex)}
+        {...props}>
         {contentType === 'image' &&
-          slideList.map(({ slider, project_date, slug }, i) => {
-            const { image_large_2x, caption } = slider;
-            return (
-              <SwiperSlide key={i}>
-                <figure className={contentType === 'image' && 'shadow'}>
-                  <Image src={image_large_2x} layout="fill" quality={90} />
+          slideList.map((slide, i) => (
+            <SwiperSlide key={i}>
+              <figure className={contentType === 'image' && 'shadow'}>
+                <Image src={slide.slider.image_large_2x} layout="fill" quality={90} />
 
-                  {caption && (
-                    <figcaption className={showCaption && 'show'}>
-                      <span>{project_date}</span>
-                      <strong>{caption}</strong>
-                      {hasLink && (
-                        <CustomLink
-                          href={`work/project/${slug}`}
-                          label="visit project"
-                          className="link"
-                        />
-                      )}
-                    </figcaption>
-                  )}
-                </figure>
-                {caption && (
-                  <Button
-                    className={`show-caption-button  ${showCaption && 'rotate'}`}
-                    onClick={() => setShowCaption((state) => !state)}>
-                    <IPlus />
-                  </Button>
+                {slide.slider.caption && (
+                  <figcaption className={showCaption && 'show'}>
+                    <span>{slide.project_date}</span>
+                    <strong>{slide.slider.caption}</strong>
+                    {hasLink && (
+                      <CustomLink
+                        href={`work/project/${slide.slug}`}
+                        label="visit project"
+                        className="link"
+                      />
+                    )}
+                  </figcaption>
                 )}
-              </SwiperSlide>
-            );
-          })}
-
+              </figure>
+              {slide.slider.caption && (
+                <Button
+                  className={`show-caption-button  ${showCaption && 'rotate'}`}
+                  onClick={() => setShowCaption((state) => !state)}>
+                  <IPlus />
+                </Button>
+              )}
+            </SwiperSlide>
+          ))}
         {contentType === 'testimonial' &&
-          testimonialList.map(({ quote, name, jobTitle, publish_date }, i) => {
-            return (
-              <SwiperSlide key={i}>
-                <div tabIndex={-1}>
-                  {quote.map((paragraph: string, i: number) => (
-                    <p key={i}>{paragraph}</p>
-                  ))}
-                </div>
-                <div>
-                  <p>
-                    <strong>{name}</strong>, {jobTitle}, {publish_date}
-                  </p>
-                </div>
-              </SwiperSlide>
-            );
-          })}
+          testimonialList.map(({ quote, name, jobTitle, publish_date }, i) => (
+            <SwiperSlide key={i}>
+              <div tabIndex={-1}>
+                {quote.map((paragraph: string, i: number) => (
+                  <p key={i}>{paragraph}</p>
+                ))}
+              </div>
+              <div>
+                <p>
+                  <strong>{name}</strong>, {jobTitle}, {publish_date}
+                </p>
+              </div>
+            </SwiperSlide>
+          ))}
       </Swiper>
-      <div className="current-slide">{slideNumber}</div>
+      {/* <div className="current-slide">{slideNumber}</div> */}
     </div>
   );
 };

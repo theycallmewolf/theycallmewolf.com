@@ -1,3 +1,5 @@
+import { SwiperProps } from 'swiper/react';
+
 interface Project {
   id: string;
   type: 'code' | 'illustration' | 'design' | 'other';
@@ -64,7 +66,7 @@ export type PostData = {
 
 export type TestimonialData = {
   id: string;
-  quote: string;
+  quote: string[];
   name: string;
   jobTitle: string;
   publish_date: string;
@@ -104,6 +106,7 @@ export type EducationData = CareerData;
 export type SlideData = {
   slider: ProjectImages;
   slug: string;
+  project_date: string;
   title?: string;
 };
 
@@ -149,7 +152,7 @@ export interface ClientsProps {
   clients: ClientData[];
 }
 
-export interface SliderProps extends React.HTMLAttributes<HTMLElement> {
+export interface SliderProps extends SwiperProps {
   slides?: SlideData[];
   testimonials?: TestimonialData[];
   contentType: 'image' | 'testimonial';
