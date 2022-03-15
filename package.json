@@ -11,6 +11,7 @@
     "svg": "svgr -d src/assets/icons src/assets/icons/svg"
   },
   "dependencies": {
+    "@next/bundle-analyzer": "^12.1.0",
     "@prismicio/client": "^5.0.0",
     "@sendgrid/mail": "^7.4.5",
     "axios": "^0.21.2",
