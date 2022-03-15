@@ -51,7 +51,12 @@ export const Slider: React.FC<SliderProps> = ({
           slideList.map((slide, i) => (
             <SwiperSlide key={i}>
               <figure className={contentType === 'image' ? 'shadow' : ''}>
-                <Image src={slide.slider.image_large_2x} layout="fill" quality={90} />
+                <Image
+                  src={slide.slider.image_large_2x}
+                  layout="fill"
+                  objectFit="cover"
+                  quality={90}
+                />
 
                 {slide.slider.caption && (
                   <figcaption className={showCaption ? 'show' : ''}>
