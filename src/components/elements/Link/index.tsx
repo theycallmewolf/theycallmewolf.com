@@ -14,13 +14,13 @@ export const CustomLink: React.FC<CustomLinkProps> = ({
   className = '',
   href,
   label,
-  hasIcon,
+  hasIcon = false,
   ...props
 }) => {
   return (
     <Link href={href}>
       <a
-        className={`${styles.link} ${className} ${hasIcon ? styles.icon : ''}`}
+        className={`${styles.link} ${className} ${hasIcon && styles.icon}`}
         {...props}
         aria-label="show details">
         {label}
