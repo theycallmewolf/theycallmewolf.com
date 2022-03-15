@@ -3,25 +3,13 @@
   margin-left: auto;
 
   .swiper-container {
-    padding-bottom: 115px;
-
-    @media (min-width: 768px) {
-      padding-bottom: 60px;
-    }
+    padding: 6rem 0;
 
     .swiper-wrapper {
-      padding: 2rem;
-
       .swiper-slide {
-        width: 100%;
-        height: 415px;
+        height: 36rem;
         opacity: 0.1;
         position: relative;
-        overflow: hidden;
-
-        border-radius: 2.4rem;
-        border-bottom-right-radius: 0;
-
         transition: border 1000ms ease-in-out, opacity 1000ms ease-in-out, filter 1000ms ease-in-out,
           box-shadow 1000ms ease-in-out;
 
@@ -35,6 +23,8 @@
           width: 100%;
           height: 100%;
           position: relative;
+          overflow: hidden;
+          border-radius: 2.4rem;
 
           img {
             width: 100%;
@@ -44,61 +34,89 @@
 
           figcaption {
             position: absolute;
-            bottom: -46px;
-            left: 0;
-            height: 46px;
-            width: calc(100% - 44px);
-            padding: 0 12px;
+            bottom: 0;
+            left: 100%;
+            right: 0;
+            top: 0;
+            padding: 2.4rem;
+            background: var(--c-candy-red);
 
-            font-size: 1.4rem;
-            line-height: 1.8rem;
+            font-size: 1.6rem;
+            color: var(--c-polar-white);
+            line-height: 2.4rem;
+            text-align: center;
             letter-spacing: 1.4px;
 
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: center;
+            flex-direction: column;
 
             opacity: 0;
-            background: var(--c-background-100);
 
-            transition: opacity 300ms ease-in-out;
-            transition-delay: 300ms;
+            transition: opacity 300ms ease-in-out 300ms, left 300ms ease-in-out 300ms;
 
-            @media (min-width: 768px) {
-              left: 60px;
-              bottom: -60px;
-              width: calc(100% - 180px);
-              height: 50px;
+            &.show {
+              opacity: 1;
+              left: 0;
+            }
+
+            span {
+              margin-bottom: 2rem;
+            }
+
+            .link {
+              margin-top: 2rem;
+              cursor: pointer;
+
+              &:hover,
+              &:focus {
+                transform: none;
+              }
+
+              @media (min-width: 768px) {
+                bottom: 0;
+              }
             }
           }
         }
 
-        a {
+        .show-caption-button {
           position: absolute;
-          bottom: -46px;
+          bottom: 0;
           right: 0;
-          cursor: pointer;
+          width: 5rem;
+          height: 5rem;
 
-          &:hover,
-          &:focus {
-            transform: none;
+          border: none;
+          line-height: 0;
+          padding: 0;
+
+          svg {
+            width: 2.2rem;
+            height: 2.2rem;
+            stroke: var(--c-polar-white);
+
+            transition: transform 200ms ease-in-out;
           }
 
-          @media (min-width: 768px) {
-            bottom: 0;
+          &.rotate svg {
+            transform: rotate(45deg);
           }
+        }
+
+        @media screen and (min-width: 1040px) {
+          height: 48rem;
         }
       }
 
       .swiper-slide-active {
         opacity: 1;
 
-        &.shadow {
-          box-shadow: 0px 10px 13px -7px rgba(0, 0, 0, 0.5), 5px 5px 15px 5px rgba(0, 0, 0, 0);
-        }
-
-        figure figcaption {
-          opacity: 1;
+        figure {
+          &.shadow {
+            box-shadow: 0px 10px 13px -7px rgba(0, 0, 0, 0.5), 5px 5px 15px 5px rgba(0, 0, 0, 0);
+          }
         }
       }
 
@@ -110,15 +128,15 @@
     .swiper-button-prev,
     .swiper-button-next {
       background-image: url('../../../assets/icons/svg/i-arrow-black.svg');
-      background-color: var(--c-background-100);
+      background-color: transparent;
       background-repeat: no-repeat;
       background-size: 64% auto;
       background-position: center;
 
       top: unset;
       bottom: 1px;
-      width: 50px;
-      height: 50px;
+      width: 5rem;
+      height: 5rem;
       z-index: 11;
 
       &::after {
@@ -136,6 +154,7 @@
 
       &.swiper-button-disabled {
         opacity: 0.6;
+
         @media (prefers-color-scheme: dark) {
           background-image: url('../../../assets/icons/svg/i-arrow-red.svg');
         }
@@ -150,27 +169,16 @@
     }
     .swiper-button-prev {
       left: unset;
-      right: 60px;
+      right: 6rem;
       transform: rotate(180deg);
     }
 
-    @media (min-width: 1024px) {
-      .swiper-button-next {
-        right: unset;
-        left: calc(50% - 50px);
-      }
-      .swiper-button-prev {
-        left: calc(50% - 110px);
-        right: unset;
-      }
-    }
-
     &.testimonial {
-      padding-bottom: 56px;
+      padding-bottom: 5.6rem;
 
       .swiper-wrapper {
         .swiper-slide {
-          height: 420px;
+          height: 42rem;
           overflow: hidden;
 
           background-image: url('/assets/wires/w-testimonials-light-100.svg');
@@ -181,7 +189,7 @@
 
           display: grid;
           grid-template-columns: 1fr;
-          grid-template-rows: 336px 84px;
+          grid-template-rows: 33.6rem 8.4rem;
           grid-template-areas:
             'quote'
             'name';
@@ -189,27 +197,27 @@
           div {
             width: 100%;
             height: 100%;
-            padding: 0 24px 48px 24px;
+            padding: 0 2.4rem 4.8rem 2.4rem;
 
             &:first-of-type {
               grid-area: quote;
               overflow: scroll;
               position: relative;
-              padding-right: 24px;
+              padding-right: 2.4rem;
 
               p {
                 &:first-of-type {
-                  padding-top: 32px;
+                  padding-top: 3.2rem;
                 }
                 & + p {
-                  margin-top: 8px;
+                  margin-top: 0.8rem;
                 }
               }
             }
 
             &:last-of-type {
               grid-area: name;
-              padding: 8px 24px;
+              padding: 0.8rem 2.4rem;
               line-height: 1.4;
 
               display: flex;
@@ -225,11 +233,11 @@
               &::after {
                 content: '';
                 position: absolute;
-                bottom: 84px;
+                bottom: 8.4rem;
                 left: 0;
                 width: 100%;
-                height: 32px;
-                background: linear-gradient(rgb(0 0 0 / 0%) 20%, #0000000f 100%);
+                height: 3.2rem;
+                background: linear-gradient(rgba(0, 0, 0, 0) 20%, rgba(0, 0, 0, 0.1) 100%);
 
                 pointer-events: none;
               }
@@ -238,7 +246,7 @@
 
           @media (min-width: 768px) {
             p {
-              font-size: 18px;
+              font-size: 1.8rem;
               letter-spacing: 1px;
             }
           }
@@ -247,7 +255,7 @@
 
       .swiper-button-prev {
         left: unset;
-        right: 56px;
+        right: 5.6rem;
       }
       .swiper-button-next {
         left: unset;
@@ -257,9 +265,8 @@
   }
 
   .current-slide {
-    background: var(--c-background-100);
-    width: 50px;
-    height: 50px;
+    width: 5rem;
+    height: 5rem;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -279,7 +286,7 @@
 
             div:last-of-type {
               &::after {
-                height: 96px;
+                height: 9.6rem;
                 background: linear-gradient(rgba(0, 0, 0, 0) 20%, #00000042 100%);
               }
             }
