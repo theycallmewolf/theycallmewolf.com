@@ -1,19 +1,11 @@
 import React from 'react';
+import { TestimonialData } from 'types';
 
 import { Slider } from '../../elements/Slider';
 import styles from './styles.module.scss';
 
-type Testimonial = {
-  id: string;
-  quote: string;
-  name: string;
-  jobTitle: string;
-  publish_date: string;
-  update_date: string;
-};
-
 interface TestimonialsProps {
-  testimonials: Testimonial[];
+  testimonials: TestimonialData[];
 }
 
 export const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => (
