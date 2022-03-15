@@ -1,7 +1,7 @@
 .section {
   width: 100%;
-  max-width: 960px;
-  margin: 240px auto;
+  max-width: 96rem;
+  margin: 24rem auto;
   padding-left: calc(env(safe-area-inset-left) + 2rem);
   padding-right: calc(env(safe-area-inset-right) + 2rem);
 
@@ -17,14 +17,14 @@
 
     .cardBody {
       h2 {
-        margin-bottom: 16px;
+        margin-bottom: 1.6rem;
       }
 
       & > div {
-        margin-top: 8px;
+        margin-top: 0.8rem;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 8px;
+        gap: 0.8rem;
       }
     }
 
@@ -35,8 +35,8 @@
       justify-content: center;
 
       svg {
-        width: 200px;
-        height: 190px;
+        width: 20rem;
+        height: 19rem;
         fill: var(--c-background-100);
       }
     }
