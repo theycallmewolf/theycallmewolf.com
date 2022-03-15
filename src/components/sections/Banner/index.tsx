@@ -78,7 +78,7 @@ export const Banner: React.FC = () => {
 
       <div className={styles.scene}>
         {wrap.map((key) => (
-          <div key={key} className={`${styles.wrap}`}>
+          <div key={key} className={styles.wrap}>
             {frames.map((f) => (
               <div key={f.id} className={f.className} style={style} />
             ))}

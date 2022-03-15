@@ -44,17 +44,17 @@ export const Slider: React.FC<SliderProps> = ({
         loop={true}
         speed={1000}
         effect={contentType === 'testimonial' ? 'fade' : 'slide'}
-        className={contentType === 'testimonial' && 'testimonial'}
+        className={contentType === 'testimonial' ? 'testimonial' : ''}
         // onSlideChange={(swiper) => handleSlideNumber(swiper.activeIndex)}
         {...props}>
         {contentType === 'image' &&
           slideList.map((slide, i) => (
             <SwiperSlide key={i}>
-              <figure className={contentType === 'image' && 'shadow'}>
+              <figure className={contentType === 'image' ? 'shadow' : ''}>
                 <Image src={slide.slider.image_large_2x} layout="fill" quality={90} />
 
                 {slide.slider.caption && (
-                  <figcaption className={showCaption && 'show'}>
+                  <figcaption className={showCaption ? 'show' : ''}>
                     <span>{slide.project_date}</span>
                     <strong>{slide.slider.caption}</strong>
                     {hasLink && (
