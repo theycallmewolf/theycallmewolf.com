@@ -158,7 +158,6 @@ export interface SliderProps extends SwiperProps {
   contentType: 'image' | 'testimonial';
   className?: string;
   hasLink?: boolean;
-  hasIcon?: boolean;
 }
 
 type IntroData = {
