@@ -8,8 +8,7 @@ import {
   Testimonials
 } from 'components/sections';
 // import { Blog } from 'components/sections';
-import { useTheme } from 'hooks/useTheme';
-import { useToast } from 'hooks/useToast';
+import { useTheme, useToast } from 'hooks';
 import { NextPage } from 'next';
 import Head from 'next/head';
 import { useCallback, useEffect, useState } from 'react';

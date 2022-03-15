@@ -1,7 +1,7 @@
 import { ServicesSVG } from 'assets/services';
 import { CardBody, CardHeader, DefaultCard, Graph, GraphicCard } from 'components/elements';
 import { Aside, CardList, Footer, Header } from 'components/sections';
-import { useTheme } from 'hooks/useTheme';
+import { useTheme } from 'hooks';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import { useRouter } from 'next/router';

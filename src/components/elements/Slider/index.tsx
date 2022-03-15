@@ -1,6 +1,6 @@
 import { IPlus } from 'assets/icons';
 import { Button } from 'components/elements';
-import { useTheme } from 'hooks/useTheme';
+import { useTheme } from 'hooks';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { A11y, EffectFade, Navigation } from 'swiper';

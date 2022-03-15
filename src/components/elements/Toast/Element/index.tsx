@@ -1,5 +1,5 @@
 import { ICross } from 'assets/icons';
-import { useToast } from 'hooks/useToast';
+import { useToast } from 'hooks';
 import { useEffect } from 'react';
 import { animated, config, useSpring } from 'react-spring';
 

@@ -1,4 +1,4 @@
-import { useTheme } from 'hooks/useTheme';
+import { useTheme } from 'hooks';
 import React from 'react';
 import { LinkData } from 'types';
 

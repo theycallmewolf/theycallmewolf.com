@@ -1,11 +1,5 @@
-import { NavProvider } from './useNav';
-import { ThemeProvider } from './useTheme';
-import { ToastProvider } from './useToast';
+export { AppProvider } from './appProvider';
 
-export const AppProvider: React.FC = ({ children }) => (
-  <ThemeProvider>
-    <NavProvider>
-      <ToastProvider>{children}</ToastProvider>
-    </NavProvider>
-  </ThemeProvider>
-);
+export { useNav } from './useNav';
+export { useTheme } from './useTheme';
+export { useToast } from './useToast';

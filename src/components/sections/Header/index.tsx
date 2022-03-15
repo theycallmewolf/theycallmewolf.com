@@ -1,6 +1,5 @@
 import { ICross, IMenu, Wolf } from 'assets/icons';
-import { useNav } from 'hooks/useNav';
-import { useTheme } from 'hooks/useTheme';
+import { useNav, useTheme } from 'hooks';
 import Link from 'next/link';
 
 import { Nav } from './Nav';

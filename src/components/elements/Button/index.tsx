@@ -1,4 +1,4 @@
-import { useTheme } from 'hooks/useTheme';
+import { useTheme } from 'hooks';
 import { ButtonHTMLAttributes } from 'react';
 
 import styles from './styles.module.scss';

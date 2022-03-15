@@ -1,7 +1,7 @@
 import { TangramCard } from 'assets/tangrams/';
 import { CardBody, CardFooter, CardHeader, CustomLink, DefaultCard } from 'components/elements';
 import { Aside, CardList, Footer, Header } from 'components/sections';
-import { useTheme } from 'hooks/useTheme';
+import { useTheme } from 'hooks';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';

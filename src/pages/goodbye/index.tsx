@@ -1,5 +1,5 @@
 import { IMAGES } from 'constants/images';
-import { useTheme } from 'hooks/useTheme';
+import { useTheme } from 'hooks';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';

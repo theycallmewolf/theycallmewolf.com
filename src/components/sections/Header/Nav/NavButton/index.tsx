@@ -1,4 +1,4 @@
-import { useNav } from 'hooks/useNav';
+import { useNav } from 'hooks';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
