@@ -5,15 +5,15 @@ import styles from './styles.module.scss';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   genre?: 'outline' | 'fill';
-  customClass?: string;
+  className?: string;
 }
 
-export function Button({
+export const Button: React.FC<ButtonProps> = ({
   children,
-  customClass = '',
+  className = '',
   genre = 'fill',
-  ...rest
-}: ButtonProps): JSX.Element {
+  ...props
+}) => {
   const { hasDarkMode } = useTheme();
 
   return (
@@ -25,10 +25,10 @@ export function Button({
         ' ' +
         (hasDarkMode ? styles.dark : styles.light) +
         ' ' +
-        customClass
+        className
       }
-      {...rest}>
+      {...props}>
       {children}
     </button>
   );
-}
+};

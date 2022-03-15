@@ -1,13 +1,13 @@
 import styles from './styles.module.scss';
 
 interface CardBodyProps extends React.HTMLAttributes<HTMLElement> {
-  customClass?: string;
+  className?: string;
 }
 
-export function CardBody({ customClass, children, ...rest }: CardBodyProps): JSX.Element {
+export const CardBody: React.FC<CardBodyProps> = ({ className = '', children, ...props }) => {
   return (
-    <div className={`${styles.cardBody} ${customClass ?? ''}`} {...rest}>
+    <div className={`${styles.cardBody} ${className}`} {...props}>
       {children}
     </div>
   );
-}
+};

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import styles from './styles.module.scss';
 
-export default function TangramCover(): JSX.Element {
+const TangramCover: React.FC = () => {
   const [isPathOneHidden, setIsPathOneHidden] = useState(true);
   const [isPathTwoHidden, setIsPathTwoHidden] = useState(true);
   const [isPathThreeHidden, setIsPathThreeHidden] = useState(true);
@@ -83,4 +83,6 @@ export default function TangramCover(): JSX.Element {
       </g>
     </svg>
   );
-}
+};
+
+export default TangramCover;

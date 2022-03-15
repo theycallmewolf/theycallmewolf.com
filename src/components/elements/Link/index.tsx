@@ -6,26 +6,26 @@ import styles from './styles.module.scss';
 interface CustomLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
   label?: string;
-  customClass?: string;
+  className?: string;
   hasIcon?: boolean;
 }
 
-export function CustomLink({
-  customClass,
+export const CustomLink: React.FC<CustomLinkProps> = ({
+  className = '',
   href,
   label,
   hasIcon,
-  ...rest
-}: CustomLinkProps): JSX.Element {
+  ...props
+}) => {
   return (
     <Link href={href}>
       <a
-        className={`${styles.link} ${customClass ?? ''} ${hasIcon ? styles.icon : ''}`}
-        {...rest}
+        className={`${styles.link} ${className} ${hasIcon ? styles.icon : ''}`}
+        {...props}
         aria-label="show details">
         {label}
         {hasIcon && <IPlus />}
       </a>
     </Link>
   );
-}
+};

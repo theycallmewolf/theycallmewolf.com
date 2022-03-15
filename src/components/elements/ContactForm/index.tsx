@@ -32,7 +32,7 @@ const schema = Yup.object().shape({
   // .test('len', '9 digits', (val) => (val ? val.toString().length === 9 : false))
 });
 
-export function ContactForm(): JSX.Element {
+export const ContactForm: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showMessage, setShowMessage] = useState(false);
   const [emailSent, setEmailSent] = useState(false);
@@ -166,9 +166,8 @@ export function ContactForm(): JSX.Element {
       <Button
         type="button"
         genre="fill"
-        customClass="call-to-action"
         aria-label="contact form"
-        className={`${styles.button} ${isOpen ? styles.open : undefined}`}
+        className={`call-to-action ${styles.button} ${isOpen ? styles.open : undefined}`}
         onClick={() => toggleChat()}>
         {isOpen ? <ICross /> : <IChat />}
       </Button>
@@ -224,7 +223,7 @@ export function ContactForm(): JSX.Element {
                     </div>
                     <div className={styles.buttonContainer}>
                       <Button
-                        customClass={styles.resetBtn}
+                        className={styles.resetBtn}
                         type="reset"
                         onClick={() => {
                           resetForm();
@@ -233,7 +232,7 @@ export function ContactForm(): JSX.Element {
                         reset
                       </Button>
                       <Button
-                        customClass={styles.submitBtn}
+                        className={styles.submitBtn}
                         disabled={!isValid || isSubmitting || hasError}
                         type="submit">
                         send
@@ -290,4 +289,4 @@ export function ContactForm(): JSX.Element {
       </div>
     </div>
   );
-}
+};

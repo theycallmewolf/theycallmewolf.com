@@ -3,10 +3,10 @@ import { useEffect, useState } from 'react';
 import styles from './styles.module.scss';
 
 interface TangramCardProps {
-  customClass?: string;
+  className?: string;
 }
 
-export default function TangramCard({ customClass }: TangramCardProps): JSX.Element {
+const TangramCard: React.FC<TangramCardProps> = ({ className = '' }) => {
   const [isPathOneHidden, setIsPathOneHidden] = useState(true);
   const [isPathTwoHidden, setIsPathTwoHidden] = useState(true);
   const [isPathThreeHidden, setIsPathThreeHidden] = useState(true);
@@ -50,7 +50,7 @@ export default function TangramCard({ customClass }: TangramCardProps): JSX.Elem
   }, []);
 
   return (
-    <div className={`${styles.container} ${customClass ?? ''}`}>
+    <div className={`${styles.container} ${className}`}>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 225 315" preserveAspectRatio="xMidYMax">
         <g className={`${styles.styles} ${isPathOneHidden ? styles.hide : undefined}`}>
           <polyline points="139.4,0 139.4,269.7 184.9,315.2" />
@@ -131,4 +131,6 @@ export default function TangramCard({ customClass }: TangramCardProps): JSX.Elem
       </svg>
     </div>
   );
-}
+};
+
+export default TangramCard;

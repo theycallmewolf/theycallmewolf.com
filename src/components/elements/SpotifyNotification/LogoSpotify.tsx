@@ -1,4 +1,6 @@
-export function LogoSpotify(props: React.HTMLAttributes<HTMLOrSVGElement>): JSX.Element {
+import React from 'react';
+
+export const LogoSpotify: React.FC<React.HTMLAttributes<HTMLOrSVGElement>> = (props) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 127 18" {...props}>
       <path
@@ -7,4 +9,4 @@ export function LogoSpotify(props: React.HTMLAttributes<HTMLOrSVGElement>): JSX.
       />
     </svg>
   );
-}
+};

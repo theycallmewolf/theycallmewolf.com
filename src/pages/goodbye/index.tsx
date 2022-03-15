@@ -10,7 +10,7 @@ import { COLORS } from 'theme';
 
 import styles from './styles.module.scss';
 
-export default function Goodbye(): JSX.Element {
+const Goodbye: React.FC = () => {
   const music = {
     id: 1,
     file: '/audio/we-will-meet-again.mp3',
@@ -885,4 +885,6 @@ export default function Goodbye(): JSX.Element {
       </section>
     </>
   );
-}
+};
+
+export default Goodbye;

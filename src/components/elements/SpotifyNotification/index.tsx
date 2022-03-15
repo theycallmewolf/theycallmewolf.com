@@ -32,7 +32,7 @@ interface ISpotifyMusic {
   };
 }
 
-export function SpotifyNotification(): JSX.Element {
+export const SpotifyNotification: React.FC = () => {
   const [spotifyMusic, setSpotifyMusic] = useState<ISpotifyMusic>({} as ISpotifyMusic);
   const [showToast, setShowToast] = useState(false);
 
@@ -116,4 +116,4 @@ export function SpotifyNotification(): JSX.Element {
   ) : (
     <></>
   );
-}
+};

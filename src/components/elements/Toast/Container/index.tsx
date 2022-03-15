@@ -6,12 +6,10 @@ interface ToastContainerProps {
   messages: ToastProps[];
 }
 
-export function ToastContainer({ messages }: ToastContainerProps): JSX.Element {
-  return (
-    <div className={styles.toastContainer}>
-      {messages.map(({ title, description, id, type }) => (
-        <Toast id={id} key={id} title={title} description={description} type={type} />
-      ))}
-    </div>
-  );
-}
+export const ToastContainer: React.FC<ToastContainerProps> = ({ messages }) => (
+  <div className={styles.toastContainer}>
+    {messages.map(({ title, description, id, type }) => (
+      <Toast id={id} key={id} title={title} description={description} type={type} />
+    ))}
+  </div>
+);

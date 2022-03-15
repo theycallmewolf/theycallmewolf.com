@@ -1,13 +1,15 @@
+import React from 'react';
+
 import styles from './styles.module.scss';
 
 interface CardImageProps extends React.HTMLAttributes<HTMLElement> {
-  customClass?: string;
+  className?: string;
 }
 
-export function CardImage({ customClass, children, ...rest }: CardImageProps): JSX.Element {
+export const CardImage: React.FC<CardImageProps> = ({ className = '', children, ...props }) => {
   return (
-    <div className={`${styles.cardImageContainer} ${customClass ?? ''}`} {...rest}>
+    <div className={`${styles.cardImageContainer} ${className}`} {...props}>
       {children}
     </div>
   );
-}
+};

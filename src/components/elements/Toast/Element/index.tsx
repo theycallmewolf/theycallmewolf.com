@@ -1,12 +1,12 @@
 import { ICross } from 'assets/icons';
 import { useToast } from 'hooks/useToast';
 import { useEffect } from 'react';
+import { animated, config, useSpring } from 'react-spring';
 
 import { ToastProps } from '../types';
 import styles from './styles.module.scss';
-import { animated, config, useSpring } from 'react-spring';
 
-export function ToastElement({ title, description, id }: ToastProps): JSX.Element {
+export const ToastElement: React.FC<ToastProps> = ({ title, description, id }) => {
   const { removeToast, hasToast, timeout } = useToast();
 
   const appearFromBottom = useSpring({
@@ -30,4 +30,4 @@ export function ToastElement({ title, description, id }: ToastProps): JSX.Elemen
       </button>
     </animated.div>
   );
-}
+};

@@ -6,19 +6,19 @@ import { NavLink } from './NavLink';
 import styles from './styles.module.scss';
 
 interface NavProps extends React.HTMLAttributes<HTMLElement> {
-  customClass?: string;
+  className?: string;
   link_list: LinkData[];
 }
 
-export function Nav({ customClass, link_list, ...rest }: NavProps): JSX.Element {
+export const Nav: React.FC<NavProps> = ({ className = '', link_list, ...props }) => {
   const { hasDarkMode } = useTheme();
   return (
     <nav
-      className={`${styles.nav} ${customClass ?? ''} ${hasDarkMode ? styles.dark : undefined}`}
-      {...rest}>
+      className={`${styles.nav} ${className} ${hasDarkMode ? styles.dark : undefined}`}
+      {...props}>
       {link_list.map((link, i) => (
         <NavLink link={link.link} label={link.label} key={i} />
       ))}
     </nav>
   );
-}
+};

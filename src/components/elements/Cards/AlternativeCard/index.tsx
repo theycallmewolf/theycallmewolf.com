@@ -3,15 +3,19 @@ import { CardImage } from './CardImage';
 import styles from './styles.module.scss';
 
 interface AlternativeCardProps extends React.HTMLAttributes<HTMLElement> {
-  customClass?: string;
+  className?: string;
 }
 
-function AlternativeCard({ customClass, children, ...rest }: AlternativeCardProps): JSX.Element {
+const AlternativeCard: React.FC<AlternativeCardProps> = ({
+  className = '',
+  children,
+  ...props
+}) => {
   return (
-    <div className={`${styles.container} ${customClass ?? ''}`} {...rest}>
+    <div className={`${styles.container} ${className}`} {...props}>
       {children}
     </div>
   );
-}
+};
 
 export { AlternativeCard, CardBody, CardImage };

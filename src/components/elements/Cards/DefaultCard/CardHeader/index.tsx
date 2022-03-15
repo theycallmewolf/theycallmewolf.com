@@ -1,12 +1,10 @@
 import styles from './styles.module.scss';
 
 interface CardHeaderProps extends React.HTMLAttributes<HTMLElement> {
-  customClass?: string;
+  className?: string;
 }
-export function CardHeader({ customClass = '', children, ...rest }: CardHeaderProps): JSX.Element {
-  return (
-    <div className={`${styles.cardHeader} ${customClass}`} {...rest}>
-      {children}
-    </div>
-  );
-}
+export const CardHeader: React.FC<CardHeaderProps> = ({ className = '', children, ...props }) => (
+  <div className={`${styles.cardHeader} ${className}`} {...props}>
+    {children}
+  </div>
+);
