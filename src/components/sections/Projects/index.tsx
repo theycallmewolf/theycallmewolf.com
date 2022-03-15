@@ -14,11 +14,11 @@ interface ProjectsProps {
   projects: Project[];
 }
 
-export function Projects({ projects }: ProjectsProps): JSX.Element {
+export const Projects: React.FC<ProjectsProps> = ({ projects }) => {
   return (
     <section className={styles.section}>
       <h2>Projects</h2>
       <Slider slides={projects} contentType="image" hasLink hasIcon />
     </section>
   );
-}
+};

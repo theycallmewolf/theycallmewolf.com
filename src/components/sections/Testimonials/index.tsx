@@ -16,17 +16,11 @@ interface TestimonialsProps {
   testimonials: Testimonial[];
 }
 
-export function Testimonials({ testimonials }: TestimonialsProps): JSX.Element {
-  return (
-    <section className={styles.section}>
-      <div className={styles.cover}>
-        <h2>mentions</h2>
-      </div>
-      <Slider
-        testimonials={testimonials}
-        contentType="testimonial"
-        additionalClass={styles.slider}
-      />
-    </section>
-  );
-}
+export const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => (
+  <section className={styles.section}>
+    <div className={styles.cover}>
+      <h2>mentions</h2>
+    </div>
+    <Slider testimonials={testimonials} contentType="testimonial" additionalClass={styles.slider} />
+  </section>
+);
