@@ -55,7 +55,7 @@ const Work: NextPage<WorkProps> = ({ intro, link_list, cards }) => {
         <Aside intro={intro} link_list={link_list} imageURL="/assets/img/cover-work-alt.jpg" />
         <CardList slug={slug}>
           {cards.map(({ id, slider, slug, project_date, title, description, specs }) => (
-            <DefaultCard key={id} customClass={styles.card}>
+            <DefaultCard key={id} className={styles.card}>
               <CardHeader>
                 {slider.image_large_2x !== '' ? (
                   <div className={styles.imageContainer}>
@@ -71,7 +71,7 @@ const Work: NextPage<WorkProps> = ({ intro, link_list, cards }) => {
                     </Link>
                   </div>
                 ) : (
-                  <TangramCard customClass={styles.placeholder} />
+                  <TangramCard className={styles.placeholder} />
                 )}
               </CardHeader>
               <CardBody>
@@ -83,11 +83,7 @@ const Work: NextPage<WorkProps> = ({ intro, link_list, cards }) => {
                 </ul>
               </CardBody>
               <CardFooter>
-                <CustomLink
-                  label="more"
-                  href={`/work/project/${slug}`}
-                  customClass={styles.button}
-                />
+                <CustomLink label="more" href={`/work/project/${slug}`} className={styles.button} />
               </CardFooter>
             </DefaultCard>
           ))}

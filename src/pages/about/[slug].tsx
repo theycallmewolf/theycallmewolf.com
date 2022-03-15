@@ -23,7 +23,7 @@ const PROJECT_AREAS = ['activity', 'skills', 'career', 'education'];
 const Skills_Cards: React.FC<{ skills: SkillData[] }> = ({ skills }) => (
   <>
     {skills.map(({ id, title, description, graphs }) => (
-      <GraphicCard key={id} customClass={styles.card}>
+      <GraphicCard key={id} className={styles.card}>
         <h2>{title}</h2>
         <p>{description}</p>
         <div className={styles.graphList}>
@@ -43,7 +43,7 @@ const Activities_Cards: React.FC<{ activity: ActivityData[] }> = ({ activity }) 
         <CardHeader>
           <ServicesSVG icon={icon} />
         </CardHeader>
-        <CardBody customClass={styles.card}>
+        <CardBody className={styles.card}>
           <h2>{title}</h2>
           <p>{description}</p>
         </CardBody>
@@ -55,7 +55,7 @@ const Activities_Cards: React.FC<{ activity: ActivityData[] }> = ({ activity }) 
 const Career_Cards: React.FC<{ career: CareerData[] }> = ({ career }) => (
   <>
     {career.map(({ id, logo_svg, year_start, year_end, title, description }) => (
-      <GraphicCard customClass={styles.card} key={id}>
+      <GraphicCard className={styles.card} key={id}>
         <div className={styles.svgContainer} dangerouslySetInnerHTML={{ __html: logo_svg }} />
         <span className={styles.center}>
           <p className={styles.date}>{`${year_start} - ${year_end || 'today'}`}</p>
@@ -70,7 +70,7 @@ const Career_Cards: React.FC<{ career: CareerData[] }> = ({ career }) => (
 const Education_Cards: React.FC<{ education: CareerData[] }> = ({ education }) => (
   <>
     {education.map(({ id, logo_svg, year_start, year_end, title, description }) => (
-      <GraphicCard customClass={styles.card} key={id}>
+      <GraphicCard className={styles.card} key={id}>
         <div className={styles.svgContainer} dangerouslySetInnerHTML={{ __html: logo_svg }} />
         <span className={styles.center}>
           <p className={styles.date}>{`${year_start} - ${year_end}`}</p>

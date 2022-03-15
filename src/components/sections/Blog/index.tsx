@@ -22,13 +22,13 @@ export const Blog: React.FC<BlogProps> = ({ posts }) => (
       </div>
     </div>
     {posts.map((post) => (
-      <DefaultCard key={post.id} customClass={styles.cardContainer}>
+      <DefaultCard key={post.id} className={styles.cardContainer}>
         <CardBody>
           <span className={styles.date}>{post.update_date}</span>
           <h3>{post.title}</h3>
           <p>{post.lead}</p>
         </CardBody>
-        <CardFooter customClass={styles.cardFooter}>
+        <CardFooter className={styles.cardFooter}>
           <CustomLink href={`/${post.slug}`} label="Read" />
         </CardFooter>
       </DefaultCard>

@@ -12,8 +12,8 @@ interface AboutProps {
 
 export const About: React.FC<AboutProps> = ({ skills }) => (
   <section className={styles.section}>
-    <AlternativeCard customClass={styles.card}>
-      <CardBody customClass={styles.cardBody}>
+    <AlternativeCard className={styles.card}>
+      <CardBody className={styles.cardBody}>
         <h2>
           coder
           <br /> + designer
@@ -24,10 +24,10 @@ export const About: React.FC<AboutProps> = ({ skills }) => (
           ))}
         </div>
       </CardBody>
-      <CardImage customClass={styles.cardImage}>
+      <CardImage className={styles.cardImage}>
         <Wolf />
       </CardImage>
-      <CustomLink label="about" href="/about/activity" customClass={styles.button} />
+      <CustomLink label="about" href="/about/activity" className={styles.button} />
     </AlternativeCard>
   </section>
 );

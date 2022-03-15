@@ -253,7 +253,7 @@ const Code: NextPage<ProjectProps> = ({ project, nextProjects }) => {
         <span ref={topMarkRef}></span>
         <Intro project={project} />
         <Lead title={project.leads[0]} icon="plus" />
-        <Slider slides={slides} contentType="image" additionalClass={styles.slider} />
+        <Slider slides={slides} contentType="image" className={styles.slider} />
         <Lead title={project.leads[1]} icon="arrow" />
         <Specs project={project} />
         <Lead title={project.leads[2]} icon="menu" />

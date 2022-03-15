@@ -9,6 +9,6 @@ export const Aside: React.FC<AsideProps> = ({ intro, link_list }) => (
       <h1>{intro[0].title}</h1>
       <p className="lead">{intro[0].lead}</p>
     </div>
-    <Nav customClass={styles.nav} link_list={link_list} />
+    <Nav className={styles.nav} link_list={link_list} />
   </aside>
 );

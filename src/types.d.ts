@@ -153,7 +153,7 @@ export interface SliderProps extends React.HTMLAttributes<HTMLElement> {
   slides?: SlideData[];
   testimonials?: TestimonialData[];
   contentType: 'image' | 'testimonial';
-  additionalClass?: string;
+  className?: string;
   hasLink?: boolean;
   hasIcon?: boolean;
 }

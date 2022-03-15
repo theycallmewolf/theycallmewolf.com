@@ -21,6 +21,6 @@ export const Testimonials: React.FC<TestimonialsProps> = ({ testimonials }) => (
     <div className={styles.cover}>
       <h2>mentions</h2>
     </div>
-    <Slider testimonials={testimonials} contentType="testimonial" additionalClass={styles.slider} />
+    <Slider testimonials={testimonials} contentType="testimonial" className={styles.slider} />
   </section>
 );
