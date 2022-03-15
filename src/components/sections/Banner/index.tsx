@@ -2,15 +2,14 @@ import 'react-typed/dist/animatedCursor.css';
 
 import { bgImages, introCopy } from 'assets/constants';
 import { IShuffle } from 'assets/icons';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import Typed from 'react-typed';
 import { getRandomInt } from 'utils';
 
 import styles from './styles.module.scss';
 
-export function Banner(): JSX.Element {
+export const Banner: React.FC = () => {
   const [bgImage, setBgImage] = useState(null);
-  const [wallBackground, setWallBackground] = useState({});
 
   const addBackgroundImage = useCallback(() => {
     const index = getRandomInt(0, bgImages.length - 1);
@@ -19,12 +18,38 @@ export function Banner(): JSX.Element {
 
   useEffect(() => {
     addBackgroundImage();
-    // setInterval(() => addBackgroundImage(), 5000);
+    setInterval(() => addBackgroundImage(), 10_000);
   }, [addBackgroundImage]);
 
-  useEffect(() => {
-    setWallBackground({ background: `url(${bgImage})` });
-  }, [bgImage]);
+  const wrap = ['1', '2'];
+
+  const frames = useMemo(
+    () => [
+      {
+        id: '1',
+        className: `${styles.wall} ${styles.right}`
+      },
+      {
+        id: '2',
+        className: `${styles.wall} ${styles.left}`
+      },
+      {
+        id: '3',
+        className: `${styles.wall} ${styles.top}`
+      },
+      {
+        id: '4',
+        className: `${styles.wall} ${styles.bottom}`
+      },
+      {
+        id: '5',
+        className: `${styles.wall} ${styles.back}`
+      }
+    ],
+    []
+  );
+
+  const style = useMemo(() => ({ background: `url(${bgImage})` }), [bgImage]);
 
   return (
     <section className={styles.container}>
@@ -34,6 +59,7 @@ export function Banner(): JSX.Element {
         aria-label="shuffle background">
         <IShuffle />
       </button>
+
       <div className={styles.content}>
         <h1>
           They
@@ -49,22 +75,16 @@ export function Banner(): JSX.Element {
           className={styles.typed}
         />
       </div>
+
       <div className={styles.scene}>
-        <div className={styles.wrap}>
-          <div className={styles.wall + ' ' + styles.right} style={wallBackground}></div>
-          <div className={styles.wall + ' ' + styles.left} style={wallBackground}></div>
-          <div className={styles.wall + ' ' + styles.top} style={wallBackground}></div>
-          <div className={styles.wall + ' ' + styles.bottom} style={wallBackground}></div>
-          <div className={styles.wall + ' ' + styles.back} style={wallBackground}></div>
-        </div>
-        <div className={styles.wrap}>
-          <div className={styles.wall + ' ' + styles.right} style={wallBackground}></div>
-          <div className={styles.wall + ' ' + styles.left} style={wallBackground}></div>
-          <div className={styles.wall + ' ' + styles.top} style={wallBackground}></div>
-          <div className={styles.wall + ' ' + styles.bottom} style={wallBackground}></div>
-          <div className={styles.wall + ' ' + styles.back} style={wallBackground}></div>
-        </div>
+        {wrap.map((key) => (
+          <div key={key} className={`${styles.wrap}`}>
+            {frames.map((f) => (
+              <div key={f.id} className={f.className} style={style} />
+            ))}
+          </div>
+        ))}
       </div>
     </section>
   );
-}
+};
