@@ -129,7 +129,7 @@ export interface IntroProps extends React.HTMLAttributes<HTMLElement> {
 
 export interface ProjectProps {
   project: ProjectDetails;
-  nextProjects: NextProject[];
+  nextProjects?: NextProject[];
 }
 
 export interface AboutProps {
