@@ -1,13 +1,33 @@
 import { NavButton } from './NavButton';
 import styles from './styles.module.scss';
 
-export function Nav(): JSX.Element {
-  return (
-    <nav className={styles.nav}>
-      <NavButton label="home" href="/" />
-      <NavButton label="work" href="/work/code" />
-      <NavButton label="about" href="/about/activity" />
-      <NavButton label="store" href="https://theycallmewolf.bigcartel.com/" />
-    </nav>
-  );
-}
+const BUTTONS = [
+  {
+    id: 1,
+    label: 'home',
+    href: '/'
+  },
+  {
+    id: 2,
+    label: 'work',
+    href: '/work/code'
+  },
+  {
+    id: 3,
+    label: 'about',
+    href: '/about/activity'
+  },
+  {
+    id: 4,
+    label: 'store',
+    href: 'https://theycallmewolf.bigcartel.com/'
+  }
+];
+
+export const Nav: React.FC = () => (
+  <nav className={styles.nav}>
+    {BUTTONS.map((b) => (
+      <NavButton label={b.label} href={b.href} key={b.id.toString()} />
+    ))}
+  </nav>
+);
