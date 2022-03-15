@@ -9,16 +9,16 @@ body {
 
 main {
   width: 100%;
-  margin: 0 auto 22rem;
+  margin: 8rem auto 22rem;
   overflow: hidden;
   background: var(--c-background-200);
 
   & > section {
-    margin-top: 240px;
+    margin-top: 24rem;
 
     &:last-of-type {
-      margin-bottom: 220px;
-      padding-bottom: 240px;
+      margin-bottom: 22rem;
+      padding-bottom: 24rem;
     }
   }
 
