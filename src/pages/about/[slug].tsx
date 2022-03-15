@@ -1,8 +1,11 @@
-import Head from 'next/head';
 import { ServicesSVG } from 'assets/services';
 import { CardBody, CardHeader, DefaultCard, Graph, GraphicCard } from 'components/elements';
 import { Aside, CardList, Footer, Header } from 'components/sections';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { useTheme } from 'hooks/useTheme';
+import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import {
   getActivityContent,
   getCareerContent,
@@ -10,26 +13,17 @@ import {
   getIntro,
   getSkillsContent
 } from 'services/prismic';
-import { AboutProps } from 'types';
-import { useEffect } from 'react';
-import { useTheme } from 'hooks/useTheme';
-import { useRouter } from 'next/router';
-import styles from './styles.module.scss';
 import { COLORS } from 'theme';
+import { AboutProps } from 'types';
 
-export default function About({
-  intro,
-  link_list,
-  activity,
-  career,
-  education,
-  skills
-}: AboutProps): JSX.Element {
+import styles from './styles.module.scss';
+
+const About: NextPage<AboutProps> = ({ intro, link_list, activity, career, education, skills }) => {
   const router = useRouter();
   const { slug } = router.query;
   const { getTheme, hasDarkMode } = useTheme();
 
-  useEffect(getTheme, []);
+  useEffect(getTheme);
 
   useEffect(() => {
     const activeArea = ['activity', 'skills', 'career', 'education'].filter(
@@ -37,6 +31,7 @@ export default function About({
     );
     activeArea.length === 0 && router.push('/');
   }, [router, slug]);
+
   return (
     <>
       <Head>
@@ -124,7 +119,9 @@ export default function About({
       <Footer />
     </>
   );
-}
+};
+
+export default About;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
