@@ -10,6 +10,11 @@
   justify-content: center;
 
   .card {
+    @media screen and (min-width: 1024px) {
+      border-radius: 2.8rem;
+      border-bottom-right-radius: 0;
+    }
+
     .cardBody {
       h2 {
         margin-bottom: 16px;
