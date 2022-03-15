@@ -30,14 +30,14 @@ const Intro: React.FC<ProjectProps> = ({ project }) => {
 
   return (
     <section className={styles.intro}>
-      <div className={styles.imageContainer}>
+      <div className={styles['image-container']}>
         <Image src={project.images.cover_large_2x} layout="fill" objectFit="cover" />
       </div>
-      <div className={styles.projectDetails}>
+      <div className={styles['project-details']}>
         <h1>{project.title}</h1>
         <p>{project.description}</p>
       </div>
-      <button className={styles.backBtn} onClick={() => router.back()}>
+      <button className={styles['back-btn']} onClick={() => router.back()}>
         <IArrow />
         back
       </button>
@@ -149,7 +149,7 @@ const NextProject: React.FC<NextProjectProps> = ({ nextProject, projectPreview }
           <h2>Next</h2>
           <p>just keep scrolling</p>
         </div>
-        <div className={styles.imageContainer}>
+        <div className={styles['image-container']}>
           <Image
             src={nextProject.images.cover_large_2x}
             layout="fill"
@@ -157,7 +157,7 @@ const NextProject: React.FC<NextProjectProps> = ({ nextProject, projectPreview }
             quality={90}
           />
         </div>
-        <div className={styles.projectDetails}>
+        <div className={styles['project-details']}>
           <h1>{nextProject.title}</h1>
           <p>{nextProject.description}</p>
         </div>
