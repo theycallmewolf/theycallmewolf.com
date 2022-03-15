@@ -12,7 +12,7 @@ import { useTheme } from 'hooks/useTheme';
 import { useToast } from 'hooks/useToast';
 import { GetStaticProps } from 'next';
 import Head from 'next/head';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { getClients, getPosts, getProjects, getSkills, getTestimonials } from 'services/prismic';
 import { COLORS } from 'theme';
 import { ClientData, GraphData, PostData, ProjectData, TestimonialData } from 'types';
@@ -31,38 +31,39 @@ export default function Home({ projects, clients, testimonials, skills }: HomePr
   const { getTheme, hasDarkMode } = useTheme();
   const { addToast, hasClosed } = useToast();
 
-  const checkPWABanner = () => {
+  const checkPWABanner = useCallback(() => {
     const hasSeenBanner = localStorage.getItem('@wolf_pwa');
     const diffTime = Math.abs(Date.now() - Number(hasSeenBanner));
     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     if (diffDays > 30) localStorage.removeItem('@wolf_pwa');
 
-    if (!hasSeenBanner) {
-      setTimeout(() => {
-        const { isAndroid, isIOS } = deviceCheck();
-        const isInstalled = window.matchMedia('(display-mode: standalone)').matches;
-        if (!isInstalled) {
-          if (isIOS || isAndroid) {
-            const description = isIOS
-              ? 'Tap on the share button below, then "Add to Home screen".'
-              : 'Open the More menu by tapping on the three vertical dots button (top right), then "Add to Home screen".';
+    if (hasSeenBanner) return;
 
-            const { id } = addToast({
-              title: 'Have an app-like experience!',
-              description,
-              type: 'info',
-              duration: 60 * 1000
-            });
+    setTimeout(() => {
+      const { isAndroid, isIOS } = deviceCheck();
+      const isInstalled = window.matchMedia('(display-mode: standalone)').matches;
 
-            setToastID(id);
-          }
-        }
-      }, 1000 * 45);
-    }
-  };
+      if (isInstalled) return;
 
-  useEffect(getTheme, []);
-  useEffect(checkPWABanner, []);
+      if (isIOS || isAndroid) {
+        const description = isIOS
+          ? 'Tap on the share button below, then "Add to Home screen".'
+          : 'Open the More menu by tapping on the three vertical dots button (top right), then "Add to Home screen".';
+
+        const { id } = addToast({
+          title: 'Have an app-like experience!',
+          description,
+          type: 'info',
+          duration: 60 * 1000
+        });
+
+        setToastID(id);
+      }
+    }, 1000 * 45);
+  }, [addToast]);
+
+  useEffect(getTheme);
+  useEffect(checkPWABanner);
 
   useEffect(() => {
     const { status, id } = hasClosed;
