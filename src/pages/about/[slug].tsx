@@ -1,5 +1,5 @@
 import { ServicesSVG } from 'assets/services';
-import { CardBody, CardHeader, DefaultCard, Graph, GraphicCard } from 'components/elements';
+import { Card, CardBody, CardHeader, Graph, GraphicCard } from 'components/elements';
 import { Aside, CardList, Footer, Header } from 'components/sections';
 import { useTheme } from 'hooks';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
@@ -39,7 +39,7 @@ const Skills_Cards: React.FC<{ skills: SkillData[] }> = ({ skills }) => (
 const Activities_Cards: React.FC<{ activity: ActivityData[] }> = ({ activity }) => (
   <>
     {activity.map(({ id, icon, title, description }) => (
-      <DefaultCard key={id}>
+      <Card key={id}>
         <CardHeader>
           <ServicesSVG icon={icon} />
         </CardHeader>
@@ -47,7 +47,7 @@ const Activities_Cards: React.FC<{ activity: ActivityData[] }> = ({ activity }) 
           <h2>{title}</h2>
           <p>{description}</p>
         </CardBody>
-      </DefaultCard>
+      </Card>
     ))}
   </>
 );
