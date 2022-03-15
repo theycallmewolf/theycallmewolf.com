@@ -3,17 +3,12 @@ import { CardContainer } from './CardContainer';
 import { CardFooter } from './CardFooter';
 import { CardHeader } from './CardHeader';
 
-interface DefaultCardProps extends React.HTMLAttributes<HTMLElement> {
+interface CardProps extends React.HTMLAttributes<HTMLElement> {
   className?: string;
   imageFilter?: boolean;
 }
 
-const DefaultCard: React.FC<DefaultCardProps> = ({
-  className = '',
-  children,
-  imageFilter = false,
-  ...props
-}) => {
+const Card: React.FC<CardProps> = ({ className = '', children, imageFilter = false, ...props }) => {
   return (
     <CardContainer className={className} imageFilter={imageFilter} {...props}>
       {children}
@@ -21,4 +16,4 @@ const DefaultCard: React.FC<DefaultCardProps> = ({
   );
 };
 
-export { DefaultCard, CardHeader, CardBody, CardFooter };
+export { Card, CardHeader, CardBody, CardFooter };

@@ -1,5 +1,5 @@
 import { TangramCard } from 'assets/tangrams/';
-import { CardBody, CardFooter, CardHeader, CustomLink, DefaultCard } from 'components/elements';
+import { Card, CardBody, CardFooter, CardHeader, CustomLink } from 'components/elements';
 import { Aside, CardList, Footer, Header } from 'components/sections';
 import { useTheme } from 'hooks';
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
@@ -55,7 +55,7 @@ const Work: NextPage<WorkProps> = ({ intro, link_list, cards }) => {
         <Aside intro={intro} link_list={link_list} imageURL="/assets/img/cover-work-alt.jpg" />
         <CardList slug={slug}>
           {cards.map(({ id, slider, slug, project_date, title, description, specs }) => (
-            <DefaultCard key={id} className={styles.card}>
+            <Card key={id} className={styles.card}>
               <CardHeader>
                 {slider.image_large_2x !== '' ? (
                   <div className={styles.imageContainer}>
@@ -85,7 +85,7 @@ const Work: NextPage<WorkProps> = ({ intro, link_list, cards }) => {
               <CardFooter>
                 <CustomLink label="more" href={`/work/project/${slug}`} className={styles.button} />
               </CardFooter>
-            </DefaultCard>
+            </Card>
           ))}
         </CardList>
       </main>

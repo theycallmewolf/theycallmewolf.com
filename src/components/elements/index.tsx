@@ -1,6 +1,6 @@
 export { Button } from './Button';
 export { AlternativeCard } from './Cards/AlternativeCard';
-export { CardBody, CardFooter, CardHeader, DefaultCard } from './Cards/DefaultCard';
+export { CardBody, CardFooter, CardHeader, Card } from './Cards/Card';
 export { GraphicCard } from './Cards/GraphicCard';
 export { ContactForm } from './ContactForm';
 export { Graph } from './Graph';

@@ -1,7 +1,7 @@
 import { BlogProps } from 'types';
 
 import { Button } from '../../elements/Button';
-import { CardBody, CardFooter, DefaultCard } from '../../elements/Cards/DefaultCard';
+import { CardBody, CardFooter, DefaultCard } from '../../elements/Cards/Card';
 import { CustomLink } from '../../elements/Link';
 import styles from './styles.module.scss';
 
