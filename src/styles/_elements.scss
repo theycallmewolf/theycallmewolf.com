@@ -26,15 +26,3 @@ main {
     margin: 8rem auto 22rem;
   }
 }
-
-.call-to-action {
-  margin: 100px auto;
-
-  @media (min-width: 768px) {
-    position: fixed !important;
-    bottom: 48px;
-    right: 48px;
-    margin: 0;
-    z-index: 2 !important;
-  }
-}

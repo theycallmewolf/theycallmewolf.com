@@ -162,12 +162,12 @@ export const ContactForm: React.FC = () => {
   }
 
   return (
-    <div className={`${styles.container} ${isOpen ? styles.open : undefined}`}>
+    <div className={`${styles.container} ${isOpen && styles.open}`}>
       <Button
         type="button"
         genre="fill"
         aria-label="contact form"
-        className={`call-to-action ${styles.button} ${isOpen ? styles.open : undefined}`}
+        className={`call-to-action ${styles.button} ${isOpen && styles.open}`}
         onClick={() => toggleChat()}>
         {isOpen ? <ICross /> : <IChat />}
       </Button>
