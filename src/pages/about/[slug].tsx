@@ -14,9 +14,73 @@ import {
   getSkillsContent
 } from 'services/prismic';
 import { COLORS } from 'theme';
-import { AboutProps } from 'types';
+import { AboutProps, ActivityData, CareerData, SkillData } from 'types';
 
 import styles from './styles.module.scss';
+
+const PROJECT_AREAS = ['activity', 'skills', 'career', 'education'];
+
+const Skills_Cards: React.FC<{ skills: SkillData[] }> = ({ skills }) => (
+  <>
+    {skills.map(({ id, title, description, graphs }) => (
+      <GraphicCard key={id} customClass={styles.card}>
+        <h2>{title}</h2>
+        <p>{description}</p>
+        <div className={styles.graphList}>
+          {graphs.map((graph) => (
+            <Graph title={graph.title} percentage={graph.percentage} key={graph.id} />
+          ))}
+        </div>
+      </GraphicCard>
+    ))}
+  </>
+);
+
+const Activities_Cards: React.FC<{ activity: ActivityData[] }> = ({ activity }) => (
+  <>
+    {activity.map(({ id, icon, title, description }) => (
+      <DefaultCard key={id}>
+        <CardHeader>
+          <ServicesSVG icon={icon} />
+        </CardHeader>
+        <CardBody customClass={styles.card}>
+          <h2>{title}</h2>
+          <p>{description}</p>
+        </CardBody>
+      </DefaultCard>
+    ))}
+  </>
+);
+
+const Career_Cards: React.FC<{ career: CareerData[] }> = ({ career }) => (
+  <>
+    {career.map(({ id, logo_svg, year_start, year_end, title, description }) => (
+      <GraphicCard customClass={styles.card} key={id}>
+        <div className={styles.svgContainer} dangerouslySetInnerHTML={{ __html: logo_svg }} />
+        <span className={styles.center}>
+          <p className={styles.date}>{`${year_start} - ${year_end || 'today'}`}</p>
+          <h2>{title}</h2>
+          <p>{description}</p>
+        </span>
+      </GraphicCard>
+    ))}
+  </>
+);
+
+const Education_Cards: React.FC<{ education: CareerData[] }> = ({ education }) => (
+  <>
+    {education.map(({ id, logo_svg, year_start, year_end, title, description }) => (
+      <GraphicCard customClass={styles.card} key={id}>
+        <div className={styles.svgContainer} dangerouslySetInnerHTML={{ __html: logo_svg }} />
+        <span className={styles.center}>
+          <p className={styles.date}>{`${year_start} - ${year_end}`}</p>
+          <h2>{title}</h2>
+          <p>{description}</p>
+        </span>
+      </GraphicCard>
+    ))}
+  </>
+);
 
 const About: NextPage<AboutProps> = ({ intro, link_list, activity, career, education, skills }) => {
   const router = useRouter();
@@ -26,9 +90,7 @@ const About: NextPage<AboutProps> = ({ intro, link_list, activity, career, educa
   useEffect(getTheme);
 
   useEffect(() => {
-    const activeArea = ['activity', 'skills', 'career', 'education'].filter(
-      (area) => area === slug
-    );
+    const activeArea = PROJECT_AREAS.filter((area) => area === slug);
     activeArea.length === 0 && router.push('/');
   }, [router, slug]);
 
@@ -55,65 +117,15 @@ const About: NextPage<AboutProps> = ({ intro, link_list, activity, career, educa
           content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
         />
       </Head>
+
       <Header />
       <Aside intro={intro} link_list={link_list} imageURL="/assets/img/cover-about.jpg" />
       <main>
         <CardList slug={slug}>
-          {slug === 'skills' &&
-            skills.map(({ id, title, description, graphs }) => (
-              <GraphicCard key={id} customClass={styles.card}>
-                <h2>{title}</h2>
-                <p>{description}</p>
-                <div className={styles.graphList}>
-                  {graphs.map((graph) => (
-                    <Graph title={graph.title} percentage={graph.percentage} key={graph.id} />
-                  ))}
-                </div>
-              </GraphicCard>
-            ))}
-
-          {slug === 'activity' &&
-            activity.map(({ id, icon, title, description }) => (
-              <DefaultCard key={id}>
-                <CardHeader>
-                  <ServicesSVG icon={icon} />
-                </CardHeader>
-                <CardBody customClass={styles.card}>
-                  <h2>{title}</h2>
-                  <p>{description}</p>
-                </CardBody>
-              </DefaultCard>
-            ))}
-
-          {slug === 'career' &&
-            career.map(({ id, logo_svg, year_start, year_end, title, description }) => (
-              <GraphicCard customClass={styles.card} key={id}>
-                <div
-                  className={styles.svgContainer}
-                  dangerouslySetInnerHTML={{ __html: logo_svg }}
-                />
-                <span className={styles.center}>
-                  <p className={styles.date}>{`${year_start} - ${year_end || 'today'}`}</p>
-                  <h2>{title}</h2>
-                  <p>{description}</p>
-                </span>
-              </GraphicCard>
-            ))}
-
-          {slug === 'education' &&
-            education.map(({ id, logo_svg, year_start, year_end, title, description }) => (
-              <GraphicCard customClass={styles.card} key={id}>
-                <div
-                  className={styles.svgContainer}
-                  dangerouslySetInnerHTML={{ __html: logo_svg }}
-                />
-                <span className={styles.center}>
-                  <p className={styles.date}>{`${year_start} - ${year_end}`}</p>
-                  <h2>{title}</h2>
-                  <p>{description}</p>
-                </span>
-              </GraphicCard>
-            ))}
+          {slug === 'skills' && <Skills_Cards skills={skills} />}
+          {slug === 'activity' && <Activities_Cards activity={activity} />}
+          {slug === 'career' && <Career_Cards career={career} />}
+          {slug === 'education' && <Education_Cards education={education} />}
         </CardList>
       </main>
       <Footer />
