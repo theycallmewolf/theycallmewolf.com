@@ -16,7 +16,7 @@ export function Slider({
   hasLink,
   hasIcon,
   additionalClass = '',
-  ...rest
+  ...props
 }: SliderProps): JSX.Element {
   const [slideNumber, setSlideNumber] = useState('01');
   const [slideList, setSlideList] = useState([]);
@@ -34,13 +34,13 @@ export function Slider({
   }
 
   return (
-    <div className={`slider-container ${hasDarkMode ? 'dark' : ''} ${additionalClass}`} {...rest}>
+    <div className={`slider-container ${hasDarkMode && 'dark'} ${additionalClass}`} {...props}>
       <Swiper
         spaceBetween={48}
         navigation
         grabCursor={true}
-        loop={false}
-        speed={600}
+        loop={true}
+        speed={1200}
         effect={contentType === 'testimonial' ? 'fade' : 'slide'}
         className={contentType === 'testimonial' && 'testimonial'}
         breakpoints={{
@@ -49,7 +49,7 @@ export function Slider({
           },
           1024: {
             slidesPerView: contentType === 'image' ? 2 : 1,
-            spaceBetween: 0
+            spaceBetween: 24
           }
         }}
         onSlideChange={(swiper) => handleSlideNumber(swiper.activeIndex)}>
@@ -57,7 +57,7 @@ export function Slider({
           slideList.map(({ slider, project_date, slug }, i) => {
             const { image_large_2x, caption } = slider;
             return (
-              <SwiperSlide key={i}>
+              <SwiperSlide key={i} className={contentType === 'image' && 'shadow'}>
                 <figure>
                   <Image src={image_large_2x} layout="fill" quality={90} />
                   {caption && <figcaption>{`(${project_date}) ${caption}`}</figcaption>}
@@ -84,8 +84,6 @@ export function Slider({
               </SwiperSlide>
             );
           })}
-
-        {contentType === 'image' && <SwiperSlide></SwiperSlide>}
       </Swiper>
       <div className="current-slide">{slideNumber}</div>
     </div>
