@@ -1,20 +1,21 @@
+import 'react-phone-number-input/style.css';
+
 import { Wolf } from 'assets/icons';
 import { IChat, ICross, ILoading } from 'assets/icons';
 import axios from 'axios';
 import { Field, Form, Formik } from 'formik';
 import { useTheme } from 'hooks/useTheme';
 import { useToast } from 'hooks/useToast';
-import { useCallback, useRef, useState } from 'react';
-import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import { E164Number } from 'libphonenumber-js/core';
+import { useCallback, useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
+import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import { api } from 'services/api';
 import { EmailData } from 'types';
 import * as Yup from 'yup';
 
 import { Button } from '../Button';
 import styles from './styles.module.scss';
-import 'react-phone-number-input/style.css';
 
 interface FormValues {
   name: string;
