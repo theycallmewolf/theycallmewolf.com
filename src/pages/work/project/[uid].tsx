@@ -185,6 +185,7 @@ const Code: NextPage<ProjectProps> = ({ project, nextProjects }) => {
 
   const [slides, setSlides] = useState([]);
   const [nextProject, setNextProject] = useState<NextProject | undefined>(undefined);
+  const [projectsSeen, setProjectsSeen] = useState([]);
 
   const onScroll = useCallback(() => {
     const { top } = projectPreview.current.getBoundingClientRect();
@@ -199,11 +200,18 @@ const Code: NextPage<ProjectProps> = ({ project, nextProjects }) => {
   const handleNextProject = useCallback(() => {
     let i = getRandomInt(0, nextProjects.length);
 
-    if (nextProject && nextProjects[i].id === nextProject.id)
+    if (nextProject && projectsSeen.includes[nextProjects[i].id]) {
       i = getRandomInt(0, nextProjects.length);
 
+      setNextProject(
+        nextProjects.map((p) => {
+          if (p.id !== nextProjects[i].id) return p;
+        })[i]
+      );
+    }
+
     setNextProject(nextProjects[i]);
-  }, [nextProject, nextProjects, setNextProject]);
+  }, [nextProject, nextProjects, projectsSeen]);
 
   useEffect(handleNextProject);
   useEffect(getTheme);
