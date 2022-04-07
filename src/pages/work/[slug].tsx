@@ -146,6 +146,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       link_list,
       cards
     },
-    revalidate: 60 * 60 * 1 // 1 hour
+    revalidate: 60 // secs
   };
 };

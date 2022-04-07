@@ -167,6 +167,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       education,
       skills
     },
-    revalidate: 60 * 60 * 24 // 24 hours
+    revalidate: 60 // secs
   };
 };
