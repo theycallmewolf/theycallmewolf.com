@@ -269,7 +269,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const prismic = getPrismicClient();
   const { results } = await prismic.query(Prismic.Predicates.at('document.type', 'projects'));
   return {
-    paths: results.map(({ uid }) => `/work/project/${uid}`),
+    paths: results.map(({ uid }) => ({
+      params: { uid }
+    })),
     fallback: 'blocking'
   };
 };
