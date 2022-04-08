@@ -285,6 +285,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       project,
       nextProjects
     },
-    revalidate: 60 * 60 * 24 * 7 // 7 days
+    revalidate: 60 // secs
   };
 };
