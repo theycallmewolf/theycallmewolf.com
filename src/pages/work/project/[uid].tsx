@@ -265,17 +265,6 @@ const Code: NextPage<ProjectProps> = ({ project, nextProjects }) => {
 
 export default Code;
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const prismic = getPrismicClient();
-  const { results } = await prismic.query(Prismic.Predicates.at('document.type', 'projects'));
-  return {
-    paths: results.map(({ uid }) => ({
-      params: { uid }
-    })),
-    fallback: 'blocking'
-  };
-};
-
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { uid } = params;
 
@@ -287,6 +276,17 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       project,
       nextProjects
     },
-    revalidate: 60 // secs
+    revalidate: 60
+  };
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const prismic = getPrismicClient();
+  const { results } = await prismic.query(Prismic.Predicates.at('document.type', 'projects'));
+  return {
+    paths: results.map(({ uid }) => ({
+      params: { uid }
+    })),
+    fallback: 'blocking'
   };
 };
