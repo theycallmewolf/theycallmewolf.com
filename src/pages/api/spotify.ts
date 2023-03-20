@@ -54,6 +54,9 @@ export default async function spotifySong(
   }
 
   const { item } = response.data;
+
+  if (!item) return res.status(200).json({ is_playing: false });
+
   const album = {
     name: item.album.name,
     images: item.album.images,
