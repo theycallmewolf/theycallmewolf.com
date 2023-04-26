@@ -1,25 +1,19 @@
-export const deviceCheck = (): { isAndroid: boolean; isIOS: boolean } => {
-  const isAndroid = /(android)/i.test(navigator.userAgent);
-  const isIOS =
-    ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'].includes(
-      navigator.platform
-    ) ||
-    (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
+const devices = ['iPad Simulator', 'iPhone Simulator', 'iPod Simulator', 'iPad', 'iPhone', 'iPod'];
 
-  return { isAndroid, isIOS };
+type DeviceCheck = () => {
+  isAndroid: boolean;
+  isIOS: boolean;
 };
 
-export const iOSCheck = (): boolean => {
-  const devices = [
-    'iPad Simulator',
-    'iPhone Simulator',
-    'iPod Simulator',
-    'iPad',
-    'iPhone',
-    'iPod'
-  ];
-  return (
-    devices.includes(navigator.platform) ||
-    (navigator.userAgent.includes('Mac') && 'ontouchend' in document) // iPad on iOS 13 detection
-  );
+export const deviceCheck: DeviceCheck = () => {
+  if (!navigator) return { isAndroid: false, isIOS: false };
+
+  const platform = navigator?.userAgentData?.platform || navigator?.platform || 'unknown';
+
+  return {
+    isAndroid: /(android)/i.test(navigator.userAgent),
+    isIOS:
+      devices.includes(platform) ||
+      (navigator.userAgent.includes('Mac') && 'ontouchend' in document)
+  };
 };
