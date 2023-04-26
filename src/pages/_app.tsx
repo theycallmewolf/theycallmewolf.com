@@ -4,6 +4,7 @@ import 'swiper/css/effect-fade';
 import 'styles/global.scss';
 import 'components/elements/Slider/styles.scss';
 
+import { Analytics } from '@vercel/analytics/react';
 import { ContactForm, SpotifyNotification } from 'components/elements';
 import { AppProvider } from 'hooks';
 import { NextPage } from 'next';
@@ -11,7 +12,6 @@ import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect } from 'react';
 import { pageView } from 'utils/google-analytics';
-
 const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
   const router = useRouter();
 
@@ -39,6 +39,7 @@ const MyApp: NextPage<AppProps> = ({ Component, pageProps }) => {
       <Component {...pageProps} />
       <ContactForm />
       <SpotifyNotification />
+      <Analytics />
     </AppProvider>
   );
 };
