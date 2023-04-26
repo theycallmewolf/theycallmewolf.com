@@ -8,58 +8,22 @@ import {
   Testimonials
 } from 'components/sections';
 // import { Blog } from 'components/sections';
-import { useTheme, useToast } from 'hooks';
+import { useTheme } from 'hooks';
+import { usePWABanner } from 'hooks/usePWABanner';
 import { GetStaticProps, NextPage } from 'next';
 import Head from 'next/head';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { getClients, getPosts, getProjects, getSkills, getTestimonials } from 'services/prismic';
 import { COLORS } from 'theme';
 import { HomeProps } from 'types';
-import { deviceCheck } from 'utils';
 
 const Home: NextPage<HomeProps> = ({ projects, clients, testimonials, skills }) => {
-  const [toastID, setToastID] = useState('');
+  const { checkPWABanner } = usePWABanner();
+
   const { getTheme, hasDarkMode } = useTheme();
-  const { addToast, hasClosed } = useToast();
-
-  const checkPWABanner = useCallback(() => {
-    const hasSeenBanner = localStorage.getItem('@wolf_pwa');
-    const diffTime = Math.abs(Date.now() - Number(hasSeenBanner));
-    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-    if (diffDays > 30) localStorage.removeItem('@wolf_pwa');
-
-    if (hasSeenBanner) return;
-
-    setTimeout(() => {
-      const { isAndroid, isIOS } = deviceCheck();
-      const isInstalled = window.matchMedia('(display-mode: standalone)').matches;
-
-      if (isInstalled) return;
-
-      if (isIOS || isAndroid) {
-        const description = isIOS
-          ? 'Tap on the share button below, then "Add to Home screen".'
-          : 'Open the More menu by tapping on the three vertical dots button (top right), then "Add to Home screen".';
-
-        const { id } = addToast({
-          title: 'Have an app-like experience!',
-          description,
-          type: 'info',
-          duration: 60 * 1000
-        });
-
-        setToastID(id);
-      }
-    }, 1000 * 45);
-  }, [addToast]);
 
   useEffect(getTheme);
   useEffect(checkPWABanner);
-
-  useEffect(() => {
-    const { status, id } = hasClosed;
-    if (status && toastID === id) localStorage.setItem('@wolf_pwa', String(Date.now()));
-  }, [hasClosed, toastID]);
 
   return (
     <>
