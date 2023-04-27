@@ -16,12 +16,12 @@ const BUTTONS = [
     id: 3,
     label: 'about',
     href: '/about/activity'
-  },
-  {
-    id: 4,
-    label: 'store',
-    href: 'https://theycallmewolf.bigcartel.com/'
   }
+  // {
+  //   id: 4,
+  //   label: 'store',
+  //   href: 'https://theycallmewolf.bigcartel.com/'
+  // }
 ];
 
 export const Nav: React.FC = () => (
