@@ -1,5 +1,5 @@
-import { config } from 'config';
 import { useTheme } from 'hooks';
+import { useConfig } from 'hooks/useConfig';
 import Head from 'next/head';
 import { COLORS } from 'theme';
 
@@ -20,33 +20,40 @@ export const Metadata: React.FC<Props> = (props) => {
   );
 };
 
-const Credits: React.FC<Props> = (props) => (
-  <Head>
-    <title>{`${props.title} | ${config.site.name}`}</title>
-    <meta name="description" content={props.description} />
-    <meta name="author" content="Bruno Lobato" />
-  </Head>
-);
+const Credits: React.FC<Props> = (props) => {
+  const { CONFIG } = useConfig();
 
-const OpenGraph: React.FC<Props> = (props) => (
-  <Head>
-    <meta property="og:locale" content="en" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={`${props.title} | ${config.site.name}`} />
-    <meta property="og:description" content={props.description} />
-    <meta property="og:site_name" content={config.site.name} />
-    <meta property="twitter:card" content="summary" />
-    <meta property="twitter:creator" content={config.social.twitter} />
-    <meta property="twitter:title" content={`${props.title} | ${config.site.name}`} />
-    <meta property="twitter:description" content={props.description} />
-    <meta property="og:image" content={config.social.image} />
-    <meta property="og:image:secure_url" content={config.site.url} />
-    <meta property="og:image:alt" content="theycallmewolf logo" />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-  </Head>
-);
+  return (
+    <Head>
+      <title>{`${props.title} | ${CONFIG.site.name}`}</title>
+      <meta name="description" content={props.description} />
+      <meta name="author" content="Bruno Lobato" />
+    </Head>
+  );
+};
+
+const OpenGraph: React.FC<Props> = (props) => {
+  const { CONFIG } = useConfig();
+  return (
+    <Head>
+      <meta property="og:locale" content="en" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content={`${props.title} | ${CONFIG.site.name}`} />
+      <meta property="og:description" content={props.description} />
+      <meta property="og:site_name" content={CONFIG.site.name} />
+      <meta property="twitter:card" content="summary" />
+      <meta property="twitter:creator" content={CONFIG.social.twitter} />
+      <meta property="twitter:title" content={`${props.title} | ${CONFIG.site.name}`} />
+      <meta property="twitter:description" content={props.description} />
+      <meta property="og:image" content={CONFIG.social.image} />
+      <meta property="og:image:secure_url" content={CONFIG.site.url} />
+      <meta property="og:image:alt" content="theycallmewolf logo" />
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+    </Head>
+  );
+};
 
 const CommonMetas: React.FC = () => {
   const { hasDarkMode } = useTheme();
