@@ -1,7 +1,7 @@
 import { TangramCard } from 'assets/tangrams/';
 import { Card, CardBody, CardFooter, CardHeader, CustomLink } from 'components/elements';
 import { Layout } from 'components/layout';
-import { Aside, CardList, Footer, Header } from 'components/sections';
+import { Aside, CardList } from 'components/sections';
 import { useTheme } from 'hooks';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
@@ -78,10 +78,8 @@ export default WorkPage;
 WorkPage.getLayout = function getLayout(page: ReactElement) {
   return (
     <Layout
-      title={'WORK'}
-      description={
-        "Here's the list of some of the projects (personal and profissional) that Mr. Wolf worked on. From Web development to illustration, passing through UI design and graphic design. It's a lot... of gray hair at least."
-      }>
+      title="WORK"
+      description="Here's the list of some of the projects (personal and profissional) that Mr. Wolf worked on. From Web development to illustration, passing through UI design and graphic design. It's a lot... of gray hair at least.">
       {page}
     </Layout>
   );
