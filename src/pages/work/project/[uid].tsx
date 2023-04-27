@@ -99,8 +99,9 @@ ProjectPage.getLayout = function getLayout(page: ReactElement) {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { uid } = params;
 
-  const project = await getProject({ uid });
-  const nextProjects = await getNextProject();
+  const projectPromise = getProject({ uid });
+  const nextProjectsPromise = await getNextProject();
+  const [project, nextProjects] = await Promise.all([projectPromise, nextProjectsPromise]);
 
   return {
     props: {
