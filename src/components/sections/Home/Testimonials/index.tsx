@@ -1,7 +1,7 @@
 import React from 'react';
 import { TestimonialData } from 'types';
 
-import { Slider } from '../../elements/Slider';
+import { Slider } from '../../../elements/Slider';
 import styles from './styles.module.scss';
 
 interface TestimonialsProps {

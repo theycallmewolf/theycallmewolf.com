@@ -1,8 +1,8 @@
 import { BlogProps } from 'types';
 
-import { Button } from '../../elements/Button';
-import { Card, CardBody, CardFooter } from '../../elements/Cards/Card';
-import { CustomLink } from '../../elements/Link';
+import { Button } from '../../../elements/Button';
+import { Card, CardBody, CardFooter } from '../../../elements/Cards/Card';
+import { CustomLink } from '../../../elements/Link';
 import styles from './styles.module.scss';
 
 export const Blog: React.FC<BlogProps> = ({ posts }) => (

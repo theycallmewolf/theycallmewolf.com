@@ -5,8 +5,8 @@
     position: relative;
     overflow: hidden;
 
-    background-image: url('../../../../public/assets/wires/w-testimonials-cover-red.svg'),
-      url('../../../../public/assets/img/testimonials.jpg');
+    background-image: url('../../../../../public/assets/wires/w-testimonials-cover-red.svg'),
+      url('../../../../../public/assets/img/testimonials.jpg');
     background-color: var(--c-candy-red);
     background-position: center;
     background-blend-mode: lighten, multiply;

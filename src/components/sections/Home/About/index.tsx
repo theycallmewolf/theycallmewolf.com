@@ -1,9 +1,9 @@
 import { Wolf } from 'assets/icons';
 import { GraphData } from 'types';
 
-import { AlternativeCard, CardBody, CardImage } from '../../elements/Cards/AlternativeCard';
-import { Graph } from '../../elements/Graph';
-import { CustomLink } from '../../elements/Link';
+import { AlternativeCard, CardBody, CardImage } from '../../../elements/Cards/AlternativeCard';
+import { Graph } from '../../../elements/Graph';
+import { CustomLink } from '../../../elements/Link';
 import styles from './styles.module.scss';
 
 interface AboutProps {

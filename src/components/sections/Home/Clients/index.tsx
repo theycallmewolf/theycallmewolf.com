@@ -1,6 +1,6 @@
 import { ClientsProps } from 'types';
 
-import { LogoButton } from '../../elements/LogoButton';
+import { LogoButton } from '../../../elements/LogoButton';
 import styles from './styles.module.scss';
 
 export const Clients: React.FC<ClientsProps> = ({ clients }) => (

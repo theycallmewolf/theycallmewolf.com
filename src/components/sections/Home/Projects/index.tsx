@@ -1,6 +1,6 @@
 import { SlideData } from 'types';
 
-import { Slider } from '../../elements/Slider';
+import { Slider } from '../../../elements/Slider';
 import styles from './styles.module.scss';
 
 interface ProjectsProps {
