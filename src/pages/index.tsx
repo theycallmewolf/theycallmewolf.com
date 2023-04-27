@@ -40,15 +40,17 @@ HomePage.getLayout = function getLayout(page: ReactElement) {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const posts = await getPosts();
-  const projects = (await getProjects()).filter((project) => project.highlight);
-  const clients = await getClients();
-  const testimonials = await getTestimonials();
-  const skills = await getSkills();
+  const [posts, highlightedProjects, clients, testimonials, skills] = await Promise.all([
+    getPosts(),
+    getProjects().then((proj) => proj.filter(({ highlight }) => highlight)),
+    getClients(),
+    getTestimonials(),
+    getSkills()
+  ]);
 
   return {
     props: {
-      projects,
+      projects: highlightedProjects,
       clients,
       posts,
       testimonials,
