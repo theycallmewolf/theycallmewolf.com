@@ -33,7 +33,7 @@ export default HomePage;
 
 HomePage.getLayout = function getLayout(page: ReactElement) {
   return (
-    <Layout title={'HOME'} description={'@TODO'}>
+    <Layout title={'HOME'} description={'Web portfolio of Bruno Lobato, coder + designer.'}>
       {page}
     </Layout>
   );
