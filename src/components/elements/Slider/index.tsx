@@ -56,6 +56,7 @@ export const Slider: React.FC<SliderProps> = ({
                   layout="fill"
                   objectFit="cover"
                   quality={90}
+                  priority
                 />
 
                 {slide.slider.caption && (
@@ -81,6 +82,7 @@ export const Slider: React.FC<SliderProps> = ({
               )}
             </SwiperSlide>
           ))}
+
         {contentType === 'testimonial' &&
           testimonialList.map(({ quote, name, jobTitle, publish_date }, i) => (
             <SwiperSlide key={i}>
