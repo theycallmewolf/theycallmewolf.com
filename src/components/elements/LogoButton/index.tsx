@@ -1,4 +1,4 @@
-import styles from './styles.module.scss';
+import styles from './logo-button.module.scss';
 
 interface LogoButton extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   svgLogo: string;

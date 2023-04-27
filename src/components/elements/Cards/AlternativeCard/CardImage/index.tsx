@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './styles.module.scss';
+import styles from './card-image.module.scss';
 
 interface CardImageProps extends React.HTMLAttributes<HTMLElement> {
   className?: string;

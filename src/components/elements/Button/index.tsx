@@ -1,7 +1,7 @@
 import { useTheme } from 'hooks';
 import { ButtonHTMLAttributes } from 'react';
 
-import styles from './styles.module.scss';
+import styles from './button.module.scss';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   genre?: 'outline' | 'fill';

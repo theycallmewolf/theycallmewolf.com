@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { animated, config, useSpring } from 'react-spring';
 
 import { LogoSpotify } from './LogoSpotify';
-import styles from './styles.module.scss';
+import styles from './spotify-notification.module.scss';
 
 interface ISpotifyMusic {
   is_playing: boolean;

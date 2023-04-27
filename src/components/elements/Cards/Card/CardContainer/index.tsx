@@ -1,4 +1,4 @@
-import styles from './styles.module.scss';
+import styles from './card-container.module.scss';
 
 interface CardContainerProps extends React.HTMLAttributes<HTMLElement> {
   className?: string;

@@ -1,4 +1,4 @@
-import styles from './styles.module.scss';
+import styles from './card-body.module.scss';
 
 interface CardBodyProps extends React.HTMLAttributes<HTMLElement> {
   className?: string;

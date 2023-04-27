@@ -15,7 +15,7 @@ import {
 } from 'services/prismic';
 import { AboutProps, ActivityData, CareerData, SkillData } from 'types';
 
-import styles from './styles.module.scss';
+import styles from './about.module.scss';
 
 const PROJECT_AREAS = ['activity', 'skills', 'career', 'education'];
 

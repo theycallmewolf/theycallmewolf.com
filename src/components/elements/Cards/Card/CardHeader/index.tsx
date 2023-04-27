@@ -1,4 +1,4 @@
-import styles from './styles.module.scss';
+import styles from './card-header.module.scss';
 
 interface CardHeaderProps extends React.HTMLAttributes<HTMLElement> {
   className?: string;

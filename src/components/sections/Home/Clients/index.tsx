@@ -1,7 +1,7 @@
 import { ClientsProps } from 'types';
 
 import { LogoButton } from '../../../elements/LogoButton';
-import styles from './styles.module.scss';
+import styles from './clients.module.scss';
 
 export const Clients: React.FC<ClientsProps> = ({ clients }) => (
   <section className={styles.section}>

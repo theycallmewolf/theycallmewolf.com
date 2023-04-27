@@ -14,7 +14,7 @@ import { EmailData } from 'types';
 import * as Yup from 'yup';
 
 import { Button } from '../Button';
-import styles from './styles.module.scss';
+import styles from './contact-form.module.scss';
 
 interface FormValues {
   name: string;

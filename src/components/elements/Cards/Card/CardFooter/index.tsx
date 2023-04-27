@@ -1,4 +1,4 @@
-import styles from './styles.module.scss';
+import styles from './card-footer.module.scss';
 
 interface CardFooterProps extends React.HTMLAttributes<HTMLElement> {
   className?: string;

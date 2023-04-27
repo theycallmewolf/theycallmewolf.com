@@ -2,7 +2,7 @@ import { useNav } from 'hooks';
 import { useRouter } from 'next/router';
 import { useMemo } from 'react';
 
-import styles from './styles.module.scss';
+import styles from './nav-button.module.scss';
 
 interface NavButtonProps extends React.HTMLAttributes<HTMLAnchorElement> {
   href: string;

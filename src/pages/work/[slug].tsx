@@ -11,7 +11,7 @@ import { ReactElement } from 'react';
 import { getIntro, getProjects } from 'services/prismic';
 import { IntroData, LinkData, Project, ProjectData } from 'types';
 
-import styles from './styles.module.scss';
+import styles from './work.module.scss';
 
 interface WorkPageProps {
   intro: IntroData;

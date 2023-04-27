@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { animated, config, useSpring } from 'react-spring';
 
 import { ToastProps } from '../types';
-import styles from './styles.module.scss';
+import styles from './element.module.scss';
 
 export const ToastElement: React.FC<ToastProps> = ({ title, description, id }) => {
   const { removeToast, hasToast, timeout } = useToast();

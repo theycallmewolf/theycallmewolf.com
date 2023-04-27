@@ -1,5 +1,5 @@
+import styles from './nav.module.scss';
 import { NavButton } from './NavButton';
-import styles from './styles.module.scss';
 
 const BUTTONS = [
   {

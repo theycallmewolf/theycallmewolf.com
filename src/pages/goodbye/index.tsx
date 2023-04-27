@@ -7,7 +7,7 @@ import { ReactElement, useCallback, useEffect, useState } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 import { animated, config, useSpring } from 'react-spring';
 
-import styles from './styles.module.scss';
+import styles from './goodbye.module.scss';
 
 const GoodbyePage: NextPageWithLayout = () => {
   const music = {

@@ -1,4 +1,4 @@
-import styles from './styles.module.scss';
+import styles from './graph.module.scss';
 
 interface GraphProps extends React.HTMLAttributes<HTMLElement> {
   title: string;

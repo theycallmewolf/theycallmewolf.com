@@ -2,8 +2,8 @@ import { useTheme } from 'hooks';
 import React from 'react';
 import { LinkData } from 'types';
 
+import styles from './nav.module.scss';
 import { NavLink } from './NavLink';
-import styles from './styles.module.scss';
 
 interface NavProps extends React.HTMLAttributes<HTMLElement> {
   className?: string;

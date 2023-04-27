@@ -6,7 +6,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import Typed from 'react-typed';
 import { getRandomInt } from 'utils';
 
-import styles from './styles.module.scss';
+import styles from './banner.module.scss';
 
 export const Banner: React.FC = () => {
   const [bgImage, setBgImage] = useState(null);

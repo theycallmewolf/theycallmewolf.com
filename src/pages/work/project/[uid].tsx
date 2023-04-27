@@ -11,7 +11,7 @@ import { getNextProject, getPrismicClient, getProject } from 'services/prismic';
 import { NextProject, ProjectProps } from 'types';
 import { formatDate, getRandomInt } from 'utils';
 
-import styles from './styles.module.scss';
+import styles from './project.module.scss';
 
 type NextProjectProps = {
   nextProject: NextProject;

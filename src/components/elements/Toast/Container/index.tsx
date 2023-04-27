@@ -1,6 +1,6 @@
 import { ToastElement as Toast } from '../Element';
 import { ToastProps } from '../types';
-import styles from './styles.module.scss';
+import styles from './container.module.scss';
 
 interface ToastContainerProps {
   messages: ToastProps[];

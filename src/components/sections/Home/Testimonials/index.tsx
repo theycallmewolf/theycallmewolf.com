@@ -2,7 +2,7 @@ import React from 'react';
 import { TestimonialData } from 'types';
 
 import { Slider } from '../../../elements/Slider';
-import styles from './styles.module.scss';
+import styles from './testimonials.module.scss';
 
 interface TestimonialsProps {
   testimonials: TestimonialData[];

@@ -1,6 +1,6 @@
+import styles from './alternative-card.module.scss';
 import { CardBody } from './CardBody';
 import { CardImage } from './CardImage';
-import styles from './styles.module.scss';
 
 interface AlternativeCardProps extends React.HTMLAttributes<HTMLElement> {
   className?: string;

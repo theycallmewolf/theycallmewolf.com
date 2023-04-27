@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import styles from './styles.module.scss';
+import styles from './nav-link.module.scss';
 
 interface NavLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   link: string;

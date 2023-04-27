@@ -1,7 +1,7 @@
 import { SlideData } from 'types';
 
 import { Slider } from '../../../elements/Slider';
-import styles from './styles.module.scss';
+import styles from './projects.module.scss';
 
 interface ProjectsProps {
   projects: SlideData[];

@@ -2,8 +2,8 @@ import { ICross, IMenu, Wolf } from 'assets/icons';
 import { useNav, useTheme } from 'hooks';
 import Link from 'next/link';
 
+import styles from './header.module.scss';
 import { Nav } from './Nav';
-import styles from './styles.module.scss';
 
 export const Header: React.FC = () => {
   const { isOpen, toggleNav } = useNav();
