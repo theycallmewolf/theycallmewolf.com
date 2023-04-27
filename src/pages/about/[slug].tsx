@@ -1,11 +1,12 @@
 import { ServicesSVG } from 'assets/services';
 import { Card, CardBody, CardHeader, Graph, GraphicCard } from 'components/elements';
-import { Aside, CardList, Footer, Header } from 'components/sections';
+import { Layout } from 'components/layout';
+import { Aside, CardList } from 'components/sections';
 import { useTheme } from 'hooks';
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { NextPageWithLayout } from 'pages/_app';
+import { ReactElement, useEffect } from 'react';
 import {
   getActivityContent,
   getCareerContent,
@@ -13,7 +14,6 @@ import {
   getIntro,
   getSkillsContent
 } from 'services/prismic';
-import { COLORS } from 'theme';
 import { AboutProps, ActivityData, CareerData, SkillData } from 'types';
 
 import styles from './styles.module.scss';
@@ -82,10 +82,17 @@ const Education_Cards: React.FC<{ education: CareerData[] }> = ({ education }) =
   </>
 );
 
-const About: NextPage<AboutProps> = ({ intro, link_list, activity, career, education, skills }) => {
+const AboutPage: NextPageWithLayout<AboutProps> = ({
+  intro,
+  link_list,
+  activity,
+  career,
+  education,
+  skills
+}) => {
   const router = useRouter();
   const { slug } = router.query;
-  const { getTheme, hasDarkMode } = useTheme();
+  const { getTheme } = useTheme();
 
   useEffect(getTheme);
 
@@ -96,29 +103,6 @@ const About: NextPage<AboutProps> = ({ intro, link_list, activity, career, educa
 
   return (
     <>
-      <Head>
-        <title>{slug} | they call me wolf</title>
-        <meta
-          name="description"
-          content="Get to know a little more about mr. Wolf's activity, skills, career and education."
-        />
-        <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
-        <link
-          rel="mask-icon"
-          href="/favicon/safari-pinned-tab.svg"
-          color={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
-        />
-        <meta
-          name="msapplication-TileColor"
-          content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
-        />
-        <meta
-          name="theme-color"
-          content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
-        />
-      </Head>
-
-      <Header />
       <Aside intro={intro} link_list={link_list} imageURL="/assets/img/cover-about.jpg" />
       <main>
         <CardList slug={slug}>
@@ -128,12 +112,21 @@ const About: NextPage<AboutProps> = ({ intro, link_list, activity, career, educa
           {slug === 'education' && <Education_Cards education={education} />}
         </CardList>
       </main>
-      <Footer />
     </>
   );
 };
 
-export default About;
+export default AboutPage;
+
+AboutPage.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <Layout
+      title="ABOUT"
+      description="Get to know a little more about mr. Wolf's activity, skills, career and education.">
+      {page}
+    </Layout>
+  );
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -145,7 +138,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params;
   const introList = await getIntro({ area: 'about' });
-  const link_list = introList.map((item) => item.link_list).flat();
+  const link_list = introList.map(({ link_list }) => link_list).flat();
   const intro = introList.filter(({ title }) => title === slug);
   const activity = await getActivityContent();
   const career = await getCareerContent();
