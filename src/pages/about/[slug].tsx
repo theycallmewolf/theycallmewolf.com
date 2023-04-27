@@ -137,19 +137,23 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params;
-  const introList = await getIntro({ area: 'about' });
+
+  const introListPromise = getIntro({ area: 'about' });
+  const activityPromise = getActivityContent();
+  const careerPromise = getCareerContent();
+  const educationPromise = getEducationContent();
+  const skillsPromise = getSkillsContent();
+
+  const [introList, activity, career, education, skills] = await Promise.all([
+    introListPromise,
+    activityPromise,
+    careerPromise,
+    educationPromise,
+    skillsPromise
+  ]);
+
   const link_list = introList.map(({ link_list }) => link_list).flat();
   const intro = introList.filter(({ title }) => title === slug);
-  const activity = await getActivityContent();
-  const career = await getCareerContent();
-  const education = await getEducationContent();
-  const skills = await getSkillsContent();
-
-  if (!link_list) {
-    return {
-      notFound: true
-    };
-  }
 
   return {
     props: {
