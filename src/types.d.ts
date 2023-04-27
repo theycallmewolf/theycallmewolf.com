@@ -1,6 +1,6 @@
 import { SwiperProps } from 'swiper/react';
 
-interface Project {
+export interface Project {
   id: string;
   type: 'code' | 'illustration' | 'design' | 'other';
   title: string;
