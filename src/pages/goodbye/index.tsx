@@ -1,6 +1,5 @@
 import { Layout } from 'components/layout';
 import { IMAGES } from 'constants/images';
-import { useTheme } from 'hooks';
 import Image from 'next/image';
 import Link from 'next/link';
 import { NextPageWithLayout } from 'pages/_app';
@@ -175,9 +174,6 @@ const GoodbyePage: NextPageWithLayout = () => {
   const appearFromBottomImg64 = useSpring(renderProps(img64));
   const appearFromBottomImg65 = useSpring(renderProps(img65));
   const appearFromBottomImg66 = useSpring(renderProps(img66));
-
-  const { getTheme } = useTheme();
-  useEffect(() => getTheme(), [getTheme]);
 
   useEffect(() => {
     if (!isPlaying) return;

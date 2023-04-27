@@ -2,7 +2,6 @@ import { ServicesSVG } from 'assets/services';
 import { Card, CardBody, CardHeader, Graph, GraphicCard } from 'components/elements';
 import { Layout } from 'components/layout';
 import { Aside, CardList } from 'components/sections';
-import { useTheme } from 'hooks';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { NextPageWithLayout } from 'pages/_app';
@@ -92,9 +91,6 @@ const AboutPage: NextPageWithLayout<AboutProps> = ({
 }) => {
   const router = useRouter();
   const { slug } = router.query;
-  const { getTheme } = useTheme();
-
-  useEffect(getTheme);
 
   useEffect(() => {
     const activeArea = PROJECT_AREAS.filter((area) => area === slug);

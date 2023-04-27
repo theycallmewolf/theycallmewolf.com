@@ -2,6 +2,8 @@ import { Analytics } from '@vercel/analytics/react';
 import { ContactForm, SpotifyNotification } from 'components/elements';
 import { Metadata } from 'components/metadata';
 import { AppProvider } from 'hooks';
+import { useTheme } from 'hooks';
+import { useEffect } from 'react';
 
 import { Footer } from './sections/Footer';
 import { Header } from './sections/Header';
@@ -16,13 +18,24 @@ export const Layout: React.FC<LayoutProps> = (props) => {
     <>
       <Metadata title={props.title} description={props.description} />
       <AppProvider>
-        <Header />
-        {props.children}
-        <Footer />
+        <Page>{props.children}</Page>
       </AppProvider>
       <ContactForm />
       <SpotifyNotification />
       <Analytics />
+    </>
+  );
+};
+
+const Page: React.FC = (props) => {
+  const { getTheme } = useTheme();
+  useEffect(getTheme);
+
+  return (
+    <>
+      <Header />
+      {props.children}
+      <Footer />
     </>
   );
 };

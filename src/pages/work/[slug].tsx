@@ -2,13 +2,12 @@ import { TangramCard } from 'assets/tangrams/';
 import { Card, CardBody, CardFooter, CardHeader, CustomLink } from 'components/elements';
 import { Layout } from 'components/layout';
 import { Aside, CardList } from 'components/sections';
-import { useTheme } from 'hooks';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { NextPageWithLayout } from 'pages/_app';
-import { ReactElement, useEffect } from 'react';
+import { ReactElement } from 'react';
 import { getIntro, getProjects } from 'services/prismic';
 import { IntroData, LinkData, Project, ProjectData } from 'types';
 
@@ -23,9 +22,6 @@ interface WorkPageProps {
 const WorkPage: NextPageWithLayout<WorkPageProps> = (props) => {
   const router = useRouter();
   const { slug } = router.query;
-  const { getTheme } = useTheme();
-
-  useEffect(getTheme);
 
   return (
     <main>

@@ -2,7 +2,6 @@ import Prismic from '@prismicio/client';
 import { IArrow, IMenu, IMinus, IPlus } from 'assets/icons';
 import { Slider } from 'components/elements';
 import { Layout } from 'components/layout';
-import { useTheme } from 'hooks';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
@@ -177,7 +176,6 @@ const Lead: React.FC<LeadProps> = ({ title, icon }) => (
 
 const ProjectPage: NextPageWithLayout<ProjectProps> = ({ project, nextProjects }) => {
   const router = useRouter();
-  const { getTheme } = useTheme();
 
   const topMarkRef = useRef<HTMLSpanElement>(null);
   const projectPreviewRef = useRef<HTMLDivElement>(null);
@@ -214,7 +212,6 @@ const ProjectPage: NextPageWithLayout<ProjectProps> = ({ project, nextProjects }
   }, [nextProject, nextProjects, projectsSeenIDs.includes]);
 
   useEffect(handleNextProject);
-  useEffect(getTheme);
 
   useEffect(() => {
     setSlides(

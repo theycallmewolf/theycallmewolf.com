@@ -1,7 +1,6 @@
 import { Layout } from 'components/layout';
 import { About, Banner, Clients, Projects, Testimonials } from 'components/sections';
 // import { Blog } from 'components/sections';
-import { useTheme } from 'hooks';
 import { usePWABanner } from 'hooks/usePWABanner';
 import { GetStaticProps } from 'next';
 import { ReactElement, useEffect } from 'react';
@@ -12,9 +11,7 @@ import { NextPageWithLayout } from './_app';
 
 const HomePage: NextPageWithLayout<HomeProps> = (props) => {
   const { checkPWABanner } = usePWABanner();
-  const { getTheme } = useTheme();
 
-  useEffect(getTheme);
   useEffect(checkPWABanner);
 
   return (
