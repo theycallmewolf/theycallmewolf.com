@@ -3,6 +3,7 @@ import { ContactForm, SpotifyNotification } from 'components/elements';
 import { Metadata } from 'components/metadata';
 import { AppProvider } from 'hooks';
 import { useTheme } from 'hooks';
+import { usePWABanner } from 'hooks/usePWABanner';
 import { useEffect } from 'react';
 
 import { Footer } from './sections/Footer';
@@ -29,7 +30,10 @@ export const Layout: React.FC<LayoutProps> = (props) => {
 
 const Page: React.FC = (props) => {
   const { getTheme } = useTheme();
+  const { checkPWABanner } = usePWABanner();
+
   useEffect(getTheme);
+  useEffect(checkPWABanner);
 
   return (
     <>

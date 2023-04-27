@@ -1,19 +1,14 @@
 import { Layout } from 'components/layout';
 import { About, Banner, Clients, Projects, Testimonials } from 'components/sections';
 // import { Blog } from 'components/sections';
-import { usePWABanner } from 'hooks/usePWABanner';
 import { GetStaticProps } from 'next';
-import { ReactElement, useEffect } from 'react';
+import { ReactElement } from 'react';
 import { getClients, getPosts, getProjects, getSkills, getTestimonials } from 'services/prismic';
 import { HomeProps } from 'types';
 
 import { NextPageWithLayout } from './_app';
 
 const HomePage: NextPageWithLayout<HomeProps> = (props) => {
-  const { checkPWABanner } = usePWABanner();
-
-  useEffect(checkPWABanner);
-
   return (
     <main>
       <Banner />
@@ -30,7 +25,7 @@ export default HomePage;
 
 HomePage.getLayout = function getLayout(page: ReactElement) {
   return (
-    <Layout title={'HOME'} description={'Web portfolio of Bruno Lobato, coder + designer.'}>
+    <Layout title="HOME" description="Web portfolio of Bruno Lobato, coder + designer.">
       {page}
     </Layout>
   );
