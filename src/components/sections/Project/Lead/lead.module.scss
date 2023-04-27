@@ -1,0 +1,45 @@
+.lead {
+  width: 90%;
+  max-width: 42rem;
+  margin: 0 auto;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 16rem;
+    height: 16rem;
+    transform: rotate(90deg);
+    margin-top: -22rem;
+    stroke: var(--c-candy-red);
+
+    path {
+      stroke: var(--c-candy-red);
+    }
+  }
+
+  h2 {
+    font-size: 2.1rem;
+    margin-left: 4.8rem;
+  }
+}
+
+@media (min-width: 375px) {
+  .lead h2 {
+    font-size: 2.4rem;
+  }
+}
+
+@media (min-width: 425px) {
+  .lead h2 {
+    font-size: 2.8rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .lead {
+    margin: 0 auto 22rem;
+  }
+}
