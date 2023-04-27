@@ -6,9 +6,9 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {/**
-           * Tip: Put the viewport head meta tag into _app.js
-           * rather than in _document.js if you need it.
-           * @see https://www.npmjs.com/package/next-pwa
+           * Google Font
+           * @see https://fonts.google.com/specimen/Orbitron
+           * @see https://fonts.google.com/specimen/Roboto
            */}
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
