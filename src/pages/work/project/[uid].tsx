@@ -1,15 +1,14 @@
 import Prismic from '@prismicio/client';
 import { IArrow, IMenu, IMinus, IPlus } from 'assets/icons';
 import { Slider } from 'components/elements';
-import { Header } from 'components/sections';
+import { Layout } from 'components/layout';
 import { useTheme } from 'hooks';
-import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
-import Head from 'next/head';
+import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react';
+import { NextPageWithLayout } from 'pages/_app';
+import { MutableRefObject, ReactElement, useCallback, useEffect, useRef, useState } from 'react';
 import { getNextProject, getPrismicClient, getProject } from 'services/prismic';
-import { COLORS } from 'theme';
 import { NextProject, ProjectProps } from 'types';
 import { formatDate, getRandomInt } from 'utils';
 
@@ -176,9 +175,9 @@ const Lead: React.FC<LeadProps> = ({ title, icon }) => (
   </section>
 );
 
-const Code: NextPage<ProjectProps> = ({ project, nextProjects }) => {
+const ProjectPage: NextPageWithLayout<ProjectProps> = ({ project, nextProjects }) => {
   const router = useRouter();
-  const { getTheme, hasDarkMode } = useTheme();
+  const { getTheme } = useTheme();
 
   const topMarkRef = useRef<HTMLSpanElement>(null);
   const projectPreviewRef = useRef<HTMLDivElement>(null);
@@ -228,42 +227,30 @@ const Code: NextPage<ProjectProps> = ({ project, nextProjects }) => {
   }, [project.images.project_images]);
 
   return (
-    <>
-      <Head>
-        <title>{project.title} | they call me wolf</title>
-        <meta name="description" content={project.images.caption} />
-        <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
-        <link
-          rel="mask-icon"
-          href="/favicon/safari-pinned-tab.svg"
-          color={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
-        />
-        <meta
-          name="msapplication-TileColor"
-          content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
-        />
-        <meta
-          name="theme-color"
-          content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
-        />
-      </Head>
-      <Header />
-
-      <main className={styles.main} onScroll={onScroll}>
-        <span ref={topMarkRef}></span>
-        <Intro project={project} />
-        <Lead title={project.leads[0]} icon="plus" />
-        <Slider slides={slides} contentType="image" className={styles.slider} />
-        <Lead title={project.leads[1]} icon="arrow" />
-        <Specs project={project} />
-        <Lead title={project.leads[2]} icon="menu" />
-        <NextProject projectPreviewRef={projectPreviewRef} nextProject={nextProject} />
-      </main>
-    </>
+    <main className={styles.main} onScroll={onScroll}>
+      <span ref={topMarkRef} />
+      <Intro project={project} />
+      <Lead title={project.leads[0]} icon="plus" />
+      <Slider slides={slides} contentType="image" className={styles.slider} />
+      <Lead title={project.leads[1]} icon="arrow" />
+      <Specs project={project} />
+      <Lead title={project.leads[2]} icon="menu" />
+      <NextProject projectPreviewRef={projectPreviewRef} nextProject={nextProject} />
+    </main>
   );
 };
 
-export default Code;
+export default ProjectPage;
+
+ProjectPage.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <Layout
+      title={page.props.project?.title ?? 'Project'}
+      description={page.props.project?.images.caption}>
+      {page}
+    </Layout>
+  );
+};
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { uid } = params;
