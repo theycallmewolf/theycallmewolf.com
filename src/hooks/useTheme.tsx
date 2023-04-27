@@ -1,5 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
 
+import { useConfig } from './useConfig';
+
 type SetThemeProps = { name: 'light' | 'dark' };
 
 interface ThemeContextData {
@@ -12,16 +14,18 @@ interface ThemeContextData {
 const ThemeContext = createContext<ThemeContextData>({} as ThemeContextData);
 
 const ThemeProvider: React.FC = ({ children }) => {
+  const { LOCAL_STORE_KEY } = useConfig();
+
   const [hasDarkMode, setHasDarkMode] = useState(false);
 
   const setTheme = ({ name }: SetThemeProps) => {
-    name === 'dark' ? setHasDarkMode(true) : setHasDarkMode(false);
-    localStorage.setItem('@wolf_theme', name);
+    setHasDarkMode(name === 'dark');
+    localStorage.setItem(LOCAL_STORE_KEY.THEME, name);
     document.documentElement.className = name;
   };
 
   const getTheme = () => {
-    const theme = localStorage.getItem('@wolf_theme');
+    const theme = localStorage.getItem(LOCAL_STORE_KEY.THEME);
 
     if (!theme) {
       window.matchMedia('(prefers-color-scheme: dark)').matches
@@ -30,11 +34,11 @@ const ThemeProvider: React.FC = ({ children }) => {
       return;
     }
 
-    theme === 'light' ? setTheme({ name: 'light' }) : setTheme({ name: 'dark' });
+    setTheme({ name: theme === 'light' ? 'light' : 'dark' });
   };
 
   const toggleTheme = () => {
-    hasDarkMode ? setTheme({ name: 'light' }) : setTheme({ name: 'dark' });
+    setTheme({ name: hasDarkMode ? 'light' : 'dark' });
   };
 
   return (

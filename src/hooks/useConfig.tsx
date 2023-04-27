@@ -1,5 +1,6 @@
 interface LocalStoreKeys {
   PWA: string;
+  THEME: string;
 }
 
 type UseConfig = () => {
@@ -8,7 +9,8 @@ type UseConfig = () => {
 
 export const useConfig: UseConfig = () => {
   const LOCAL_STORE_KEY: LocalStoreKeys = {
-    PWA: '@wolf_pwa'
+    PWA: '@wolf_pwa',
+    THEME: '@wolf_theme'
   };
 
   return { LOCAL_STORE_KEY };
