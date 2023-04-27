@@ -1,16 +1,16 @@
+import { Layout } from 'components/layout';
 import { IMAGES } from 'constants/images';
 import { useTheme } from 'hooks';
-import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useCallback, useEffect, useState } from 'react';
+import { NextPageWithLayout } from 'pages/_app';
+import { ReactElement, useCallback, useEffect, useState } from 'react';
 import ReactAudioPlayer from 'react-audio-player';
 import { animated, config, useSpring } from 'react-spring';
-import { COLORS } from 'theme';
 
 import styles from './styles.module.scss';
 
-const Goodbye: React.FC = () => {
+const GoodbyePage: NextPageWithLayout = () => {
   const music = {
     id: 1,
     file: '/audio/we-will-meet-again.mp3',
@@ -176,7 +176,7 @@ const Goodbye: React.FC = () => {
   const appearFromBottomImg65 = useSpring(renderProps(img65));
   const appearFromBottomImg66 = useSpring(renderProps(img66));
 
-  const { getTheme, hasDarkMode } = useTheme();
+  const { getTheme } = useTheme();
   useEffect(() => getTheme(), [getTheme]);
 
   useEffect(() => {
@@ -799,28 +799,7 @@ const Goodbye: React.FC = () => {
   ];
 
   return (
-    <>
-      <Head>
-        <title>work | they call me wolf</title>
-        <meta
-          name="description"
-          content="Here's the list of some of the projects (personal and profissional) that Mr. Wolf worked on. From Web development to illustration, passing through UI design and graphic design. It's a lot... of gray hair at least."
-        />
-        <meta name="viewport" content="initial-scale=1, viewport-fit=cover" />
-        <link
-          rel="mask-icon"
-          href="/favicon/safari-pinned-tab.svg"
-          color={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
-        />
-        <meta
-          name="msapplication-TileColor"
-          content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
-        />
-        <meta
-          name="theme-color"
-          content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
-        />
-      </Head>
+    <main>
       <section className={styles.container}>
         <div className={styles.wrapper}>
           <div className={styles.message}>
@@ -837,7 +816,7 @@ const Goodbye: React.FC = () => {
               <>
                 <p>Humm... Ainda estás aí?</p>
                 <p className={styles.signature} style={{ zIndex: 100 }}>
-                  Então visita o{' '}
+                  {'Então visita o '}
                   <Link href="/">
                     <a style={{ borderBottom: '2px dashed #D20120' }}>meu site</a>
                   </Link>
@@ -883,8 +862,16 @@ const Goodbye: React.FC = () => {
           </div>
         </div>
       </section>
-    </>
+    </main>
   );
 };
 
-export default Goodbye;
+export default GoodbyePage;
+
+GoodbyePage.getLayout = function getLayout(page: ReactElement) {
+  return (
+    <Layout title="GOODBYE" description="Animated postal card for the Fitness Hut team">
+      {page}
+    </Layout>
+  );
+};
