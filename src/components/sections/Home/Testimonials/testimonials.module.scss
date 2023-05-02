@@ -45,6 +45,7 @@
   max-width: 684px;
   background: var(--c-background-200);
   margin: -220px auto 0;
-  border-top-left-radius: 2.8rem;
-  border-top-right-radius: 2.8rem;
+  border-radius: 2.8rem;
+
+  transition: background-color 600ms ease;
 }

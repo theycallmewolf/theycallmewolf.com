@@ -1,53 +1,14 @@
-@keyframes motionAfter {
-  0% {
-    opacity: 0;
-    top: 50%;
-  }
-  33% {
-    opacity: 1;
-    top: 0;
-  }
-  66% {
-    opacity: 0;
-    top: 50%;
-  }
-  100% {
-    opacity: 1;
-    top: 100%;
-  }
-}
-
-@keyframes motionBefore {
-  0% {
-    opacity: 0;
-    bottom: 50%;
-  }
-  33% {
-    opacity: 1;
-    bottom: 0;
-  }
-  66% {
-    opacity: 0;
-    bottom: 50%;
-  }
-  100% {
-    opacity: 1;
-    bottom: 100%;
-  }
-}
-
 .link {
   font-size: 1.4rem;
   line-height: 1.4rem;
   letter-spacing: 1px;
   padding: 8px;
   opacity: 0.6;
-  background-color: var(--c-background-200);
 
   display: inline-block;
   position: relative;
 
-  transition: opacity 1000ms ease-in-out;
+  transition: opacity 1000ms ease-in-out, background-color 1000ms ease;
 
   &::before,
   &::after {
@@ -58,7 +19,6 @@
     height: 1px;
     transform: translateX(-50%);
 
-    background: var(--c-candy-red);
     opacity: 0;
 
     transition: bottom 200ms ease-in-out, top 200ms ease-in-out, opacity 200ms ease-in-out;
@@ -96,7 +56,6 @@
     &::before,
     &::after {
       content: '';
-      background: var(--c-iridium-white);
 
       position: absolute;
       left: 50%;
@@ -117,10 +76,84 @@
   &:focus {
     filter: brightness(1);
   }
+}
 
-  @media (min-width: 1024px) {
-    & + .link {
-      margin-left: 8px;
+.dark {
+  &.link {
+    background-color: var(--c-background-200);
+
+    &::before,
+    &::after {
+      background: var(--c-candy-red);
     }
+
+    &.selected {
+      &::before,
+      &::after {
+        background: var(--c-iridium-white);
+      }
+    }
+  }
+}
+
+.light {
+  &.link {
+    background-color: var(--c-background-200);
+
+    &::before,
+    &::after {
+      background: var(--c-candy-red);
+    }
+
+    &.selected {
+      &::before,
+      &::after {
+        background: var(--c-night-black);
+      }
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .link + .link {
+    margin-left: 8px;
+  }
+}
+
+@keyframes motionAfter {
+  0% {
+    opacity: 0;
+    top: 50%;
+  }
+  33% {
+    opacity: 1;
+    top: 0;
+  }
+  66% {
+    opacity: 0;
+    top: 50%;
+  }
+  100% {
+    opacity: 1;
+    top: 100%;
+  }
+}
+
+@keyframes motionBefore {
+  0% {
+    opacity: 0;
+    bottom: 50%;
+  }
+  33% {
+    opacity: 1;
+    bottom: 0;
+  }
+  66% {
+    opacity: 0;
+    bottom: 50%;
+  }
+  100% {
+    opacity: 1;
+    bottom: 100%;
   }
 }

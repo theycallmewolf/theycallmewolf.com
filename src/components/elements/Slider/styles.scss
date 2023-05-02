@@ -173,6 +173,7 @@
           background-size: cover;
           background-position: center;
           border-color: var(--c-background-100);
+          transition: background-color 300ms ease;
 
           display: grid;
           grid-template-columns: 1fr;

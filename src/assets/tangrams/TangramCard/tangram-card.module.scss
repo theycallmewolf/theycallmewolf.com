@@ -9,32 +9,34 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   overflow: hidden;
 
-  @media(min-width: 600px) { 
+  @media (min-width: 600px) {
     position: relative;
     height: 100%;
   }
-  
+
   svg {
     width: 225px;
     height: 315px;
     transform: rotate(90deg) scale(1.2);
 
     .styles {
-      fill:none;
-      stroke:var(--c-background-200);
-      stroke-width:6;
-      stroke-miterlimit:10;
-    }
-    
-    .hide { display: none; }
+      fill: none;
+      stroke: var(--c-background-200);
+      stroke-width: 6;
+      stroke-miterlimit: 10;
 
-    @media(min-width: 600px) { 
+      transition: stroke 600ms ease;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    @media (min-width: 600px) {
       transform: scale(1.03);
     }
-  
   }
-  
-} 
+}

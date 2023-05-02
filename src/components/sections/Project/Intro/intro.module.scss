@@ -27,6 +27,8 @@
   padding: 1.6rem;
   background: var(--c-element-100);
 
+  transition: background-color 600ms ease;
+
   h1,
   p {
     color: var(--c-background-100);
@@ -43,6 +45,8 @@
   border: none;
   background: var(--c-background-100);
   color: var(--c-element-100);
+
+  transition: background-color 600ms ease;
 
   display: flex;
   align-items: center;

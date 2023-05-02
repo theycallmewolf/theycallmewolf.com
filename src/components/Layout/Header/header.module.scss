@@ -13,7 +13,7 @@
   right: 0;
   z-index: 3;
 
-  transition: top 200ms ease-in-out;
+  transition: top 200ms ease-in-out, background 1000ms ease;
 
   .navigation {
     position: absolute;
