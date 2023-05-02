@@ -65,7 +65,7 @@ const ProjectPage: NextPageWithLayout<ProjectProps> = ({ project, nextProjects }
   }, [project.images.project_images]);
 
   return (
-    <main className={styles.main} onScroll={onScroll}>
+    <div className={styles.main} onScroll={onScroll}>
       <span ref={topMarkRef} />
       <Intro
         project={{
@@ -80,7 +80,7 @@ const ProjectPage: NextPageWithLayout<ProjectProps> = ({ project, nextProjects }
       <Specs project={project} />
       <Lead title={project.leads[2]} icon="menu" />
       <NextProject projectPreviewRef={projectPreviewRef} nextProject={nextProject} />
-    </main>
+    </div>
   );
 };
 
