@@ -1,7 +1,8 @@
 import { TangramCard } from 'assets/tangrams/';
 import { Card, CardBody, CardFooter, CardHeader, CustomLink } from 'components/elements';
 import { Layout } from 'components/layout';
-import { Aside, CardList } from 'components/sections';
+import { Aside } from 'components/sections/Common/Aside';
+import { CardList } from 'components/sections/Common/CardList';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
