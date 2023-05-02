@@ -1,5 +1,5 @@
 import Prismic from '@prismicio/client';
-import { Layout } from 'components/layout';
+import { Layout } from 'components/Layout';
 import { Intro } from 'components/sections/Project/Intro';
 import { Lead } from 'components/sections/Project/Lead';
 import { NextProject } from 'components/sections/Project/NextProject';

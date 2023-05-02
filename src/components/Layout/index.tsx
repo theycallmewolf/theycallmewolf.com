@@ -6,8 +6,8 @@ import { useTheme } from 'hooks';
 import { usePWABanner } from 'hooks/usePWABanner';
 import { useEffect } from 'react';
 
-import { Footer } from './sections/Footer';
-import { Header } from './sections/Header';
+import { Footer } from './Footer';
+import { Header } from './Header';
 
 interface LayoutProps {
   title: string;

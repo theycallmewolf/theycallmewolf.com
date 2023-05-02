@@ -1,4 +1,4 @@
-import { Layout } from 'components/layout';
+import { Layout } from 'components/Layout';
 import { About } from 'components/sections/Home/About';
 import { Banner } from 'components/sections/Home/Banner';
 import { Clients } from 'components/sections/Home/Clients';

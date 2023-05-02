@@ -1,4 +1,4 @@
-import { Layout } from 'components/layout';
+import { Layout } from 'components/Layout';
 import { IMAGES } from 'constants/images';
 import Image from 'next/image';
 import Link from 'next/link';
