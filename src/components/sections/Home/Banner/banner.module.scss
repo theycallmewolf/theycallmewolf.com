@@ -117,26 +117,30 @@
     }
   }
 
-  .shuffle-button {
-    background: transparent;
-    border: none;
-
+  .tools {
     position: absolute;
     bottom: 0;
     margin-bottom: 2.4rem;
     left: 2.4rem;
-    width: 2.8rem;
-    height: 2.8rem;
+
     z-index: 1;
 
-    transition: transform 300ms ease-in-out;
+    .shuffle-button {
+      background: transparent;
+      border: none;
 
-    svg {
-      fill: var(--c-polar-white);
-    }
+      width: 2.8rem;
+      height: 2.8rem;
 
-    &:hover {
-      transform: scale(1.1);
+      transition: transform 300ms ease-in-out;
+
+      svg {
+        fill: var(--c-polar-white);
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 }
