@@ -1,5 +1,5 @@
 import { Analytics } from '@vercel/analytics/react';
-import { ContactForm } from 'components/elements/ContactForm';
+import { ContactForm } from 'components/sections/Common/ContactForm';
 import { SpotifyNotification } from 'components/elements/SpotifyNotification';
 import { Metadata } from 'components/metadata';
 import { AppProvider } from 'hooks';
