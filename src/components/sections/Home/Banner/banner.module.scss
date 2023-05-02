@@ -15,10 +15,6 @@
     vertical-align: middle;
   }
 
-  @media screen and (min-width: 1024px) {
-    height: 100vh;
-  }
-
   .scene {
     position: relative;
     display: inline-block;
@@ -94,16 +90,6 @@
     align-items: flex-start;
     justify-content: center;
 
-    @media (min-width: 420px) {
-      width: 320px;
-    }
-    @media (min-width: 620px) {
-      width: 360px;
-    }
-    @media (min-width: 1024px) {
-      width: 460px;
-    }
-
     h1 {
       font-size: 4.2rem;
       line-height: 1;
@@ -128,10 +114,6 @@
       line-height: 1.2;
       letter-spacing: 1px;
       color: var(--c-polar-white);
-
-      @media (min-width: 425px) {
-        font-size: 2rem;
-      }
     }
   }
 
@@ -155,6 +137,34 @@
     &:hover {
       transform: scale(1.1);
     }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    height: 100vh;
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .container .content {
+    width: 320px;
+
+    .typed {
+      font-size: 2rem;
+    }
+  }
+}
+
+@media screen and (min-width: 620px) {
+  .container .content {
+    width: 360px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container .content {
+    width: 460px;
   }
 }
 
