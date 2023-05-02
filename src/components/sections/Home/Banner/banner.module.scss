@@ -1,22 +1,18 @@
 .container {
   width: 100%;
-  height: calc(100vh + 8rem);
-  margin-top: 0;
+  height: calc(100vh - 80px);
+  margin-top: 0px;
   position: relative;
   overflow: hidden;
+  background: var(--c-night-black);
   border-bottom-left-radius: 2.8rem;
   border-bottom-right-radius: 2.8rem;
-  background: var(--c-night-black);
 
   &::before {
     content: '';
     display: inline-block;
     height: 100%;
     vertical-align: middle;
-  }
-
-  @media screen and (min-width: 1024px) {
-    height: 100vh;
   }
 
   .scene {
@@ -94,16 +90,6 @@
     align-items: flex-start;
     justify-content: center;
 
-    @media (min-width: 420px) {
-      width: 320px;
-    }
-    @media (min-width: 620px) {
-      width: 360px;
-    }
-    @media (min-width: 1024px) {
-      width: 460px;
-    }
-
     h1 {
       font-size: 4.2rem;
       line-height: 1;
@@ -128,32 +114,61 @@
       line-height: 1.2;
       letter-spacing: 1px;
       color: var(--c-polar-white);
-
-      @media (min-width: 425px) {
-        font-size: 2rem;
-      }
     }
   }
 
-  .shuffle-button {
-    background: transparent;
-    border: none;
-
+  .tools {
     position: absolute;
-    bottom: calc(2.4rem + 8rem);
+    bottom: 0;
+    margin-bottom: calc(2.4rem + 8rem);
     left: 2.4rem;
-    width: 2.8rem;
-    height: 2.8rem;
+
     z-index: 1;
 
-    transition: transform 300ms ease-in-out;
+    .shuffle-button {
+      background: transparent;
+      border: none;
 
-    svg {
-      fill: var(--c-polar-white);
+      width: 2.8rem;
+      height: 2.8rem;
+
+      transition: transform 300ms ease-in-out;
+
+      svg {
+        fill: var(--c-polar-white);
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 420px) {
+  .container .content {
+    width: 320px;
+
+    .typed {
+      font-size: 2rem;
+    }
+  }
+}
+
+@media screen and (min-width: 620px) {
+  .container .content {
+    width: 360px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .container {
+    .content {
+      width: 460px;
     }
 
-    &:hover {
-      transform: scale(1.1);
+    .tools {
+      margin-bottom: 2.4rem;
     }
   }
 }

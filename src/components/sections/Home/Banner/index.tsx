@@ -53,12 +53,14 @@ export const Banner: React.FC = () => {
 
   return (
     <section className={styles.container}>
-      <button
-        className={styles['shuffle-button']}
-        onClick={addBackgroundImage}
-        aria-label="shuffle background">
-        <IShuffle />
-      </button>
+      <div className={styles.tools}>
+        <button
+          className={styles['shuffle-button']}
+          onClick={addBackgroundImage}
+          aria-label="shuffle background">
+          <IShuffle />
+        </button>
+      </div>
 
       <div className={styles.content}>
         <h1>

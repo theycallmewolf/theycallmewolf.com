@@ -29,7 +29,7 @@ const WorkPage: NextPageWithLayout<WorkPageProps> = (props) => {
   const { slug } = router.query;
 
   return (
-    <main>
+    <>
       <Aside
         intro={props.intro}
         link_list={props.link_list}
@@ -70,7 +70,7 @@ const WorkPage: NextPageWithLayout<WorkPageProps> = (props) => {
           </Card>
         ))}
       </CardList>
-    </main>
+    </>
   );
 };
 

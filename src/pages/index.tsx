@@ -14,14 +14,14 @@ import { NextPageWithLayout } from './_app';
 
 const HomePage: NextPageWithLayout<HomeProps> = (props) => {
   return (
-    <main>
+    <>
       <Banner />
       <About skills={props.skills} />
       <Projects projects={props.projects} />
       <Testimonials testimonials={props.testimonials} />
       <Clients clients={props.clients} />
       {/* <Blog posts={props.posts} /> */}
-    </main>
+    </>
   );
 };
 
