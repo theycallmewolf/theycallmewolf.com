@@ -13,7 +13,7 @@ import { api } from 'services/api';
 import { EmailData } from 'types';
 import * as Yup from 'yup';
 
-import { Button } from '../Button';
+import { Button } from '../../../elements/Button';
 import styles from './contact-form.module.scss';
 
 interface FormValues {

@@ -1,7 +1,12 @@
 import { ServicesSVG } from 'assets/services';
-import { Card, CardBody, CardHeader, Graph, GraphicCard } from 'components/elements';
-import { Layout } from 'components/layout';
-import { Aside, CardList } from 'components/sections';
+import { Card } from 'components/elements/Cards/Card';
+import { CardBody } from 'components/elements/Cards/Card/CardBody';
+import { CardHeader } from 'components/elements/Cards/Card/CardHeader';
+import { GraphicCard } from 'components/elements/Cards/GraphicCard';
+import { Graph } from 'components/elements/Graph';
+import { Layout } from 'components/Layout';
+import { Aside } from 'components/sections/Common/Aside';
+import { CardList } from 'components/sections/Common/CardList';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { NextPageWithLayout } from 'pages/_app';

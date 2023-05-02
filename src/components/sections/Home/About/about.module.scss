@@ -34,10 +34,14 @@
       align-items: center;
       justify-content: center;
 
+      transition: background-color 600ms ease;
+
       svg {
         width: 20rem;
         height: 19rem;
         fill: var(--c-background-100);
+
+        transition: fill 600ms ease;
       }
     }
 

@@ -1,11 +1,15 @@
 .container {
   width: 100%;
   background: var(--c-background-100);
-  
+
+  transition: background-color 600ms ease;
+
   position: relative;
   overflow: hidden;
+}
 
-  @media (min-width: 768px) {
+@media (min-width: 768px) {
+  .container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }

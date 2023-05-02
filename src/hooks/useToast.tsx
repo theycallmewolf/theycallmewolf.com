@@ -1,8 +1,8 @@
 import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
-import type { ToastProps } from '../components/elements';
-import { Toast } from '../components/elements';
+import { Toast } from '../components/elements/Toast';
+import type { ToastProps } from '../components/elements/Toast/types';
 
 interface ToastContextData {
   addToast({ type, title, description, duration }: Omit<ToastProps, 'id'>): { id: string };

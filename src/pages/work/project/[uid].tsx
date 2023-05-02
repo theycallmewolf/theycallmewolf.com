@@ -1,5 +1,5 @@
 import Prismic from '@prismicio/client';
-import { Layout } from 'components/layout';
+import { Layout } from 'components/Layout';
 import { Intro } from 'components/sections/Project/Intro';
 import { Lead } from 'components/sections/Project/Lead';
 import { NextProject } from 'components/sections/Project/NextProject';
@@ -87,10 +87,12 @@ const ProjectPage: NextPageWithLayout<ProjectProps> = ({ project, nextProjects }
 export default ProjectPage;
 
 ProjectPage.getLayout = function getLayout(page: ReactElement) {
+  const title = page.props.children
+    .find((proj) => proj.props.project)
+    .props.project.title.toUpperCase();
+
   return (
-    <Layout
-      title={page.props.project?.title ?? 'Project'}
-      description={page.props.project?.images.caption}>
+    <Layout title={title ?? 'PROJECT'} description={page.props.project?.images.caption}>
       {page}
     </Layout>
   );

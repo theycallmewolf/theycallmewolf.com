@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import styles from './styles.module.scss';
+import styles from './tangram-cover.module.scss';
 
 const TangramCover: React.FC = () => {
   const [isPathOneHidden, setIsPathOneHidden] = useState(true);

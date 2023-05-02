@@ -50,7 +50,7 @@
   background: var(--c-background-100);
   z-index: 3;
 
-  transition: right 200ms ease-in-out;
+  transition: right 200ms ease-in-out, background-color 1000ms ease;
 
   @media (min-width: 425px) {
     max-width: 428px;
@@ -106,6 +106,8 @@
           background: var(--c-background-200);
           border: none;
           position: relative;
+
+          transition: background-color 600ms ease;
 
           &:focus {
             outline: 1px solid rgb(210, 1, 32, 0.3);

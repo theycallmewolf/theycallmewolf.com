@@ -2,7 +2,7 @@
   width: 100%;
   background: var(--c-background-100);
   position: relative;
-  transition: filter 1000ms ease-in-out;
+  transition: filter 1000ms ease-in-out, background-color 600ms ease;
   overflow: hidden;
 
   border-radius: 2.4rem;

@@ -1,5 +1,5 @@
 import { IPlus } from 'assets/icons';
-import { Button } from 'components/elements';
+import { Button } from 'components/elements/Button';
 import { useTheme } from 'hooks';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';

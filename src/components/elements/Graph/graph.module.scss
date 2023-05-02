@@ -7,6 +7,8 @@
     font-size: 1.3rem;
     line-height: 1;
     display: inline-block;
+
+    transition: color 600ms ease;
   }
 
   .graph {
@@ -15,12 +17,16 @@
     height: 2px;
     position: relative;
 
+    transition: background-color 600ms ease;
+
     .active {
       position: absolute;
       top: 0;
       left: 0;
       bottom: 0;
       background: var(--c-candy-red);
+
+      transition: background-color 600ms ease;
     }
   }
 }

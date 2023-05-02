@@ -1,7 +1,12 @@
 import { TangramCard } from 'assets/tangrams/';
-import { Card, CardBody, CardFooter, CardHeader, CustomLink } from 'components/elements';
-import { Layout } from 'components/layout';
-import { Aside, CardList } from 'components/sections';
+import { Card } from 'components/elements/Cards/Card';
+import { CardBody } from 'components/elements/Cards/Card/CardBody';
+import { CardFooter } from 'components/elements/Cards/Card/CardFooter';
+import { CardHeader } from 'components/elements/Cards/Card/CardHeader';
+import { CustomLink } from 'components/elements/Link';
+import { Layout } from 'components/Layout';
+import { Aside } from 'components/sections/Common/Aside';
+import { CardList } from 'components/sections/Common/CardList';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';

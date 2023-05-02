@@ -4,6 +4,7 @@
   padding: 1.6rem;
   margin: 8rem auto 0;
   background: var(--c-background-200);
+  transition: background-color 1000ms ease;
 
   @media (min-width: 1024px) {
     position: fixed;
