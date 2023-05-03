@@ -109,6 +109,29 @@ export const Banner: React.FC = () => {
         />
       </div>
 
+      {currentBgImage && (
+        <div className={styles.copyright}>
+          Background generated using{' '}
+          <a href={currentBgImage.links.html} target="_blank" rel="noopener noreferrer">
+            photo
+          </a>{' '}
+          by{' '}
+          <a
+            href={`https://unsplash.com/@${currentBgImage.user.username}?utm_source=theycallmewolf.com&utm_medium=referral`}
+            target="_blank"
+            rel="noopener noreferrer">
+            {currentBgImage.user.name}
+          </a>
+          {' on '}
+          <a
+            href="https://unsplash.com/?utm_source=theycallmewolf.com&utm_medium=referral"
+            target="_blank"
+            rel="noopener noreferrer">
+            Unsplash
+          </a>
+        </div>
+      )}
+
       <div className={styles.scene}>
         {wrap.map((key) => (
           <div key={key} className={styles.wrap}>
