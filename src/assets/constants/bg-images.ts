@@ -1,6 +1,6 @@
-import { UnsplashAPIResponse } from 'services/unsplash';
+import { UnsplashAPIData } from 'services/unsplash';
 
-export const fallbackBgImages: UnsplashAPIResponse['data'] = [
+export const fallbackBgImages: UnsplashAPIData[] = [
   {
     id: 'wujwHFYxZhE',
     created_at: '2017-03-10T23:48:18Z',

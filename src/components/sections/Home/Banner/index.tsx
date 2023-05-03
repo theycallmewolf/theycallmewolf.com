@@ -5,20 +5,20 @@ import { introCopy } from 'assets/constants/intro';
 import { IShuffle } from 'assets/icons';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import Typed from 'react-typed';
-import { getRandomImages, UnsplashAPIResponse } from 'services/unsplash';
+import { getRandomImages, UnsplashAPIData } from 'services/unsplash';
 import { getRandomInt } from 'utils';
 import { NODE_DEV } from 'utils/dev';
 
 import styles from './banner.module.scss';
 
 export const Banner: React.FC = () => {
-  const [images, setImages] = useState<UnsplashAPIResponse['data']>();
-  const [currentBgImage, setCurrentBgImage] = useState<string>();
+  const [images, setImages] = useState<UnsplashAPIData[]>();
+  const [currentBgImage, setCurrentBgImage] = useState<UnsplashAPIData>();
 
   const addBackgroundImage = useCallback(() => {
     const imgArray = images ?? fallbackBgImages;
     const index = getRandomInt(0, imgArray.length - 1);
-    setCurrentBgImage(imgArray[index].urls.regular);
+    setCurrentBgImage(imgArray[index]);
   }, [images]);
 
   useEffect(() => {
@@ -29,10 +29,9 @@ export const Banner: React.FC = () => {
 
       try {
         const { data } = await getRandomImages();
+
         if (!data) {
-          // @todo add fallback images with all api response
-          // setImages(fallbackBgImages);
-          // setBgImages(fallbackBgImages.map(({ urls }) => urls.regular));
+          setImages(fallbackBgImages);
           return;
         }
 
@@ -80,7 +79,10 @@ export const Banner: React.FC = () => {
     []
   );
 
-  const style = useMemo(() => ({ background: `url(${currentBgImage})` }), [currentBgImage]);
+  const style = useMemo(
+    () => ({ background: `url(${currentBgImage?.urls.regular})` }),
+    [currentBgImage?.urls.regular]
+  );
 
   return (
     <section className={styles.container}>
