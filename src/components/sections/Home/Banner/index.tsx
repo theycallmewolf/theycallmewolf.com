@@ -28,14 +28,14 @@ export const Banner: React.FC = () => {
       if (images) return;
 
       try {
-        const { data } = await getRandomImages();
+        const res = await getRandomImages();
 
-        if (!data) {
+        if (!res?.data) {
           setImages(fallbackBgImages);
           return;
         }
 
-        setImages(data);
+        setImages(res.data);
       } catch (error) {
         NODE_DEV && console.info('[error]', error);
       }
