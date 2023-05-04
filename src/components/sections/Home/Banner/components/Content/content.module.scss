@@ -58,16 +58,6 @@
         9px 9px #88888850, 10px 10px #99999930, 11px 11px #aaaaaa30, 12px 12px #bbbbbb30,
         13px 13px #cccccc30, 14px 14px #dddddd30, 15px 15px #eeeeee30;
     }
-
-    @media (min-width: 420px) {
-      font-size: 5.6rem;
-    }
-    @media (min-width: 620px) {
-      font-size: 6.4rem;
-    }
-    @media (min-width: 1024px) {
-      font-size: 8rem;
-    }
   }
 
   .typed {
@@ -83,6 +73,10 @@
   .content {
     width: 320px;
 
+    h1 {
+      font-size: 5.6rem;
+    }
+
     .typed {
       font-size: 2rem;
     }
@@ -92,11 +86,19 @@
 @media screen and (min-width: 620px) {
   .content {
     width: 360px;
+
+    h1 {
+      font-size: 6.4rem;
+    }
   }
 }
 
 @media screen and (min-width: 1024px) {
   .content {
     width: 460px;
+
+    h1 {
+      font-size: 8rem;
+    }
   }
 }
