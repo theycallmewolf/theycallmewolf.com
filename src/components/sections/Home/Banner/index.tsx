@@ -15,7 +15,7 @@ import styles from './banner.module.scss';
 export const Banner: React.FC = () => {
   const [images, setImages] = useState<UnsplashAPIData[]>();
   const [currentBgImage, setCurrentBgImage] = useState<UnsplashAPIData>();
-  const [isMobile, setIsMobile] = useState(false);
+  const [device, setDevice] = useState<'desktop' | 'mobile'>('desktop');
 
   const addBackgroundImage = useCallback(() => {
     const imgArray = images ?? fallbackBgImages;
@@ -55,7 +55,7 @@ export const Banner: React.FC = () => {
 
   useEffect(() => {
     const { isAndroid, isIOS } = deviceCheck();
-    setIsMobile(isAndroid || isIOS);
+    setDevice(isAndroid || isIOS ? 'mobile' : 'desktop');
   }, []);
 
   const wrap = ['1', '2'];
@@ -92,7 +92,7 @@ export const Banner: React.FC = () => {
   );
 
   return (
-    <section className={`${styles.container} ${isMobile ? styles.mobile : ''}`}>
+    <section className={`${styles.container} ${styles[device]}`}>
       <div className={styles.tools}>
         <button
           className={styles['shuffle-button']}
