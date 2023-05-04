@@ -10,6 +10,7 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { ReactElement, ReactNode, useCallback, useEffect } from 'react';
 import { pageView } from 'utils/google-analytics';
+import { setViewportHeight } from 'utils/viewport-height';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -43,6 +44,7 @@ function App({ Component, pageProps }: AppPropsWithLayout): ReactNode {
   }, [router.events]);
 
   useEffect(handleGoogleAnalytics);
+  useEffect(setViewportHeight);
 
   return getLayout(
     <>
