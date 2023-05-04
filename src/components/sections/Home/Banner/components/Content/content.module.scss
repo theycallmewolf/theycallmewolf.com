@@ -60,12 +60,22 @@
     }
   }
 
-  .typed {
-    font-size: 1.6rem;
+  .label {
     line-height: 1.2;
     letter-spacing: 1px;
-    color: var(--c-polar-white);
-    text-shadow: 4px 4px 14px rgba(0, 0, 0, 0.6);
+    color: var(--c-element-100);
+    background: var(--c-background-100);
+
+    .typed {
+      font-size: 1.6rem;
+      box-shadow: 0.8rem 0 0 var(--c-background-100), calc(0.8rem * -1) 0 0 var(--c-background-100);
+      border: 10px solid var(--c-background-100);
+
+      -webkit-box-decoration-break: clone;
+      -ms-box-decoration-break: clone;
+      -o-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
   }
 }
 

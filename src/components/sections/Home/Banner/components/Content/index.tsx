@@ -11,14 +11,16 @@ export const Content: React.FC = () => {
         Call Me <br />
         {'<Wolf />'}
       </h1>
-      <Typed
-        strings={introCopy}
-        typeSpeed={40}
-        backSpeed={20}
-        startDelay={5000}
-        backDelay={1000}
-        className={styles.typed}
-      />
+      <span className={styles.label}>
+        <Typed
+          strings={introCopy}
+          typeSpeed={40}
+          backSpeed={20}
+          startDelay={5000}
+          backDelay={1000}
+          className={styles.typed}
+        />
+      </span>
     </div>
   );
 };
