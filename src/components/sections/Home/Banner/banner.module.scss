@@ -1,12 +1,18 @@
 .container {
   width: 100%;
-  height: calc(100vh - 80px);
+  height: calc(100 * var(--v-height) - 80px);
+
   margin-top: 0px;
   position: relative;
   overflow: hidden;
   background: var(--c-night-black);
   border-bottom-left-radius: 2.8rem;
   border-bottom-right-radius: 2.8rem;
+
+  &.isMobile {
+    height: calc(100vh - 80px);
+    border-radius: 0;
+  }
 
   &::before {
     content: '';
