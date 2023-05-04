@@ -8,12 +8,14 @@ import Typed from 'react-typed';
 import { getRandomImages, UnsplashAPIData } from 'services/unsplash';
 import { getRandomInt } from 'utils';
 import { NODE_DEV } from 'utils/dev';
+import { deviceCheck } from 'utils/device-check';
 
 import styles from './banner.module.scss';
 
 export const Banner: React.FC = () => {
   const [images, setImages] = useState<UnsplashAPIData[]>();
   const [currentBgImage, setCurrentBgImage] = useState<UnsplashAPIData>();
+  const [isMobile, setIsMobile] = useState(false);
 
   const addBackgroundImage = useCallback(() => {
     const imgArray = images ?? fallbackBgImages;
@@ -28,14 +30,14 @@ export const Banner: React.FC = () => {
       if (images) return;
 
       try {
-        const { data } = await getRandomImages();
+        const res = await getRandomImages();
 
-        if (!data) {
+        if (!res?.data) {
           setImages(fallbackBgImages);
           return;
         }
 
-        setImages(data);
+        setImages(res.data);
       } catch (error) {
         NODE_DEV && console.info('[error]', error);
       }
@@ -50,6 +52,11 @@ export const Banner: React.FC = () => {
     return () => clearInterval(intervalID);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [images]);
+
+  useEffect(() => {
+    const { isAndroid, isIOS } = deviceCheck();
+    setIsMobile(isAndroid || isIOS);
+  }, []);
 
   const wrap = ['1', '2'];
 
@@ -85,7 +92,7 @@ export const Banner: React.FC = () => {
   );
 
   return (
-    <section className={styles.container}>
+    <section className={`${styles.container} ${isMobile ? styles.mobile : ''}`}>
       <div className={styles.tools}>
         <button
           className={styles['shuffle-button']}

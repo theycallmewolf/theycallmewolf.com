@@ -1,12 +1,18 @@
 .container {
   width: 100%;
-  height: calc(100vh - 80px);
+  height: calc(100 * var(--v-height) - 80px);
+
   margin-top: 0px;
   position: relative;
   overflow: hidden;
   background: var(--c-night-black);
   border-bottom-left-radius: 2.8rem;
   border-bottom-right-radius: 2.8rem;
+
+  &.isMobile {
+    height: calc(100vh - 80px);
+    border-radius: 0;
+  }
 
   &::before {
     content: '';
@@ -160,7 +166,7 @@
   .tools {
     position: absolute;
     bottom: 0;
-    margin-bottom: calc(2.4rem + 8rem);
+    margin-bottom: 2.4rem;
     left: 2.4rem;
 
     z-index: 1;
@@ -194,6 +200,8 @@
     font-size: 1.2rem;
     letter-spacing: 0.2px;
     text-shadow: 4px 4px 14px rgba(0, 0, 0, 0.6);
+    text-align: center;
+    line-height: 1.6rem;
 
     a {
       text-decoration: underline;
