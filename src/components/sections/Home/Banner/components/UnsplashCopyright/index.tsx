@@ -13,7 +13,6 @@ interface UnsplashCopyrightProps {
 
 export const UnsplashCopyright: React.FC<UnsplashCopyrightProps> = (props) => {
   if (!props.currentBgImage) return null;
-  console.log('[I]', props.currentBgImage.color);
   return (
     <div className={styles.copyright}>
       <span className={styles.thumb} style={{ border: `2px solid ${props.currentBgImage.color}` }}>
