@@ -1,10 +1,10 @@
 import { Layout } from 'components/Layout';
-// import { About } from 'components/sections/Home/About';
-// import { Banner } from 'components/sections/Home/Banner';
-// import { Clients } from 'components/sections/Home/Clients';
-// import { Projects } from 'components/sections/Home/Projects';
-// import { Testimonials } from 'components/sections/Home/Testimonials';
 // import { Blog } from 'components/sections';
+import { About } from 'components/sections/Home/About';
+// import { Banner } from 'components/sections/Home/Banner';
+import { Clients } from 'components/sections/Home/Clients';
+import { Projects } from 'components/sections/Home/Projects';
+import { Testimonials } from 'components/sections/Home/Testimonials';
 import { GetStaticProps } from 'next';
 import { ReactElement } from 'react';
 import { getClients, getPosts, getProjects, getSkills, getTestimonials } from 'services/prismic';
@@ -16,10 +16,10 @@ const HomePage: NextPageWithLayout<HomeProps> = (props) => {
   return (
     <>
       {/* <Banner /> */}
-      {/* <About skills={props.skills} /> */}
-      {/* <Projects projects={props.projects} /> */}
-      {/* <Testimonials testimonials={props.testimonials} /> */}
-      {/* <Clients clients={props.clients} /> */}
+      <About skills={props.skills} />
+      <Projects projects={props.projects} />
+      <Testimonials testimonials={props.testimonials} />
+      <Clients clients={props.clients} />
       {/* <Blog posts={props.posts} /> */}
     </>
   );
