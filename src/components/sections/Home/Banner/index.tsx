@@ -11,7 +11,6 @@ import styles from './banner.module.scss';
 import { Content } from './components/Content';
 import { Scene } from './components/Scene';
 import { Tools } from './components/Tools';
-import { UnsplashCopyright } from './components/UnsplashCopyright';
 
 export const Banner: React.FC = () => {
   const [images, setImages] = useState<UnsplashAPIData[]>();
@@ -61,9 +60,8 @@ export const Banner: React.FC = () => {
 
   return (
     <section className={`${styles.container} ${styles[device]}`}>
-      <Tools addBackgroundImage={addBackgroundImage} />
+      <Tools addBackgroundImage={addBackgroundImage} currentBgImage={currentBgImage} />
       <Content />
-      <UnsplashCopyright currentBgImage={currentBgImage} />
       <Scene currentBgImage={currentBgImage} />
     </section>
   );
