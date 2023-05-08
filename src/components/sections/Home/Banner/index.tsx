@@ -32,7 +32,7 @@ export const Banner: React.FC = () => {
       try {
         const res = await getRandomImages();
 
-        if (!res?.data) {
+        if (!Array.isArray(res.data)) {
           setImages(fallbackBgImages);
           return;
         }
