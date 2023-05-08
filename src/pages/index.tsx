@@ -1,7 +1,7 @@
 import { Layout } from 'components/Layout';
 // import { Blog } from 'components/sections';
 import { About } from 'components/sections/Home/About';
-// import { Banner } from 'components/sections/Home/Banner';
+import { Banner } from 'components/sections/Home/Banner';
 import { Clients } from 'components/sections/Home/Clients';
 import { Projects } from 'components/sections/Home/Projects';
 import { Testimonials } from 'components/sections/Home/Testimonials';
@@ -15,7 +15,7 @@ import { NextPageWithLayout } from './_app';
 const HomePage: NextPageWithLayout<HomeProps> = (props) => {
   return (
     <>
-      {/* <Banner /> */}
+      <Banner />
       <About skills={props.skills} />
       <Projects projects={props.projects} />
       <Testimonials testimonials={props.testimonials} />

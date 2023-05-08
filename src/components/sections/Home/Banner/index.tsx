@@ -9,7 +9,7 @@ import { deviceCheck } from 'utils/device-check';
 
 import styles from './banner.module.scss';
 import { Content } from './components/Content';
-import { Scene } from './components/Scene';
+// import { Scene } from './components/Scene';
 import { Tools } from './components/Tools';
 
 export const Banner: React.FC = () => {
@@ -62,7 +62,7 @@ export const Banner: React.FC = () => {
     <section className={`${styles.container} ${styles[device]}`}>
       <Tools addBackgroundImage={addBackgroundImage} currentBgImage={currentBgImage} />
       <Content />
-      <Scene currentBgImage={currentBgImage} />
+      {/* <Scene currentBgImage={currentBgImage} /> */}
     </section>
   );
 };
