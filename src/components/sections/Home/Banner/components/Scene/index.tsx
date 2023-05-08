@@ -1,10 +1,11 @@
 import { useMemo } from 'react';
 import { UnsplashAPIData } from 'services/unsplash';
+import { COLORS } from 'theme';
 
 import styles from './scene.module.scss';
 
 interface SceneProps {
-  currentBgImage: UnsplashAPIData;
+  currentBgImage?: UnsplashAPIData;
 }
 
 export const Scene: React.FC<SceneProps> = (props) => {
@@ -36,10 +37,14 @@ export const Scene: React.FC<SceneProps> = (props) => {
     []
   );
 
-  const style = useMemo(
-    () => ({ background: `url(${props.currentBgImage?.urls.regular})` }),
-    [props.currentBgImage?.urls.regular]
-  );
+  const style = useMemo(() => {
+    if (!props.currentBgImage || !props.currentBgImage?.urls.regular)
+      return { background: COLORS.NIGHT_BLACK };
+
+    return { background: `url(${props.currentBgImage?.urls.regular})` };
+  }, [props.currentBgImage]);
+
+  if (!props.currentBgImage) return null;
 
   return (
     <div className={styles.scene}>
