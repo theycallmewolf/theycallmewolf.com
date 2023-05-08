@@ -1,0 +1,41 @@
+.tools {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 2.4rem;
+  left: 1.4rem;
+
+  z-index: 1;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  column-gap: 0.8rem;
+
+  .shuffle-button {
+    background: transparent;
+    border: none;
+
+    width: 4.8rem;
+    height: 4.8rem;
+
+    flex-shrink: 0;
+
+    transition: transform 300ms ease-in-out;
+
+    svg {
+      width: 60%;
+      height: 60%;
+      fill: var(--c-polar-white);
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .tools {
+    margin-bottom: 2.4rem;
+  }
+}

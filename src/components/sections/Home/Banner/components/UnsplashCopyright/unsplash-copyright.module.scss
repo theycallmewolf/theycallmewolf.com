@@ -1,0 +1,56 @@
+.copyright {
+  display: block;
+  font-size: 1rem;
+  letter-spacing: 0.2px;
+  text-shadow: 4px 4px 14px rgba(0, 0, 0, 0.6);
+  line-height: 1.6rem;
+
+  max-width: 17.8rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  column-gap: 0.8rem;
+
+  .thumb {
+    position: relative;
+    flex-shrink: 0;
+    width: 4.8rem;
+    height: 4.8rem;
+
+    transition: transform 300ms ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    .unsplash-symbol {
+      width: 1.2rem;
+      height: 1.2rem;
+
+      position: absolute;
+      bottom: 0.4rem;
+      right: 0.4rem;
+    }
+  }
+
+  .label {
+    a {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .copyright {
+    font-size: 1.2rem;
+    max-width: 22rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .copyright {
+    max-width: 24rem;
+  }
+}

@@ -17,15 +17,13 @@ interface LayoutProps {
 
 export const Layout: React.FC<LayoutProps> = (props) => {
   return (
-    <>
+    <AppProvider>
       <Metadata title={props.title} description={props.description} />
-      <AppProvider>
-        <Page>{props.children}</Page>
-      </AppProvider>
+      <Page>{props.children}</Page>
       <ContactForm />
       <SpotifyNotification />
       <Analytics />
-    </>
+    </AppProvider>
   );
 };
 

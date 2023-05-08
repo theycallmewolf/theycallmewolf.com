@@ -66,7 +66,7 @@ const CommonMetas: React.FC = () => {
       <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
       <link rel="manifest" href="/site.webmanifest" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       <meta name="MobileOptimized" content="320" />
       <meta name="HandheldFriendly" content="true" />
       <meta name="referrer" content="no-referrer-when-downgrade" />
@@ -84,6 +84,16 @@ const CommonMetas: React.FC = () => {
         content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
       />
       <meta name="theme-color" content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE} />
+      {/* <meta
+        name="theme-color"
+        content={COLORS.IRIDIUM_WHITE}
+        data-media="(prefers-color-scheme: light)"
+      />
+      <meta
+        name="theme-color"
+        content={COLORS.COSMOS_BLACK}
+        data-media="(prefers-color-scheme: dark)"
+      /> */}
     </Head>
   );
 };
