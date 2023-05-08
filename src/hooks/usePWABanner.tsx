@@ -38,10 +38,10 @@ export const usePWABanner: UsePWABanner = () => {
       () => {
         if (toastID) return;
 
-        const { isAndroid, isIOS } = deviceCheck();
+        const { isMobile, isAndroid, isIOS } = deviceCheck();
         NODE_DEV && console.log('is Android:', isAndroid, 'is IOS:', isIOS);
 
-        if (!(isIOS || isAndroid)) return;
+        if (!isMobile) return;
 
         const isInstalled = window.matchMedia('(display-mode: standalone)').matches;
         if (isInstalled) return;

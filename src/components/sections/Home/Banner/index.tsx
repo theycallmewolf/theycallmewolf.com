@@ -54,8 +54,8 @@ export const Banner: React.FC = () => {
   }, [images]);
 
   useEffect(() => {
-    const { isAndroid, isIOS } = deviceCheck();
-    setDevice(isAndroid || isIOS ? 'mobile' : 'desktop');
+    const { isMobile } = deviceCheck();
+    setDevice(isMobile ? 'mobile' : 'desktop');
   }, []);
 
   return (
