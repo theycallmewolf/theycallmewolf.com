@@ -1,13 +1,14 @@
 import { useMemo } from 'react';
-import { UnsplashAPIData } from 'services/unsplash';
+import { COLORS } from 'theme';
+import { deviceCheck } from 'utils';
 
+import { useUnsplash } from '../../useUnsplash';
 import styles from './scene.module.scss';
 
-interface SceneProps {
-  currentBgImage: UnsplashAPIData;
-}
+export const Scene: React.FC = () => {
+  const { hasDarkMode } = useTheme();
+  const { currentBgImage } = useUnsplash();
 
-export const Scene: React.FC<SceneProps> = (props) => {
   const wrap = ['1', '2'];
 
   const frames = useMemo(
@@ -36,10 +37,18 @@ export const Scene: React.FC<SceneProps> = (props) => {
     []
   );
 
-  const style = useMemo(
-    () => ({ background: `url(${props.currentBgImage?.urls.regular})` }),
-    [props.currentBgImage?.urls.regular]
-  );
+  const style = useMemo(() => {
+    if (!currentBgImage) {
+      return { background: hasDarkMode ? COLORS.NIGHT_BLACK : COLORS.IRIDIUM_WHITE };
+    }
+
+    const { isMobile } = deviceCheck();
+    const image = isMobile ? currentBgImage.urls.small : currentBgImage?.urls.regular;
+
+    return { background: `url(${image})` };
+  }, [hasDarkMode, currentBgImage]);
+
+  if (!currentBgImage) return null;
 
   return (
     <div className={styles.scene}>
