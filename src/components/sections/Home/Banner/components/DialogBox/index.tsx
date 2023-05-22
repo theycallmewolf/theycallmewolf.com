@@ -22,7 +22,7 @@ export const DialogBox: React.FC = () => {
       </button>
 
       <div className={styles.content}>
-        {/* <Search /> */}
+        <Search />
         <List />
       </div>
     </div>
@@ -40,6 +40,9 @@ const Search: React.FC = () => {
     },
     [getImages, setUserSearch]
   );
+
+  // @todo: fix search
+  return null;
 
   return (
     <form className={styles['search-form']} onSubmit={onSearchSubmit}>
@@ -69,16 +72,25 @@ const List: React.FC = () => {
   );
 
   return (
-    <div className={styles['thumbs-list']}>
-      {images?.map((img) => (
-        <button
-          onClick={() => onThumbClick(img.id)}
-          key={img.id}
-          data-id={img.id}
-          className={`${styles.button} ${currentBgImage?.id === img.id ? styles.selected : ''}`}>
-          <Image src={img.urls.thumb} alt={img.description} layout="fill" />
-        </button>
-      ))}
-    </div>
+    <>
+      <div className={styles['thumbs-list']}>
+        {images?.map((img) => (
+          <button
+            onClick={() => onThumbClick(img.id)}
+            key={img.id}
+            data-id={img.id}
+            className={`${styles.button} ${currentBgImage?.id === img.id ? styles.selected : ''}`}>
+            <Image src={img.urls.thumb} alt={img.description} layout="fill" />
+          </button>
+        ))}
+      </div>
+
+      <p className={styles.credits}>
+        {'Powered by '}
+        <a href="https://unsplash.com/developers" target="_blank" rel="noopener noreferrer">
+          Unsplash API
+        </a>
+      </p>
+    </>
   );
 };
