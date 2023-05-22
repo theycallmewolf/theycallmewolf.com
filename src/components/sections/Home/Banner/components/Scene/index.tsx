@@ -1,3 +1,4 @@
+import { useTheme } from 'hooks';
 import { useMemo } from 'react';
 import { COLORS } from 'theme';
 import { deviceCheck } from 'utils';
@@ -49,7 +50,6 @@ export const Scene: React.FC = () => {
   }, [hasDarkMode, currentBgImage]);
 
   if (!currentBgImage) return null;
-
   return (
     <div className={styles.scene}>
       {wrap.map((key) => (

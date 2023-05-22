@@ -19,9 +19,13 @@ export const Banner: React.FC = () => {
 };
 
 const BannerComponent: React.FC = () => {
-  const { images, addBackgroundImage } = useUnsplash();
+  const { images, addBackgroundImage, getImages } = useUnsplash();
 
   const [device, setDevice] = useState<'desktop' | 'mobile'>('desktop');
+
+  useEffect(() => {
+    getImages();
+  }, [getImages]);
 
   useEffect(() => {
     if (!images) return;
@@ -33,8 +37,8 @@ const BannerComponent: React.FC = () => {
   }, [images]);
 
   useEffect(() => {
-    const { isAndroid, isIOS } = deviceCheck();
-    setDevice(isAndroid || isIOS ? 'mobile' : 'desktop');
+    const { isMobile } = deviceCheck();
+    setDevice(isMobile ? 'mobile' : 'desktop');
   }, []);
 
   return (
