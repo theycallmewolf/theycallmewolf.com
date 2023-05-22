@@ -1,23 +1,17 @@
 import SvgICross from 'assets/icons/ICross';
 import ISearch from 'assets/icons/ISearch';
 import Image from 'next/image';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback } from 'react';
 
 import { useUnsplash } from '../../useUnsplash';
 import styles from './dialog-box.module.scss';
 
 export const DialogBox: React.FC = () => {
-  const { images } = useUnsplash();
-
-  const [showDialog, setShowDialog] = useState(true);
-
-  useEffect(() => {
-    setShowDialog(images?.length > 0);
-  }, [images]);
+  const { showDialogBox, setShowDialogBox } = useUnsplash();
 
   return (
-    <div className={`${styles.dialog} ${showDialog ? styles.show : ''}`}>
-      <button className={styles['btn-close']} onClick={() => setShowDialog(false)}>
+    <div className={`${styles.dialog} ${showDialogBox ? styles.show : ''}`}>
+      <button className={styles['btn-close']} onClick={() => setShowDialogBox(false)}>
         <SvgICross className={styles.icon} />
       </button>
 

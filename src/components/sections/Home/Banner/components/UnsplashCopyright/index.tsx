@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { UnsplashAPIData } from 'services/unsplash';
 
+import { useUnsplash } from '../../useUnsplash';
 import styles from './unsplash-copyright.module.scss';
 
 interface UnsplashCopyrightProps {
@@ -12,9 +13,12 @@ interface UnsplashCopyrightProps {
 }
 
 export const UnsplashCopyright: React.FC<UnsplashCopyrightProps> = (props) => {
+  const { showContent } = useUnsplash();
+
   if (!props.currentBgImage) return null;
+
   return (
-    <div className={styles.copyright}>
+    <div className={`${styles.copyright} ${!showContent ? styles.hide : ''}`}>
       <span className={styles.thumb} style={{ border: `2px solid ${props.currentBgImage.color}` }}>
         <a href={props.currentBgImage.links.html} target="_blank" rel="noopener noreferrer">
           <Image src={props.image.src} width="48" height="48" quality="50" alt={props.image.alt} />

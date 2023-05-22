@@ -21,6 +21,10 @@ interface UnsplashData {
   currentBgImage: UnsplashAPIData;
   setCurrentBgImage: Dispatch<SetStateAction<UnsplashAPIData>>;
   addBackgroundImage: () => void;
+  showDialogBox: boolean;
+  setShowDialogBox: Dispatch<SetStateAction<boolean>>;
+  showContent: boolean;
+  setShowContent: Dispatch<SetStateAction<boolean>>;
 }
 
 const UnsplashContext = createContext<UnsplashData>({} as UnsplashData);
@@ -32,6 +36,8 @@ const UnsplashProvider: React.FC = ({ children }) => {
   const [images, setImages] = useState<UnsplashAPIData[]>();
   const [unsplashQuery, setUnsplashQuery] = useState(DEFAULT_UNSPLASH_QUERY);
   const [currentBgImage, setCurrentBgImage] = useState<UnsplashAPIData>();
+  const [showDialogBox, setShowDialogBox] = useState(false);
+  const [showContent, setShowContent] = useState(true);
 
   const getImages = useCallback(async () => {
     if (images && !userSearch) return;
@@ -80,7 +86,11 @@ const UnsplashProvider: React.FC = ({ children }) => {
         setUserSearch,
         currentBgImage,
         setCurrentBgImage,
-        addBackgroundImage
+        addBackgroundImage,
+        showDialogBox,
+        setShowDialogBox,
+        showContent,
+        setShowContent
       }}>
       {children}
     </UnsplashContext.Provider>

@@ -12,6 +12,15 @@
   justify-content: flex-start;
   column-gap: 0.8rem;
 
+  pointer-events: all;
+  opacity: 1;
+  transition: opacity 300ms ease;
+
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+
   .thumb {
     position: relative;
     flex-shrink: 0;
