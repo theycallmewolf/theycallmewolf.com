@@ -7,8 +7,11 @@ import { createApi } from 'unsplash-js';
  * @dco https://github.com/unsplash/unsplash-js#usage
  */
 
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   global.fetch = fetch;
+
+  const { query } = req.query;
 
   const unsplash = createApi({
     accessKey: process.env.UNSPLASH_ACCESS_KEY,
@@ -21,7 +24,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const result = await unsplash.photos.getRandom({
       collectionIds: ['1394732'],
-      query: 'abstract',
+      query: Array.isArray(query) ? query[0] : query,
       orientation: 'landscape',
       count: 12
     });

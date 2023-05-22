@@ -118,7 +118,12 @@ export interface UnsplashAPIResponse {
   // statusText: string;
 }
 
-// export const getRandomImage = async (): Promise<UnsplashAPIResponse> => {
-export const getRandomImages = async (): Promise<UnsplashAPIResponse> => {
-  return await axios.get('/api/unsplash');
+export interface GetRandomImagesProps {
+  query: string;
+}
+export const getRandomImages = async (
+  props: GetRandomImagesProps
+): Promise<UnsplashAPIResponse> => {
+  const query = props.query ?? 'abstract';
+  return await axios.get(`/api/unsplash?query=${query}`);
 };

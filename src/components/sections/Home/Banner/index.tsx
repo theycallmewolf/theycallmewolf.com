@@ -1,57 +1,29 @@
 import 'react-typed/dist/animatedCursor.css';
 
-import { fallbackBgImages } from 'assets/constants/bg-images';
-import { useCallback, useEffect, useState } from 'react';
-import { getRandomImages, UnsplashAPIData } from 'services/unsplash';
-import { getRandomInt } from 'utils';
-import { NODE_DEV } from 'utils/dev';
+import { useEffect, useState } from 'react';
 import { deviceCheck } from 'utils/device-check';
 
 import styles from './banner.module.scss';
 import { Content } from './components/Content';
+import { DialogBox } from './components/DialogBox';
 import { Scene } from './components/Scene';
 import { Tools } from './components/Tools';
+import { UnsplashProvider, useUnsplash } from './useUnsplash';
 
-export const Banner: React.FC = () => {
-  const [images, setImages] = useState<UnsplashAPIData[]>();
-  const [currentBgImage, setCurrentBgImage] = useState<UnsplashAPIData>();
+export const Banner: React.FC = () => (
+  <UnsplashProvider>
+    <BannerComponent />
+  </UnsplashProvider>
+);
+
+const BannerComponent: React.FC = () => {
+  const { getImages } = useUnsplash();
+
   const [device, setDevice] = useState<'desktop' | 'mobile'>('desktop');
-
-  const addBackgroundImage = useCallback(() => {
-    const imgArray = images ?? fallbackBgImages;
-    const index = getRandomInt(0, imgArray.length - 1);
-    setCurrentBgImage(imgArray[index]);
-  }, [images]);
 
   useEffect(() => {
     getImages();
-
-    async function getImages() {
-      if (images) return;
-
-      try {
-        const res = await getRandomImages();
-
-        if (!Array.isArray(res.data)) {
-          setImages(fallbackBgImages);
-          return;
-        }
-
-        setImages(res.data);
-      } catch (error) {
-        NODE_DEV && console.info('[error]', error);
-      }
-    }
-  }, [images]);
-
-  useEffect(() => {
-    if (!images) return;
-
-    addBackgroundImage();
-    const intervalID = setInterval(() => addBackgroundImage(), 10_000);
-    return () => clearInterval(intervalID);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [images]);
+  }, [getImages]);
 
   useEffect(() => {
     const { isMobile } = deviceCheck();
@@ -60,9 +32,10 @@ export const Banner: React.FC = () => {
 
   return (
     <section className={`${styles.container} ${styles[device]}`}>
-      <Tools addBackgroundImage={addBackgroundImage} currentBgImage={currentBgImage} />
+      <Tools />
       <Content />
-      <Scene currentBgImage={currentBgImage} />
+      <DialogBox />
+      <Scene />
     </section>
   );
 };

@@ -1,11 +1,16 @@
 import { introCopy } from 'assets/constants/intro';
 import Typed from 'react-typed';
 
+import { useUnsplash } from '../../useUnsplash';
 import styles from './content.module.scss';
 
 export const Content: React.FC = () => {
+  const { showContent, showDialogBox } = useUnsplash();
+
+  const hide = !showContent || showDialogBox;
+
   return (
-    <div className={styles.content}>
+    <div className={`${styles.content} ${hide ? styles.hide : ''}`}>
       <h1 className={styles.flame /* neon | vegas | rainbow | florida | shadow*/}>
         They <br />
         Call Me <br />
