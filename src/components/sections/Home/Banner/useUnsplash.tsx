@@ -15,6 +15,7 @@ import { NODE_DEV } from 'utils/dev';
 interface UnsplashData {
   images: UnsplashAPIData[];
   getImages: () => Promise<void>;
+  unsplashQuery: string;
   setUnsplashQuery: Dispatch<SetStateAction<string>>;
   setUserSearch: Dispatch<SetStateAction<boolean>>;
   currentBgImage: UnsplashAPIData;
@@ -24,10 +25,12 @@ interface UnsplashData {
 
 const UnsplashContext = createContext<UnsplashData>({} as UnsplashData);
 
+const DEFAULT_UNSPLASH_QUERY = 'abstract';
+
 const UnsplashProvider: React.FC = ({ children }) => {
   const [userSearch, setUserSearch] = useState(false);
   const [images, setImages] = useState<UnsplashAPIData[]>();
-  const [unsplashQuery, setUnsplashQuery] = useState('abstract');
+  const [unsplashQuery, setUnsplashQuery] = useState(DEFAULT_UNSPLASH_QUERY);
   const [currentBgImage, setCurrentBgImage] = useState<UnsplashAPIData>();
 
   const getImages = useCallback(async () => {
@@ -58,11 +61,21 @@ const UnsplashProvider: React.FC = ({ children }) => {
     getImages();
   }, [getImages]);
 
+  useEffect(() => {
+    if (!images) return;
+
+    addBackgroundImage();
+    const intervalID = setInterval(() => addBackgroundImage(), 10_000);
+    return () => clearInterval(intervalID);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [images]);
+
   return (
     <UnsplashContext.Provider
       value={{
         images,
         getImages,
+        unsplashQuery,
         setUnsplashQuery,
         setUserSearch,
         currentBgImage,

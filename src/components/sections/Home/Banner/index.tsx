@@ -17,22 +17,13 @@ export const Banner: React.FC = () => (
 );
 
 const BannerComponent: React.FC = () => {
-  const { images, addBackgroundImage, getImages } = useUnsplash();
+  const { getImages } = useUnsplash();
 
   const [device, setDevice] = useState<'desktop' | 'mobile'>('desktop');
 
   useEffect(() => {
     getImages();
   }, [getImages]);
-
-  useEffect(() => {
-    if (!images) return;
-
-    addBackgroundImage();
-    const intervalID = setInterval(() => addBackgroundImage(), 10_000);
-    return () => clearInterval(intervalID);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [images]);
 
   useEffect(() => {
     const { isMobile } = deviceCheck();

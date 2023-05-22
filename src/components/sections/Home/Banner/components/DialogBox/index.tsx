@@ -1,7 +1,7 @@
 import SvgICross from 'assets/icons/ICross';
 import ISearch from 'assets/icons/ISearch';
 import Image from 'next/image';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { useUnsplash } from '../../useUnsplash';
 import styles from './dialog-box.module.scss';
@@ -22,7 +22,7 @@ export const DialogBox: React.FC = () => {
       </button>
 
       <div className={styles.content}>
-        <Search />
+        {/* <Search /> */}
         <List />
       </div>
     </div>
@@ -30,23 +30,26 @@ export const DialogBox: React.FC = () => {
 };
 
 const Search: React.FC = () => {
-  const { setUnsplashQuery, setUserSearch } = useUnsplash();
-  const inputRef = useRef<HTMLInputElement>(null);
+  const { setUnsplashQuery, unsplashQuery, getImages, setUserSearch } = useUnsplash();
 
   const onSearchSubmit = useCallback(
     (evt) => {
       evt.preventDefault();
-
-      if (!inputRef.current) return;
-      setUnsplashQuery(inputRef.current.value);
       setUserSearch(true);
+      getImages();
     },
-    [setUnsplashQuery, setUserSearch]
+    [getImages, setUserSearch]
   );
 
   return (
     <form className={styles['search-form']} onSubmit={onSearchSubmit}>
-      <input ref={inputRef} type="search" name="unsplash-search" id="unsplash-search" />
+      <input
+        type="search"
+        name="unsplash-search"
+        id="unsplash-search"
+        value={unsplashQuery}
+        onChange={(evt) => setUnsplashQuery(evt.target.value)}
+      />
       <button type="submit">
         <ISearch className={styles.icon} />
       </button>
