@@ -41,7 +41,6 @@ const UnsplashProvider: React.FC = ({ children }) => {
         return;
       }
 
-      console.log('[R]', res.data);
       setImages(res.data);
       setUserSearch(false);
     } catch (error) {

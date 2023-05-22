@@ -10,13 +10,11 @@ import { Scene } from './components/Scene';
 import { Tools } from './components/Tools';
 import { UnsplashProvider, useUnsplash } from './useUnsplash';
 
-export const Banner: React.FC = () => {
-  return (
-    <UnsplashProvider>
-      <BannerComponent />
-    </UnsplashProvider>
-  );
-};
+export const Banner: React.FC = () => (
+  <UnsplashProvider>
+    <BannerComponent />
+  </UnsplashProvider>
+);
 
 const BannerComponent: React.FC = () => {
   const { images, addBackgroundImage, getImages } = useUnsplash();
