@@ -1,28 +1,58 @@
-.dialog {
-  z-index: 4;
-  background: var(--c-background-100);
-
+.container {
+  width: 100vw;
+  height: calc(100vh - 8rem);
   position: absolute;
-  bottom: -100rem;
-  right: 50%;
-  transform: translateX(50%);
+  top: -100vh;
+  left: 0;
+  z-index: 4;
+
+  opacity: 0;
+  pointer-events: none;
+  margin-bottom: -100rem;
+  
+  transition: opacity 300ms ease-out, top 300ms ease-out;
+  
+  &.show {
+    opacity: 1;
+    pointer-events: all;
+    top: 0;
+  }
+}
+
+.dialog {
   width: 100%;
   max-width: 32rem;
-
-  border-top-left-radius: 2.4rem;
-  border-top-right-radius: 2.4rem;
-
+  
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   justify-content: left;
 
+  background: var(--c-background-100);
+  border-radius: 2.4rem;
   box-shadow: 0px 16px 16px 0px #00000040;
+}
 
-  transition: bottom 600ms ease;
+.drag-handle {
+  position: absolute;
+  top: 0;
+  right: 50%;
+  transform: translateX(50%);
+  width: 4.8rem;
+  height: 4.8rem;
+  padding: 1.2rem;
+  background: transparent;
+  border: none;
 
-  &.show {
-    bottom: -4.8rem;
+  cursor: move; 
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+
+  &:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
   }
 }
 
@@ -181,12 +211,6 @@
 }
 
 @media screen and (min-width: 1024px) {
-  .dialog.show {
-    bottom: 50%;
-    transform: translate(50%, 50%);
-    border-radius: 2.4rem;
-  }
-
   .content {
     padding-bottom: 2.4rem;
   }
