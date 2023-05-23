@@ -57,6 +57,7 @@
 }
 
 .search-form {
+  position: relative;
   width: 100%;
   display: flex;
 
@@ -96,6 +97,26 @@
     .icon {
       stroke: var(--c-element-100);
       fill: none;
+    }
+  }
+
+  .error {
+    position: absolute;
+    bottom: 2.8rem;
+    left: 1.6rem;
+    right: 1.6rem;
+    background: var(--c-candy-red-800);
+
+    text-align: center;
+    font-size: 1.4rem;
+
+    opacity: 0;
+
+    transition: opacity 3000ms ease, bottom 300ms ease;
+
+    &.show {
+      opacity: 1;
+      bottom: -1rem;
     }
   }
 }

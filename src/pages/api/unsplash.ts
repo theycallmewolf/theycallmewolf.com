@@ -38,7 +38,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           count: 12
         });
 
-        res.status(200).json({ results: result.response, message: result.errors[0] });
+        res.status(200).json({ results: result.response, message: 'No photos found.' });
         return;
       }
 
@@ -51,6 +51,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     res.status(200).json({ results: result.response, message: undefined });
   } catch (error) {
-    res.status(200).json({ data: null });
+    res.status(200).json({ data: null, message: error });
   }
 };

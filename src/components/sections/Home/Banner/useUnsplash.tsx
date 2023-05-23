@@ -25,6 +25,7 @@ interface UnsplashData {
   setShowDialogBox: Dispatch<SetStateAction<boolean>>;
   showContent: boolean;
   setShowContent: Dispatch<SetStateAction<boolean>>;
+  noResults: boolean;
 }
 
 const UnsplashContext = createContext<UnsplashData>({} as UnsplashData);
@@ -38,12 +39,19 @@ const UnsplashProvider: React.FC = ({ children }) => {
   const [currentBgImage, setCurrentBgImage] = useState<UnsplashAPIData>();
   const [showDialogBox, setShowDialogBox] = useState(false);
   const [showContent, setShowContent] = useState(true);
+  const [noResults, setNoResults] = useState(false);
 
   const getImages = useCallback(async () => {
     if (images && !userSearch) return;
 
     try {
       const res = await getRandomImages({ query: unsplashQuery });
+
+      // case no results from user query
+      setNoResults(res.data.message === 'No photos found.');
+      setTimeout(() => {
+        setNoResults(false);
+      }, 3000);
 
       if (!Array.isArray(res.data.results)) {
         setImages(fallbackBgImages);
@@ -90,7 +98,8 @@ const UnsplashProvider: React.FC = ({ children }) => {
         showDialogBox,
         setShowDialogBox,
         showContent,
-        setShowContent
+        setShowContent,
+        noResults
       }}>
       {children}
     </UnsplashContext.Provider>
