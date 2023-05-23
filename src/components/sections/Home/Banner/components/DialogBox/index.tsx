@@ -81,6 +81,8 @@ const Search: React.FC = () => {
 
   return (
     <form className={styles['search-form']} onSubmit={onSearchSubmit}>
+      <div className={`${styles.error} ${noResults ? styles.show : ''}`}>No photos found.</div>
+
       <input
         type="search"
         name="unsplash-search"
@@ -88,7 +90,7 @@ const Search: React.FC = () => {
         value={unsplashQuery}
         onChange={(evt) => setUnsplashQuery(evt.target.value)}
       />
-      <div className={`${styles.error} ${noResults ? styles.show : ''}`}>No photos found.</div>
+
       <button type="submit">
         <ISearch className={styles.icon} />
       </button>
