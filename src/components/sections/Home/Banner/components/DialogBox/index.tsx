@@ -30,9 +30,16 @@ export const DialogBox: React.FC = () => {
     }
   }, []);
 
+  /**
+   * @doc https://github.com/react-grid-layout/react-draggable#draggable
+   */
   return (
     <div className={`${styles.container} ${showDialogBox ? styles.show : ''}`}>
-      <Draggable handle=".handle" bounds="parent" defaultPosition={coordinates}>
+      <Draggable
+        handle=".handle"
+        bounds="parent"
+        // position={coordinates}
+        defaultPosition={coordinates}>
         <div ref={elementRef} className={`${styles.dialog} ${showDialogBox ? styles.show : ''}`}>
           <button className={`${styles['drag-handle']} handle`}>
             <IDragHandle />
