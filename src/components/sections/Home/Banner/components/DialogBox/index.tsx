@@ -35,9 +35,6 @@ const Search: React.FC = () => {
     [getImages, setUserSearch]
   );
 
-  // @todo: fix search
-  return null;
-
   return (
     <form className={styles['search-form']} onSubmit={onSearchSubmit}>
       <input

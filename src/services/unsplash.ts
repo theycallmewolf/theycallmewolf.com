@@ -114,7 +114,10 @@ export interface UnsplashAPIData {
   // topics: unknown[];
 }
 export interface UnsplashAPIResponse {
-  data: UnsplashAPIData[];
+  data: {
+    results: UnsplashAPIData[];
+    message?: string;
+  };
   // status: number;
   // statusText: string;
 }

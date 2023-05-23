@@ -45,12 +45,12 @@ const UnsplashProvider: React.FC = ({ children }) => {
     try {
       const res = await getRandomImages({ query: unsplashQuery });
 
-      if (!Array.isArray(res.data)) {
+      if (!Array.isArray(res.data.results)) {
         setImages(fallbackBgImages);
         return;
       }
 
-      setImages(res.data);
+      setImages(res.data.results);
       setUserSearch(false);
     } catch (error) {
       NODE_DEV && console.info('[error]', error);
