@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { UNSPLASH_DEFAULT_QUERY } from 'components/sections/Home/Banner/useUnsplash';
 
 export interface UnsplashAPIData {
   id: string;
@@ -124,6 +125,6 @@ export interface GetRandomImagesProps {
 export const getRandomImages = async (
   props: GetRandomImagesProps
 ): Promise<UnsplashAPIResponse> => {
-  const query = props.query ?? 'abstract';
+  const query = props.query ?? UNSPLASH_DEFAULT_QUERY;
   return await axios.get(`/api/unsplash?query=${query}`);
 };

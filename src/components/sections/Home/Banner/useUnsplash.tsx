@@ -29,12 +29,12 @@ interface UnsplashData {
 
 const UnsplashContext = createContext<UnsplashData>({} as UnsplashData);
 
-const DEFAULT_UNSPLASH_QUERY = 'abstract';
+export const UNSPLASH_DEFAULT_QUERY = 'abstract';
 
 const UnsplashProvider: React.FC = ({ children }) => {
   const [userSearch, setUserSearch] = useState(false);
   const [images, setImages] = useState<UnsplashAPIData[]>();
-  const [unsplashQuery, setUnsplashQuery] = useState(DEFAULT_UNSPLASH_QUERY);
+  const [unsplashQuery, setUnsplashQuery] = useState(UNSPLASH_DEFAULT_QUERY);
   const [currentBgImage, setCurrentBgImage] = useState<UnsplashAPIData>();
   const [showDialogBox, setShowDialogBox] = useState(false);
   const [showContent, setShowContent] = useState(true);
