@@ -111,12 +111,14 @@
     font-size: 1.4rem;
 
     opacity: 0;
+    pointer-events: none;
 
     transition: opacity 3000ms ease, bottom 300ms ease;
 
     &.show {
       opacity: 1;
       bottom: -1rem;
+      pointer-events: all;
     }
   }
 }

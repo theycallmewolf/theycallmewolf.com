@@ -24,7 +24,14 @@ export const DialogBox: React.FC = () => {
 };
 
 const Search: React.FC = () => {
-  const { setUnsplashQuery, unsplashQuery, getImages, setUserSearch, noResults } = useUnsplash();
+  const {
+    setUnsplashQuery,
+    unsplashQuery,
+    getImages,
+    setUserSearch,
+    noResults,
+    unsplashAPIUnavailable
+  } = useUnsplash();
 
   const onSearchSubmit = useCallback(
     (evt) => {
@@ -35,6 +42,8 @@ const Search: React.FC = () => {
     [getImages, setUserSearch]
   );
 
+  if (unsplashAPIUnavailable) return null;
+
   return (
     <form className={styles['search-form']} onSubmit={onSearchSubmit}>
       <input
@@ -44,7 +53,7 @@ const Search: React.FC = () => {
         value={unsplashQuery}
         onChange={(evt) => setUnsplashQuery(evt.target.value)}
       />
-      <div className={`${styles.error} ${!noResults ? styles.show : ''}`}>No photos found.</div>
+      <div className={`${styles.error} ${noResults ? styles.show : ''}`}>No photos found.</div>
       <button type="submit">
         <ISearch className={styles.icon} />
       </button>

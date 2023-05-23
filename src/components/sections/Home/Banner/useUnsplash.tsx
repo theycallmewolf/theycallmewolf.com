@@ -26,6 +26,7 @@ interface UnsplashData {
   showContent: boolean;
   setShowContent: Dispatch<SetStateAction<boolean>>;
   noResults: boolean;
+  unsplashAPIUnavailable: boolean;
 }
 
 const UnsplashContext = createContext<UnsplashData>({} as UnsplashData);
@@ -40,6 +41,7 @@ const UnsplashProvider: React.FC = ({ children }) => {
   const [showDialogBox, setShowDialogBox] = useState(false);
   const [showContent, setShowContent] = useState(true);
   const [noResults, setNoResults] = useState(false);
+  const [unsplashAPIUnavailable, setUnsplashAPIUnavailable] = useState(true);
 
   const getImages = useCallback(async () => {
     if (images && !userSearch) return;
@@ -47,8 +49,12 @@ const UnsplashProvider: React.FC = ({ children }) => {
     try {
       const res = await getRandomImages({ query: unsplashQuery });
 
-      // case no results from user query
+      // case unsplash api error (hide search from `DialogBox`)
+      setUnsplashAPIUnavailable(res.data.message === 'expected JSON response from server.');
+
+      // case no results from user query (show `DialogBox` alert)
       setNoResults(res.data.message === 'No photos found.');
+      setUnsplashQuery(UNSPLASH_DEFAULT_QUERY);
       setTimeout(() => {
         setNoResults(false);
       }, 3000);
@@ -99,7 +105,8 @@ const UnsplashProvider: React.FC = ({ children }) => {
         setShowDialogBox,
         showContent,
         setShowContent,
-        noResults
+        noResults,
+        unsplashAPIUnavailable
       }}>
       {children}
     </UnsplashContext.Provider>
