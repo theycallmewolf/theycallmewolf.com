@@ -24,6 +24,7 @@
     "react": "^17.0.2",
     "react-audio-player": "^0.17.0",
     "react-dom": "^17.0.2",
+    "react-draggable": "^4.4.5",
     "react-google-recaptcha": "^2.1.0",
     "react-phone-number-input": "^3.1.35",
     "react-spring": "^9.2.5",

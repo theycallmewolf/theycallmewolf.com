@@ -25,19 +25,23 @@ interface UnsplashData {
   setShowDialogBox: Dispatch<SetStateAction<boolean>>;
   showContent: boolean;
   setShowContent: Dispatch<SetStateAction<boolean>>;
+  noResults: boolean;
+  unsplashAPIUnavailable: boolean;
 }
 
 const UnsplashContext = createContext<UnsplashData>({} as UnsplashData);
 
-const DEFAULT_UNSPLASH_QUERY = 'abstract';
+export const UNSPLASH_DEFAULT_QUERY = 'abstract';
 
 const UnsplashProvider: React.FC = ({ children }) => {
   const [userSearch, setUserSearch] = useState(false);
   const [images, setImages] = useState<UnsplashAPIData[]>();
-  const [unsplashQuery, setUnsplashQuery] = useState(DEFAULT_UNSPLASH_QUERY);
+  const [unsplashQuery, setUnsplashQuery] = useState(UNSPLASH_DEFAULT_QUERY);
   const [currentBgImage, setCurrentBgImage] = useState<UnsplashAPIData>();
   const [showDialogBox, setShowDialogBox] = useState(false);
   const [showContent, setShowContent] = useState(true);
+  const [noResults, setNoResults] = useState(false);
+  const [unsplashAPIUnavailable, setUnsplashAPIUnavailable] = useState(false);
 
   const getImages = useCallback(async () => {
     if (images && !userSearch) return;
@@ -45,12 +49,24 @@ const UnsplashProvider: React.FC = ({ children }) => {
     try {
       const res = await getRandomImages({ query: unsplashQuery });
 
-      if (!Array.isArray(res.data)) {
+      // case unsplash api error (hide search from `DialogBox`)
+      setUnsplashAPIUnavailable(res.data.message === 'expected JSON response from server.');
+
+      // case no results from user query (show `DialogBox` alert)
+      if (res.data.message === 'No photos found.') {
+        setNoResults(true);
+        setTimeout(() => {
+          setNoResults(false);
+        }, 3000);
+        setUnsplashQuery(UNSPLASH_DEFAULT_QUERY);
+      }
+
+      if (!Array.isArray(res.data.results)) {
         setImages(fallbackBgImages);
         return;
       }
 
-      setImages(res.data);
+      setImages(res.data.results);
       setUserSearch(false);
     } catch (error) {
       NODE_DEV && console.info('[error]', error);
@@ -90,7 +106,9 @@ const UnsplashProvider: React.FC = ({ children }) => {
         showDialogBox,
         setShowDialogBox,
         showContent,
-        setShowContent
+        setShowContent,
+        noResults,
+        unsplashAPIUnavailable
       }}>
       {children}
     </UnsplashContext.Provider>

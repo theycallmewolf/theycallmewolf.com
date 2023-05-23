@@ -23,7 +23,8 @@ const BannerComponent: React.FC = () => {
 
   useEffect(() => {
     getImages();
-  }, [getImages]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     const { isMobile } = deviceCheck();
