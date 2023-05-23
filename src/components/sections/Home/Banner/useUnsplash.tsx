@@ -41,7 +41,7 @@ const UnsplashProvider: React.FC = ({ children }) => {
   const [showDialogBox, setShowDialogBox] = useState(false);
   const [showContent, setShowContent] = useState(true);
   const [noResults, setNoResults] = useState(false);
-  const [unsplashAPIUnavailable, setUnsplashAPIUnavailable] = useState(true);
+  const [unsplashAPIUnavailable, setUnsplashAPIUnavailable] = useState(false);
 
   const getImages = useCallback(async () => {
     if (images && !userSearch) return;
@@ -53,11 +53,13 @@ const UnsplashProvider: React.FC = ({ children }) => {
       setUnsplashAPIUnavailable(res.data.message === 'expected JSON response from server.');
 
       // case no results from user query (show `DialogBox` alert)
-      setNoResults(res.data.message === 'No photos found.');
-      setUnsplashQuery(UNSPLASH_DEFAULT_QUERY);
-      setTimeout(() => {
-        setNoResults(false);
-      }, 3000);
+      if (res.data.message === 'No photos found.') {
+        setNoResults(true);
+        setTimeout(() => {
+          setNoResults(false);
+        }, 3000);
+        setUnsplashQuery(UNSPLASH_DEFAULT_QUERY);
+      }
 
       if (!Array.isArray(res.data.results)) {
         setImages(fallbackBgImages);
