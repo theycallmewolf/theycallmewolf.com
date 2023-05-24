@@ -8,7 +8,7 @@ import {
   useEffect,
   useState
 } from 'react';
-import { getRandomImages, UnsplashAPIData } from 'services/unsplash';
+import { getRandomImages, trackDownload, UnsplashAPIData } from 'services/unsplash';
 import { getRandomInt } from 'utils';
 import { NODE_DEV } from 'utils/dev';
 
@@ -76,7 +76,9 @@ const UnsplashProvider: React.FC = ({ children }) => {
   const addBackgroundImage = useCallback(() => {
     const imgArray = images ?? fallbackBgImages;
     const index = getRandomInt(0, imgArray.length - 1);
+
     setCurrentBgImage(imgArray[index]);
+    trackDownload({ location: imgArray[index].links.download_location });
   }, [images, setCurrentBgImage]);
 
   useEffect(() => {

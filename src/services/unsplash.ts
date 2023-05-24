@@ -131,3 +131,11 @@ export const getRandomImages = async (
   const query = props.query ?? UNSPLASH_DEFAULT_QUERY;
   return await axios.get(`/api/unsplash?query=${query}`);
 };
+
+export interface TrackDownloadProps {
+  location: string;
+}
+
+export const trackDownload = async (props: TrackDownloadProps): Promise<UnsplashAPIResponse> => {
+  return await axios.get(`/api/unsplash-download?location=${props.location}`);
+};
