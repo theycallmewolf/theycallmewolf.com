@@ -1,11 +1,11 @@
-import { ICross, IHeadphones, IPlay } from 'assets/icons';
-import axios from 'axios';
-import Image from 'next/image';
-import { useCallback, useEffect, useState } from 'react';
-import { animated, config, useSpring } from 'react-spring';
+import { ICross, IHeadphones, IPlay } from "assets/icons";
+import axios from "axios";
+import Image from "next/image";
+import { useCallback, useEffect, useState } from "react";
+import { animated, config, useSpring } from "react-spring";
 
-import { LogoSpotify } from './LogoSpotify';
-import styles from './spotify-notification.module.scss';
+import { LogoSpotify } from "./LogoSpotify";
+import styles from "./spotify-notification.module.scss";
 
 interface ISpotifyMusic {
   is_playing: boolean;
@@ -33,19 +33,21 @@ interface ISpotifyMusic {
 }
 
 export const SpotifyNotification: React.FC = () => {
-  const [spotifyMusic, setSpotifyMusic] = useState<ISpotifyMusic>({} as ISpotifyMusic);
+  const [spotifyMusic, setSpotifyMusic] = useState<ISpotifyMusic>(
+    {} as ISpotifyMusic
+  );
   const [showToast, setShowToast] = useState(false);
 
   const appearFromLeft = useSpring({
     x: showToast ? 0 : -600,
     delay: 0 * 1000,
-    config: config.slow
+    config: config.slow,
   });
 
   const getCurrentMusic = useCallback(async () => {
-    const { data } = await axios.get('/api/spotify');
-    const { is_playing } = data;
-    if (is_playing) setSpotifyMusic(data);
+    const res = await axios.get("/api/spotify");
+    const { is_playing } = res.data;
+    if (is_playing) setSpotifyMusic(res.data);
   }, []);
 
   useEffect(() => {
@@ -63,16 +65,21 @@ export const SpotifyNotification: React.FC = () => {
         className={styles.close}
         onClick={() => setShowToast(false)}
         aria-label="Close"
-        title="Close">
+        title="Close"
+      >
         <ICross />
       </button>
       <div className={styles.details}>
         <strong>
           <IHeadphones />
-          {`On Wolf's headphones`}
+          {"On Wolf's headphones"}
         </strong>
         <span className={styles.song}>
-          <a href={spotifyMusic.song.spotify_url} target="_blank" rel="noopener noreferrer">
+          <a
+            href={spotifyMusic.song.spotify_url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {spotifyMusic.song.name}
           </a>
         </span>
@@ -84,7 +91,11 @@ export const SpotifyNotification: React.FC = () => {
           </span>
         ))}
         <span>
-          <a href={spotifyMusic.album.spotify_url} target="_blank" rel="noopener noreferrer">
+          <a
+            href={spotifyMusic.album.spotify_url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             {spotifyMusic.album.name}
           </a>
         </span>
@@ -92,7 +103,8 @@ export const SpotifyNotification: React.FC = () => {
           href="https://developer.spotify.com/"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="visit Spotify For Developers website">
+          aria-label="visit Spotify For Developers website"
+        >
           <LogoSpotify className={styles.logo} />
         </a>
       </div>
@@ -101,7 +113,8 @@ export const SpotifyNotification: React.FC = () => {
           href={spotifyMusic.song.spotify_url}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label={`listen "${spotifyMusic.album.name}" album on Spotify`}>
+          aria-label={`listen "${spotifyMusic.album.name}" album on Spotify`}
+        >
           <IPlay />
           <Image
             src={spotifyMusic.album.images[1].url}
