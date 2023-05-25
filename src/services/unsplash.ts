@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { UNSPLASH_DEFAULT_QUERY } from 'components/sections/Home/Banner/useUnsplash';
+import axios from "axios";
+import { UNSPLASH_DEFAULT_QUERY } from "components/sections/Home/Banner/useUnsplash";
 
 export interface UnsplashAPIData {
   id: string;
@@ -136,6 +136,8 @@ export interface TrackDownloadProps {
   location: string;
 }
 
-export const trackDownload = async (props: TrackDownloadProps): Promise<UnsplashAPIResponse> => {
+export const trackDownload = async (
+  props: TrackDownloadProps
+): Promise<UnsplashAPIResponse> => {
   return await axios.get(`/api/unsplash-download?location=${props.location}`);
 };

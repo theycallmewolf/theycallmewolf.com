@@ -1,8 +1,8 @@
-import IArrow from 'assets/icons/IArrow';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
+import IArrow from "assets/icons/IArrow";
+import Image from "next/image";
+import { useRouter } from "next/router";
 
-import styles from './intro.module.scss';
+import styles from "./intro.module.scss";
 
 interface IntroProps {
   project: {
@@ -17,16 +17,16 @@ export const Intro: React.FC<IntroProps> = (props) => {
 
   return (
     <section className={styles.intro}>
-      <div className={styles['image-container']}>
+      <div className={styles["image-container"]}>
         <Image src={props.project.image} layout="fill" objectFit="cover" />
       </div>
 
-      <div className={styles['project-details']}>
+      <div className={styles["project-details"]}>
         <h1>{props.project.title}</h1>
         <p>{props.project.description}</p>
       </div>
 
-      <button className={styles['back-btn']} onClick={() => router.back()}>
+      <button className={styles["back-btn"]} onClick={() => router.back()}>
         <IArrow />
         back
       </button>

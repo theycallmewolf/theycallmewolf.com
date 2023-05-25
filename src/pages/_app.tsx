@@ -1,16 +1,16 @@
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/effect-fade';
-import 'styles/global.scss';
-import 'components/elements/Slider/styles.scss';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/effect-fade";
+import "styles/global.scss";
+import "components/elements/Slider/styles.scss";
 
-import { NextPage } from 'next';
-import type { AppProps } from 'next/app';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { ReactElement, ReactNode, useCallback, useEffect } from 'react';
-import { pageView } from 'utils/google-analytics';
-import { setViewportHeight } from 'utils/viewport-height';
+import { NextPage } from "next";
+import type { AppProps } from "next/app";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { ReactElement, ReactNode, useCallback, useEffect } from "react";
+import { pageView } from "utils/google-analytics";
+import { setViewportHeight } from "utils/viewport-height";
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
@@ -32,14 +32,14 @@ function App({ Component, pageProps }: AppPropsWithLayout): ReactNode {
      * When the component is mounted, subscribe to router changes
      * and log those page views
      */
-    router.events.on('routeChangeComplete', handleRouteChange);
+    router.events.on("routeChangeComplete", handleRouteChange);
 
     /*
      *  If the component is unmounted, unsubscribe
      * from the event with the `off` method
      */
     return () => {
-      router.events.off('routeChangeComplete', handleRouteChange);
+      router.events.off("routeChangeComplete", handleRouteChange);
     };
   }, [router.events]);
 

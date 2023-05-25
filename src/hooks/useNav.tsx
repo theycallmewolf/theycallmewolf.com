@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from "react";
 
 interface NavContextData {
   isOpen: boolean;
@@ -14,12 +14,17 @@ const NavProvider: React.FC = ({ children }) => {
     setIsOpen(!isOpen);
   }
 
-  return <NavContext.Provider value={{ toggleNav, isOpen }}>{children}</NavContext.Provider>;
+  return (
+    <NavContext.Provider value={{ toggleNav, isOpen }}>
+      {children}
+    </NavContext.Provider>
+  );
 };
 
 function useNav(): NavContextData {
   const context = useContext(NavContext);
-  if (!context) throw Error('the hook useNav must be used inside a NavProvider');
+  if (!context)
+    throw Error("the hook useNav must be used inside a NavProvider");
   return context;
 }
 

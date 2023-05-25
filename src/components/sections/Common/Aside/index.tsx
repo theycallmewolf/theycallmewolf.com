@@ -1,7 +1,7 @@
-import { AsideProps } from 'types';
+import { AsideProps } from "types";
 
-import { Nav } from '../../../elements/Nav';
-import styles from './aside.module.scss';
+import { Nav } from "../../../elements/Nav";
+import styles from "./aside.module.scss";
 
 export const Aside: React.FC<AsideProps> = ({ intro, link_list }) => (
   <aside className={styles.aside}>

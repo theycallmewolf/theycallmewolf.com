@@ -1,4 +1,4 @@
-import styles from './logo-button.module.scss';
+import styles from "./logo-button.module.scss";
 
 interface LogoButton extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   svgLogo: string;
@@ -6,7 +6,12 @@ interface LogoButton extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   name: string;
 }
 
-export const LogoButton: React.FC<LogoButton> = ({ svgLogo, link, name, ...props }) => (
+export const LogoButton: React.FC<LogoButton> = ({
+  svgLogo,
+  link,
+  name,
+  ...props
+}) => (
   <a
     href={link}
     target="_blank"

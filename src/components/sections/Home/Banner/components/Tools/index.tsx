@@ -1,15 +1,15 @@
-import IEye from 'assets/icons/IEye';
-import IEyeOff from 'assets/icons/IEyeOff';
-import IImage from 'assets/icons/IImage';
-import IImageOff from 'assets/icons/IImageOff';
-import IMinus from 'assets/icons/IMinus';
-import IPlus from 'assets/icons/IPlus';
-import IShuffle from 'assets/icons/IShuffle';
-import { useState } from 'react';
+import IEye from "assets/icons/IEye";
+import IEyeOff from "assets/icons/IEyeOff";
+import IImage from "assets/icons/IImage";
+import IImageOff from "assets/icons/IImageOff";
+import IMinus from "assets/icons/IMinus";
+import IPlus from "assets/icons/IPlus";
+import IShuffle from "assets/icons/IShuffle";
+import { useState } from "react";
 
-import { useUnsplash } from '../../useUnsplash';
-import { UnsplashCopyright } from '../UnsplashCopyright';
-import styles from './tools.module.scss';
+import { useUnsplash } from "../../useUnsplash";
+import { UnsplashCopyright } from "../UnsplashCopyright";
+import styles from "./tools.module.scss";
 
 export const Tools: React.FC = () => {
   const {
@@ -18,7 +18,7 @@ export const Tools: React.FC = () => {
     setShowDialogBox,
     showDialogBox,
     setShowContent,
-    showContent
+    showContent,
   } = useUnsplash();
 
   const [open, setOpen] = useState(false);
@@ -28,25 +28,28 @@ export const Tools: React.FC = () => {
   return (
     <div className={styles.tools}>
       <div className={styles.commands}>
-        <div className={`${styles.list} ${open ? styles.show : ''}`}>
+        <div className={`${styles.list} ${open ? styles.show : ""}`}>
           <button
             className={styles.button}
             onClick={addBackgroundImage}
-            aria-label="shuffle background">
+            aria-label="shuffle background"
+          >
             <IShuffle />
           </button>
 
           <button
             className={styles.button}
             onClick={() => setShowDialogBox((st) => !st)}
-            aria-label="show images dialog box">
+            aria-label="show images dialog box"
+          >
             {showDialogBox ? <IImageOff /> : <IImage />}
           </button>
 
           <button
             className={styles.button}
             onClick={() => setShowContent((st) => !st)}
-            aria-label="toggle content visibility">
+            aria-label="toggle content visibility"
+          >
             {showContent ? <IEyeOff /> : <IEye />}
           </button>
         </div>
@@ -54,7 +57,8 @@ export const Tools: React.FC = () => {
         <button
           className={styles.button}
           onClick={() => setOpen((st) => !st)}
-          aria-label="toggle commands">
+          aria-label="toggle commands"
+        >
           {open ? <IMinus /> : <IPlus />}
         </button>
       </div>
@@ -63,7 +67,7 @@ export const Tools: React.FC = () => {
         currentBgImage={currentBgImage}
         image={{
           src: currentBgImage.urls.thumb,
-          alt: currentBgImage.alt_description
+          alt: currentBgImage.alt_description,
         }}
       />
     </div>

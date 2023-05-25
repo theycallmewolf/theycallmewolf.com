@@ -21,22 +21,22 @@ type UseConfig = () => {
 
 export const useConfig: UseConfig = () => {
   const LOCAL_STORE_KEY: LocalStoreKeys = {
-    PWA: '@wolf_pwa',
-    THEME: '@wolf_theme'
+    PWA: "@wolf_pwa",
+    THEME: "@wolf_theme",
   };
 
   const CONFIG = {
     site: {
-      name: 'theycallmewolf',
-      description: 'The web portfolio of Bruno Lobato, coder + designer.',
-      url: 'https://www.theycallmewolf.com/'
+      name: "theycallmewolf",
+      description: "The web portfolio of Bruno Lobato, coder + designer.",
+      url: "https://www.theycallmewolf.com/",
     },
     social: {
-      twitter: '',
-      instagram: '',
+      twitter: "",
+      instagram: "",
       image:
-        'https://firebasestorage.googleapis.com/v0/b/theycallmewolf.appspot.com/o/share.jpg?alt=media&token=075252b0-fba6-417f-aaff-c2053ceacfdc'
-    }
+        "https://firebasestorage.googleapis.com/v0/b/theycallmewolf.appspot.com/o/share.jpg?alt=media&token=075252b0-fba6-417f-aaff-c2053ceacfdc",
+    },
   };
 
   return { LOCAL_STORE_KEY, CONFIG };

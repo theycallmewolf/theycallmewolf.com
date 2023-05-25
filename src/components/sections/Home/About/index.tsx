@@ -1,10 +1,14 @@
-import { Wolf } from 'assets/icons';
-import { GraphData } from 'types';
+import { Wolf } from "assets/icons";
+import { GraphData } from "types";
 
-import { AlternativeCard, CardBody, CardImage } from '../../../elements/Cards/AlternativeCard';
-import { Graph } from '../../../elements/Graph';
-import { CustomLink } from '../../../elements/Link';
-import styles from './about.module.scss';
+import {
+  AlternativeCard,
+  CardBody,
+  CardImage,
+} from "../../../elements/Cards/AlternativeCard";
+import { Graph } from "../../../elements/Graph";
+import { CustomLink } from "../../../elements/Link";
+import styles from "./about.module.scss";
 
 interface AboutProps {
   skills: GraphData[];
@@ -27,7 +31,11 @@ export const About: React.FC<AboutProps> = ({ skills }) => (
       <CardImage className={styles.cardImage}>
         <Wolf />
       </CardImage>
-      <CustomLink label="about" href="/about/activity" className={styles.button} />
+      <CustomLink
+        label="about"
+        href="/about/activity"
+        className={styles.button}
+      />
     </AlternativeCard>
   </section>
 );

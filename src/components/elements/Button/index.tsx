@@ -1,27 +1,28 @@
-import { useTheme } from 'hooks';
-import { ButtonHTMLAttributes } from 'react';
+import { useTheme } from "hooks";
+import { ButtonHTMLAttributes } from "react";
 
-import styles from './button.module.scss';
+import styles from "./button.module.scss";
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  genre?: 'outline' | 'fill';
+  genre?: "outline" | "fill";
   className?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
   children,
-  className = '',
-  genre = 'fill',
+  className = "",
+  genre = "fill",
   ...props
 }) => {
   const { hasDarkMode } = useTheme();
 
   const themeClassName = hasDarkMode ? styles.dark : styles.light;
-  const genreClassName = genre === 'outline' ? styles.outline : styles.fill;
+  const genreClassName = genre === "outline" ? styles.outline : styles.fill;
   return (
     <button
       className={`${styles.button} ${genreClassName} ${themeClassName} ${className}`}
-      {...props}>
+      {...props}
+    >
       {children}
     </button>
   );

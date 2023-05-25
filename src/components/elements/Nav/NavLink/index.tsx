@@ -1,8 +1,8 @@
-import { useTheme } from 'hooks';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useTheme } from "hooks";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
-import styles from './nav-link.module.scss';
+import styles from "./nav-link.module.scss";
 
 interface NavLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   link: string;
@@ -16,10 +16,11 @@ export const NavLink: React.FC<NavLinkProps> = ({ link, label, ...props }) => {
   return (
     <Link href={link}>
       <a
-        className={`${styles.link} ${slug === link.split('/')[2] ? styles.selected : ''} ${
-          hasDarkMode ? styles.dark : styles.light
-        }`}
-        {...props}>
+        className={`${styles.link} ${
+          slug === link.split("/")[2] ? styles.selected : ""
+        } ${hasDarkMode ? styles.dark : styles.light}`}
+        {...props}
+      >
         {label}
       </a>
     </Link>

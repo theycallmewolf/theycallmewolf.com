@@ -1,6 +1,6 @@
-import Prismic from '@prismicio/client';
-import { DefaultClient } from '@prismicio/client/types/client';
-import { RichText } from 'prismic-dom';
+import Prismic from "@prismicio/client";
+import { DefaultClient } from "@prismicio/client/types/client";
+import { RichText } from "prismic-dom";
 import type {
   ActivityData,
   CareerData,
@@ -13,12 +13,12 @@ import type {
   ProjectData,
   ProjectDetails,
   SkillData,
-  TestimonialData
-} from 'types';
-import { formatDate } from 'utils/format-date';
+  TestimonialData,
+} from "types";
+import { formatDate } from "utils/format-date";
 
 type IntroProps = {
-  area: 'work' | 'about';
+  area: "work" | "about";
 };
 
 type GetProjectProps = {
@@ -41,7 +41,7 @@ type GetSkillsContent = () => Promise<SkillData[]>;
 export function getPrismicClient(req?: unknown): DefaultClient {
   const prismic = Prismic.client(process.env.PRISMIC_ENDPOINT, {
     req,
-    accessToken: process.env.PRISMIC_ACCESS_TOKEN
+    accessToken: process.env.PRISMIC_ACCESS_TOKEN,
   });
 
   return prismic;
@@ -50,12 +50,15 @@ export function getPrismicClient(req?: unknown): DefaultClient {
 const prismic = getPrismicClient();
 
 export const getPosts: GetPosts = async () => {
-  const response = await prismic.query(Prismic.predicates.at('document.type', 'posts'), {
-    orderings: '[document.last_publication_date]',
-    fetch: ['posts.title', 'posts.lead', 'posts.content'],
-    pageSize: 2,
-    lang: 'en-us'
-  });
+  const response = await prismic.query(
+    Prismic.predicates.at("document.type", "posts"),
+    {
+      orderings: "[document.last_publication_date]",
+      fetch: ["posts.title", "posts.lead", "posts.content"],
+      pageSize: 2,
+      lang: "en-us",
+    }
+  );
 
   return response.results.map(
     ({ id, uid, data, first_publication_date, last_publication_date }) => {
@@ -66,36 +69,49 @@ export const getPosts: GetPosts = async () => {
         title: RichText.asText(title),
         lead: RichText.asText(lead),
         publish_date: formatDate(first_publication_date),
-        update_date: formatDate(last_publication_date)
+        update_date: formatDate(last_publication_date),
       };
     }
   );
 };
 
 export const getProjects: GetProjects = async () => {
-  const response = await prismic.query(Prismic.predicates.at('document.type', 'projects'), {
-    orderings: '[my.projects.project_date desc]',
-    fetch: [
-      'projects.title',
-      'projects.image_large_2x',
-      'projects.caption',
-      'projects.type',
-      'projects.highlight',
-      'projects.description',
-      'projects.project_date',
-      'projects.body'
-    ],
-    lang: 'en-us'
-  });
+  const response = await prismic.query(
+    Prismic.predicates.at("document.type", "projects"),
+    {
+      orderings: "[my.projects.project_date desc]",
+      fetch: [
+        "projects.title",
+        "projects.image_large_2x",
+        "projects.caption",
+        "projects.type",
+        "projects.highlight",
+        "projects.description",
+        "projects.project_date",
+        "projects.body",
+      ],
+      lang: "en-us",
+    }
+  );
 
   return response.results.map(({ id, uid, data }) => {
-    const { type, project_date, title, image_large_2x, caption, body, highlight } = data;
+    const {
+      type,
+      project_date,
+      title,
+      image_large_2x,
+      caption,
+      body,
+      highlight,
+    } = data;
 
-    let specs = body?.filter(({ slice_type }) => slice_type === 'technologies').shift() ?? null;
+    let specs =
+      body?.filter(({ slice_type }) => slice_type === "technologies").shift() ??
+      null;
     if (specs) {
       specs = specs.items.map(({ tech }, i: number) => ({
         spec: tech,
-        id: i
+        id: i,
       }));
     }
 
@@ -107,16 +123,16 @@ export const getProjects: GetProjects = async () => {
       project_date: String(new Date(project_date).getFullYear()),
       slider: {
         image_large_2x: image_large_2x.url ?? null,
-        caption: RichText.asText(caption) ?? null
+        caption: RichText.asText(caption) ?? null,
       },
       highlight,
-      specs
+      specs,
     };
   });
 };
 
 export const getProject: GetProject = async ({ uid }) => {
-  const { id, data } = await prismic.getByUID('projects', String(uid), {});
+  const { id, data } = await prismic.getByUID("projects", String(uid), {});
 
   const {
     title,
@@ -130,37 +146,42 @@ export const getProject: GetProject = async ({ uid }) => {
     caption,
     about,
     body,
-    body1
+    body1,
   } = data;
 
-  let specs = body.filter(({ slice_type }) => slice_type === 'technologies').shift() ?? null;
+  let specs =
+    body.filter(({ slice_type }) => slice_type === "technologies").shift() ??
+    null;
 
   if (specs) {
     specs = specs.items.map(({ tech }, i: number) => ({
       spec: tech,
-      id: i
+      id: i,
     }));
   }
 
-  let dependencies = body.filter(({ slice_type }) => slice_type === 'dependencies').shift() ?? null;
+  let dependencies =
+    body.filter(({ slice_type }) => slice_type === "dependencies").shift() ??
+    null;
 
   if (dependencies) {
     dependencies = dependencies.items.map(({ url, label }) => ({
       url: url.url,
-      label: RichText.asText(label)
+      label: RichText.asText(label),
     }));
   }
 
-  let leads = body.filter(({ slice_type }) => slice_type === 'leads').shift() ?? null;
+  let leads =
+    body.filter(({ slice_type }) => slice_type === "leads").shift() ?? null;
 
   if (leads) leads = leads.items.map(({ lead }) => RichText.asText(lead));
 
   const project_images = body1
-    .filter(({ slice_type }) => slice_type === 'slider')
+    .filter(({ slice_type }) => slice_type === "slider")
     .shift()
     .items.map(({ screen_large_2x }, i: number) => ({
       image_large_2x: screen_large_2x.url ?? null,
-      slug: String(i)
+      slug: String(i),
     }));
 
   return {
@@ -179,25 +200,28 @@ export const getProject: GetProject = async ({ uid }) => {
     images: {
       cover_large_2x: cover_large_2x.url ?? null,
       project_images,
-      caption: RichText.asText(caption)
+      caption: RichText.asText(caption),
     },
-    dependencies
+    dependencies,
   };
 };
 
 export const getNextProject: GetNextProject = async () => {
-  const response = await prismic.query(Prismic.predicates.at('document.type', 'projects'), {
-    fetch: [
-      'projects.title',
-      'projects.description',
-      'projects.highlight',
-      'projects.project_date',
-      'projects.type',
-      'projects.cover_large_2x'
-    ],
-    pageSize: 12,
-    lang: 'en-us'
-  });
+  const response = await prismic.query(
+    Prismic.predicates.at("document.type", "projects"),
+    {
+      fetch: [
+        "projects.title",
+        "projects.description",
+        "projects.highlight",
+        "projects.project_date",
+        "projects.type",
+        "projects.cover_large_2x",
+      ],
+      pageSize: 12,
+      lang: "en-us",
+    }
+  );
   return response.results.map(({ id, uid, data }) => {
     const { title, project_date, type, cover_large_2x, description } = data;
 
@@ -209,18 +233,26 @@ export const getNextProject: GetNextProject = async () => {
       project_date: String(new Date(project_date).getFullYear()),
       description: RichText.asText(description),
       images: {
-        cover_large_2x: cover_large_2x.url
-      }
+        cover_large_2x: cover_large_2x.url,
+      },
     };
   });
 };
 
 export const getClients: GetClients = async () => {
-  const response = await prismic.query(Prismic.predicates.at('document.type', 'clients'), {
-    orderings: '[my.clients.name desc]',
-    fetch: ['clients.uid', 'clients.name', 'clients.logo_svg', 'clients.link'],
-    pageSize: 4
-  });
+  const response = await prismic.query(
+    Prismic.predicates.at("document.type", "clients"),
+    {
+      orderings: "[my.clients.name desc]",
+      fetch: [
+        "clients.uid",
+        "clients.name",
+        "clients.logo_svg",
+        "clients.link",
+      ],
+      pageSize: 4,
+    }
+  );
 
   return response.results.map(({ id, data }) => {
     const { name, logo_svg, link } = data;
@@ -229,36 +261,52 @@ export const getClients: GetClients = async () => {
       id,
       name: name[0].text,
       logo_svg: RichText.asText(logo_svg),
-      link: link.url ?? null
+      link: link.url ?? null,
     };
   });
 };
 
 export const getTestimonials: GetTestimonials = async () => {
-  const response = await prismic.query(Prismic.predicates.at('document.type', 'testimonials'), {
-    orderings: '[document.last_publication_date desc]',
-    fetch: ['testimonials.quote', 'testimonials.name', 'testimonials.job_title']
-  });
+  const response = await prismic.query(
+    Prismic.predicates.at("document.type", "testimonials"),
+    {
+      orderings: "[document.last_publication_date desc]",
+      fetch: [
+        "testimonials.quote",
+        "testimonials.name",
+        "testimonials.job_title",
+      ],
+    }
+  );
 
-  return response.results.map(({ id, first_publication_date, last_publication_date, data }) => {
-    const { name, quote, job_title } = data;
+  return response.results.map(
+    ({ id, first_publication_date, last_publication_date, data }) => {
+      const { name, quote, job_title } = data;
 
-    return {
-      id,
-      name: RichText.asText(name),
-      quote: quote.map(({ text }) => text),
-      jobTitle: RichText.asText(job_title),
-      publish_date: formatDate(first_publication_date),
-      update_date: formatDate(last_publication_date)
-    };
-  });
+      return {
+        id,
+        name: RichText.asText(name),
+        quote: quote.map(({ text }) => text),
+        jobTitle: RichText.asText(job_title),
+        publish_date: formatDate(first_publication_date),
+        update_date: formatDate(last_publication_date),
+      };
+    }
+  );
 };
 
 export const getSkills: GetSkills = async () => {
-  const response = await prismic.query(Prismic.Predicates.at('document.type', 'skills_graphs'), {
-    orderings: '[my.skills_graphs.highlight_order]',
-    fetch: ['testimonials.quote', 'testimonials.name', 'testimonials.job_title']
-  });
+  const response = await prismic.query(
+    Prismic.Predicates.at("document.type", "skills_graphs"),
+    {
+      orderings: "[my.skills_graphs.highlight_order]",
+      fetch: [
+        "testimonials.quote",
+        "testimonials.name",
+        "testimonials.job_title",
+      ],
+    }
+  );
   return response.results
     .filter(({ data }) => data.highlight)
     .map(({ id, data }) => {
@@ -267,15 +315,18 @@ export const getSkills: GetSkills = async () => {
         id,
         title: RichText.asText(title),
         percentage,
-        category
+        category,
       };
     });
 };
 
 export const getIntro: GetIntro = async ({ area }) => {
-  const response = await prismic.query(Prismic.Predicates.at('document.type', 'intro'), {
-    orderings: '[my.intro.order]'
-  });
+  const response = await prismic.query(
+    Prismic.Predicates.at("document.type", "intro"),
+    {
+      orderings: "[my.intro.order]",
+    }
+  );
   return response.results
     .filter(({ data }) => data.type === area)
     .map(({ data }) => {
@@ -287,17 +338,20 @@ export const getIntro: GetIntro = async ({ area }) => {
         link_list: [
           {
             link: RichText.asText(link),
-            label: RichText.asText(title).toLowerCase()
-          }
-        ]
+            label: RichText.asText(title).toLowerCase(),
+          },
+        ],
       };
     });
 };
 
 export const getActivityContent: GetActivityContent = async () => {
-  const response = await prismic.query(Prismic.Predicates.at('document.type', 'activities'), {
-    orderings: '[my.activities.order]'
-  });
+  const response = await prismic.query(
+    Prismic.Predicates.at("document.type", "activities"),
+    {
+      orderings: "[my.activities.order]",
+    }
+  );
 
   return response.results.map(({ id, data }) => {
     const { icon, title, description } = data;
@@ -305,15 +359,18 @@ export const getActivityContent: GetActivityContent = async () => {
       id,
       icon,
       title: RichText.asText(title),
-      description: RichText.asText(description)
+      description: RichText.asText(description),
     };
   });
 };
 
 export const getCareerContent: GetCareerContent = async () => {
-  const response = await prismic.query(Prismic.Predicates.at('document.type', 'career'), {
-    orderings: '[my.career.date_start desc]'
-  });
+  const response = await prismic.query(
+    Prismic.Predicates.at("document.type", "career"),
+    {
+      orderings: "[my.career.date_start desc]",
+    }
+  );
 
   return response.results.map(({ id, data }) => {
     const { logo_svg, name, date_start, date_end, title, description } = data;
@@ -324,15 +381,18 @@ export const getCareerContent: GetCareerContent = async () => {
       year_start: new Date(date_start).getFullYear(),
       year_end: date_end ? new Date(date_end).getFullYear() : null,
       title: RichText.asText(title),
-      description: RichText.asText(description)
+      description: RichText.asText(description),
     };
   });
 };
 
 export const getEducationContent: GetEducationContent = async () => {
-  const response = await prismic.query(Prismic.Predicates.at('document.type', 'education'), {
-    orderings: '[my.career.date_start desc]'
-  });
+  const response = await prismic.query(
+    Prismic.Predicates.at("document.type", "education"),
+    {
+      orderings: "[my.career.date_start desc]",
+    }
+  );
 
   return response.results.map(({ id, data }) => {
     const { logo_svg, name, date_start, date_end, title, description } = data;
@@ -343,7 +403,7 @@ export const getEducationContent: GetEducationContent = async () => {
       year_start: new Date(date_start).getFullYear(),
       year_end: new Date(date_end).getFullYear(),
       title: RichText.asText(title),
-      description: RichText.asText(description)
+      description: RichText.asText(description),
     };
   });
 };
@@ -351,9 +411,9 @@ export const getEducationContent: GetEducationContent = async () => {
 export const getSkillsContent: GetSkillsContent = async () => {
   const getCategories = async () => {
     const response = await prismic.query(
-      Prismic.Predicates.at('document.type', 'skills_categories'),
+      Prismic.Predicates.at("document.type", "skills_categories"),
       {
-        orderings: '[my.skills_categories.order]'
+        orderings: "[my.skills_categories.order]",
       }
     );
     return response.results.map(({ data, id }) => {
@@ -361,20 +421,22 @@ export const getSkillsContent: GetSkillsContent = async () => {
       return {
         id,
         title: RichText.asText(title),
-        description: RichText.asText(description)
+        description: RichText.asText(description),
       };
     });
   };
 
   const getGraphs = async () => {
-    const response = await prismic.query(Prismic.Predicates.at('document.type', 'skills_graphs'));
+    const response = await prismic.query(
+      Prismic.Predicates.at("document.type", "skills_graphs")
+    );
     return response.results.map(({ id, data }) => {
       const { title, percentage, category } = data;
       return {
         id,
         title: RichText.asText(title),
         percentage,
-        category
+        category,
       };
     });
   };
@@ -386,6 +448,6 @@ export const getSkillsContent: GetSkillsContent = async () => {
     id: id,
     title: title,
     description: description,
-    graphs: graphs.filter(({ category }) => category === title)
+    graphs: graphs.filter(({ category }) => category === title),
   }));
 };

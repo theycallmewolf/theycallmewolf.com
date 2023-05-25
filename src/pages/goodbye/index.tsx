@@ -1,22 +1,22 @@
-import { Layout } from 'components/Layout';
-import { IMAGES } from 'constants/images';
-import Image from 'next/image';
-import Link from 'next/link';
-import { NextPageWithLayout } from 'pages/_app';
-import { ReactElement, useCallback, useEffect, useState } from 'react';
-import ReactAudioPlayer from 'react-audio-player';
-import { animated, config, useSpring } from 'react-spring';
+import { Layout } from "components/Layout";
+import { IMAGES } from "constants/images";
+import Image from "next/image";
+import Link from "next/link";
+import { NextPageWithLayout } from "pages/_app";
+import { ReactElement, useCallback, useEffect, useState } from "react";
+import ReactAudioPlayer from "react-audio-player";
+import { animated, config, useSpring } from "react-spring";
 
-import styles from './goodbye.module.scss';
+import styles from "./goodbye.module.scss";
 
 const GoodbyePage: NextPageWithLayout = () => {
   const music = {
     id: 1,
-    file: '/audio/we-will-meet-again.mp3',
-    title: 'We will meet again',
-    artist: 'Johnny Cash',
-    album: 'American IV: The Man Comes Around',
-    released_date: 2002
+    file: "/audio/we-will-meet-again.mp3",
+    title: "We will meet again",
+    artist: "Johnny Cash",
+    album: "American IV: The Man Comes Around",
+    released_date: 2002,
   };
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -98,7 +98,7 @@ const GoodbyePage: NextPageWithLayout = () => {
       y: element ? 0 : 30,
       opacity: element ? 1 : 0,
       delay: 0 * 1000,
-      config: config.slow
+      config: config.slow,
     }),
     []
   );
@@ -331,467 +331,467 @@ const GoodbyePage: NextPageWithLayout = () => {
   const people = [
     {
       id: 1,
-      name: 'Marcia',
+      name: "Marcia",
       animation: appearFromBottomImg1,
-      style: 'img1',
-      image: IMAGES.MARSIA_2
+      style: "img1",
+      image: IMAGES.MARSIA_2,
     },
     {
       id: 2,
-      name: 'Dipanda',
+      name: "Dipanda",
       animation: appearFromBottomImg2,
-      style: 'img2',
-      image: IMAGES.DIPANDA_1
+      style: "img2",
+      image: IMAGES.DIPANDA_1,
     },
     {
       id: 3,
-      name: 'Sandra',
+      name: "Sandra",
       animation: appearFromBottomImg3,
-      style: 'img3',
-      image: IMAGES.SANDRA_1
+      style: "img3",
+      image: IMAGES.SANDRA_1,
     },
     {
       id: 4,
-      name: 'Pedro',
+      name: "Pedro",
       animation: appearFromBottomImg4,
-      style: 'img4',
-      image: IMAGES.PEDRO_1
+      style: "img4",
+      image: IMAGES.PEDRO_1,
     },
     {
       id: 5,
-      name: 'Tania',
+      name: "Tania",
       animation: appearFromBottomImg5,
-      style: 'img5',
-      image: IMAGES.TANIA_1
+      style: "img5",
+      image: IMAGES.TANIA_1,
     },
     {
       id: 6,
-      name: 'Ines e Eu',
+      name: "Ines e Eu",
       animation: appearFromBottomImg6,
-      style: 'img6',
-      image: IMAGES.INES_1
+      style: "img6",
+      image: IMAGES.INES_1,
     },
     {
       id: 7,
-      name: 'Sandra, Camila e Eu',
+      name: "Sandra, Camila e Eu",
       animation: appearFromBottomImg7,
-      style: 'img7',
-      image: IMAGES.MKT_1
+      style: "img7",
+      image: IMAGES.MKT_1,
     },
     {
       id: 8,
-      name: 'Ed',
+      name: "Ed",
       animation: appearFromBottomImg8,
-      style: 'img8',
-      image: IMAGES.ED_2
+      style: "img8",
+      image: IMAGES.ED_2,
     },
     {
       id: 9,
-      name: 'Juke',
+      name: "Juke",
       animation: appearFromBottomImg9,
-      style: 'img9',
-      image: IMAGES.JUKE_1
+      style: "img9",
+      image: IMAGES.JUKE_1,
     },
     {
       id: 10,
-      name: 'Susana',
+      name: "Susana",
       animation: appearFromBottomImg10,
-      style: 'img10',
-      image: IMAGES.SUSANA_2
+      style: "img10",
+      image: IMAGES.SUSANA_2,
     },
     {
       id: 11,
-      name: 'Ana',
+      name: "Ana",
       animation: appearFromBottomImg11,
-      style: 'img11',
-      image: IMAGES.ANA_2
+      style: "img11",
+      image: IMAGES.ANA_2,
     },
     {
       id: 12,
-      name: 'Camila',
+      name: "Camila",
       animation: appearFromBottomImg12,
-      style: 'img12',
-      image: IMAGES.CAMILA_1
+      style: "img12",
+      image: IMAGES.CAMILA_1,
     },
     {
       id: 13,
-      name: 'Pedro',
+      name: "Pedro",
       animation: appearFromBottomImg13,
-      style: 'img13',
-      image: IMAGES.PEDRO_2
+      style: "img13",
+      image: IMAGES.PEDRO_2,
     },
     {
       id: 14,
-      name: 'Isabel',
+      name: "Isabel",
       animation: appearFromBottomImg14,
-      style: 'img14',
-      image: IMAGES.ISABEL_1
+      style: "img14",
+      image: IMAGES.ISABEL_1,
     },
     {
       id: 15,
-      name: 'Camila',
+      name: "Camila",
       animation: appearFromBottomImg15,
-      style: 'img15',
-      image: IMAGES.CAMILA_2
+      style: "img15",
+      image: IMAGES.CAMILA_2,
     },
     {
       id: 16,
-      name: 'Pedrasus',
+      name: "Pedrasus",
       animation: appearFromBottomImg16,
-      style: 'img16',
-      image: IMAGES.PEDRASUS_1
+      style: "img16",
+      image: IMAGES.PEDRASUS_1,
     },
     {
       id: 17,
-      name: 'Flash',
+      name: "Flash",
       animation: appearFromBottomImg17,
-      style: 'img17',
-      image: IMAGES.FLASH_1
+      style: "img17",
+      image: IMAGES.FLASH_1,
     },
     {
       id: 18,
-      name: 'Nadia e Ricardo',
+      name: "Nadia e Ricardo",
       animation: appearFromBottomImg18,
-      style: 'img18',
-      image: IMAGES.NADIA_RICARDO_1
+      style: "img18",
+      image: IMAGES.NADIA_RICARDO_1,
     },
     {
       id: 19,
-      name: 'Selos',
+      name: "Selos",
       animation: appearFromBottomImg19,
-      style: 'img19',
-      image: IMAGES.SELOS
+      style: "img19",
+      image: IMAGES.SELOS,
     },
     {
       id: 20,
-      name: 'Rita',
+      name: "Rita",
       animation: appearFromBottomImg20,
-      style: 'img20',
-      image: IMAGES.RITA_1
+      style: "img20",
+      image: IMAGES.RITA_1,
     },
     {
       id: 21,
-      name: 'Mafalda',
+      name: "Mafalda",
       animation: appearFromBottomImg21,
-      style: 'img21',
-      image: IMAGES.MAFALDA_1
+      style: "img21",
+      image: IMAGES.MAFALDA_1,
     },
     {
       id: 22,
-      name: 'Cris',
+      name: "Cris",
       animation: appearFromBottomImg22,
-      style: 'img22',
-      image: IMAGES.CRIS_1
+      style: "img22",
+      image: IMAGES.CRIS_1,
     },
     {
       id: 23,
-      name: 'Goat',
+      name: "Goat",
       animation: appearFromBottomImg23,
-      style: 'img23',
-      image: IMAGES.GOAT_1
+      style: "img23",
+      image: IMAGES.GOAT_1,
     },
     {
       id: 24,
-      name: 'fortune cookie',
+      name: "fortune cookie",
       animation: appearFromBottomImg24,
-      style: 'img24',
-      image: IMAGES.COOKIE
+      style: "img24",
+      image: IMAGES.COOKIE,
     },
     {
       id: 25,
-      name: 'Morgadinho',
+      name: "Morgadinho",
       animation: appearFromBottomImg25,
-      style: 'img25',
-      image: IMAGES.MORGADINHO_1
+      style: "img25",
+      image: IMAGES.MORGADINHO_1,
     },
     {
       id: 26,
-      name: 'Florence',
+      name: "Florence",
       animation: appearFromBottomImg26,
-      style: 'img26',
-      image: IMAGES.FLORENCE_1
+      style: "img26",
+      image: IMAGES.FLORENCE_1,
     },
     {
       id: 27,
-      name: 'Ti Lu',
+      name: "Ti Lu",
       animation: appearFromBottomImg27,
-      style: 'img27',
-      image: IMAGES.TI_LU_1
+      style: "img27",
+      image: IMAGES.TI_LU_1,
     },
     {
       id: 28,
-      name: 'Baliza',
+      name: "Baliza",
       animation: appearFromBottomImg28,
-      style: 'img28',
-      image: IMAGES.BALIZA_1
+      style: "img28",
+      image: IMAGES.BALIZA_1,
     },
     {
       id: 29,
-      name: 'Bengas',
+      name: "Bengas",
       animation: appearFromBottomImg29,
-      style: 'img29',
-      image: IMAGES.BENGAS_1
+      style: "img29",
+      image: IMAGES.BENGAS_1,
     },
     {
       id: 30,
-      name: 'Manequim',
+      name: "Manequim",
       animation: appearFromBottomImg30,
-      style: 'img30',
-      image: IMAGES.MANEQUIM
+      style: "img30",
+      image: IMAGES.MANEQUIM,
     },
     {
       id: 31,
-      name: 'Rodrigo',
+      name: "Rodrigo",
       animation: appearFromBottomImg31,
-      style: 'img31',
-      image: IMAGES.RODRIGO_1
+      style: "img31",
+      image: IMAGES.RODRIGO_1,
     },
     {
       id: 32,
-      name: 'Siri',
+      name: "Siri",
       animation: appearFromBottomImg32,
-      style: 'img32',
-      image: IMAGES.SIRI_1
+      style: "img32",
+      image: IMAGES.SIRI_1,
     },
     {
       id: 33,
-      name: 'Radio',
+      name: "Radio",
       animation: appearFromBottomImg33,
-      style: 'img33',
-      image: IMAGES.RADIO
+      style: "img33",
+      image: IMAGES.RADIO,
     },
     {
       id: 34,
-      name: 'Ricardo Almeida',
+      name: "Ricardo Almeida",
       animation: appearFromBottomImg34,
-      style: 'img34',
-      image: IMAGES.RICARDO_ALMEIDA_1
+      style: "img34",
+      image: IMAGES.RICARDO_ALMEIDA_1,
     },
     {
       id: 35,
-      name: 'Chewie',
+      name: "Chewie",
       animation: appearFromBottomImg35,
-      style: 'img35',
-      image: IMAGES.CHEWIE
+      style: "img35",
+      image: IMAGES.CHEWIE,
     },
     {
       id: 36,
-      name: 'Carla',
+      name: "Carla",
       animation: appearFromBottomImg36,
-      style: 'img36',
-      image: IMAGES.CARLA_1
+      style: "img36",
+      image: IMAGES.CARLA_1,
     },
     {
       id: 37,
-      name: 'Paula',
+      name: "Paula",
       animation: appearFromBottomImg37,
-      style: 'img37',
-      image: IMAGES.PAULA_1
+      style: "img37",
+      image: IMAGES.PAULA_1,
     },
     {
       id: 38,
-      name: 'Monica',
+      name: "Monica",
       animation: appearFromBottomImg38,
-      style: 'img38',
-      image: IMAGES.MONICA_1
+      style: "img38",
+      image: IMAGES.MONICA_1,
     },
     {
       id: 39,
-      name: 'Paulo',
+      name: "Paulo",
       animation: appearFromBottomImg39,
-      style: 'img39',
-      image: IMAGES.PAULO_1
+      style: "img39",
+      image: IMAGES.PAULO_1,
     },
     {
       id: 40,
-      name: 'Nando',
+      name: "Nando",
       animation: appearFromBottomImg40,
-      style: 'img40',
-      image: IMAGES.NANDO_2
+      style: "img40",
+      image: IMAGES.NANDO_2,
     },
     {
       id: 41,
-      name: 'Cubana',
+      name: "Cubana",
       animation: appearFromBottomImg41,
-      style: 'img41',
-      image: IMAGES.CUBANA_1
+      style: "img41",
+      image: IMAGES.CUBANA_1,
     },
     {
       id: 42,
-      name: 'Ana e Camila',
+      name: "Ana e Camila",
       animation: appearFromBottomImg42,
-      style: 'img42',
-      image: IMAGES.ANA_1
+      style: "img42",
+      image: IMAGES.ANA_1,
     },
     {
       id: 43,
-      name: 'RIR',
+      name: "RIR",
       animation: appearFromBottomImg43,
-      style: 'img43',
-      image: IMAGES.MUSIC_1
+      style: "img43",
+      image: IMAGES.MUSIC_1,
     },
     {
       id: 44,
-      name: 'Andre',
+      name: "Andre",
       animation: appearFromBottomImg44,
-      style: 'img44',
-      image: IMAGES.ANDRE_1
+      style: "img44",
+      image: IMAGES.ANDRE_1,
     },
     {
       id: 45,
-      name: 'Renault e Juke',
+      name: "Renault e Juke",
       animation: appearFromBottomImg45,
-      style: 'img45',
-      image: IMAGES.MARTA_1
+      style: "img45",
+      image: IMAGES.MARTA_1,
     },
     {
       id: 46,
-      name: 'JP',
+      name: "JP",
       animation: appearFromBottomImg46,
-      style: 'img46',
-      image: IMAGES.JP_1
+      style: "img46",
+      image: IMAGES.JP_1,
     },
     {
       id: 47,
-      name: 'Fale',
+      name: "Fale",
       animation: appearFromBottomImg47,
-      style: 'img47',
-      image: IMAGES.FALE_1
+      style: "img47",
+      image: IMAGES.FALE_1,
     },
     {
       id: 48,
-      name: 'Lourisela',
+      name: "Lourisela",
       animation: appearFromBottomImg48,
-      style: 'img48',
-      image: IMAGES.LOURISELA_1
+      style: "img48",
+      image: IMAGES.LOURISELA_1,
     },
     {
       id: 49,
-      name: 'Mo',
+      name: "Mo",
       animation: appearFromBottomImg49,
-      style: 'img49',
-      image: IMAGES.INES_GOIS_1
+      style: "img49",
+      image: IMAGES.INES_GOIS_1,
     },
     {
       id: 50,
-      name: 'Mo',
+      name: "Mo",
       animation: appearFromBottomImg50,
-      style: 'img50',
-      image: IMAGES.DAVIDE_1
+      style: "img50",
+      image: IMAGES.DAVIDE_1,
     },
     {
       id: 51,
-      name: 'Nick',
+      name: "Nick",
       animation: appearFromBottomImg51,
-      style: 'img51',
-      image: IMAGES.NICK_1
+      style: "img51",
+      image: IMAGES.NICK_1,
     },
     {
       id: 52,
-      name: 'Ricardo Duarte',
+      name: "Ricardo Duarte",
       animation: appearFromBottomImg52,
-      style: 'img52',
-      image: IMAGES.RICARDO_DUARTE_1
+      style: "img52",
+      image: IMAGES.RICARDO_DUARTE_1,
     },
     {
       id: 53,
-      name: 'Barbara',
+      name: "Barbara",
       animation: appearFromBottomImg53,
-      style: 'img53',
-      image: IMAGES.BARBARA_1
+      style: "img53",
+      image: IMAGES.BARBARA_1,
     },
     {
       id: 54,
-      name: 'António',
+      name: "António",
       animation: appearFromBottomImg54,
-      style: 'img54',
-      image: IMAGES.ANTONIO_1
+      style: "img54",
+      image: IMAGES.ANTONIO_1,
     },
     {
       id: 55,
-      name: 'Rita Oliveira',
+      name: "Rita Oliveira",
       animation: appearFromBottomImg55,
-      style: 'img55',
-      image: IMAGES.RITA_OLIVEIRA_1
+      style: "img55",
+      image: IMAGES.RITA_OLIVEIRA_1,
     },
     //////////////////////
     {
       id: 56,
-      name: 'Gonçalo',
+      name: "Gonçalo",
       animation: appearFromBottomImg56,
-      style: 'img56',
-      image: IMAGES.GONCALO_1
+      style: "img56",
+      image: IMAGES.GONCALO_1,
     },
     {
       id: 57,
-      name: 'Heidi',
+      name: "Heidi",
       animation: appearFromBottomImg57,
-      style: 'img57',
-      image: IMAGES.HEIDI_1
+      style: "img57",
+      image: IMAGES.HEIDI_1,
     },
     {
       id: 58,
-      name: 'Goat',
+      name: "Goat",
       animation: appearFromBottomImg58,
-      style: 'img58',
-      image: IMAGES.GOAT
+      style: "img58",
+      image: IMAGES.GOAT,
     },
     {
       id: 59,
-      name: 'Cat',
+      name: "Cat",
       animation: appearFromBottomImg59,
-      style: 'img59',
-      image: IMAGES.CAT_1
+      style: "img59",
+      image: IMAGES.CAT_1,
     },
     {
       id: 60,
-      name: 'Junior',
+      name: "Junior",
       animation: appearFromBottomImg60,
-      style: 'img60',
-      image: IMAGES.JUNIOR_1
+      style: "img60",
+      image: IMAGES.JUNIOR_1,
     },
     {
       id: 61,
-      name: 'Bomb',
+      name: "Bomb",
       animation: appearFromBottomImg61,
-      style: 'img61',
-      image: IMAGES.BOMB
+      style: "img61",
+      image: IMAGES.BOMB,
     },
     {
       id: 62,
-      name: 'Marta Simão',
+      name: "Marta Simão",
       animation: appearFromBottomImg62,
-      style: 'img62',
-      image: IMAGES.MARTA_SIMAO_1
+      style: "img62",
+      image: IMAGES.MARTA_SIMAO_1,
     },
     {
       id: 63,
-      name: 'Toni',
+      name: "Toni",
       animation: appearFromBottomImg63,
-      style: 'img63',
-      image: IMAGES.TONI_1
+      style: "img63",
+      image: IMAGES.TONI_1,
     },
     {
       id: 64,
-      name: 'Wally',
+      name: "Wally",
       animation: appearFromBottomImg64,
-      style: 'img64',
-      image: IMAGES.WALLY
+      style: "img64",
+      image: IMAGES.WALLY,
     },
     {
       id: 65,
-      name: 'João Monteiro',
+      name: "João Monteiro",
       animation: appearFromBottomImg65,
-      style: 'img65',
-      image: IMAGES.JOAO_MONTEIRO_1
+      style: "img65",
+      image: IMAGES.JOAO_MONTEIRO_1,
     },
     {
       id: 66,
-      name: 'Carla Pereira',
+      name: "Carla Pereira",
       animation: appearFromBottomImg66,
-      style: 'img66',
-      image: IMAGES.CARLA_PEREIRA_1
-    }
+      style: "img66",
+      image: IMAGES.CARLA_PEREIRA_1,
+    },
   ];
 
   return (
@@ -801,8 +801,12 @@ const GoodbyePage: NextPageWithLayout = () => {
           <div className={styles.message}>
             <figure>
               <blockquote>
-                <animated.h2 style={appearFromBottomQuote1}>Onde as palavras falham</animated.h2>
-                <animated.h2 style={appearFromBottomQuote2}>a música fala</animated.h2>
+                <animated.h2 style={appearFromBottomQuote1}>
+                  Onde as palavras falham
+                </animated.h2>
+                <animated.h2 style={appearFromBottomQuote2}>
+                  a música fala
+                </animated.h2>
               </blockquote>
               <animated.figcaption style={appearFromBottomAuthor}>
                 - Hans Christian Andersen -
@@ -812,9 +816,11 @@ const GoodbyePage: NextPageWithLayout = () => {
               <>
                 <p>Humm... Ainda estás aí?</p>
                 <p className={styles.signature} style={{ zIndex: 100 }}>
-                  {'Então visita o '}
+                  {"Então visita o "}
                   <Link href="/">
-                    <a style={{ borderBottom: '2px dashed #D20120' }}>meu site</a>
+                    <a style={{ borderBottom: "2px dashed #D20120" }}>
+                      meu site
+                    </a>
                   </Link>
                 </p>
               </>
@@ -824,7 +830,10 @@ const GoodbyePage: NextPageWithLayout = () => {
                   Até já amigos.
                   <br /> Felicidades colegas.
                 </animated.p>
-                <animated.p style={appearFromBottomSignature} className={styles.signature}>
+                <animated.p
+                  style={appearFromBottomSignature}
+                  className={styles.signature}
+                >
                   Wolf
                 </animated.p>
               </>
@@ -833,8 +842,17 @@ const GoodbyePage: NextPageWithLayout = () => {
               <div className={styles.images}>
                 <div className={styles.wrapper}>
                   {people.map((p) => (
-                    <animated.div key={p.id} style={p.animation} className={styles[p.style]}>
-                      <Image src={p.image} alt={p.name} layout="fill" objectFit="contain" />
+                    <animated.div
+                      key={p.id}
+                      style={p.animation}
+                      className={styles[p.style]}
+                    >
+                      <Image
+                        src={p.image}
+                        alt={p.name}
+                        layout="fill"
+                        objectFit="contain"
+                      />
                     </animated.div>
                   ))}
                 </div>
@@ -854,7 +872,9 @@ const GoodbyePage: NextPageWithLayout = () => {
               onEnded={resetAnimation}
               // muted
             />
-            {isPlaying && <p>{`"${music.title}", ${music.artist} (${music.released_date})`}</p>}
+            {isPlaying && (
+              <p>{`"${music.title}", ${music.artist} (${music.released_date})`}</p>
+            )}
           </div>
         </div>
       </section>
@@ -866,7 +886,10 @@ export default GoodbyePage;
 
 GoodbyePage.getLayout = function getLayout(page: ReactElement) {
   return (
-    <Layout title="GOODBYE" description="Animated postal card for the Fitness Hut team">
+    <Layout
+      title="GOODBYE"
+      description="Animated postal card for the Fitness Hut team"
+    >
       {page}
     </Layout>
   );

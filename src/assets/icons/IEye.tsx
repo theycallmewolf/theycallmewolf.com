@@ -1,6 +1,6 @@
-import { COLORS } from 'theme/colors';
+import { COLORS } from "theme/colors";
 
-import { SvgIcon } from './types';
+import { SvgIcon } from "./types";
 
 const SvgIImage: React.FC<SvgIcon> = (props) => (
   <svg
@@ -10,7 +10,8 @@ const SvgIImage: React.FC<SvgIcon> = (props) => (
     fill="none"
     stroke={COLORS.IRIDIUM_WHITE}
     xmlns="http://www.w3.org/2000/svg"
-    {...props}>
+    {...props}
+  >
     <path
       d="M0.916668 11.25C0.916668 11.25 4.58333 3.91669 11 3.91669C17.4167 3.91669 21.0833 11.25 21.0833 11.25C21.0833 11.25 17.4167 18.5834 11 18.5834C4.58333 18.5834 0.916668 11.25 0.916668 11.25Z"
       strokeLinecap="round"

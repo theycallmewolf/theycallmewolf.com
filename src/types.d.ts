@@ -1,8 +1,8 @@
-import { SwiperProps } from 'swiper/react';
+import { SwiperProps } from "swiper/react";
 
 export interface Project {
   id: string;
-  type: 'code' | 'illustration' | 'design' | 'other';
+  type: "code" | "illustration" | "design" | "other";
   title: string;
   slug: string;
   project_date: string;
@@ -86,7 +86,7 @@ export type GraphData = {
 
 export type ActivityData = {
   id: string;
-  icon: 'ui' | 'dev' | 'design' | 'illustration';
+  icon: "ui" | "dev" | "design" | "illustration";
   title: string;
   description: string;
 };
@@ -155,7 +155,7 @@ export interface ClientsProps {
 export interface SliderProps extends SwiperProps {
   slides?: SlideData[];
   testimonials?: TestimonialData[];
-  contentType: 'image' | 'testimonial';
+  contentType: "image" | "testimonial";
   className?: string;
   hasLink?: boolean;
 }

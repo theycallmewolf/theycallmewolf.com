@@ -1,6 +1,6 @@
-import { COLORS } from 'theme';
+import { COLORS } from "theme";
 
-import { SvgIcon } from './types';
+import { SvgIcon } from "./types";
 
 const SvgIImageOff: React.FC<SvgIcon> = (props) => (
   <svg
@@ -9,7 +9,8 @@ const SvgIImageOff: React.FC<SvgIcon> = (props) => (
     viewBox="0 0 22 23"
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
-    {...props}>
+    {...props}
+  >
     <g clipPath="url(#clip0_244_1576)">
       <path
         fillRule="evenodd"
@@ -30,7 +31,11 @@ const SvgIImageOff: React.FC<SvgIcon> = (props) => (
         strokeLinejoin="round"
         stroke={COLORS.IRIDIUM_WHITE}
       />
-      <path d="M1 1L21 21" stroke={COLORS.IRIDIUM_WHITE} strokeLinecap="round" />
+      <path
+        d="M1 1L21 21"
+        stroke={COLORS.IRIDIUM_WHITE}
+        strokeLinecap="round"
+      />
     </g>
     <defs>
       <clipPath id="clip0_244_1576">

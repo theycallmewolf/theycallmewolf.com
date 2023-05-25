@@ -1,15 +1,15 @@
-import { Analytics } from '@vercel/analytics/react';
-import { SpotifyNotification } from 'components/elements/SpotifyNotification';
-import { Metadata } from 'components/metadata';
-import { ContactForm } from 'components/sections/Common/ContactForm';
-import { AppProvider } from 'hooks';
-import { useTheme } from 'hooks';
-import { usePWABanner } from 'hooks/usePWABanner';
-import { useEffect } from 'react';
+import { Analytics } from "@vercel/analytics/react";
+import { SpotifyNotification } from "components/elements/SpotifyNotification";
+import { Metadata } from "components/metadata";
+import { ContactForm } from "components/sections/Common/ContactForm";
+import { AppProvider } from "hooks";
+import { useTheme } from "hooks";
+import { usePWABanner } from "hooks/usePWABanner";
+import { useEffect } from "react";
 
-import { Footer } from './Footer';
-import { Header } from './Header';
-import styles from './layout.module.scss';
+import { Footer } from "./Footer";
+import { Header } from "./Header";
+import styles from "./layout.module.scss";
 interface LayoutProps {
   title: string;
   description: string;
