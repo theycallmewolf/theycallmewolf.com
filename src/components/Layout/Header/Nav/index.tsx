@@ -1,22 +1,22 @@
-import styles from './nav.module.scss';
-import { NavButton } from './NavButton';
+import styles from "./nav.module.scss";
+import { NavButton } from "./NavButton";
 
 const BUTTONS = [
   {
     id: 1,
-    label: 'home',
-    href: '/'
+    label: "home",
+    href: "/",
   },
   {
     id: 2,
-    label: 'work',
-    href: '/work/code'
+    label: "work",
+    href: "/work/code",
   },
   {
     id: 3,
-    label: 'about',
-    href: '/about/activity'
-  }
+    label: "about",
+    href: "/about/activity",
+  },
   // {
   //   id: 4,
   //   label: 'store',

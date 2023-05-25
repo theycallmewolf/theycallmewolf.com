@@ -1,12 +1,12 @@
-import SvgICross from 'assets/icons/ICross';
-import IDragHandle from 'assets/icons/IDragHandle';
-import ISearch from 'assets/icons/ISearch';
-import Image from 'next/image';
-import { useCallback, useEffect, useRef, useState } from 'react';
-import Draggable from 'react-draggable';
+import SvgICross from "assets/icons/ICross";
+import IDragHandle from "assets/icons/IDragHandle";
+import ISearch from "assets/icons/ISearch";
+import Image from "next/image";
+import { useCallback, useEffect, useRef, useState } from "react";
+import Draggable from "react-draggable";
 
-import { useUnsplash } from '../../useUnsplash';
-import styles from './dialog-box.module.scss';
+import { useUnsplash } from "../../useUnsplash";
+import styles from "./dialog-box.module.scss";
 
 export const DialogBox: React.FC = () => {
   const { showDialogBox, setShowDialogBox } = useUnsplash();
@@ -34,17 +34,24 @@ export const DialogBox: React.FC = () => {
    * @doc https://github.com/react-grid-layout/react-draggable#draggable
    */
   return (
-    <div className={`${styles.container} ${showDialogBox ? styles.show : ''}`}>
+    <div className={`${styles.container} ${showDialogBox ? styles.show : ""}`}>
       <Draggable
         handle=".handle"
         bounds="parent"
         // position={coordinates}
-        defaultPosition={coordinates}>
-        <div ref={elementRef} className={`${styles.dialog} ${showDialogBox ? styles.show : ''}`}>
-          <button className={`${styles['drag-handle']} handle`}>
+        defaultPosition={coordinates}
+      >
+        <div
+          ref={elementRef}
+          className={`${styles.dialog} ${showDialogBox ? styles.show : ""}`}
+        >
+          <button className={`${styles["drag-handle"]} handle`}>
             <IDragHandle />
           </button>
-          <button className={styles['btn-close']} onClick={() => setShowDialogBox(false)}>
+          <button
+            className={styles["btn-close"]}
+            onClick={() => setShowDialogBox(false)}
+          >
             <SvgICross className={styles.icon} />
           </button>
 
@@ -65,7 +72,7 @@ const Search: React.FC = () => {
     getImages,
     setUserSearch,
     noResults,
-    unsplashAPIUnavailable
+    unsplashAPIUnavailable,
   } = useUnsplash();
 
   const onSearchSubmit = useCallback(
@@ -80,8 +87,10 @@ const Search: React.FC = () => {
   if (unsplashAPIUnavailable) return null;
 
   return (
-    <form className={styles['search-form']} onSubmit={onSearchSubmit}>
-      <div className={`${styles.error} ${noResults ? styles.show : ''}`}>No photos found.</div>
+    <form className={styles["search-form"]} onSubmit={onSearchSubmit}>
+      <div className={`${styles.error} ${noResults ? styles.show : ""}`}>
+        No photos found.
+      </div>
 
       <input
         type="search"
@@ -111,21 +120,28 @@ const List: React.FC = () => {
 
   return (
     <>
-      <div className={styles['thumbs-list']}>
+      <div className={styles["thumbs-list"]}>
         {images?.map((img) => (
           <button
             onClick={() => onThumbClick(img.id)}
             key={img.id}
             data-id={img.id}
-            className={`${styles.button} ${currentBgImage?.id === img.id ? styles.selected : ''}`}>
+            className={`${styles.button} ${
+              currentBgImage?.id === img.id ? styles.selected : ""
+            }`}
+          >
             <Image src={img.urls.thumb} alt={img.description} layout="fill" />
           </button>
         ))}
       </div>
 
       <p className={styles.credits}>
-        {'Powered by '}
-        <a href="https://unsplash.com/developers" target="_blank" rel="noopener noreferrer">
+        {"Powered by "}
+        <a
+          href="https://unsplash.com/developers"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Unsplash API
         </a>
       </p>

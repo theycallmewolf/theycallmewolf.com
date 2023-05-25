@@ -1,8 +1,8 @@
-import { introCopy } from 'assets/constants/intro';
-import Typed from 'react-typed';
+import { introCopy } from "assets/constants/intro";
+import Typed from "react-typed";
 
-import { useUnsplash } from '../../useUnsplash';
-import styles from './content.module.scss';
+import { useUnsplash } from "../../useUnsplash";
+import styles from "./content.module.scss";
 
 export const Content: React.FC = () => {
   const { showContent, showDialogBox } = useUnsplash();
@@ -10,11 +10,13 @@ export const Content: React.FC = () => {
   const hide = !showContent || showDialogBox;
 
   return (
-    <div className={`${styles.content} ${hide ? styles.hide : ''}`}>
-      <h1 className={styles.flame /* neon | vegas | rainbow | florida | shadow*/}>
+    <div className={`${styles.content} ${hide ? styles.hide : ""}`}>
+      <h1
+        className={styles.flame /* neon | vegas | rainbow | florida | shadow*/}
+      >
         They <br />
         Call Me <br />
-        {'<Wolf />'}
+        {"<Wolf />"}
       </h1>
       <span className={styles.label}>
         <Typed

@@ -1,9 +1,10 @@
-import { IPlus } from 'assets/icons';
-import Link from 'next/link';
+import { IPlus } from "assets/icons";
+import Link from "next/link";
 
-import styles from './link.module.scss';
+import styles from "./link.module.scss";
 
-interface CustomLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+interface CustomLinkProps
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
   label?: string;
   className?: string;
@@ -11,7 +12,7 @@ interface CustomLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> 
 }
 
 export const CustomLink: React.FC<CustomLinkProps> = ({
-  className = '',
+  className = "",
   href,
   label,
   hasIcon = false,
@@ -20,9 +21,10 @@ export const CustomLink: React.FC<CustomLinkProps> = ({
   return (
     <Link href={href}>
       <a
-        className={`${styles.link} ${className} ${hasIcon ? styles.icon : ''}`}
+        className={`${styles.link} ${className} ${hasIcon ? styles.icon : ""}`}
         {...props}
-        aria-label="show details">
+        aria-label="show details"
+      >
         {label}
         {hasIcon && <IPlus />}
       </a>

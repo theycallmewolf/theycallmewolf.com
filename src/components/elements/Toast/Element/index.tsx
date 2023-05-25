@@ -1,18 +1,22 @@
-import { ICross } from 'assets/icons';
-import { useToast } from 'hooks';
-import { useEffect } from 'react';
-import { animated, config, useSpring } from 'react-spring';
+import { ICross } from "assets/icons";
+import { useToast } from "hooks";
+import { useEffect } from "react";
+import { animated, config, useSpring } from "react-spring";
 
-import { ToastProps } from '../types';
-import styles from './element.module.scss';
+import { ToastProps } from "../types";
+import styles from "./element.module.scss";
 
-export const ToastElement: React.FC<ToastProps> = ({ title, description, id }) => {
+export const ToastElement: React.FC<ToastProps> = ({
+  title,
+  description,
+  id,
+}) => {
   const { removeToast, hasToast, timeout } = useToast();
 
   const appearFromBottom = useSpring({
     y: hasToast ? 0 : 200,
     delay: 0 * 1000,
-    config: config.slow
+    config: config.slow,
   });
 
   useEffect(() => {
@@ -22,7 +26,11 @@ export const ToastElement: React.FC<ToastProps> = ({ title, description, id }) =
   }, [id, removeToast, timeout]);
 
   return (
-    <animated.div className={styles.toast} style={appearFromBottom} data-message-id={id}>
+    <animated.div
+      className={styles.toast}
+      style={appearFromBottom}
+      data-message-id={id}
+    >
       <strong>{title}</strong>
       <span>{description}</span>
       <button onClick={() => removeToast(id)} aria-label="Close" title="Close">

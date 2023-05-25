@@ -1,9 +1,9 @@
-import { createServer } from 'http';
-import next from 'next';
-import { join } from 'path';
-import { parse } from 'url';
+import { createServer } from "http";
+import next from "next";
+import { join } from "path";
+import { parse } from "url";
 
-const app = next({ dev: process.env.NODE_ENV !== 'production' });
+const app = next({ dev: process.env.NODE_ENV !== "production" });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
@@ -11,8 +11,11 @@ app.prepare().then(() => {
     const parsedUrl = parse(req.url, true);
     const { pathname } = parsedUrl;
 
-    if (pathname === '/sw.js' || /^\/(workbox|worker|fallback)-\w+\.js$/.test(pathname)) {
-      const filePath = join(__dirname, '.next', pathname);
+    if (
+      pathname === "/sw.js" ||
+      /^\/(workbox|worker|fallback)-\w+\.js$/.test(pathname)
+    ) {
+      const filePath = join(__dirname, ".next", pathname);
       app.serveStatic(req, res, filePath);
     } else {
       handle(req, res, parsedUrl);

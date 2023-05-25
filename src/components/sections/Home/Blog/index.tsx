@@ -1,9 +1,9 @@
-import { BlogProps } from 'types';
+import { BlogProps } from "types";
 
-import { Button } from '../../../elements/Button';
-import { Card, CardBody, CardFooter } from '../../../elements/Cards/Card';
-import { CustomLink } from '../../../elements/Link';
-import styles from './blog.module.scss';
+import { Button } from "../../../elements/Button";
+import { Card, CardBody, CardFooter } from "../../../elements/Cards/Card";
+import { CustomLink } from "../../../elements/Link";
+import styles from "./blog.module.scss";
 
 export const Blog: React.FC<BlogProps> = ({ posts }) => (
   <section className={styles.section}>
@@ -12,8 +12,8 @@ export const Blog: React.FC<BlogProps> = ({ posts }) => (
         <h2>Wolf Bytes</h2>
         <p>
           <small>
-            Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem
-            nec elit.
+            Duis mollis, est non commodo luctus, nisi erat porttitor ligula,
+            eget lacinia odio sem nec elit.
           </small>
         </p>
       </div>

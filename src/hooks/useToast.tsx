@@ -1,11 +1,19 @@
-import { createContext, useCallback, useContext, useEffect, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+import { v4 as uuidv4 } from "uuid";
 
-import { Toast } from '../components/elements/Toast';
-import type { ToastProps } from '../components/elements/Toast/types';
+import { Toast } from "../components/elements/Toast";
+import type { ToastProps } from "../components/elements/Toast/types";
 
 interface ToastContextData {
-  addToast({ type, title, description, duration }: Omit<ToastProps, 'id'>): { id: string };
+  addToast({ type, title, description, duration }: Omit<ToastProps, "id">): {
+    id: string;
+  };
   removeToast(id: string): void;
   hasToast: boolean;
   timeout: number;
@@ -18,7 +26,7 @@ const ToastProvider: React.FC = ({ children }) => {
   const [messages, setMessages] = useState<ToastProps[]>([] as ToastProps[]);
   const [hasToast, setHasToast] = useState(false);
   const [timeout, setTimeout] = useState(3000);
-  const [hasClosed, setHasClosed] = useState({ status: false, id: '' });
+  const [hasClosed, setHasClosed] = useState({ status: false, id: "" });
 
   const addToast = useCallback(
     ({ type, title, description, duration }) => {
@@ -28,12 +36,12 @@ const ToastProvider: React.FC = ({ children }) => {
         id,
         type,
         title,
-        description
+        description,
       };
 
       setTimeout(duration);
       setMessages([...messages, toast]);
-      setHasClosed({ status: false, id: '' });
+      setHasClosed({ status: false, id: "" });
 
       return { id };
     },
@@ -50,7 +58,9 @@ const ToastProvider: React.FC = ({ children }) => {
   }, [messages.length]);
 
   return (
-    <ToastContext.Provider value={{ addToast, removeToast, hasToast, timeout, hasClosed }}>
+    <ToastContext.Provider
+      value={{ addToast, removeToast, hasToast, timeout, hasClosed }}
+    >
       {children}
       <Toast messages={messages} />
     </ToastContext.Provider>
@@ -59,7 +69,7 @@ const ToastProvider: React.FC = ({ children }) => {
 
 function useToast(): ToastContextData {
   const context = useContext(ToastContext);
-  if (!context) throw Error('useToast must be used inside a ToastProvider');
+  if (!context) throw Error("useToast must be used inside a ToastProvider");
   return context;
 }
 

@@ -1,4 +1,4 @@
-import { SvgIcon } from './types';
+import { SvgIcon } from "./types";
 
 const SvgIArrowAlt: React.FC<SvgIcon> = (props) => {
   return (

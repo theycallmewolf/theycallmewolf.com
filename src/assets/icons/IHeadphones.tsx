@@ -1,4 +1,4 @@
-import { SvgIcon } from './types';
+import { SvgIcon } from "./types";
 
 const IHeadphones: React.FC<SvgIcon> = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 16" {...props}>

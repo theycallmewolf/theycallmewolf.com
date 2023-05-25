@@ -1,9 +1,9 @@
-import { ICross, IMenu, Wolf } from 'assets/icons';
-import { useNav, useTheme } from 'hooks';
-import Link from 'next/link';
+import { ICross, IMenu, Wolf } from "assets/icons";
+import { useNav, useTheme } from "hooks";
+import Link from "next/link";
 
-import styles from './header.module.scss';
-import { Nav } from './Nav';
+import styles from "./header.module.scss";
+import { Nav } from "./Nav";
 
 export const Header: React.FC = () => {
   const { isOpen, toggleNav } = useNav();
@@ -11,29 +11,39 @@ export const Header: React.FC = () => {
 
   return (
     <header
-      className={`${styles.container} ${isOpen ? styles.open : ''} ${
-        hasDarkMode ? styles.dark : ''
-      }`}>
+      className={`${styles.container} ${isOpen ? styles.open : ""} ${
+        hasDarkMode ? styles.dark : ""
+      }`}
+    >
       <div className={styles.navigation}>
         <Nav />
       </div>
       <div className={styles.header}>
         <Link href="/">
           <a
-            className={`${styles.logo} ${isOpen ? styles.open : ''}`}
-            aria-label="back to homepage">
+            className={`${styles.logo} ${isOpen ? styles.open : ""}`}
+            aria-label="back to homepage"
+          >
             <Wolf className={styles.logo} />
           </a>
         </Link>
         <div className={styles.buttonContainer}>
           <button
-            className={`${styles.toggle} ${hasDarkMode ? styles.dark : ''}`}
+            className={`${styles.toggle} ${hasDarkMode ? styles.dark : ""}`}
             onClick={toggleTheme}
             aria-label="toggle light/dark mode"
           />
-          <button className={styles.menu} aria-label="menu button" onClick={toggleNav}>
-            {!isOpen ? 'menu' : 'close'}
-            {!isOpen ? <IMenu className={styles.icon} /> : <ICross className={styles.icon} />}
+          <button
+            className={styles.menu}
+            aria-label="menu button"
+            onClick={toggleNav}
+          >
+            {!isOpen ? "menu" : "close"}
+            {!isOpen ? (
+              <IMenu className={styles.icon} />
+            ) : (
+              <ICross className={styles.icon} />
+            )}
           </button>
         </div>
       </div>

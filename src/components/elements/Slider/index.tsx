@@ -1,20 +1,20 @@
-import { IPlus } from 'assets/icons';
-import { Button } from 'components/elements/Button';
-import { useTheme } from 'hooks';
-import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import { A11y, EffectFade, Navigation } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { SlideData, SliderProps, TestimonialData } from 'types';
+import { IPlus } from "assets/icons";
+import { Button } from "components/elements/Button";
+import { useTheme } from "hooks";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import { A11y, EffectFade, Navigation } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { SlideData, SliderProps, TestimonialData } from "types";
 
-import { CustomLink } from '../Link';
+import { CustomLink } from "../Link";
 
 export const Slider: React.FC<SliderProps> = ({
   slides,
   testimonials,
   contentType,
   hasLink,
-  className = '',
+  className = "",
   ...props
 }) => {
   // const [slideNumber, setSlideNumber] = useState('01');
@@ -34,7 +34,9 @@ export const Slider: React.FC<SliderProps> = ({
   // };
 
   return (
-    <div className={`slider-container ${hasDarkMode ? 'dark' : ''} ${className}`}>
+    <div
+      className={`slider-container ${hasDarkMode ? "dark" : ""} ${className}`}
+    >
       <Swiper
         modules={[Navigation, A11y, EffectFade]}
         spaceBetween={48}
@@ -43,14 +45,15 @@ export const Slider: React.FC<SliderProps> = ({
         grabCursor={true}
         loop={true}
         speed={1000}
-        effect={contentType === 'testimonial' ? 'fade' : 'slide'}
-        className={contentType === 'testimonial' ? 'testimonial' : ''}
+        effect={contentType === "testimonial" ? "fade" : "slide"}
+        className={contentType === "testimonial" ? "testimonial" : ""}
         // onSlideChange={(swiper) => handleSlideNumber(swiper.activeIndex)}
-        {...props}>
-        {contentType === 'image' &&
+        {...props}
+      >
+        {contentType === "image" &&
           slideList.map((slide, i) => (
             <SwiperSlide key={i}>
-              <figure className={contentType === 'image' ? 'shadow' : ''}>
+              <figure className={contentType === "image" ? "shadow" : ""}>
                 <Image
                   src={slide.slider.image_large_2x}
                   layout="fill"
@@ -60,7 +63,7 @@ export const Slider: React.FC<SliderProps> = ({
                 />
 
                 {slide.slider.caption && (
-                  <figcaption className={showCaption ? 'show' : ''}>
+                  <figcaption className={showCaption ? "show" : ""}>
                     <span>{slide.project_date}</span>
                     <strong>{slide.slider.caption}</strong>
                     {hasLink && (
@@ -75,15 +78,18 @@ export const Slider: React.FC<SliderProps> = ({
               </figure>
               {slide.slider.caption && (
                 <Button
-                  className={`show-caption-button ${showCaption ? 'rotate' : ''}`}
-                  onClick={() => setShowCaption((state) => !state)}>
+                  className={`show-caption-button ${
+                    showCaption ? "rotate" : ""
+                  }`}
+                  onClick={() => setShowCaption((state) => !state)}
+                >
                   <IPlus />
                 </Button>
               )}
             </SwiperSlide>
           ))}
 
-        {contentType === 'testimonial' &&
+        {contentType === "testimonial" &&
           testimonialList.map(({ quote, name, jobTitle, publish_date }, i) => (
             <SwiperSlide key={i}>
               <div tabIndex={-1}>

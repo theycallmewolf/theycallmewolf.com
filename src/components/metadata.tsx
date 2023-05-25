@@ -1,7 +1,7 @@
-import { useTheme } from 'hooks';
-import { useConfig } from 'hooks/useConfig';
-import Head from 'next/head';
-import { COLORS } from 'theme';
+import { useTheme } from "hooks";
+import { useConfig } from "hooks/useConfig";
+import Head from "next/head";
+import { COLORS } from "theme";
 
 interface Props {
   title: string;
@@ -38,12 +38,18 @@ const OpenGraph: React.FC<Props> = (props) => {
     <Head>
       <meta property="og:locale" content="en" />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content={`${props.title} | ${CONFIG.site.name}`} />
+      <meta
+        property="og:title"
+        content={`${props.title} | ${CONFIG.site.name}`}
+      />
       <meta property="og:description" content={props.description} />
       <meta property="og:site_name" content={CONFIG.site.name} />
       <meta property="twitter:card" content="summary" />
       <meta property="twitter:creator" content={CONFIG.social.twitter} />
-      <meta property="twitter:title" content={`${props.title} | ${CONFIG.site.name}`} />
+      <meta
+        property="twitter:title"
+        content={`${props.title} | ${CONFIG.site.name}`}
+      />
       <meta property="twitter:description" content={props.description} />
       <meta property="og:image" content={CONFIG.social.image} />
       <meta property="og:image:secure_url" content={CONFIG.site.url} />
@@ -61,12 +67,29 @@ const CommonMetas: React.FC = () => {
   return (
     <Head>
       <link rel="shortcut icon" href="/favicon/favicon.ico" type="image/ico" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/favicon/favicon-32x32.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="/favicon/favicon-16x16.png"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/favicon/apple-touch-icon.png"
+      />
       <link rel="manifest" href="/site.webmanifest" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+      <meta
+        name="apple-mobile-web-app-status-bar-style"
+        content="black-translucent"
+      />
       <meta name="MobileOptimized" content="320" />
       <meta name="HandheldFriendly" content="true" />
       <meta name="referrer" content="no-referrer-when-downgrade" />
@@ -83,7 +106,10 @@ const CommonMetas: React.FC = () => {
         name="msapplication-TileColor"
         content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
       />
-      <meta name="theme-color" content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE} />
+      <meta
+        name="theme-color"
+        content={hasDarkMode ? COLORS.COSMOS_BLACK : COLORS.IRIDIUM_WHITE}
+      />
       {/* <meta
         name="theme-color"
         content={COLORS.IRIDIUM_WHITE}
@@ -202,7 +228,7 @@ const GoogleTag: React.FC = () => (
           gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
             page_path: window.location.pathname,
           });
-        `
+        `,
       }}
     />
   </Head>

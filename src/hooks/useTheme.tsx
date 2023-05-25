@@ -1,8 +1,8 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState } from "react";
 
-import { useConfig } from './useConfig';
+import { useConfig } from "./useConfig";
 
-type SetThemeProps = { name: 'light' | 'dark' };
+type SetThemeProps = { name: "light" | "dark" };
 
 interface ThemeContextData {
   getTheme(): void;
@@ -19,7 +19,7 @@ const ThemeProvider: React.FC = ({ children }) => {
   const [hasDarkMode, setHasDarkMode] = useState(false);
 
   const setTheme = ({ name }: SetThemeProps) => {
-    setHasDarkMode(name === 'dark');
+    setHasDarkMode(name === "dark");
     localStorage.setItem(LOCAL_STORE_KEY.THEME, name);
     document.documentElement.className = name;
   };
@@ -28,21 +28,23 @@ const ThemeProvider: React.FC = ({ children }) => {
     const theme = localStorage.getItem(LOCAL_STORE_KEY.THEME);
 
     if (!theme) {
-      window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? setTheme({ name: 'dark' })
-        : setTheme({ name: 'light' });
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? setTheme({ name: "dark" })
+        : setTheme({ name: "light" });
       return;
     }
 
-    setTheme({ name: theme === 'light' ? 'light' : 'dark' });
+    setTheme({ name: theme === "light" ? "light" : "dark" });
   };
 
   const toggleTheme = () => {
-    setTheme({ name: hasDarkMode ? 'light' : 'dark' });
+    setTheme({ name: hasDarkMode ? "light" : "dark" });
   };
 
   return (
-    <ThemeContext.Provider value={{ getTheme, setTheme, toggleTheme, hasDarkMode }}>
+    <ThemeContext.Provider
+      value={{ getTheme, setTheme, toggleTheme, hasDarkMode }}
+    >
       {children}
     </ThemeContext.Provider>
   );
@@ -50,7 +52,8 @@ const ThemeProvider: React.FC = ({ children }) => {
 
 function useTheme(): ThemeContextData {
   const context = useContext(ThemeContext);
-  if (!context) throw Error('the hook useTheme must be used inside a ThemeProvider');
+  if (!context)
+    throw Error("the hook useTheme must be used inside a ThemeProvider");
   return context;
 }
 

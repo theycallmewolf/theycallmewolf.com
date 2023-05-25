@@ -1,6 +1,6 @@
-import { COLORS } from 'theme/colors';
+import { COLORS } from "theme/colors";
 
-import { SvgIcon } from './types';
+import { SvgIcon } from "./types";
 
 const SvgIDragHandle: React.FC<SvgIcon> = (props) => (
   <svg
@@ -9,7 +9,8 @@ const SvgIDragHandle: React.FC<SvgIcon> = (props) => (
     viewBox="0 0 23 22"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    {...props}>
+    {...props}
+  >
     <path
       fill={COLORS.IRIDIUM_WHITE}
       fillRule="evenodd"

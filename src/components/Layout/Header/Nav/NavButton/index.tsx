@@ -1,8 +1,8 @@
-import { useNav } from 'hooks';
-import { useRouter } from 'next/router';
-import { useMemo } from 'react';
+import { useNav } from "hooks";
+import { useRouter } from "next/router";
+import { useMemo } from "react";
 
-import styles from './nav-button.module.scss';
+import styles from "./nav-button.module.scss";
 
 interface NavButtonProps extends React.HTMLAttributes<HTMLAnchorElement> {
   href: string;
@@ -18,8 +18,8 @@ export const NavButton: React.FC<NavButtonProps> = ({ href, label }) => {
   };
 
   const className = useMemo(() => {
-    const isActive = router.asPath.split('/')[1] === href.split('/')[1];
-    return `${styles.button} ${isActive ? styles.active : ''}`;
+    const isActive = router.asPath.split("/")[1] === href.split("/")[1];
+    return `${styles.button} ${isActive ? styles.active : ""}`;
   }, [href, router.asPath]);
 
   return (

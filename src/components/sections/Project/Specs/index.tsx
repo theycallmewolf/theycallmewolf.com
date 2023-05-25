@@ -1,9 +1,9 @@
-import { IArrow, IMinus, IPlus } from 'assets/icons';
-import { useCallback, useEffect, useState } from 'react';
-import { AboutData, DependenciesData, SpecData } from 'types';
-import { formatDate } from 'utils';
+import { IArrow, IMinus, IPlus } from "assets/icons";
+import { useCallback, useEffect, useState } from "react";
+import { AboutData, DependenciesData, SpecData } from "types";
+import { formatDate } from "utils";
 
-import styles from './specs.module.scss';
+import styles from "./specs.module.scss";
 
 interface SpecsProps {
   project: {
@@ -21,21 +21,21 @@ export const Specs: React.FC<SpecsProps> = ({ project }) => {
   const [hidesSpecs, setHidesSpec] = useState(true);
 
   const handleAccordion = useCallback(
-    (content: 'about' | 'specs') => {
-      if (window.matchMedia('(min-width: 768px)').matches) {
+    (content: "about" | "specs") => {
+      if (window.matchMedia("(min-width: 768px)").matches) {
         setHidesAbout(false);
         setHidesSpec(false);
         return;
       }
 
-      if (content === 'about') setHidesAbout(!hidesAbout);
-      if (content === 'specs') setHidesSpec(!hidesSpecs);
+      if (content === "about") setHidesAbout(!hidesAbout);
+      if (content === "specs") setHidesSpec(!hidesSpecs);
     },
     [hidesAbout, hidesSpecs]
   );
 
   useEffect(() => {
-    if (!window.matchMedia('(min-width: 768px)').matches) return;
+    if (!window.matchMedia("(min-width: 768px)").matches) return;
 
     setHidesAbout(false);
     setHidesSpec(false);
@@ -44,36 +44,57 @@ export const Specs: React.FC<SpecsProps> = ({ project }) => {
   return (
     <section className={styles.specs}>
       <div className={styles.toggle}>
-        <button onClick={() => handleAccordion('about')} className={styles.button}>
+        <button
+          onClick={() => handleAccordion("about")}
+          className={styles.button}
+        >
           <h2>About</h2>
-          {hidesAbout ? <IPlus className={styles.icon} /> : <IMinus className={styles.icon} />}
+          {hidesAbout ? (
+            <IPlus className={styles.icon} />
+          ) : (
+            <IMinus className={styles.icon} />
+          )}
         </button>
 
-        <div className={`${styles.content} ${hidesAbout ? styles.hide : ''}`}>
-          {project.about.map((item, i) => item.type === 'paragraph' && <p key={i}>{item.text}</p>)}
+        <div className={`${styles.content} ${hidesAbout ? styles.hide : ""}`}>
+          {project.about.map(
+            (item, i) => item.type === "paragraph" && <p key={i}>{item.text}</p>
+          )}
         </div>
       </div>
 
       <div className={styles.toggle}>
-        <button onClick={() => handleAccordion('specs')} className={styles.button}>
+        <button
+          onClick={() => handleAccordion("specs")}
+          className={styles.button}
+        >
           <h2>Specs</h2>
-          {hidesSpecs ? <IPlus className={styles.icon} /> : <IMinus className={styles.icon} />}
+          {hidesSpecs ? (
+            <IPlus className={styles.icon} />
+          ) : (
+            <IMinus className={styles.icon} />
+          )}
         </button>
 
-        <div className={`${styles.content} ${hidesSpecs ? styles.hide : ''}`}>
+        <div className={`${styles.content} ${hidesSpecs ? styles.hide : ""}`}>
           {project.project_date && (
             <div>
               <strong>release date</strong>
               <span>{formatDate(project.project_date)}</span>
             </div>
           )}
-          <div className={!project.link && !project.repository ? 'hide' : undefined}>
+          <div
+            className={
+              !project.link && !project.repository ? "hide" : undefined
+            }
+          >
             {project.link && (
               <a
                 href={project.link}
                 className={styles.btn}
                 target="_blank"
-                rel="noopener noreferrer ">
+                rel="noopener noreferrer "
+              >
                 visit project website <IArrow />
               </a>
             )}
@@ -82,7 +103,8 @@ export const Specs: React.FC<SpecsProps> = ({ project }) => {
                 href={project.repository}
                 className={styles.btn}
                 target="_blank"
-                rel="noopener noreferrer ">
+                rel="noopener noreferrer "
+              >
                 check the code at GitHub <IArrow />
               </a>
             )}
@@ -102,7 +124,12 @@ export const Specs: React.FC<SpecsProps> = ({ project }) => {
               <strong>dependencies</strong>
               <div className={styles.tags}>
                 {project.dependencies.map(({ label, url }, i) => (
-                  <a href={url} key={i} target="_blank" rel="noreferrer noopener">
+                  <a
+                    href={url}
+                    key={i}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                  >
                     {label}
                   </a>
                 ))}

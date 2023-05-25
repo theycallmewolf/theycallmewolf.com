@@ -1,4 +1,4 @@
-import { fallbackBgImages } from 'assets/constants/bg-images';
+import { fallbackBgImages } from "assets/constants/bg-images";
 import {
   createContext,
   Dispatch,
@@ -6,11 +6,15 @@ import {
   useCallback,
   useContext,
   useEffect,
-  useState
-} from 'react';
-import { getRandomImages, trackDownload, UnsplashAPIData } from 'services/unsplash';
-import { getRandomInt } from 'utils';
-import { NODE_DEV } from 'utils/dev';
+  useState,
+} from "react";
+import {
+  getRandomImages,
+  trackDownload,
+  UnsplashAPIData,
+} from "services/unsplash";
+import { getRandomInt } from "utils";
+import { NODE_DEV } from "utils/dev";
 
 interface UnsplashData {
   images: UnsplashAPIData[];
@@ -31,7 +35,7 @@ interface UnsplashData {
 
 const UnsplashContext = createContext<UnsplashData>({} as UnsplashData);
 
-export const UNSPLASH_DEFAULT_QUERY = 'abstract';
+export const UNSPLASH_DEFAULT_QUERY = "abstract";
 
 const UnsplashProvider: React.FC = ({ children }) => {
   const [userSearch, setUserSearch] = useState(false);
@@ -50,10 +54,12 @@ const UnsplashProvider: React.FC = ({ children }) => {
       const res = await getRandomImages({ query: unsplashQuery });
 
       // case unsplash api error (hide search from `DialogBox`)
-      setUnsplashAPIUnavailable(res.data.message === 'expected JSON response from server.');
+      setUnsplashAPIUnavailable(
+        res.data.message === "expected JSON response from server."
+      );
 
       // case no results from user query (show `DialogBox` alert)
-      if (res.data.message === 'No photos found.') {
+      if (res.data.message === "No photos found.") {
         setNoResults(true);
         setTimeout(() => {
           setNoResults(false);
@@ -69,7 +75,7 @@ const UnsplashProvider: React.FC = ({ children }) => {
       setImages(res.data.results);
       setUserSearch(false);
     } catch (error) {
-      NODE_DEV && console.info('[error]', error);
+      NODE_DEV && console.info("[error]", error);
     }
   }, [images, unsplashQuery, userSearch]);
 
@@ -110,8 +116,9 @@ const UnsplashProvider: React.FC = ({ children }) => {
         showContent,
         setShowContent,
         noResults,
-        unsplashAPIUnavailable
-      }}>
+        unsplashAPIUnavailable,
+      }}
+    >
       {children}
     </UnsplashContext.Provider>
   );
@@ -119,7 +126,8 @@ const UnsplashProvider: React.FC = ({ children }) => {
 
 const useUnsplash = (): UnsplashData => {
   const context = useContext(UnsplashContext);
-  if (!context) throw Error('the hook useUnsplash must be used inside a NavProvider');
+  if (!context)
+    throw Error("the hook useUnsplash must be used inside a NavProvider");
   return context;
 };
 

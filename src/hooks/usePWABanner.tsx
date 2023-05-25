@@ -1,20 +1,20 @@
-import { useToast } from 'hooks';
-import { useCallback, useEffect, useState } from 'react';
-import { NODE_DEV } from 'utils/dev';
-import { deviceCheck } from 'utils/device-check';
+import { useToast } from "hooks";
+import { useCallback, useEffect, useState } from "react";
+import { NODE_DEV } from "utils/dev";
+import { deviceCheck } from "utils/device-check";
 
-import { useConfig } from './useConfig';
+import { useConfig } from "./useConfig";
 
 const TOAST_CONTENT = {
   IOS: {
-    TITLE: 'Have an app-like experience!',
-    DESCRIPTION: 'Tap on the share button below, then "Add to Home screen".'
+    TITLE: "Have an app-like experience!",
+    DESCRIPTION: 'Tap on the share button below, then "Add to Home screen".',
   },
   ANDROID: {
-    TITLE: 'Have an app-like experience!',
+    TITLE: "Have an app-like experience!",
     DESCRIPTION:
-      'Open the "More" menu by tapping on the three vertical dots button (top right), then "Add to Home screen".'
-  }
+      'Open the "More" menu by tapping on the three vertical dots button (top right), then "Add to Home screen".',
+  },
 };
 
 type UsePWABanner = () => { checkPWABanner: () => void };
@@ -39,20 +39,22 @@ export const usePWABanner: UsePWABanner = () => {
         if (toastID) return;
 
         const { isMobile, isAndroid, isIOS } = deviceCheck();
-        NODE_DEV && console.log('is Android:', isAndroid, 'is IOS:', isIOS);
+        NODE_DEV && console.log("is Android:", isAndroid, "is IOS:", isIOS);
 
         if (!isMobile) return;
 
-        const isInstalled = window.matchMedia('(display-mode: standalone)').matches;
+        const isInstalled = window.matchMedia(
+          "(display-mode: standalone)"
+        ).matches;
         if (isInstalled) return;
 
-        const DEVICE = isIOS ? 'IOS' : 'ANDROID';
+        const DEVICE = isIOS ? "IOS" : "ANDROID";
 
         const { id } = addToast({
           title: TOAST_CONTENT[DEVICE].TITLE,
           description: TOAST_CONTENT[DEVICE].DESCRIPTION,
-          type: 'info',
-          duration: 60 * 1000
+          type: "info",
+          duration: 60 * 1000,
         });
 
         setToastID(id);
@@ -63,7 +65,8 @@ export const usePWABanner: UsePWABanner = () => {
 
   useEffect(() => {
     const { status, id } = hasClosed;
-    if (status && toastID === id) localStorage.setItem(LOCAL_STORE_KEY.PWA, String(Date.now()));
+    if (status && toastID === id)
+      localStorage.setItem(LOCAL_STORE_KEY.PWA, String(Date.now()));
   }, [LOCAL_STORE_KEY.PWA, hasClosed, toastID]);
 
   return { checkPWABanner };

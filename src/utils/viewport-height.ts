@@ -5,5 +5,5 @@
 
 export function setViewportHeight(): void {
   const vh = window.innerHeight * 0.01;
-  document.documentElement.style.setProperty('--v-height', `${vh}px`);
+  document.documentElement.style.setProperty("--v-height", `${vh}px`);
 }
