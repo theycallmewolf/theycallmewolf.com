@@ -38,7 +38,7 @@ const BannerComponent: React.FC = () => {
       {!safeMode && <Tools />}
       <Content />
       {!safeMode && <DialogBox />}
-      {!safeMode && <Scene />}
+      <Scene />
     </section>
   );
 };
