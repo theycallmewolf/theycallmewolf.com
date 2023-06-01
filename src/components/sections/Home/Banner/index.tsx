@@ -16,6 +16,8 @@ export const Banner: React.FC = () => (
   </UnsplashProvider>
 );
 
+export default Banner;
+
 const BannerComponent: React.FC = () => {
   const { getImages } = useUnsplash();
 

@@ -1,11 +1,11 @@
 import { Layout } from "components/Layout";
 // import { Blog } from 'components/sections';
 import { About } from "components/sections/Home/About";
-import { Banner } from "components/sections/Home/Banner";
 import { Clients } from "components/sections/Home/Clients";
 import { Projects } from "components/sections/Home/Projects";
 import { Testimonials } from "components/sections/Home/Testimonials";
 import { GetStaticProps } from "next";
+import dynamic from "next/dynamic";
 import { ReactElement } from "react";
 import {
   getClients,
@@ -18,10 +18,15 @@ import { HomeProps } from "types";
 
 import { NextPageWithLayout } from "./_app";
 
+const DynamicBanner = dynamic(() => import("components/sections/Home/Banner"), {
+  // eslint-disable-next-line react/display-name
+  loading: () => <p>Loading...</p>,
+});
+
 const HomePage: NextPageWithLayout<HomeProps> = (props) => {
   return (
     <>
-      <Banner />
+      <DynamicBanner />
       <About skills={props.skills} />
       <Projects projects={props.projects} />
       <Testimonials testimonials={props.testimonials} />
