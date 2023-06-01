@@ -20,6 +20,7 @@ const BannerComponent: React.FC = () => {
   const { getImages } = useUnsplash();
 
   const [device, setDevice] = useState<"desktop" | "mobile">("desktop");
+  const [safeMode, setSafeMode] = useState(false);
 
   useEffect(() => {
     getImages();
@@ -27,16 +28,17 @@ const BannerComponent: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    const { isMobile } = deviceCheck();
+    const { isMobile, isIOS } = deviceCheck();
     setDevice(isMobile ? "mobile" : "desktop");
+    setSafeMode(isIOS);
   }, []);
 
   return (
     <section className={`${styles.container} ${styles[device]}`}>
-      {/* <Tools /> */}
+      {!safeMode && <Tools />}
       <Content />
-      {/* <DialogBox /> */}
-      {/* <Scene /> */}
+      {!safeMode && <DialogBox />}
+      {!safeMode && <Scene />}
     </section>
   );
 };
