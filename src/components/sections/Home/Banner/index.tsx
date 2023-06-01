@@ -33,10 +33,10 @@ const BannerComponent: React.FC = () => {
 
   return (
     <section className={`${styles.container} ${styles[device]}`}>
-      <Tools />
+      {/* <Tools /> */}
       <Content />
-      <DialogBox />
-      <Scene />
+      {/* <DialogBox /> */}
+      {/* <Scene /> */}
     </section>
   );
 };
