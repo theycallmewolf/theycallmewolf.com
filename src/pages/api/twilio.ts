@@ -4,8 +4,8 @@ export default async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
-  const { body } = req;
-  const { phone, message } = body;
+  // const { body } = req;
+  // const { phone, message } = body;
 
   /**
    * Download the helper library from @see https://www.twilio.com/docs/node/install

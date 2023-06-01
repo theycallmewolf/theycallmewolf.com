@@ -7,7 +7,7 @@ export default async (
   req: NextApiRequest,
   res: NextApiResponse
 ): Promise<void> => {
-  const { email, subject, message, name } = req.body;
+  const { subject, message, name /* email */ } = req.body;
   const msg = {
     to: process.env.PERSONAL_EMAIL_ADDRESS,
     from: process.env.SITE_EMAIL_ADDRESS,

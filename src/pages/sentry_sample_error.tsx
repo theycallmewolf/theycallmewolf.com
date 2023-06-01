@@ -5,7 +5,7 @@ const boxStyles = {
   border: "1px solid #eaeaea",
   borderRadius: "10px",
 };
-export default function Home() {
+export default function Home(): JSX.Element {
   return (
     <div>
       <Head>

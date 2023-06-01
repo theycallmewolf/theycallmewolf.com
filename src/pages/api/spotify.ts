@@ -36,6 +36,7 @@ const getAccessToken = async (): Promise<{ access_token: string }> => {
   }
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const getNowPlaying = async (): Promise<any> => {
   const res = await getAccessToken();
 
