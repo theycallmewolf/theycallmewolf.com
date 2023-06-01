@@ -43,7 +43,7 @@ export const Slider: React.FC<SliderProps> = ({
         navigation
         slidesPerView={1}
         grabCursor={true}
-        loop={true}
+        loop={false}
         speed={1000}
         effect={contentType === "testimonial" ? "fade" : "slide"}
         className={contentType === "testimonial" ? "testimonial" : ""}
@@ -78,9 +78,8 @@ export const Slider: React.FC<SliderProps> = ({
               </figure>
               {slide.slider.caption && (
                 <Button
-                  className={`show-caption-button ${
-                    showCaption ? "rotate" : ""
-                  }`}
+                  className={`show-caption-button 
+                  ${showCaption ? "rotate" : ""}`}
                   onClick={() => setShowCaption((state) => !state)}
                 >
                   <IPlus />
