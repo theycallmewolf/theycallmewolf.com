@@ -22,7 +22,7 @@ export default Banner;
 
 const BannerComponent: React.FC = () => {
   const { getImages } = useUnsplash();
-  const { device, safeMode } = useDevice();
+  const { device } = useDevice();
 
   useEffect(() => {
     getImages();
@@ -31,9 +31,9 @@ const BannerComponent: React.FC = () => {
 
   return (
     <section className={`${styles.container} ${styles[device]}`}>
-      {!safeMode && <Tools />}
+      <Tools />
       <Content />
-      {!safeMode && <DialogBox />}
+      <DialogBox />
       <Scene />
     </section>
   );

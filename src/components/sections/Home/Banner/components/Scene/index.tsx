@@ -3,10 +3,14 @@ import { useMemo } from "react";
 import { COLORS } from "theme";
 import { deviceCheck } from "utils";
 
+import { useDevice } from "../../useDevice";
 import { useUnsplash } from "../../useUnsplash";
 import styles from "./scene.module.scss";
 
 export const Scene: React.FC = () => {
+  // use to debug the "A problem repeatedly occurred" issue
+  const { safeMode } = useDevice();
+
   const { hasDarkMode } = useTheme();
   const { currentBgImage } = useUnsplash();
 
@@ -53,7 +57,11 @@ export const Scene: React.FC = () => {
     return { background: `url(${image})` };
   }, [hasDarkMode, currentBgImage]);
 
+  // use to debug the "A problem repeatedly occurred" issue
+  if (safeMode) return null;
+
   if (!currentBgImage) return null;
+
   return (
     <div className={styles.scene}>
       {wrap.map((key) => (
