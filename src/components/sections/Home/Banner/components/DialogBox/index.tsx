@@ -5,14 +5,10 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Draggable from "react-draggable";
 
-import { useDevice } from "../../useDevice";
 import { useUnsplash } from "../../useUnsplash";
 import styles from "./dialog-box.module.scss";
 
 export const DialogBox: React.FC = () => {
-  // use to debug the "A problem repeatedly occurred" issue
-  const { safeMode } = useDevice();
-
   const { showDialogBox, setShowDialogBox } = useUnsplash();
   const [coordinates, setCoordinates] = useState({ x: 0, y: 0 });
 
@@ -33,9 +29,6 @@ export const DialogBox: React.FC = () => {
       elementRef.current.style.transform = `translate(${initialX}px, ${initialY}px)`;
     }
   }, []);
-
-  // use to debug the "A problem repeatedly occurred" issue
-  if (safeMode) return null;
 
   /**
    * @doc https://github.com/react-grid-layout/react-draggable#draggable

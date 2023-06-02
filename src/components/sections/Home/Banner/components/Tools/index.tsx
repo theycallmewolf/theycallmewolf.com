@@ -7,15 +7,11 @@ import IPlus from "assets/icons/IPlus";
 import IShuffle from "assets/icons/IShuffle";
 import { useState } from "react";
 
-import { useDevice } from "../../useDevice";
 import { useUnsplash } from "../../useUnsplash";
 import { UnsplashCopyright } from "../UnsplashCopyright";
 import styles from "./tools.module.scss";
 
 export const Tools: React.FC = () => {
-  // use to debug the "A problem repeatedly occurred" issue
-  const { safeMode } = useDevice();
-
   const {
     currentBgImage,
     addBackgroundImage,
@@ -26,9 +22,6 @@ export const Tools: React.FC = () => {
   } = useUnsplash();
 
   const [open, setOpen] = useState(false);
-
-  // use to debug the "A problem repeatedly occurred" issue
-  if (safeMode) return null;
 
   if (!currentBgImage) return null;
 

@@ -1,20 +1,16 @@
 import { useTheme } from "hooks";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { COLORS } from "theme";
 import { deviceCheck } from "utils";
 
-import { useDevice } from "../../useDevice";
 import { useUnsplash } from "../../useUnsplash";
 import styles from "./scene.module.scss";
 
 export const Scene: React.FC = () => {
-  // use to debug the "A problem repeatedly occurred" issue
-  const { safeMode } = useDevice();
-
   const { hasDarkMode } = useTheme();
   const { currentBgImage } = useUnsplash();
 
-  const wrap = ["1", "2"];
+  const [wrap, setWrap] = useState(["1", "2"]);
 
   const frames = useMemo(
     () => [
@@ -50,15 +46,19 @@ export const Scene: React.FC = () => {
     }
 
     const { isMobile } = deviceCheck();
-    const image = isMobile
-      ? currentBgImage.urls.small
-      : currentBgImage?.urls.regular;
+    const size = isMobile ? "small" : "regular";
 
-    return { background: `url(${image})` };
+    return { background: `url(${currentBgImage?.urls[size]})` };
   }, [hasDarkMode, currentBgImage]);
 
-  // use to debug the "A problem repeatedly occurred" issue
-  if (safeMode) return null;
+  useEffect(() => {
+    const { isMobile } = deviceCheck();
+    if (!isMobile) return;
+
+    // add only one images effect group case is mobile
+    // to avoid the "A problem repeatedly occurred" issue
+    setWrap(["1"]);
+  }, []);
 
   if (!currentBgImage) return null;
 

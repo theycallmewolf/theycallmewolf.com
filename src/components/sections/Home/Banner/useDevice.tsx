@@ -9,7 +9,7 @@ import { deviceCheck } from "utils";
 
 interface DeviceData {
   device: "desktop" | "mobile";
-  safeMode: boolean;
+  safeMode: boolean; // use to debug the "A problem repeatedly occurred" issue
 }
 
 const DeviceContext = createContext<DeviceData>({} as DeviceData);
