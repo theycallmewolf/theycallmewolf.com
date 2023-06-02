@@ -3,14 +3,10 @@ import { useEffect, useMemo, useState } from "react";
 import { COLORS } from "theme";
 import { deviceCheck } from "utils";
 
-// import { useDevice } from "../../useDevice";
 import { useUnsplash } from "../../useUnsplash";
 import styles from "./scene.module.scss";
 
 export const Scene: React.FC = () => {
-  // use to debug the "A problem repeatedly occurred" issue
-  // const { safeMode } = useDevice();
-
   const { hasDarkMode } = useTheme();
   const { currentBgImage } = useUnsplash();
 
@@ -63,9 +59,6 @@ export const Scene: React.FC = () => {
     // to avoid the "A problem repeatedly occurred" issue
     setWrap(["1"]);
   }, []);
-
-  // use to debug the "A problem repeatedly occurred" issue
-  // if (safeMode) return null;
 
   if (!currentBgImage) return null;
 
