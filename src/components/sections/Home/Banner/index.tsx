@@ -1,18 +1,20 @@
 import "react-typed/dist/animatedCursor.css";
 
-import { useEffect, useState } from "react";
-import { deviceCheck } from "utils/device-check";
+import { useEffect } from "react";
 
 import styles from "./banner.module.scss";
 import { Content } from "./components/Content";
 import { DialogBox } from "./components/DialogBox";
 import { Scene } from "./components/Scene";
 import { Tools } from "./components/Tools";
+import { DeviceProvider, useDevice } from "./useDevice";
 import { UnsplashProvider, useUnsplash } from "./useUnsplash";
 
 export const Banner: React.FC = () => (
   <UnsplashProvider>
-    <BannerComponent />
+    <DeviceProvider>
+      <BannerComponent />
+    </DeviceProvider>
   </UnsplashProvider>
 );
 
@@ -20,19 +22,11 @@ export default Banner;
 
 const BannerComponent: React.FC = () => {
   const { getImages } = useUnsplash();
-
-  const [device, setDevice] = useState<"desktop" | "mobile">("desktop");
-  const [safeMode, setSafeMode] = useState(false);
+  const { device, safeMode } = useDevice();
 
   useEffect(() => {
     getImages();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  useEffect(() => {
-    const { isMobile, isIOS } = deviceCheck();
-    setDevice(isMobile ? "mobile" : "desktop");
-    setSafeMode(isIOS);
   }, []);
 
   return (
